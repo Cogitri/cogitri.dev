@@ -1,0 +1,25 @@
+branches:
+    only:
+        - devel
+language: go
+go:
+  - master
+dist: xenial
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  keep-history: true
+  verbose: true
+  target_branch: master
+  local-dir: public
+  on:
+    branch: devel
+
+# Ubuntu Hugo is soooo outdated!
+install:
+    - go get github.com/gohugoio/hugo 
+
+script:
+  - hugo
+  

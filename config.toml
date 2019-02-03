@@ -1,0 +1,9 @@
+baseURL = "https://cogitri.github.io"
+languageCode = "en-gb"
+title = "Cogitri's blog"
+theme = "Niello"
+
+staticDir = ["static", "themes/Niello/static"]
+
+[params]
+copyright="  	 "
