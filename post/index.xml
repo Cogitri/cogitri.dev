@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cogitri&#39;s blog</title>
-    <link>https://cogitri.github.io/</link>
-    <description>Recent content on Cogitri&#39;s blog</description>
+    <title>Posts on Cogitri&#39;s blog</title>
+    <link>https://cogitri.github.io/post/</link>
+    <description>Recent content in Posts on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sun, 03 Feb 2019 22:00:58 +0100</lastBuildDate>
     
-	<atom:link href="https://cogitri.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cogitri.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Introducing tmplgen</title>
-      <link>https://cogitri.github.io/01-introducing-tmplgen/</link>
-      <pubDate>Sun, 03 Feb 2019 22:00:58 +0100</pubDate>
-      
-      <guid>https://cogitri.github.io/01-introducing-tmplgen/</guid>
-      <description>Introduction Some time ago maxice8 had told me about gemnator, a simple script written in SH to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from the rubygems.org API and generates a ready to use template from it. I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.</description>
-    </item>
     
     <item>
       <title>Introducing tmplgen</title>
