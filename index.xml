@@ -13,15 +13,6 @@
     
     <item>
       <title>Introducing tmplgen</title>
-      <link>https://cogitri.github.io/01-introducing-tmplgen/</link>
-      <pubDate>Sun, 03 Feb 2019 22:00:58 +0100</pubDate>
-      
-      <guid>https://cogitri.github.io/01-introducing-tmplgen/</guid>
-      <description>Introduction Some time ago maxice8 had told me about gemnator, a simple script written in SH to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from the rubygems.org API and generates a ready to use template from it. I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.</description>
-    </item>
-    
-    <item>
-      <title>Introducing tmplgen</title>
       <link>https://cogitri.github.io/post/01-introducing-tmplgen/</link>
       <pubDate>Sun, 03 Feb 2019 22:00:58 +0100</pubDate>
       
