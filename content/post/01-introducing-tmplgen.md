@@ -221,11 +221,8 @@ This is way more intuitive than searching for some random function which may (or
 
 It's also very nice to use in an IDE:
 
-![Smart IntelliSense](https://cogitri.github.io/post-01.png)
-
+![Smart IntelliSense](https://cogitri.github.io/post/post-01.png)
 
 See [the source](https://github.com/Cogitri/tmplgen/blob/master/src/lib/tmplwriter.rs) for more details.
 
 Overall tmplgen has been a great experience for me. It helped me getting into Rust and understand different ways to package software.
-
-
