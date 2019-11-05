@@ -1,6 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://cogitri.github.io/</loc>
+    <lastmod>2019-10-29T11:28:05-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cogitri.github.io/post/02-gitlab-alpinelinux-v4-api/</loc>
+    <lastmod>2019-10-29T11:28:05-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cogitri.github.io/post/</loc>
+    <lastmod>2019-10-29T11:28:05-03:00</lastmod>
+  </url>
   
   <url>
     <loc>https://cogitri.github.io/post/01-introducing-tmplgen/</loc>
@@ -9,24 +24,10 @@
   
   <url>
     <loc>https://cogitri.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://cogitri.github.io/</loc>
-    <lastmod>2019-02-03T22:00:58+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://cogitri.github.io/post/</loc>
-    <lastmod>2019-02-03T22:00:58+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cogitri.github.io/tags/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

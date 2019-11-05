@@ -1,0 +1,272 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
+    <title>Contributing to Alpine Linux: making Merge Requests - Cogitri&#39;s blog</title>
+
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/diello.css">
+    <link rel="stylesheet" href="/css/main.css">
+    
+</head>
+
+
+<body>
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+  
+    <div class="flex-column">
+        <div class="ads">
+    
+</div>
+
+        <div class="home">
+            <div class="logo">
+                <h1><a href="/">Cogitri&#39;s blog</a></h1>
+            </div>
+            <div class="navigation">
+                <a href="/">HOME</a>
+                <a href="/" class="current">ARTICLE</a>
+            </div>
+            <div>
+                <article>
+                    <h3>Contributing to Alpine Linux: making Merge Requests</h3>
+                    <div class="less">
+                        <time>Published: Tuesday, Oct 29, 2019</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;5 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 1039 words
+                    </div>
+                    <div class="em">
+
+<h1 id="introduction">Introduction</h1>
+
+<blockquote>
+<p>Guest article by maxice8</p>
+</blockquote>
+
+<p>Some time ago, <a href="https://alpinelinux.org">Alpine Linux</a> started using their self-hosted
+<a href="https://gitlab.alpinelinux.org">GitLab instance</a> to accept contributions via merge requests.</p>
+
+<p>I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it
+is currently a mirror to git.alpinelinux.org).</p>
+
+<h1 id="how-it-was-before">How it was before</h1>
+
+<p>Before using their GitLab instance I used their <a href="https://github.com/alpinelinux/aports">GitHub repo</a> to
+contribute, I would use the amazing <a href="https://github.com/github/hub">hub</a> tool, which after login with my
+personal access token would allow me to easily check out pull requests and merge them from the CLI.</p>
+
+<p>The scripts for it are very simple, most of the logic is on hub and a few lines of shell just wrap around
+it for my most common use cases.</p>
+
+<p>This one uses hub to checkout a PR someone has made:</p>
+
+<pre><code class="language-sh">#!/bin/sh
+set -eu
+while [ $# -gt 0 ]
+do
+	if [ $# -gt 1 ]
+	then
+		args=&quot;$1 $2&quot;
+		shift 2
+	else
+		args=&quot;$1&quot;
+		shift 1
+	fi
+	hub pr checkout $args
+	pullp
+done
+</code></pre>
+
+<h1 id="moving-to-gitlab">Moving to GitLab</h1>
+
+<p>GitLab doesn&rsquo;t have a tool like hub that makes it super easy to interact with the GitLab V4 API like
+hub does with the GitHub API. So I turned into accessing the API by myself with the ever trustworthy curl.</p>
+
+<h2 id="finding-the-endpoint">Finding the endpoint</h2>
+
+<p>Since GitLab allows self hosting, the first thing you have to do is find our respective GitLab endpoint. GitHub
+is a centralized proprietary service so it doesn&rsquo;t have this issue.</p>
+
+<p>This is the following code present in all my scripts that deal with GitLab (I believe the comments
+are enough to tell what they are for and what they meant).</p>
+
+<pre><code class="language-sh"># Try to detect host, strip the .git suffix
+# This is where the domain is, most normally gitlab.com
+# but also works with other custom domains.
+HOST=&quot;$(git config remote.upstream.url | cut -d / -f -3)&quot;
+
+# This is the ENDPOINT of the project you forked, if we call this with
+# curl we get a JSON payload that describes the repo, including stuff like
+# its :id and :name
+ENDPOINT=&quot;$HOST&quot;/api/v4/projects/&quot;$origin_owner&quot;%2F&quot;$origin_repo&quot;
+
+# This is the ENDPOINT of the project itself, we need to get its :id value to
+# pass as the 'target_project_id'
+UPSTREAM_ENDPOINT=&quot;$HOST&quot;/api/v4/projects/&quot;$upstream_owner&quot;%2F&quot;$upstream_repo&quot;
+</code></pre>
+
+<h2 id="finding-the-project-id">Finding the project id</h2>
+
+<p>Each project has its own id, which we need to pass in the request to the GitLab API so it
+knows which repo we target when creating the merge request.</p>
+
+<pre><code class="language-sh">_get_project_id() {
+	repo=&quot;$(echo &quot;$1&quot; \
+			| sed -e 's|https://||g' -e 's|%2F|.|' \
+			| tr '/' '.' )&quot;
+
+	# Create cache directory if it doesn't exist
+	[ -d &quot;$XDG_CACHE_HOME&quot;/mkmr ] || mkdir -p &quot;$XDG_CACHE_HOME&quot;/mkmr
+
+	# The project ID is cached, read it out
+	if [ -f &quot;$XDG_CACHE_HOME&quot;/mkmr/&quot;$repo&quot; ]; then
+		cat &quot;$XDG_CACHE_HOME&quot;/mkmr/&quot;$repo&quot;
+		return 0
+	fi
+
+	# Call the GitLab API to see the id of the repo and write it to the cache
+	curl --silent &quot;$1&quot; | jq '.id // empty' | tee &quot;$XDG_CACHE_HOME&quot;/mkmr/&quot;$repo&quot;
+
+	[ -s &quot;$XDG_CACHE_HOME&quot;/mkmr/&quot;$repo&quot; ] || return 1
+}
+</code></pre>
+
+<p>The code above finds the project id via a request to the GitLab API which can be slow
+so we cache the id of the project so you don&rsquo;t need to call it every time you have to
+make a merge request.</p>
+
+<h2 id="crafting-the-json-payload">Crafting the JSON payload</h2>
+
+<p>The GitLab API takes a JSON payload for its requests, so we need to craft one in shell
+for it, which is easier than initially thought.</p>
+
+<p>This is the first part of the payload, and will always appear, regardless of whatever
+options the user has passed to the script when creating the merge requests</p>
+
+<pre><code class="language-sh">	# JSON payload that will be used to create the branch
+	BODY=&quot;{
+		\&quot;id\&quot;: \&quot;${origin_owner}%2F${origin_repo}\&quot;,
+		\&quot;source_branch\&quot;: \&quot;$(git rev-parse --abbrev-ref HEAD)\&quot;,
+		\&quot;remove_source_branch\&quot;: true,&quot;
+</code></pre>
+
+<p>The second part adds labels to the merge request if the user passed them via the &ndash;labels
+option. It also sets the description of the merge request, which the user can set by passing
+&ndash;description and/or passing &ndash;edit (edit with $EDITOR).</p>
+
+<blockquote>
+<p>the A-upgrade label is automatically added if it detects an Alpine Linux upgrade commit
+<repo>/<pkg>: upgrade to <pkgver></p>
+
+<p>The A-add label is automatically added if it detects an Alpine Linux add commit
+<repo>/<pkg>: new aport</p>
+
+<p>The A-move label is automatically added if it detects an Alpine Linux move commit
+<newrepo>/<pkg>: move from <oldrepo></p>
+</blockquote>
+
+<p>Note that we use awk to convert all newlines to literal \n, this is required and GitLab will
+translate them back from literal \n to newlines.</p>
+
+<pre><code class="language-sh">	# If we set labels then append it to body
+	if [ -n &quot;$LABEL&quot; ]; then
+		BODY=&quot;$BODY
+		\&quot;labels\&quot;: \&quot;$LABEL\&quot;,&quot;
+	fi
+
+	if [ -n &quot;$DESCRIPTION&quot; ]; then
+		BODY=&quot;$BODY
+		\&quot;description\&quot;: \&quot;$(printf &quot;%s&quot; &quot;$DESCRIPTION&quot; | awk '{printf  &quot;%s\\n&quot;, $0}' )\&quot;,&quot;
+	fi
+</code></pre>
+
+<p>The last part sets the target_branch, which is where you want to merge the merge request into,
+most of the time it is the master branch, but in some cases you might want to merge into other
+branches with &ndash;target-branch.</p>
+
+<blockquote>
+<p>There is also logic specific to Alpine Linux for setting the target_branch to one of its
+stable branches for backporting</p>
+</blockquote>
+
+<p>If the branch only contains one commit deviating from the target branch it sets the title and description of the merge request to the commit&rsquo;s text. If there are multiple deviating commits it allows the user to pick one of the commits to use its text. Users can also pass the <code>--title</code>  option to the script to write their own title</p>
+
+<p>The assignee_id is rarely used since it is very annoying to use but if you pass it with &ndash;assignees then
+the user that matches the id will be marked as assignee on the merge request.</p>
+
+<pre><code class="language-sh">	BODY=&quot;$BODY
+		\&quot;target_branch\&quot;: \&quot;$TARGET_BRANCH\&quot;,
+		\&quot;title\&quot;: \&quot;$TITLE\&quot;,
+		\&quot;assignee_id\&quot;: \&quot;$ASSIGN\&quot;,
+		\&quot;target_project_id\&quot;: $PROJECT_ID
+	}&quot;;
+</code></pre>
+
+<h2 id="calling-the-api">Calling the API</h2>
+
+<p>After the JSON payload is done we now call the API with curl.</p>
+
+<p>For it we have to provide our own personal access token. To do it we use the
+freedesktop <a href="https://freedesktop.org/wiki/Specifications/secret-storage-spec/secrets-api-0.1.html">Secrets API</a>
+and <a href="https://manpages.ubuntu.com/manpages/bionic/man1/secret-tool.1.html">secret-tool(1)</a> to
+query the system keyring for the private token. Users can just put the value for
+their own personal access token.</p>
+
+<pre><code class="language-sh">	JSON=&quot;$(curl -X POST &quot;$ENDPOINT&quot;/merge_requests \
+			--header &quot;PRIVATE-TOKEN: $(secret-tool lookup Path a.o/gitlab/token/mkmr)&quot; \
+			--header &quot;Content-Type: application/json&quot; \
+			--data &quot;$BODY&quot; --silent)&quot;
+
+	WEB_URL=&quot;$(echo &quot;$JSON&quot; | jq '.web_url // empty')&quot;
+
+	if [ -z &quot;$WEB_URL&quot; ]; then
+		echo &quot;$JSON&quot; | jq -r .
+	else
+		echo &quot;$WEB_URL&quot; | tr -d '&quot;'
+	fi
+</code></pre>
+</div>
+                    <br />
+                    <br />
+                    <div class="less">Page link: <a href="/post/02-gitlab-alpinelinux-v4-api/" class="pagelink">/post/02-gitlab-alpinelinux-v4-api/</a></div>
+                    <div class="line-dotted"></div>
+                <article>
+            </div>
+            <footer>
+    <div>
+    
+          	 
+    
+    </div>
+</footer>
+
+        </div>
+        <div class="ads">
+    
+</div>
+
+    </div>
+
+
+  <script src="/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/js/vendor/jquery-3.3.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="\/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>  
+
+<script src="/js/vendor/highlight.min.js"></script>  
+<script>hljs.initHighlightingOnLoad();</script>
+                                                       
+
+
+</body>
+</html>

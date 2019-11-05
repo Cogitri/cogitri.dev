@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cogitri&#39;s blog</title>
@@ -6,10 +6,22 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 03 Feb 2019 22:00:58 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 29 Oct 2019 11:28:05 -0300</lastBuildDate>
     
 	<atom:link href="https://cogitri.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Contributing to Alpine Linux: making Merge Requests</title>
+      <link>https://cogitri.github.io/post/02-gitlab-alpinelinux-v4-api/</link>
+      <pubDate>Tue, 29 Oct 2019 11:28:05 -0300</pubDate>
+      
+      <guid>https://cogitri.github.io/post/02-gitlab-alpinelinux-v4-api/</guid>
+      <description>Introduction  Guest article by maxice8
+ Some time ago, Alpine Linux started using their self-hosted GitLab instance to accept contributions via merge requests.
+I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it is currently a mirror to git.alpinelinux.org).
+How it was before Before using their GitLab instance I used their GitHub repo to contribute, I would use the amazing hub tool, which after login with my personal access token would allow me to easily check out pull requests and merge them from the CLI.</description>
+    </item>
     
     <item>
       <title>Introducing tmplgen</title>
