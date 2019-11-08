@@ -4,16 +4,21 @@
   
   <url>
     <loc>https://cogitri.dev/</loc>
-    <lastmod>2019-10-29T11:28:05-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cogitri.dev/post/02-gitlab-alpinelinux-v4-api/</loc>
-    <lastmod>2019-10-29T11:28:05-03:00</lastmod>
+    <lastmod>2019-11-04T11:33:37-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://cogitri.dev/post/</loc>
+    <lastmod>2019-11-04T11:33:37-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cogitri.dev/post/03-keepassxc-freedesktop-secret/</loc>
+    <lastmod>2019-11-04T11:33:37-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cogitri.dev/post/02-gitlab-alpinelinux-v4-api/</loc>
     <lastmod>2019-10-29T11:28:05-03:00</lastmod>
   </url>
   

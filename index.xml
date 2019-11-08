@@ -6,10 +6,23 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 29 Oct 2019 11:28:05 -0300</lastBuildDate>
+    <lastBuildDate>Mon, 04 Nov 2019 11:33:37 -0300</lastBuildDate>
     
 	<atom:link href="https://cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using KeePassXC as your system-keyring and ssh-agent</title>
+      <link>https://cogitri.dev/post/03-keepassxc-freedesktop-secret/</link>
+      <pubDate>Mon, 04 Nov 2019 11:33:37 -0300</pubDate>
+      
+      <guid>https://cogitri.dev/post/03-keepassxc-freedesktop-secret/</guid>
+      <description>Introduction  Guest article by maxice8
+ Recently the community-oriented password manager KeePassXC made a new major release, 2.5.0.
+In this new release there was a really important change, the implementation of the secrets API from Freedesktop.
+ This is oversimplified
+ For those that don&amp;rsquo;t know, the secrets API is a specification for storing and querying secrets (duh) like passwords, tokens and ssh keys, and really anything you wanted.</description>
+    </item>
     
     <item>
       <title>Contributing to Alpine Linux: making Merge Requests</title>
