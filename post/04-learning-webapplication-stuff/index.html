@@ -1,0 +1,220 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1">
+    <title>What I need to learn for my Web Applications course. - Cogitri&#39;s blog</title>
+
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/diello.css">
+    <link rel="stylesheet" href="/css/main.css">
+    
+    
+</head>
+
+
+<body>
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+
+  
+    <div class="flex-column">
+        <div class="ads">
+    
+</div>
+
+        <div class="home">
+            <div class="logo">
+                <h1><a href="/">Cogitri&#39;s blog</a></h1>
+            </div>
+            <div class="navigation">
+    
+    <a href="/" class="">HOME</a>
+    <a href="javascript:void(0);" class="current">ARTICLE</a>
+    
+</div>
+
+            <div>
+                <article>
+                    <h3>What I need to learn for my Web Applications course.</h3>
+                    <div class="less">
+                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 374 words
+                    </div>
+                    <div class="em"><h1 id="historie">Historie</h1>
+<h1 id="www">WWW</h1>
+<ul>
+<li>Tim Berners-Lee, proposed WWW to CERN. Vorgaenger: ARPANET</li>
+</ul>
+<h1 id="http">HTTP</h1>
+<ul>
+<li>HyperTextTransportProtocol</li>
+<li>Stateless</li>
+<li>URI =&gt; Uniform Resource Identifier</li>
+<li>URL =&gt; Subset of URIs, Uniform Resource Locator. Describes primary access mechanism</li>
+</ul>
+<h2 id="request-methods">Request Methods</h2>
+<h3 id="get">GET</h3>
+<ul>
+<li>Retrieve Info</li>
+<li>Request: Request Header</li>
+<li>Response: Responser Header + Response Entity</li>
+</ul>
+<h2 id="post">POST</h2>
+<ul>
+<li>Send + Retrieve Info</li>
+<li>Request Same + Request Entity</li>
+<li>Respinse: Same</li>
+</ul>
+<h2 id="status-codes">Status Codes</h2>
+<ul>
+<li>200 OK</li>
+<li>301 Moved Permanently</li>
+<li>302 Moved Temporarily</li>
+<li>304 Not Modified (caching)</li>
+<li>401 Unauthorized</li>
+<li>403 Forbidden</li>
+<li>404 Not Found</li>
+<li>428 I&rsquo;m a Teapot!</li>
+<li>500 Internal Server Error</li>
+</ul>
+<h2 id="mime">MIME</h2>
+<ul>
+<li>Multipurpose Internet Mail Extension</li>
+</ul>
+<h1 id="html-xhtml">HTML, XHTML</h1>
+<ul>
+<li>
+<p>Markup languages</p>
+</li>
+<li>
+<p>GML -&gt; SGML -&gt; HTML (1989) -&gt; XML (1998) -&gt; XHTML (1999) -&gt; HTML5 (2008)</p>
+</li>
+<li>
+<p>HTML does Content, CSS presentation</p>
+</li>
+</ul>
+<h1 id="xhtml">XHTML</h1>
+<h2 id="structure">Structure</h2>
+<h3 id="xml-version--encoding-xhtml--doctype">XML version &amp; Encoding. XHTML  DOCTYPE</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xhtml" data-lang="xhtml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.0 Strict//EN&#34;
+</span><span style="color:#75715e">&#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&#34;&gt;</span>
+</code></pre></div><p>XML is validated against the DTD file this points to.</p>
+<p>XHTML is case sensitive</p>
+<h3 id="xhtml-tag">XHTML tag</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xhtml" data-lang="xhtml">&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">xmlns</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://www.w3.org/1999/xhtml&#34;</span>&gt;
+</code></pre></div><h2 id="markup-tags">Markup Tags</h2>
+<p>Classification into three types:</p>
+<ul>
+<li>Stylistic Markup (font&hellip;) =&gt; use CSS instead</li>
+<li>Structal Markup (h1, div)</li>
+<li>Semantic Markup (title, strong)</li>
+</ul>
+<p>Tag =&gt; <code>&lt;h1&gt;</code>
+Element =&gt; <code>&lt;h1&gt;Hallo&lt;/h1&gt;</code></p>
+<h2 id="syntax">Syntax</h2>
+<ul>
+<li>Everything must be well formed in XHTML or it explodes (so that&rsquo;s fun!)</li>
+<li>Every tag needs closing tag, even empty elements (<code>&lt;br&gt;</code> -&gt; <code>&lt;br/&gt;</code>)</li>
+<li>Attribute names must be quoted</li>
+<li>Use &ldquo;id&rdquo; instead of &ldquo;name&rdquo;</li>
+</ul>
+<h2 id="metadata">Metadata</h2>
+<ul>
+<li>SEO</li>
+<li>Keywords, Description, Expires &hellip;</li>
+</ul>
+<h2 id="character-encoding">Character Encoding</h2>
+<ul>
+<li>ASCII 128 Characters, 7-bit encoding</li>
+<li>ISO 8859-1 8-bit encoding, first 128 characters like ASCII</li>
+<li>Unicode Backwards compatible to ASCII, can fit over 1M chracters.
+<ul>
+<li>Most prelevant encoding is UTF-8.</li>
+<li><a href="https://stackoverflow.com/questions/643694/what-is-the-difference-between-utf-8-and-unicode">Difference between Unicode and UTF-8</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="comments">Comments</h2>
+<p><code>&lt;!-- a fine html comment --&gt;</code></p>
+<h2 id="tags">Tags</h2>
+<ul>
+<li>h1 - h6</li>
+<li>p</li>
+<li>span =&gt; Structural/Semantic tag</li>
+<li>div</li>
+<li>ul</li>
+<li>ol</li>
+<li>a</li>
+<li>img src=&rdquo;&rdquo;</li>
+</ul>
+<h3 id="farben">Farben</h3>
+<ul>
+<li>Hex, Name, RGB</li>
+<li>Alpha =&gt; Transperency</li>
+</ul>
+<h2 id="class-vs-id">Class vs ID</h2>
+<p>ID used to identify a certain element, e.g. to access in JS. No spaces allowed
+Class used to identify a common kind of elements, e.g. to modify all paragraph&rsquo;s look in CSS</p>
+<h2 id="html-5">HTML (5)</h2>
+<p>Recommended to use lower-case for tags, but not case sensitive (usually).</p>
+<h2 id="isoosi">ISO/OSI</h2>
+<ol>
+<li>Bituebertragung Coax, Wireless</li>
+<li>Sicherung IEEE 802.X, PPP</li>
+<li>Vermittlung IP ARP/IP</li>
+<li>Transport (TCP/UDP)</li>
+<li>Sitzung RFC so und so</li>
+<li>Darstellung FTP/SMTP</li>
+<li>Anwendung (File Transfer, EMail)</li>
+</ol>
+<h1 id="html-markup-tags">HTML markup tags</h1>
+<h1 id="css-cgi">CSS, CGI</h1>
+<h1 id="javascript">JavaScript</h1>
+<h1 id="cookies-dynamic-html-dom-events-web-20-ajax">Cookies, dynamic HTML, DOM, events, Web 2.0, AJAX</h1>
+<h1 id="network-basics">Network Basics</h1>
+<h1 id="design-guidelines">Design guidelines</h1>
+</div>
+                    <br />
+                    <br />
+                    <div class="less">Page link: <a href="/post/04-learning-webapplication-stuff/" class="pagelink">/post/04-learning-webapplication-stuff/</a></div>
+                    <div class="line-dotted"></div>
+                <article>
+            </div>
+            <footer>
+    <div>
+    
+          	 
+    
+    </div>
+</footer>
+
+        </div>
+        <div class="ads">
+    
+</div>
+
+    </div>
+
+
+  <script src="/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/js/vendor/jquery-3.3.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="\/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>  
+
+<script src="/js/vendor/highlight.min.js"></script>  
+<script>hljs.initHighlightingOnLoad();</script>
+                                                       
+
+
+</body>
+</html>
