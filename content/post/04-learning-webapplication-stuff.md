@@ -4,30 +4,30 @@ date: 2020-01-18T17:25:58+01:00
 draft: false
 ---
 
-# Historie
+# Basic (HTML - 1)
 
-# WWW
-* Tim Berners-Lee, proposed WWW to CERN. Vorgaenger: ARPANET
+## WWW
+* Tim Berners-Lee, proposed WWW to CERN. Predecessor: ARPANET
 
-# HTTP
+## HTTP
 * HyperTextTransportProtocol
 * Stateless
 * URI => Uniform Resource Identifier
 * URL => Subset of URIs, Uniform Resource Locator. Describes primary access mechanism
 
-## Request Methods
+### Request Methods
 
-### GET
+#### GET
 * Retrieve Info
 * Request: Request Header
 * Response: Responser Header + Response Entity
 
-## POST
+#### POST
 * Send + Retrieve Info
 * Request Same + Request Entity
 * Respinse: Same
 
-## Status Codes
+### Status Codes
 * 200 OK
 * 301 Moved Permanently
 * 302 Moved Temporarily
@@ -38,11 +38,11 @@ draft: false
 * 428 I'm a Teapot!
 * 500 Internal Server Error
 
-## MIME
+### MIME
 
 * Multipurpose Internet Mail Extension
 
-# HTML, XHTML
+## Markup Languages
 
 * Markup languages
 
@@ -50,11 +50,11 @@ draft: false
 
 * HTML does Content, CSS presentation
 
-# XHTML
+### XHTML
 
-## Structure
+### Structure
 
-### XML version & Encoding. XHTML  DOCTYPE
+#### XML version & Encoding. XHTML  DOCTYPE
 
 ```xhtml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -66,13 +66,13 @@ XML is validated against the DTD file this points to.
 
 XHTML is case sensitive
 
-### XHTML tag
+#### XHTML tag
 
 ```xhtml
 <html xmlns="http://www.w3.org/1999/xhtml">
 ```
 
-## Markup Tags
+#### Markup Tags
 
 Classification into three types:
 
@@ -83,20 +83,20 @@ Classification into three types:
 Tag => `<h1>`
 Element => `<h1>Hallo</h1>`
 
-## Syntax
+#### Syntax
 
 * Everything must be well formed in XHTML or it explodes (so that's fun!)
 * Every tag needs closing tag, even empty elements (`<br>` -> `<br/>`)
 * Attribute names must be quoted
 * Use "id" instead of "name"
 
-## Metadata
+#### Metadata
 
 * SEO
 * Keywords, Description, Expires ...
 
 
-## Character Encoding
+#### Character Encoding
 
 * ASCII 128 Characters, 7-bit encoding
 * ISO 8859-1 8-bit encoding, first 128 characters like ASCII
@@ -104,11 +104,11 @@ Element => `<h1>Hallo</h1>`
 	* Most prelevant encoding is UTF-8.
 	* [Difference between Unicode and UTF-8](https://stackoverflow.com/questions/643694/what-is-the-difference-between-utf-8-and-unicode)
 
-## Comments
+#### Comments
 
 `<!-- a fine html comment -->`
 
-## Tags
+#### Tags
 * h1 - h6
 * p
 * span => Structural/Semantic tag
@@ -118,21 +118,21 @@ Element => `<h1>Hallo</h1>`
 * a
 * img src=""
 
-### Farben
+##### Colours
 * Hex, Name, RGB
 * Alpha => Transperency
 
 
-## Class vs ID
+##### Class vs ID
 
 ID used to identify a certain element, e.g. to access in JS. No spaces allowed
 Class used to identify a common kind of elements, e.g. to modify all paragraph's look in CSS
 
-## HTML (5)
+### HTML (5)
 
 Recommended to use lower-case for tags, but not case sensitive (usually).
 
-## ISO/OSI
+### ISO/OSI
 
 1. Bituebertragung Coax, Wireless
 2. Sicherung IEEE 802.X, PPP
@@ -141,8 +141,6 @@ Recommended to use lower-case for tags, but not case sensitive (usually).
 5. Sitzung RFC so und so
 6. Darstellung FTP/SMTP
 7. Anwendung (File Transfer, EMail)
-
-# HTML markup tags
 
 # CSS, CGI
 
@@ -165,63 +163,63 @@ Recommended to use lower-case for tags, but not case sensitive (usually).
 * Kleine Änderungen der Zeichenkette -> große Änderungen des Hashwertes
 
 
-# Ablauf
+## Ablauf
 
 * Beim Registrieren benutztes Passwort wird gehasht und so gespeichert
 
 * Beim Login wird die Eingabe gehasht und mit dem gespeicherten Hashwert verglichen
 
 
-# Angriffe
+## Angriffe
 
-## Dictionary Attack
+### Dictionary Attack
 
 * Liste mit vorgefertigten Passwörtern zum Angriff nutzen
 
 * Funktioniert, wenn Passwort sinnig ist, statt zufällige Wortkombis (meistens der Fall)
 
-## Brute Force
+### Brute Force
 
 * Alle möglichen Zeichenketten ausprobieren (aa -> ab -> ba -> bb... usw.)
 
 * Sehr zeitaufwendig, insbesondere ab größerer Länge
 
-## Lookup Tables
+### Lookup Tables
 
 * Liste mit gespeicherten Hashwerten und zugehörigen Passwörtern
 
 * Nutzt man, um Originalpasswort aus Hashwert zu beziehen
 
-## Reverse Lookup Tables
+### Reverse Lookup Tables
 
-* Lookup Tables, welche Usernames auf Basis von Passwörtern suchen können 
+* Lookup Tables, welche Usernames auf Basis von Passwörtern suchen können
 
-## Rainbow Tables
+### Rainbow Tables
 
 * Spezielle Version von Lookup Tables
 
 * Platzsparender, brauchen aber mehr Rechenresourcen (speichern Passwörter und Hashes als Ketten)
 
 
-# Salt
+## Salt
 
 * Vom Benutzer eingegebenes Kennwort wird vor dem Hashen mit einem individuellen Zahlenwert versehen
 
 * Mehr Varietät beim Hashwert -> sicherer
 
-## Fehler beim Salzen
+### Fehler beim Salzen
 
 * Salt Reuse
 
 * Short Salt
 
 
-# Hash Collision
+## Hash Collision
 
-* mehrere Klarzeichenketten haben gleichen Hashwert
+* mehrere Klarzeichenketten haben gleichen Hashwert (-> hash algortihm broken, like md5)
 
 
-# Sicherheitsmaßnahmen
+### Sicherheitsmaßnahmen
 
 * CSPRNG für Salt-Erzeugung
 
@@ -246,12 +244,12 @@ Recommended to use lower-case for tags, but not case sensitive (usually).
 	* Argon2
 		* Absichtlich hohe RAM-Belegung
 
-## Was bringen die einzelnen Verfahren?
+### Was bringen die einzelnen Verfahren?
 
 * Hashen
 	* Passwort kann bei Serverhack nicht ausgelesen werden
 	* Rainbow Tables umgehen Hashes
-	
+
 * Salten
 	* Rainbow Tables nicht nutzbar
 	* Brute Force, Dictionary Attack oder GPU zur Berechnung nutzen
