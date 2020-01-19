@@ -46,7 +46,7 @@
                 <article>
                     <h3>What I need to learn for my Web Applications course.</h3>
                     <div class="less">
-                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 374 words
+                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;4 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 688 words
                     </div>
                     <div class="em"><h1 id="historie">Historie</h1>
 <h1 id="www">WWW</h1>
@@ -182,6 +182,160 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 <h1 id="cookies-dynamic-html-dom-events-web-20-ajax">Cookies, dynamic HTML, DOM, events, Web 2.0, AJAX</h1>
 <h1 id="network-basics">Network Basics</h1>
 <h1 id="design-guidelines">Design guidelines</h1>
+<h1 id="password-hashing">Password Hashing</h1>
+<ul>
+<li>
+<p>Schutzmaßnahme vor Diebstahl von Passwörtern</p>
+</li>
+<li>
+<p>Algorithmen sind One-Way-Funktionen (gehashtes Passwort kann nicht ungehasht werden)</p>
+</li>
+<li>
+<p>Konvertieren beliebig lange Zeichenketten in Hashwert fixer Länge</p>
+</li>
+<li>
+<p>Kleine Änderungen der Zeichenkette -&gt; große Änderungen des Hashwertes</p>
+</li>
+</ul>
+<h1 id="ablauf">Ablauf</h1>
+<ul>
+<li>
+<p>Beim Registrieren benutztes Passwort wird gehasht und so gespeichert</p>
+</li>
+<li>
+<p>Beim Login wird die Eingabe gehasht und mit dem gespeicherten Hashwert verglichen</p>
+</li>
+</ul>
+<h1 id="angriffe">Angriffe</h1>
+<h2 id="dictionary-attack">Dictionary Attack</h2>
+<ul>
+<li>
+<p>Liste mit vorgefertigten Passwörtern zum Angriff nutzen</p>
+</li>
+<li>
+<p>Funktioniert, wenn Passwort sinnig ist, statt zufällige Wortkombis (meistens der Fall)</p>
+</li>
+</ul>
+<h2 id="brute-force">Brute Force</h2>
+<ul>
+<li>
+<p>Alle möglichen Zeichenketten ausprobieren (aa -&gt; ab -&gt; ba -&gt; bb&hellip; usw.)</p>
+</li>
+<li>
+<p>Sehr zeitaufwendig, insbesondere ab größerer Länge</p>
+</li>
+</ul>
+<h2 id="lookup-tables">Lookup Tables</h2>
+<ul>
+<li>
+<p>Liste mit gespeicherten Hashwerten und zugehörigen Passwörtern</p>
+</li>
+<li>
+<p>Nutzt man, um Originalpasswort aus Hashwert zu beziehen</p>
+</li>
+</ul>
+<h2 id="reverse-lookup-tables">Reverse Lookup Tables</h2>
+<ul>
+<li>Lookup Tables, welche Usernames auf Basis von Passwörtern suchen können</li>
+</ul>
+<h2 id="rainbow-tables">Rainbow Tables</h2>
+<ul>
+<li>
+<p>Spezielle Version von Lookup Tables</p>
+</li>
+<li>
+<p>Platzsparender, brauchen aber mehr Rechenresourcen (speichern Passwörter und Hashes als Ketten)</p>
+</li>
+</ul>
+<h1 id="salt">Salt</h1>
+<ul>
+<li>
+<p>Vom Benutzer eingegebenes Kennwort wird vor dem Hashen mit einem individuellen Zahlenwert versehen</p>
+</li>
+<li>
+<p>Mehr Varietät beim Hashwert -&gt; sicherer</p>
+</li>
+</ul>
+<h2 id="fehler-beim-salzen">Fehler beim Salzen</h2>
+<ul>
+<li>
+<p>Salt Reuse</p>
+</li>
+<li>
+<p>Short Salt</p>
+</li>
+</ul>
+<h1 id="hash-collision">Hash Collision</h1>
+<ul>
+<li>mehrere Klarzeichenketten haben gleichen Hashwert</li>
+</ul>
+<h1 id="sicherheitsmaßnahmen">Sicherheitsmaßnahmen</h1>
+<ul>
+<li>
+<p>CSPRNG für Salt-Erzeugung</p>
+</li>
+<li>
+<p>Nur individuellen Salt verwenden (Salts müssen nicht geheim sein)</p>
+</li>
+<li>
+<p>Salt ungehasht mit Hashwert bei Passworterstellung abspeichern</p>
+</li>
+<li>
+<p>Beim Einloggen Salt und Nutzereingabe zusammenfügen und mit Hashwert vergleichen</p>
+</li>
+<li>
+<p>Hashwerte auf dem Server berechnen, da sicherer als im Browser</p>
+</li>
+<li>
+<p>Nutzer darf nicht die Möglichkeit haben, sich direkt mit Hashwerten einzuloggen</p>
+</li>
+<li>
+<p><strong>Je schneller eine Hashfunktion, desto schlechter</strong></p>
+</li>
+<li>
+<p>Beispiel Hashfunktionen</p>
+<ul>
+<li>MD5, SHA1 (schnell und schlecht)</li>
+<li>PBKDF2 (langsam und sicher)
+<ul>
+<li>Mehrmals Salten und Hashen (Key Stretching)</li>
+<li>WPA2 nutzt dies z.B.</li>
+<li>schnell berechenbar mit GPUs</li>
+</ul>
+</li>
+<li>Argon2
+<ul>
+<li>Absichtlich hohe RAM-Belegung</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="was-bringen-die-einzelnen-verfahren">Was bringen die einzelnen Verfahren?</h2>
+<ul>
+<li>
+<p>Hashen</p>
+<ul>
+<li>Passwort kann bei Serverhack nicht ausgelesen werden</li>
+<li>Rainbow Tables umgehen Hashes</li>
+</ul>
+</li>
+<li>
+<p>Salten</p>
+<ul>
+<li>Rainbow Tables nicht nutzbar</li>
+<li>Brute Force, Dictionary Attack oder GPU zur Berechnung nutzen</li>
+</ul>
+</li>
+<li>
+<p>Salten und aktuelle/sichere Hashfuntkionen</p>
+<ul>
+<li>GPU zu langsam/Berechnung unmöglich</li>
+<li>Brute Force mit CPU -&gt; ebenfalls viel zu langsam</li>
+<li><strong>-&gt; ERFOLGSLOS</strong></li>
+</ul>
+</li>
+</ul>
 </div>
                     <br />
                     <br />
