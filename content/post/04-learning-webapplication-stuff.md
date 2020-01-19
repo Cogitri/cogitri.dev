@@ -153,3 +153,110 @@ Recommended to use lower-case for tags, but not case sensitive (usually).
 # Network Basics
 
 # Design guidelines
+
+# Password Hashing
+
+* Schutzmaßnahme vor Diebstahl von Passwörtern
+
+* Algorithmen sind One-Way-Funktionen (gehashtes Passwort kann nicht ungehasht werden)
+
+* Konvertieren beliebig lange Zeichenketten in Hashwert fixer Länge
+
+* Kleine Änderungen der Zeichenkette -> große Änderungen des Hashwertes
+
+
+# Ablauf
+
+* Beim Registrieren benutztes Passwort wird gehasht und so gespeichert
+
+* Beim Login wird die Eingabe gehasht und mit dem gespeicherten Hashwert verglichen
+
+
+# Angriffe
+
+## Dictionary Attack
+
+* Liste mit vorgefertigten Passwörtern zum Angriff nutzen
+
+* Funktioniert, wenn Passwort sinnig ist, statt zufällige Wortkombis (meistens der Fall)
+
+## Brute Force
+
+* Alle möglichen Zeichenketten ausprobieren (aa -> ab -> ba -> bb... usw.)
+
+* Sehr zeitaufwendig, insbesondere ab größerer Länge
+
+## Lookup Tables
+
+* Liste mit gespeicherten Hashwerten und zugehörigen Passwörtern
+
+* Nutzt man, um Originalpasswort aus Hashwert zu beziehen
+
+## Reverse Lookup Tables
+
+* Lookup Tables, welche Usernames auf Basis von Passwörtern suchen können 
+
+## Rainbow Tables
+
+* Spezielle Version von Lookup Tables
+
+* Platzsparender, brauchen aber mehr Rechenresourcen (speichern Passwörter und Hashes als Ketten)
+
+
+# Salt
+
+* Vom Benutzer eingegebenes Kennwort wird vor dem Hashen mit einem individuellen Zahlenwert versehen
+
+* Mehr Varietät beim Hashwert -> sicherer
+
+## Fehler beim Salzen
+
+* Salt Reuse
+
+* Short Salt
+
+
+# Hash Collision
+
+* mehrere Klarzeichenketten haben gleichen Hashwert
+
+
+# Sicherheitsmaßnahmen
+
+* CSPRNG für Salt-Erzeugung
+
+* Nur individuellen Salt verwenden (Salts müssen nicht geheim sein)
+
+* Salt ungehasht mit Hashwert bei Passworterstellung abspeichern
+
+* Beim Einloggen Salt und Nutzereingabe zusammenfügen und mit Hashwert vergleichen
+
+* Hashwerte auf dem Server berechnen, da sicherer als im Browser
+
+* Nutzer darf nicht die Möglichkeit haben, sich direkt mit Hashwerten einzuloggen
+
+* __Je schneller eine Hashfunktion, desto schlechter__
+
+* Beispiel Hashfunktionen
+	* MD5, SHA1 (schnell und schlecht)
+	* PBKDF2 (langsam und sicher)
+		* Mehrmals Salten und Hashen (Key Stretching)
+		* WPA2 nutzt dies z.B.
+		* schnell berechenbar mit GPUs
+	* Argon2
+		* Absichtlich hohe RAM-Belegung
+
+## Was bringen die einzelnen Verfahren?
+
+* Hashen
+	* Passwort kann bei Serverhack nicht ausgelesen werden
+	* Rainbow Tables umgehen Hashes
+	
+* Salten
+	* Rainbow Tables nicht nutzbar
+	* Brute Force, Dictionary Attack oder GPU zur Berechnung nutzen
+
+* Salten und aktuelle/sichere Hashfuntkionen
+	* GPU zu langsam/Berechnung unmöglich
+	* Brute Force mit CPU -> ebenfalls viel zu langsam
+	* __-> ERFOLGSLOS__
