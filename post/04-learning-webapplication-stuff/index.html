@@ -46,7 +46,7 @@
                 <article>
                     <h3>What I need to learn for my Web Applications course.</h3>
                     <div class="less">
-                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;4 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 694 words
+                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;6 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 1172 words
                     </div>
                     <div class="em"><h1 id="basic-html---1">Basic (HTML - 1)</h1>
 <h2 id="www">WWW</h2>
@@ -166,6 +166,64 @@ Element =&gt; <code>&lt;h1&gt;Hallo&lt;/h1&gt;</code></p>
 Class used to identify a common kind of elements, e.g. to modify all paragraph&rsquo;s look in CSS</p>
 <h3 id="html-5">HTML (5)</h3>
 <p>Recommended to use lower-case for tags, but not case sensitive (usually).</p>
+<h4 id="browser-wars">Browser Wars</h4>
+<ul>
+<li>First Major browser: Mosaic&rsquo;s Netscape in 1993</li>
+<li>Then MS&rsquo;s IE1 in 1995</li>
+<li>MS quickly increased its market share to 96% in 2002</li>
+<li>Safari/Webkit released in 2003</li>
+<li>Firefox forked off Netscape, 1.0 released in 2004</li>
+<li>Creation of WHATWG in 2004 by Mozilla, Apple and Opera (Working Group for drafting new standards for W3C to approve)</li>
+<li>IE quickly lost popularity vs Firefox.</li>
+<li>Google Chrome started out in 2008</li>
+<li>In 2010 Firefox catche up to IE and became the most popular browser</li>
+<li>In 2012 Chrome overtook FF</li>
+</ul>
+<p>=&gt; During this time HTML standard evolved quickly and became a bit messy</p>
+<h4 id="evolution-of-html5">Evolution of HTML5</h4>
+<ul>
+<li>HTML 1.0 -&gt; 2.0 -&gt; 3.{0,1,2} -&gt; 4 -&gt; XHTML 1 &amp; 2 -&gt; HTML5 (2014)</li>
+</ul>
+<h4 id="differences-to-xhtml">Differences to XHTML</h4>
+<h5 id="doctype">Doctype</h5>
+<p><code>&lt;!DOCTYPE html&gt;</code></p>
+<h5 id="sections">Sections</h5>
+<ul>
+<li>Instead of just div and span loads of semantic dividers:
+<ul>
+<li>body</li>
+<li>article (Some sort of complete/self-contained section)</li>
+<li>section (generic section)</li>
+<li>nav (navigation to other pages)</li>
+<li>aside (content that is related to the content around it)</li>
+<li>hgroup</li>
+<li>header (beginning)</li>
+<li>footer (footer)</li>
+<li>address (contact info for nearest article/body)</li>
+</ul>
+</li>
+</ul>
+<h4 id="new-tags">New tags</h4>
+<ul>
+<li>dl (a description list)</li>
+<li>figure (e.g. a picture)
+<ul>
+<li>figcaption</li>
+</ul>
+</li>
+<li>video</li>
+<li>audio</li>
+<li>canvas</li>
+<li>svg</li>
+</ul>
+<h5 id="svg">SVG</h5>
+<p>Vector graphics that do not lose quality if resized. Defined in XML format. Can be animated. Can even be inlined in HTML.</p>
+<h6 id="svg-tags">SVG Tags</h6>
+<ul>
+<li>Shapes (e.g. Rectangle, Ellipse, Line, Polygon)</li>
+<li>Text</li>
+<li>It&rsquo;s possible to customize SVGs with CSS styling</li>
+</ul>
 <h3 id="isoosi">ISO/OSI</h3>
 <ol>
 <li>Bituebertragung Coax, Wireless</li>
@@ -176,6 +234,64 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 <li>Darstellung FTP/SMTP</li>
 <li>Anwendung (File Transfer, EMail)</li>
 </ol>
+<h1 id="tcpip">TCP/IP</h1>
+<h2 id="lan-vs-wan">LAN VS WAN</h2>
+<ul>
+<li>LAN (<em>L</em>ocal <em>A</em>rea <em>N</em>etwork) -&gt; Your home network</li>
+<li>WAN (<em>W</em>ide <em>A</em>area <em>N</em>etwork) -&gt; Connection between LANs, many WANs build Internet</li>
+</ul>
+<h2 id="types-of-addresses">Types of Addresses</h2>
+<ul>
+<li>MAC -&gt; Hardware address, assigned by manufacturer. Unique in network.</li>
+<li>IP Adress
+<ul>
+<li>Distributed in LAN by DHCP server</li>
+<li>Distributed by RIPE NCC for global internet</li>
+<li>v4 is currently being used, v6 in the process of being rolled out since v4 doesn&rsquo;t have enough adresses anymore.</li>
+<li>Can point to one or multiple or no MAC addresses
+<ul>
+<li>No IP but MAC -&gt; Device not reachable</li>
+<li>One IP, one MAC -&gt; Device is reachable in one network</li>
+<li>Multiple IPs, one MAC -&gt; Device is reachable in multiple networks</li>
+<li>One IP, multiple MACs -&gt; Multiple devices present as one, e.g. for load balancing, or as fall back</li>
+<li>One IP, no MAC -&gt; No device available</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="protocols">Protocols</h2>
+<p>Protocols are encapsulated, so it&rsquo;s easy to swap out only a part of it (e.g. TCP vs UDP)</p>
+<h3 id="ip">IP</h3>
+<ul>
+<li>&ldquo;<em>I</em>nternet <em>P</em>rotocol&rdquo;</li>
+<li>Contains IP Address of sender and receiver of the data package</li>
+</ul>
+<h3 id="tcp">TCP</h3>
+<ul>
+<li>&ldquo;<em>T</em>ransmission <em>C</em>ontrol <em>P</em>rotocol&rdquo;</li>
+<li>Contains the data that&rsquo;s sent</li>
+<li>3 properties of TCP:
+<ul>
+<li>Connection Orientated
+<ul>
+<li>It&rsquo;s known who&rsquo;s the receiver</li>
+</ul>
+</li>
+<li>Packet-based
+<ul>
+<li>Data is split into packets, which may takes different routes to the destination, which may take a different amount of time</li>
+</ul>
+</li>
+<li>Reliable
+<ul>
+<li>All of the data arrives at the destination and arrives in the right order, so there are no duplicates</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Reliable due to getting a acknowledgement that the data has been transmitted sucessfully, but potentially slower due to that.</li>
+</ul>
 <h1 id="css-cgi">CSS, CGI</h1>
 <h1 id="javascript">JavaScript</h1>
 <h1 id="cookies-dynamic-html-dom-events-web-20-ajax">Cookies, dynamic HTML, DOM, events, Web 2.0, AJAX</h1>
