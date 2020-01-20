@@ -46,7 +46,7 @@
                 <article>
                     <h3>What I need to learn for my Web Applications course.</h3>
                     <div class="less">
-                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;8 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 1645 words
+                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;9 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 1803 words
                     </div>
                     <div class="em"><h1 id="basic-html---1">Basic (HTML - 1)</h1>
 <h2 id="www">WWW</h2>
@@ -82,7 +82,7 @@
 <li>401 Unauthorized</li>
 <li>403 Forbidden</li>
 <li>404 Not Found</li>
-<li>428 I&rsquo;m a Teapot!</li>
+<li>418 I&rsquo;m a Teapot!</li>
 <li>500 Internal Server Error</li>
 </ul>
 <h3 id="mime">MIME</h3>
@@ -224,21 +224,11 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 <li>Text</li>
 <li>It&rsquo;s possible to customize SVGs with CSS styling</li>
 </ul>
-<h3 id="isoosi">ISO/OSI</h3>
-<ol>
-<li>Bituebertragung Coax, Wireless</li>
-<li>Sicherung IEEE 802.X, PPP</li>
-<li>Vermittlung IP ARP/IP</li>
-<li>Transport (TCP/UDP)</li>
-<li>Sitzung RFC so und so</li>
-<li>Darstellung FTP/SMTP</li>
-<li>Anwendung (File Transfer, EMail)</li>
-</ol>
 <h1 id="tcpip">TCP/IP</h1>
 <h2 id="lan-vs-wan">LAN VS WAN</h2>
 <ul>
-<li>LAN (<em>L</em>ocal <em>A</em>rea <em>N</em>etwork) -&gt; Your home network</li>
-<li>WAN (<em>W</em>ide <em>A</em>area <em>N</em>etwork) -&gt; Connection between LANs, many WANs build Internet</li>
+<li>LAN (<em>L</em>ocal <em>A</em>rea <em>N</em>etwork) -&gt; Your home network, e.g. for accessing servers in your own network</li>
+<li>WAN (<em>W</em>ide <em>A</em>area <em>N</em>etwork) -&gt; Connection between LANs, many WANs build Internet. Used to connect to foreign servers</li>
 </ul>
 <h2 id="types-of-addresses">Types of Addresses</h2>
 <ul>
@@ -291,6 +281,69 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 </ul>
 </li>
 <li>Reliable due to getting a acknowledgement that the data has been transmitted sucessfully, but potentially slower due to that.</li>
+</ul>
+<h1 id="networks">Networks</h1>
+<h3 id="isoosi">ISO/OSI</h3>
+<ol>
+<li>Bituebertragung Coax, Wireless</li>
+<li>Sicherung IEEE 802.X, PPP</li>
+<li>Vermittlung IP ARP/IP</li>
+<li>Transport (TCP/UDP)</li>
+<li>Sitzung RFC so und so</li>
+<li>Darstellung FTP/SMTP</li>
+<li>Anwendung (File Transfer, EMail)</li>
+</ol>
+<ul>
+<li>
+<p>Layer 1&amp;2 implemented via network adapter.</p>
+<ul>
+<li>Different connectors on adapters:
+<ul>
+<li>RJ45: the most common one. 8 Pins w/ twisted pairs of cables inside. In star topology:
+<ul>
+<li>Advantanges:
+<ul>
+<li>The network doesn&rsquo;t crash if one system crashes</li>
+<li>Easy to extend</li>
+<li>Easy to diagnose errors</li>
+</ul>
+</li>
+<li>Disadvantages:
+<ul>
+<li>Switches are critical components</li>
+<li>Lots of effort to run cables</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Previously BNC was used in bus topology:
+<ul>
+<li>Advantages:
+<ul>
+<li>Network doesn&rsquo;t crash if one system crashes</li>
+<li>Easy to extend</li>
+</ul>
+</li>
+<li>Disadvantages:
+<ul>
+<li>Databus is critical component</li>
+<li>All devices share one databus</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Hubs operate on layer 1 too, since they duplicate packets</li>
+<li>Switches operate on layer 2, redirect packets to their destination in a network</li>
+</ul>
+</li>
+<li>
+<p>Routing implements Layer 3</p>
+<ul>
+<li>Sets the path a data packet takes</li>
+</ul>
+</li>
 </ul>
 <h1 id="css-cgi">CSS, CGI</h1>
 <h1 id="javascript">JavaScript</h1>
@@ -451,319 +504,86 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 </ul>
 </li>
 </ul>
-<h1 id="css">CSS</h1>
-<h2 id="what-is-css">What is CSS?</h2>
+<h1 id="https">HTTPS</h1>
+<p>HTTPS = HTTP + TLS. Secures data.</p>
+<h2 id="objectives">Objectives</h2>
 <ul>
-<li>
-<p><strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets</p>
-</li>
-<li>
-<p>Styles define how to display HTML elements</p>
-</li>
-<li>
-<p>Introduced in HTML 4.0</p>
-</li>
+<li>Integrity (Certificate of the website)</li>
+<li>Authenticy</li>
+<li>Confidentially</li>
 </ul>
-<h2 id="why-css">Why CSS?</h2>
-<ul>
-<li>
-<p>Solved the problem of HTML&rsquo;s scientific background (design and presentation were not in mind)</p>
-</li>
-<li>
-<p>Easier management and maintenance</p>
-</li>
-<li>
-<p>Cleaned-up HTML code</p>
-</li>
-<li>
-<p>Unified site design</p>
-</li>
-</ul>
-<h2 id="syntax-and-standards">Syntax and Standards</h2>
-<ul>
-<li>
-<p>MIME type (according to W3C) &ldquo;text/css&rdquo; (MIME type tells the user client which parser to use)</p>
-</li>
-<li>
-<p>Syntax:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector
-{
-    property:value;
-}
-</code></pre></div><pre><code>
-
-</code></pre></li>
-</ul>
-<h2 id="types-of-style-sheets">Types of Style Sheets</h2>
-<ul>
-<li>
-<p>Author Style Sheets (highest priority)</p>
-<ul>
-<li>Made by the web page&rsquo;s author</li>
-<li>Makes up the biggest part</li>
-</ul>
-</li>
-<li>
-<p>User Style Sheets (mediocre priority)</p>
-<ul>
-<li>Set by the web page&rsquo;s user (user&rsquo;s own CSS files)</li>
-<li>Allows for greater customization/user friendliness</li>
-</ul>
-</li>
-<li>
-<p>User Agent Sytle Sheets (lowest priority)</p>
-<ul>
-<li>Automatic implementation by the browser</li>
-<li>Helps with compatibility (<code>&lt;em&gt;</code> tag is displayed as italicized in XHTML e.g.)</li>
-</ul>
-</li>
-<li>
-<p>General priority rules:</p>
-<ul>
-<li>&ldquo;Come first, serve first&rdquo; for external files (the higher their placing, the higher their priority)</li>
-<li>Gather all declarations for one element</li>
-<li>Sort by file origin</li>
-<li>Sort by definition rules of files</li>
-<li>Elements follow inheritance rules</li>
-</ul>
-</li>
-<li>
-<p><strong>!important tag</strong></p>
-<ul>
-<li>
-<p>Overwrites priority</p>
-</li>
-<li>
-<p>Syntax example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">body
-{
-    color:red <span style="color:#f92672">!</span>important;
-}
-</code></pre></div><pre><code>       
-       
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<h2 id="html-integration">HTML integration</h2>
-<ul>
-<li>
-<p>Different ways of integration</p>
-<ul>
-<li>Inline (lower priority than internal/external)</li>
-<li>Internal</li>
-<li>External (seperate file)</li>
-</ul>
-</li>
-<li>
-<p>Inline</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>p style<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color:dodgerblue;font-family:</span><span style="color:#e6db74">&#34;</span>Comic Sans<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>...<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>p<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>
-</code></pre></li>
-<li>
-<p>Internal:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>style type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text/css</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
-    p.special { color: rgb(<span style="color:#ae81ff">230</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">180</span>); }
-<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>style<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>
-</code></pre></li>
-<li>
-<p>External</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>head<span style="color:#f92672">&gt;</span>
-<span style="color:#f92672">&lt;</span>link rel<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">stylesheet</span><span style="color:#e6db74">&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">css/styles.css</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">!</span> optional media<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">print</span><span style="color:#e6db74">&#34;</span> mit einfügen <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>
-...
-<span style="color:#f92672">&lt;</span>link rel<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">stylesheet</span><span style="color:#e6db74">&#34;</span> media<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">print</span><span style="color:#e6db74">&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">css/print.css</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
-<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>head<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>   
-</code></pre></li>
-</ul>
-<h2 id="tagging">Tagging</h2>
-<h4 id="identifiers-ids">Identifiers (IDs)</h4>
-<ul>
-<li>
-<p>Syntax</p>
-<ul>
-<li>
-<p>CSS syntax:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">idname</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>{
-    ...
-}
-</code></pre></div><pre><code>   
-</code></pre></li>
-<li>
-<p>HTML syntax:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>selector id<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">idname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>....<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>selector<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>       
-</code></pre></li>
-</ul>
-</li>
-<li>
-<p>Used for unique elements (one specific paragraph e.g.)</p>
-</li>
-</ul>
-<h4 id="classes">Classes</h4>
-<ul>
-<li>
-<p>Syntax</p>
-<ul>
-<li>
-<p>CSS syntax:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector.classname <span style="color:#75715e">/* selector is optional for classes */</span>
-{
-    ...
-}
-</code></pre></div><pre><code>           
-</code></pre></li>
-<li>
-<p>HTML syntax:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>selector class<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">classname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>...<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>selector<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>       
-</code></pre></li>
-</ul>
-</li>
-<li>
-<p>Used to style repeatingly used elements (e.g. menues, special paragraphs)</p>
-</li>
-</ul>
-<h3 id="special-tagging-rules">Special Tagging Rules</h3>
-<h4 id="link-tagging">Link Tagging</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">a:status
-{
-	...
-}
-</code></pre></div><ul>
-<li>
-<p>&ldquo;Pseudo Class&rdquo;</p>
-</li>
-<li>
-<p>Possible statuses</p>
-<ul>
-<li>link (default (no action))</li>
-<li>visited (page was vistited once at least (no action))</li>
-<li>active (on-click)</li>
-<li>hover</li>
-</ul>
-</li>
-</ul>
-<h3 id="spans">Spans</h3>
-<ul>
-<li>Inline HTML tag to add some CSS</li>
-</ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>p<span style="color:#f92672">&gt;</span> This is text, <span style="color:#f92672">&lt;</span>span style<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color:dodgerblue;font-family:</span><span style="color:#e6db74">&#34;</span>Comic Sans<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>though this is formatted.<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>span<span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>p<span style="color:#f92672">&gt;</span>
-</code></pre></div><h2 id="positioning">Positioning</h2>
-<ul>
-<li>Ordering
-<ul>
-<li>Lower number -&gt; more outer placing</li>
-</ul>
-</li>
-</ul>
+<h2 id="certificates">Certificates</h2>
+<p>Either self-signed (so not trusted by a standard webbrowser) or signed via a CA.
+CA Signed certificates can be extended-valdidated, meaning it also displays a name
+on the certificate for more trust.</p>
+<h2 id="server-hello">Server Hello</h2>
 <ol>
-<li>
-<p>Margin</p>
-<ul>
-<li>Outer space of an element&rsquo;s border relative to its parent</li>
-</ul>
-</li>
-<li>
-<p>Border</p>
-</li>
-<li>
-<p>Padding</p>
-<ul>
-<li>Inner space of an element relative to its border</li>
-</ul>
-</li>
+<li>client hello (send server client&rsquo;s SSL and TLS version and the preferred cyphers)</li>
+<li>server hello (send chosen cypher, session ID and certificate).</li>
+<li>client verifies certificate</li>
+<li>client creates symmetric session key</li>
+<li>client sends encrypted session key (encrypted with server public key)</li>
+<li>server decrypts session key with its private keys</li>
+<li>server acknowledges sucessful key exchange</li>
 </ol>
-<h4 id="css-attributes">CSS attributes</h4>
-<ul>
-<li>
-<p>Static</p>
-<ul>
-<li>Default (flow of the page)</li>
-</ul>
-</li>
-<li>
-<p>Fixed</p>
-<ul>
-<li>Relative to browser window (won&rsquo;t move, not even on scroll)</li>
-</ul>
-</li>
-<li>
-<p>Relative</p>
-<ul>
-<li>Relative to its normal position</li>
-</ul>
-</li>
-<li>
-<p>Absolute</p>
-<ul>
-<li>Relative to first parents that has no static tag (relative to browser window if no such element is found)</li>
-</ul>
-</li>
-<li>
-<p>Example</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">idname</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>{
-    position: absolute;
-    ...
-}
-</code></pre></div><pre><code>
-</code></pre></li>
-<li>
-<p>z-index</p>
-<ul>
-<li>
-<p>Layering of different elements</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector
-{
-    z<span style="color:#f92672">-</span>index: <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-    ...
-}
-</code></pre></div><pre><code>
-</code></pre></li>
-</ul>
-</li>
-<li>
-<p>float</p>
-<ul>
-<li>
-<p>Elements &ldquo;float&rdquo; to the left or to the right</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector
-{
-    <span style="color:#66d9ef">float</span><span style="color:#f92672">:</span>right;
-}
-</code></pre></div><pre><code>       
-</code></pre></li>
-<li>
-<p>Can be &ldquo;cleared for other elements</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">other<span style="color:#f92672">-</span>selector
-{
-    clear:right; <span style="color:#75715e">/* left, right, and both are usable values */</span>
-}
-</code></pre></div><pre><code>   
-</code></pre></li>
-</ul>
-</li>
-</ul>
-<h2 id="units">Units</h2>
-<ul>
-<li>
-<p>Absolute</p>
-<ul>
-<li>pt = point</li>
-<li>in, cm, mm</li>
-</ul>
-</li>
-<li>
-<p>Relative</p>
-<ul>
-<li>px = pixel (relative to monitor res)</li>
-<li>% = percentage (relative to fontsize or box)</li>
-</ul>
-</li>
-</ul>
+<h2 id="ssl">SSL</h2>
+<p><em>S</em>ecure <em>S</em>ocket <em>L</em>ayer, an encryption protocol. Overtaken by TLS</p>
+<h2 id="tls">TLS</h2>
+<p><em>T</em>ransport <em>L</em>ayer <em>S</em>ecurity sucessor of SSL.</p>
+<h2 id="https-in-the-osi-model">HTTPS in the OSI Model</h2>
+<p>If using HTTPS TLS is added to the transport layer</p>
+<h2 id="history-ugh">History (ugh)</h2>
+<p>SSL 1.0 and 2.0 (1994), 3.0 (1998). TLS in 1999 and TLS 1.3 in 2018</p>
+<h1 id="ajax-and-xml-fun">AJAX and XML (fun!)</h1>
+<p>AJAX (<em>A</em>synchronos <em>J</em>avascript <em>A</em>nd <em>X</em>ML) can be used to dynamically change a site, without reloading it, thus making the
+website seem more responsive. In theory AJAX can also send YML or JSON.</p>
+<p>XML, the e<em>X</em>tensible <em>M</em>arkup <em>L</em>anguage. A XML file can be validated against a DTD (Structure Definition),
+or a XML Scheme . XML describes the syntax, XSL describes the semantics.</p>
+<p>Example:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;BUCH&gt;
+&lt;TITEL&gt;Faust&lt;/TITEL&gt;
+&lt;AUTOR&gt;Johann Wolfgang von Goethe&lt;/AUTOR&gt;
+&lt;/BUCH&gt;
+</code></pre><p>Tags are case sensitive! Must be well formed =&gt; all elements must be opened subsequently closed, nested without overlap and terminated empty element.</p>
+<h2 id="html-vs-xml">HTML vs XML:</h2>
+<p><code>&lt;img src=&quot;pic.png&quot;&gt; vs &lt;img src=&quot;pic.png&quot;/&gt;</code></p>
+<h2 id="well-formed-vs-valid-xml">Well-formed vs Valid XML</h2>
+<p>Well-formed XML doesn&rsquo;t need a DTD but is syntax checked. Valid XML requires a
+DTD to be validated. The DTD defined the document structure with a list of legal
+elements and attributes.</p>
+<h2 id="namespaces">Namespaces</h2>
+<p>It&rsquo;s possible to define namespaces in the XML file so that one can use different DTD files in one XML file.</p>
+<p>E.g.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; ?&gt;</span>
+<span style="color:#f92672">&lt;html</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.w3.org/1999/xhtml&#34;</span><span style="color:#f92672">&gt;</span>
+	xhtml elements
+	<span style="color:#f92672">&lt;math</span> <span style="color:#a6e22e">xmlns=</span><span style="color:#e6db74">&#34;http://www.w3.org/1998/Math/MathML&#34;</span><span style="color:#f92672">&gt;</span>
+		Math elements
+	<span style="color:#f92672">&lt;/math&gt;</span>
+	xhtml elements
+<span style="color:#f92672">&lt;/html&gt;</span>
+</code></pre></div><p>Or it&rsquo;s even possible to set <code>xmlns:namespace</code> and then adding <code>&lt;tagname:namespace&gt;</code> to only use a DTD file for one tag.</p>
+<h1 id="videocodecs">Videocodecs</h1>
+<p>First videocodecs developed by MPEG and ITU with JPEG compression of individual frames of movie.</p>
+<p>Different codecs:
+* AVI
+* MPEG
+* VOB (DVD)
+* ASF
+* OGG
+* MKV</p>
+<p><em>Goal of a video codec: Compressing video, either in a lossless or lossy manner</em></p>
+<p>Lossy:
+* Removing information that&rsquo;s deemed unimportant (i.e. not perceivable by humans)
+Lossless:
+* Only removing redundant information, e.g. if two frames are the same</p>
+<p>Videocompression techniques:
+If lossless, then the pictures are compressed first, e.g. by setting one, average colour per 4X4 block of pixels.
+Compression via I,P and B frames:
+* I (Intra): A complete frame
+* P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
+* B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.</p>
 </div>
                     <br />
                     <br />
