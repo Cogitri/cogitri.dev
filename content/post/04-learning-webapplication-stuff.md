@@ -265,7 +265,7 @@ Protocols are encapsulated, so it's easy to swap out only a part of it (e.g. TCP
 * Routing implements Layer 3
 	* Sets the path a data packet takes
 
-# CSS, CGI
+# CSS
 
 # JavaScript
 
@@ -495,3 +495,184 @@ Videocompression techniques:
 		* I (Intra): A complete frame
 		* P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
 		* B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.
+
+		
+# CGI (Common Gateway Interface)
+
+* A CGI provides a server-sided runtime environment for scripts
+		
+* Serves as a platform-independant interface between the script and the HTTP server
+
+* Server takes care of
+	* Connection management
+	* Data transfer/transport
+	* Network issues related to the client request
+	
+* CGI scripts take care of
+	* Data access
+	* Document processing
+	
+## Implementation
+
+* The web server needs to support CGI!
+
+* Certain URLs can be set to interpret CGI scripts (most commonly used: webpage.com/cgi-bin/script.cgi)
+	* This path contains CGI scripts **only** (for security reasons)	
+
+* Certain file extensions can also get flagged to be treated as CGI scripts (e.g. .cgi, .php, ..)
+	* Very convenient, but also dangerous if an attacker manages to upload a script with an executable-flagged extension
+
+* HTTP PUT/POST
+	* User-input is treated as standard input
+	
+* The server passes environment variables (e.g. CONTENT_LENGTH, CONTENT_TYPE, ..) to the script to work with
+
+## Supported Languages
+
+* Basically all languages are supported (php, unix scripts, C/C++, Perl, ..)
+
+* Scripting and simple languages are most commonly used
+
+## Output of the Script
+
+1. MIME type (Content-Type/Sub-Type) followed by a newline according to the language's syntax (```\n``` in C e.g.)
+	* This determines how the document shall be interpreted 
+	* e.g.: text/html
+
+2. The script's data	
+	
+
+# Forms
+
+## What are Forms?
+
+* HTML element
+	* Normal content
+	* Markup
+	* Controls (checkboxes, radio buttons, menus, etc.) + labels
+	
+
+## How Are Forms Made Up?
+	
+### Initializing a Form
+
+* action tag sets the script the content goes to
+
+* POST or GET method (GET is default)
+
+* Syntax:
+
+	```c
+	<form action="cgi-bin/script.cgi" method="get">
+		...
+	</form>
+	```
+	
+### A Form's Content
+
+* input type tag defines how to display HTML content
+
+* name tag helps the script interpretating the form's content
+
+* Syntax:
+
+	* HTML
+
+		```c
+		<form action="cgi-bin/scipt.php" method="post">
+			Username: <input type="text" name="username">
+			Password: <input type="password" name="password">
+			Gender: <br />
+			<input type="radio" name="gender" value="Diverse">
+			...
+			<input type="submit">
+		</form>
+		```
+
+	* php:
+	
+		```c
+		<?php
+		...
+		$username = $_REQUEST['username'];
+		$gender = $_REQUEST['gender']
+		...
+		?>
+		```
+		
+* The form can be filled with general HTML content (e.g. lists)
+
+#### CSS Styling
+	
+```c
+input[type=submit]
+{
+	...
+}
+```
+
+* Lables can be used to further style a form's content
+
+* They use a tag's ID to connect to them
+
+* Example:
+
+	```c
+	...
+	<label for="vorname">Vorname:</label>  
+		<input type="text" name="vorname" id="vorname">
+	...
+	```
+* CSS (with the default settings set):
+	
+	```c
+	label
+	{
+		cursor:default; /* Doesn't change the display type on cursor hover */
+	}
+	```
+	
+### Tag Attributes for Input
+
+* placeholder=""
+	* Not transmitted to server
+	* Used as input example
+	
+	```c
+	<input .... placeholder="Max Mustermann"....>
+	```
+	
+* value=""
+	* Similar to placeholder
+	* Transmits to server
+	
+* maxlength=""
+	* Defines the maximum number of allowed characters for an input tag
+	
+### Input Types
+
+* input type="password"
+	* **Clear text in query when using GET instead of POST!**
+	* **Clear text when transmitted via HTTP -> HTTPS required!**
+
+* input type="radio"
+	* Buttons
+	* Need an extra value="" attribute
+	
+* input type="email"
+	* HTML5 specific
+	* Not supported by all browsers (e.g. IE9 and earlier)
+	
+* input type="date"
+	* HTML5 specific
+	* Not supported by all browsers (e.g. Safari, IE11 and earlier)
+	
+* "textarea"
+	* Defines an extra text field to enter
+	* Syntax:
+		
+		```c
+		<textarea rows="4" cols="50">
+			Enter default text here...
+		</textarea>
+		```
