@@ -269,6 +269,36 @@ Protocols are encapsulated, so it's easy to swap out only a part of it (e.g. TCP
 
 # JavaScript
 
+(Client-side) JavaScript (that's run in a webbrowser) is an interpreted languaged that runs in a sandbox. Used in many websites for more functionality or fancier effects.
+
+## History
+
+Created in 1995, name chosen to get some of that sweet Java hype. In 1996 Netscape handed over JS to ECMA which standarized JS as ECMASCript. We're currently up to ECMAScript V5, V6 is currently in development.
+
+## BOM
+
+Browser Object Model. Used to query browser properties (e.g. screen size).
+
+## DOM
+
+Document Object Model. Used to query information about the document (e.g. get elements). CAn also be used to add/delete elemets, add content etc. It can access change, delete or add anything in a HTML document. We currently use DOM V3, released in 2004.
+The elements of the document build a tree structure in it, in that the tags encapsulating the childrens are their parents. Each of them represents an object that can be manipulated => DHTML (Dynamic HTML, a combination of HTML, CSS and JavaScript).
+It's platform and language neutal.
+
+## Browserwars
+
+These hindered adoption of JS since browsers started making incompatible APIs of JS. Luckily at least DOM was standarized though, but AJAX calls are still different for at least IE. Some JS libs like jQuery were introduced to abstract these differences away.
+
+## Development of JS
+
+The browser has beome one of the most important applications on a device and devs keep moving logic from their servers to the client. Many even want to use JS in their backend so they only have to learn one lang (Offtopic, but realistically they shouldn't). It's somewhat stable, pretty fast for being interpreted and has many libraries available.
+JS can be run on almost any platform due to it being so important.
+The JS code is ususally run in a JIT (e.g. V8, what Chromium and NodeJS uses), which compiles performance critical code (hotpaths) into native code during runtime for faster execution. It's pretty fast for being interpreted, but still uses a "stop-the-world" GC.
+
+## Mimetype
+
+"text/javascript"
+
 # Cookies, dynamic HTML, DOM, events, Web 2.0, AJAX
 
 # Network Basics
@@ -420,10 +450,26 @@ If using HTTPS TLS is added to the transport layer
 
 SSL 1.0 and 2.0 (1994), 3.0 (1998). TLS in 1999 and TLS 1.3 in 2018
 
+# JSON
+
+The JavaScript Object Notation. It's valid JS Code (but without functions) and keys must be strings. Its overhead is smaller
+compared to XML but it's harder to read for humans. It's often used for communication between services.
+
 # AJAX and XML (fun!)
 
 AJAX (*A*synchronos *J*avascript *A*nd *X*ML) can be used to dynamically change a site, without reloading it, thus making the
 website seem more responsive. In theory AJAX can also send YML or JSON.
+
+The livecycle of a XMLHttpRequest:
+
+1. Create DOM Event
+2. Set a callback for when the response is received
+3. Send XML to remove server
+4. Once response from the server is received it is parsed and the callback is executed
+5. The callback can set the site's content etc.
+
+Due to the Same Origin Policy AJAX requests can only be made to the same server
+that served the original web page (for security reasons).
 
 XML, the e*X*tensible *M*arkup *L*anguage. A XML file can be validated against a DTD (Structure Definition),
 or a XML Scheme . XML describes the syntax, XSL describes the semantics.
@@ -496,35 +542,35 @@ Videocompression techniques:
 		* P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
 		* B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.
 
-		
+
 # CGI (Common Gateway Interface)
 
 * A CGI provides a server-sided runtime environment for scripts
-		
+
 * Serves as a platform-independant interface between the script and the HTTP server
 
 * Server takes care of
 	* Connection management
 	* Data transfer/transport
 	* Network issues related to the client request
-	
+
 * CGI scripts take care of
 	* Data access
 	* Document processing
-	
+
 ## Implementation
 
 * The web server needs to support CGI!
 
 * Certain URLs can be set to interpret CGI scripts (most commonly used: webpage.com/cgi-bin/script.cgi)
-	* This path contains CGI scripts **only** (for security reasons)	
+	* This path contains CGI scripts **only** (for security reasons)
 
 * Certain file extensions can also get flagged to be treated as CGI scripts (e.g. .cgi, .php, ..)
 	* Very convenient, but also dangerous if an attacker manages to upload a script with an executable-flagged extension
 
 * HTTP PUT/POST
 	* User-input is treated as standard input
-	
+
 * The server passes environment variables (e.g. CONTENT_LENGTH, CONTENT_TYPE, ..) to the script to work with
 
 ## Supported Languages
@@ -536,11 +582,11 @@ Videocompression techniques:
 ## Output of the Script
 
 1. MIME type (Content-Type/Sub-Type) followed by a newline according to the language's syntax (```\n``` in C e.g.)
-	* This determines how the document shall be interpreted 
+	* This determines how the document shall be interpreted
 	* e.g.: text/html
 
-2. The script's data	
-	
+2. The script's data
+
 
 # Forms
 
@@ -550,10 +596,10 @@ Videocompression techniques:
 	* Normal content
 	* Markup
 	* Controls (checkboxes, radio buttons, menus, etc.) + labels
-	
+
 
 ## How Are Forms Made Up?
-	
+
 ### Initializing a Form
 
 * action tag sets the script the content goes to
@@ -567,7 +613,7 @@ Videocompression techniques:
 		...
 	</form>
 	```
-	
+
 ### A Form's Content
 
 * input type tag defines how to display HTML content
@@ -590,7 +636,7 @@ Videocompression techniques:
 		```
 
 	* php:
-	
+
 		```c
 		<?php
 		...
@@ -599,11 +645,11 @@ Videocompression techniques:
 		...
 		?>
 		```
-		
+
 * The form can be filled with general HTML content (e.g. lists)
 
 #### CSS Styling
-	
+
 ```c
 input[type=submit]
 {
@@ -619,36 +665,36 @@ input[type=submit]
 
 	```c
 	...
-	<label for="vorname">Vorname:</label>  
+	<label for="vorname">Vorname:</label>
 		<input type="text" name="vorname" id="vorname">
 	...
 	```
 * CSS (with the default settings set):
-	
+
 	```c
 	label
 	{
 		cursor:default; /* Doesn't change the display type on cursor hover */
 	}
 	```
-	
+
 ### Tag Attributes for Input
 
 * placeholder=""
 	* Not transmitted to server
 	* Used as input example
-	
+
 	```c
 	<input .... placeholder="Max Mustermann"....>
 	```
-	
+
 * value=""
 	* Similar to placeholder
 	* Transmits to server
-	
+
 * maxlength=""
 	* Defines the maximum number of allowed characters for an input tag
-	
+
 ### Input Types
 
 * input type="password"
@@ -658,19 +704,19 @@ input[type=submit]
 * input type="radio"
 	* Buttons
 	* Need an extra value="" attribute
-	
+
 * input type="email"
 	* HTML5 specific
 	* Not supported by all browsers (e.g. IE9 and earlier)
-	
+
 * input type="date"
 	* HTML5 specific
 	* Not supported by all browsers (e.g. Safari, IE11 and earlier)
-	
+
 * "textarea"
 	* Defines an extra text field to enter
 	* Syntax:
-		
+
 		```c
 		<textarea rows="4" cols="50">
 			Enter default text here...
