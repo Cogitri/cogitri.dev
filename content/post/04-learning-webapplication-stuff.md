@@ -35,7 +35,7 @@ draft: false
 * 401 Unauthorized
 * 403 Forbidden
 * 404 Not Found
-* 428 I'm a Teapot!
+* 418 I'm a Teapot!
 * 500 Internal Server Error
 
 ### MIME
@@ -95,7 +95,6 @@ Element => `<h1>Hallo</h1>`
 * SEO
 * Keywords, Description, Expires ...
 
-
 #### Character Encoding
 
 * ASCII 128 Characters, 7-bit encoding
@@ -122,7 +121,6 @@ Element => `<h1>Hallo</h1>`
 * Hex, Name, RGB
 * Alpha => Transperency
 
-
 ##### Class vs ID
 
 ID used to identify a certain element, e.g. to access in JS. No spaces allowed
@@ -146,7 +144,6 @@ Recommended to use lower-case for tags, but not case sensitive (usually).
 * In 2012 Chrome overtook FF
 
 => During this time HTML standard evolved quickly and became a bit messy
-
 
 #### Evolution of HTML5
 
@@ -191,22 +188,12 @@ Vector graphics that do not lose quality if resized. Defined in XML format. Can 
 * Text
 * It's possible to customize SVGs with CSS styling
 
-### ISO/OSI
-
-1. Bituebertragung Coax, Wireless
-2. Sicherung IEEE 802.X, PPP
-3. Vermittlung IP ARP/IP
-4. Transport (TCP/UDP)
-5. Sitzung RFC so und so
-6. Darstellung FTP/SMTP
-7. Anwendung (File Transfer, EMail)
-
 # TCP/IP
 
 ## LAN VS WAN
 
-* LAN (*L*ocal *A*rea *N*etwork) -> Your home network
-* WAN (*W*ide *A*area *N*etwork) -> Connection between LANs, many WANs build Internet
+* LAN (*L*ocal *A*rea *N*etwork) -> Your home network, e.g. for accessing servers in your own network
+* WAN (*W*ide *A*area *N*etwork) -> Connection between LANs, many WANs build Internet. Used to connect to foreign servers
 
 ## Types of Addresses
 
@@ -243,6 +230,41 @@ Protocols are encapsulated, so it's easy to swap out only a part of it (e.g. TCP
         * All of the data arrives at the destination and arrives in the right order, so there are no duplicates
 * Reliable due to getting a acknowledgement that the data has been transmitted sucessfully, but potentially slower due to that.
 
+# Networks
+
+### ISO/OSI
+
+1. Bituebertragung Coax, Wireless
+2. Sicherung IEEE 802.X, PPP
+3. Vermittlung IP ARP/IP
+4. Transport (TCP/UDP)
+5. Sitzung RFC so und so
+6. Darstellung FTP/SMTP
+7. Anwendung (File Transfer, EMail)
+
+* Layer 1&2 implemented via network adapter.
+	* Different connectors on adapters:
+		* RJ45: the most common one. 8 Pins w/ twisted pairs of cables inside. In star topology:
+			* Advantanges:
+				* The network doesn't crash if one system crashes
+				* Easy to extend
+				* Easy to diagnose errors
+			* Disadvantages:
+				* Switches are critical components
+				* Lots of effort to run cables
+		* Previously BNC was used in bus topology:
+			* Advantages:
+				* Network doesn't crash if one system crashes
+				* Easy to extend
+			* Disadvantages:
+				* Databus is critical component
+				* All devices share one databus
+	* Hubs operate on layer 1 too, since they duplicate packets
+	* Switches operate on layer 2, redirect packets to their destination in a network
+
+* Routing implements Layer 3
+	* Sets the path a data packet takes
+
 # CSS, CGI
 
 # JavaScript
@@ -262,7 +284,6 @@ Protocols are encapsulated, so it's easy to swap out only a part of it (e.g. TCP
 * Konvertieren beliebig lange Zeichenketten in Hashwert fixer Länge
 
 * Kleine Änderungen der Zeichenkette -> große Änderungen des Hashwertes
-
 
 ## Ablauf
 
@@ -360,249 +381,117 @@ Protocols are encapsulated, so it's easy to swap out only a part of it (e.g. TCP
 	* Brute Force mit CPU -> ebenfalls viel zu langsam
 	* __-> ERFOLGSLOS__
 
+# HTTPS
 
-# CSS
+HTTPS = HTTP + TLS. Secures data.
 
-## What is CSS?
+## Objectives
+* Integrity (Certificate of the website)
+* Authenticy
+* Confidentially
 
-* **C**ascading **S**tyle **S**heets
+## Certificates
 
-* Styles define how to display HTML elements
+Either self-signed (so not trusted by a standard webbrowser) or signed via a CA.
+CA Signed certificates can be extended-valdidated, meaning it also displays a name
+on the certificate for more trust.
 
-* Introduced in HTML 4.0
+## Server Hello
 
+1. client hello (send server client's SSL and TLS version and the preferred cyphers)
+2. server hello (send chosen cypher, session ID and certificate).
+3. client verifies certificate
+4. client creates symmetric session key
+5. client sends encrypted session key (encrypted with server public key)
+6. server decrypts session key with its private keys
+7. server acknowledges sucessful key exchange
 
-## Why CSS?
+## SSL
+*S*ecure *S*ocket *L*ayer, an encryption protocol. Overtaken by TLS
 
-* Solved the problem of HTML's scientific background (design and presentation were not in mind)
+## TLS
+*T*ransport *L*ayer *S*ecurity sucessor of SSL.
 
-* Easier management and maintenance
+## HTTPS in the OSI Model
 
-* Cleaned-up HTML code
+If using HTTPS TLS is added to the transport layer
 
-* Unified site design
+## History (ugh)
 
+SSL 1.0 and 2.0 (1994), 3.0 (1998). TLS in 1999 and TLS 1.3 in 2018
 
-## Syntax and Standards
+# AJAX and XML (fun!)
 
-* MIME type (according to W3C) "text/css" (MIME type tells the user client which parser to use)
+AJAX (*A*synchronos *J*avascript *A*nd *X*ML) can be used to dynamically change a site, without reloading it, thus making the
+website seem more responsive. In theory AJAX can also send YML or JSON.
 
-* Syntax:
+XML, the e*X*tensible *M*arkup *L*anguage. A XML file can be validated against a DTD (Structure Definition),
+or a XML Scheme . XML describes the syntax, XSL describes the semantics.
 
-	```c
-	selector
-	{
-		property:value;
-	}
-	```
+Example:
 
-
-## Types of Style Sheets
-
-* Author Style Sheets (highest priority)
-	* Made by the web page's author
-	* Makes up the biggest part
-	
-* User Style Sheets (mediocre priority)
-	* Set by the web page's user (user's own CSS files)
-	* Allows for greater customization/user friendliness
-	
-* User Agent Sytle Sheets (lowest priority)
-	* Automatic implementation by the browser
-	* Helps with compatibility (```<em>``` tag is displayed as italicized in XHTML e.g.)
-	
-* General priority rules:
-	* "Come first, serve first" for external files (the higher their placing, the higher their priority)
-	* Gather all declarations for one element
-	* Sort by file origin
-	* Sort by definition rules of files
-	* Elements follow inheritance rules
-		
-* **!important tag**
-	* Overwrites priority
-	* Syntax example:
-	
-		```c 
-		body
-		{
-			color:red !important;
-		}
-		```
-		
-		
-## HTML integration
-
-* Different ways of integration
-	* Inline (lower priority than internal/external)
-	* Internal
-	* External (seperate file)
-	
-* Inline 
-
-	```c
-	<p style="color:dodgerblue;font-family:"Comic Sans";">...</p>
-	```
-
-* Internal:
-
-	```c
-	<style type="text/css">
-		p.special { color: rgb(230, 100, 180); }
-	</style>
-	```
-
-* External
-
-	```c
-	<head>
-	<link rel="stylesheet" href="css/styles.css"> <--! optional media="print" mit einfügen -->
-	...
-	<link rel="stylesheet" media="print" href="css/print.css">
-	</head>
-	```
-	
-## Tagging
-
-#### Identifiers (IDs)
-
-* Syntax
-	* CSS syntax:
-	
-		```c
-		#idname
-		{
-			...
-		}
-		```
-	
-	* HTML syntax:
-	
-		```c
-		<selector id="idname">....</selector>
-		```
-		
-* Used for unique elements (one specific paragraph e.g.)
-	
-#### Classes
-	
-* Syntax
-	* CSS syntax: 
-			
-		```c
-		selector.classname /* selector is optional for classes */
-		{
-			...
-		}
-		```
-			
-	* HTML syntax:
-		
-		```c
-		<selector class="classname">...</selector>
-		```
-		
-* Used to style repeatingly used elements (e.g. menues, special paragraphs)
-		
-### Special Tagging Rules
-
-#### Link Tagging
-
-```c
-a:status
-{
-	...
-}
+```
+<?xml version="1.0" standalone="no" encoding="UTF-8"?>
+<BUCH>
+<TITEL>Faust</TITEL>
+<AUTOR>Johann Wolfgang von Goethe</AUTOR>
+</BUCH>
 ```
 
-* "Pseudo Class"
+Tags are case sensitive! Must be well formed => all elements must be opened subsequently closed, nested without overlap and terminated empty element.
 
-* Possible statuses
-	* link (default (no action))
-	* visited (page was vistited once at least (no action))
-	* active (on-click)
-	* hover
-	
-### Spans
+## HTML vs XML:
 
-* Inline HTML tag to add some CSS
+`<img src="pic.png"> vs <img src="pic.png"/>`
 
-```c
-<p> This is text, <span style="color:dodgerblue;font-family:"Comic Sans";">though this is formatted.</span></p>
+## Well-formed vs Valid XML
+
+Well-formed XML doesn't need a DTD but is syntax checked. Valid XML requires a
+DTD to be validated. The DTD defined the document structure with a list of legal
+elements and attributes.
+
+
+## Namespaces
+
+It's possible to define namespaces in the XML file so that one can use different DTD files in one XML file.
+
+E.g.
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	xhtml elements
+	<math xmlns="http://www.w3.org/1998/Math/MathML">
+		Math elements
+	</math>
+	xhtml elements
+</html>
 ```
 
-## Positioning
+Or it's even possible to set `xmlns:namespace` and then adding `<tagname:namespace>` to only use a DTD file for one tag.
 
-* Ordering  
-	- Lower number -> more outer placing
+# Videocodecs
 
-1. Margin
-	* Outer space of an element's border relative to its parent
-	
-2. Border
+First videocodecs developed by MPEG and ITU with JPEG compression of individual frames of movie.
 
-3. Padding
-	* Inner space of an element relative to its border
-	
-#### CSS attributes
+Different codecs:
+	* AVI
+	* MPEG
+	* VOB (DVD)
+	* ASF
+	* OGG
+	* MKV
 
-* Static
-	* Default (flow of the page)
-	
-* Fixed
-	* Relative to browser window (won't move, not even on scroll)
-	
-* Relative
-	* Relative to its normal position
-	
-* Absolute
-	* Relative to first parents that has no static tag (relative to browser window if no such element is found)
+_Goal of a video codec: Compressing video, either in a lossless or lossy manner_
 
-* Example
-	
-	```c
-	#idname
-	{
-		position: absolute;
-		...
-	}
-	```
+Lossy:
+	* Removing information that's deemed unimportant (i.e. not perceivable by humans)
+Lossless:
+	* Only removing redundant information, e.g. if two frames are the same
 
-* z-index
-	* Layering of different elements
-	
-		```c
-		selector
-		{
-			z-index: -1;
-			...
-		}
-		```
-
-* float
-	* Elements "float" to the left or to the right
-	
-		```c
-		selector
-		{
-			float:right;
-		}
-		```
-		
-	* Can be "cleared for other elements
-	
-		```c
-		other-selector
-		{
-			clear:right; /* left, right, and both are usable values */
-		}
-		```
-	
-## Units
-
-* Absolute
-	* pt = point
-	* in, cm, mm
-
-* Relative
-	* px = pixel (relative to monitor res)
-	* % = percentage (relative to fontsize or box)
+Videocompression techniques:
+	If lossless, then the pictures are compressed first, e.g. by setting one, average colour per 4X4 block of pixels.
+	Compression via I,P and B frames:
+		* I (Intra): A complete frame
+		* P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
+		* B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.
