@@ -46,7 +46,7 @@
                 <article>
                     <h3>What I need to learn for my Web Applications course.</h3>
                     <div class="less">
-                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;11 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 2271 words
+                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;13 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 2709 words
                     </div>
                     <div class="em"><h1 id="basic-html---1">Basic (HTML - 1)</h1>
 <h2 id="www">WWW</h2>
@@ -347,6 +347,23 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 </ul>
 <h1 id="css">CSS</h1>
 <h1 id="javascript">JavaScript</h1>
+<p>(Client-side) JavaScript (that&rsquo;s run in a webbrowser) is an interpreted languaged that runs in a sandbox. Used in many websites for more functionality or fancier effects.</p>
+<h2 id="history">History</h2>
+<p>Created in 1995, name chosen to get some of that sweet Java hype. In 1996 Netscape handed over JS to ECMA which standarized JS as ECMASCript. We&rsquo;re currently up to ECMAScript V5, V6 is currently in development.</p>
+<h2 id="bom">BOM</h2>
+<p>Browser Object Model. Used to query browser properties (e.g. screen size).</p>
+<h2 id="dom">DOM</h2>
+<p>Document Object Model. Used to query information about the document (e.g. get elements). CAn also be used to add/delete elemets, add content etc. It can access change, delete or add anything in a HTML document. We currently use DOM V3, released in 2004.
+The elements of the document build a tree structure in it, in that the tags encapsulating the childrens are their parents. Each of them represents an object that can be manipulated =&gt; DHTML (Dynamic HTML, a combination of HTML, CSS and JavaScript).
+It&rsquo;s platform and language neutal.</p>
+<h2 id="browserwars">Browserwars</h2>
+<p>These hindered adoption of JS since browsers started making incompatible APIs of JS. Luckily at least DOM was standarized though, but AJAX calls are still different for at least IE. Some JS libs like jQuery were introduced to abstract these differences away.</p>
+<h2 id="development-of-js">Development of JS</h2>
+<p>The browser has beome one of the most important applications on a device and devs keep moving logic from their servers to the client. Many even want to use JS in their backend so they only have to learn one lang (Offtopic, but realistically they shouldn&rsquo;t). It&rsquo;s somewhat stable, pretty fast for being interpreted and has many libraries available.
+JS can be run on almost any platform due to it being so important.
+The JS code is ususally run in a JIT (e.g. V8, what Chromium and NodeJS uses), which compiles performance critical code (hotpaths) into native code during runtime for faster execution. It&rsquo;s pretty fast for being interpreted, but still uses a &ldquo;stop-the-world&rdquo; GC.</p>
+<h2 id="mimetype">Mimetype</h2>
+<p>&ldquo;text/javascript&rdquo;</p>
 <h1 id="cookies-dynamic-html-dom-events-web-20-ajax">Cookies, dynamic HTML, DOM, events, Web 2.0, AJAX</h1>
 <h1 id="network-basics">Network Basics</h1>
 <h1 id="design-guidelines">Design guidelines</h1>
@@ -534,9 +551,22 @@ on the certificate for more trust.</p>
 <p>If using HTTPS TLS is added to the transport layer</p>
 <h2 id="history-ugh">History (ugh)</h2>
 <p>SSL 1.0 and 2.0 (1994), 3.0 (1998). TLS in 1999 and TLS 1.3 in 2018</p>
+<h1 id="json">JSON</h1>
+<p>The JavaScript Object Notation. It&rsquo;s valid JS Code (but without functions) and keys must be strings. Its overhead is smaller
+compared to XML but it&rsquo;s harder to read for humans. It&rsquo;s often used for communication between services.</p>
 <h1 id="ajax-and-xml-fun">AJAX and XML (fun!)</h1>
 <p>AJAX (<em>A</em>synchronos <em>J</em>avascript <em>A</em>nd <em>X</em>ML) can be used to dynamically change a site, without reloading it, thus making the
 website seem more responsive. In theory AJAX can also send YML or JSON.</p>
+<p>The livecycle of a XMLHttpRequest:</p>
+<ol>
+<li>Create DOM Event</li>
+<li>Set a callback for when the response is received</li>
+<li>Send XML to remove server</li>
+<li>Once response from the server is received it is parsed and the callback is executed</li>
+<li>The callback can set the site&rsquo;s content etc.</li>
+</ol>
+<p>Due to the Same Origin Policy AJAX requests can only be made to the same server
+that served the original web page (for security reasons).</p>
 <p>XML, the e<em>X</em>tensible <em>M</em>arkup <em>L</em>anguage. A XML file can be validated against a DTD (Structure Definition),
 or a XML Scheme . XML describes the syntax, XSL describes the semantics.</p>
 <p>Example:</p>
@@ -682,7 +712,7 @@ Compression via I,P and B frames:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>form action<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">cgi-bin/script.cgi</span><span style="color:#e6db74">&#34;</span> method<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">get</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
     ...
 <span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>form<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>   
+</code></pre></div><pre><code>
 </code></pre></li>
 </ul>
 <h3 id="a-forms-content">A Form&rsquo;s Content</h3>
@@ -716,7 +746,7 @@ Compression via I,P and B frames:
 <span style="color:#960050;background-color:#1e0010">$</span>gender <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">$</span>_REQUEST[<span style="color:#960050;background-color:#1e0010">&#39;</span>gender<span style="color:#960050;background-color:#1e0010">&#39;</span>]
 ...
 <span style="color:#f92672">?</span><span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>       
+</code></pre></div><pre><code>
 </code></pre></li>
 </ul>
 </li>
@@ -739,7 +769,7 @@ Compression via I,P and B frames:
 <li>
 <p>Example:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">...
-<span style="color:#f92672">&lt;</span>label <span style="color:#66d9ef">for</span><span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>Vorname:<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>  
+<span style="color:#f92672">&lt;</span>label <span style="color:#66d9ef">for</span><span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>Vorname:<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>
     <span style="color:#f92672">&lt;</span>input type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text</span><span style="color:#e6db74">&#34;</span> name<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span> id<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
 ...
 </code></pre></div><pre><code></code></pre></li>
@@ -749,7 +779,7 @@ Compression via I,P and B frames:
 {
     cursor:<span style="color:#66d9ef">default</span>; <span style="color:#75715e">/* Doesn&#39;t change the display type on cursor hover */</span>
 }
-</code></pre></div><pre><code>   
+</code></pre></div><pre><code>
 </code></pre></li>
 </ul>
 <h3 id="tag-attributes-for-input">Tag Attributes for Input</h3>
@@ -761,7 +791,7 @@ Compression via I,P and B frames:
 <li>Used as input example</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>input .... placeholder<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Max Mustermann</span><span style="color:#e6db74">&#34;</span>....<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>   
+</code></pre></div><pre><code>
 </code></pre></li>
 <li>
 <p>value=&rdquo;&rdquo;</p>
