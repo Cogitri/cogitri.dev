@@ -542,35 +542,59 @@ Videocompression techniques:
 		* P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
 		* B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.
 
+<<<<<<< HEAD
 
 # CGI (Common Gateway Interface)
 
 * A CGI provides a server-sided runtime environment for scripts
 
+=======
+		
+# CGI (Common Gateway Interface)
+
+* A CGI provides a server-sided runtime environment for scripts
+		
+>>>>>>> CGI & Forms added
 * Serves as a platform-independant interface between the script and the HTTP server
 
 * Server takes care of
 	* Connection management
 	* Data transfer/transport
 	* Network issues related to the client request
+<<<<<<< HEAD
 
 * CGI scripts take care of
 	* Data access
 	* Document processing
 
+=======
+	
+* CGI scripts take care of
+	* Data access
+	* Document processing
+	
+>>>>>>> CGI & Forms added
 ## Implementation
 
 * The web server needs to support CGI!
 
 * Certain URLs can be set to interpret CGI scripts (most commonly used: webpage.com/cgi-bin/script.cgi)
+<<<<<<< HEAD
 	* This path contains CGI scripts **only** (for security reasons)
+=======
+	* This path contains CGI scripts **only** (for security reasons)	
+>>>>>>> CGI & Forms added
 
 * Certain file extensions can also get flagged to be treated as CGI scripts (e.g. .cgi, .php, ..)
 	* Very convenient, but also dangerous if an attacker manages to upload a script with an executable-flagged extension
 
 * HTTP PUT/POST
 	* User-input is treated as standard input
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> CGI & Forms added
 * The server passes environment variables (e.g. CONTENT_LENGTH, CONTENT_TYPE, ..) to the script to work with
 
 ## Supported Languages
@@ -582,11 +606,19 @@ Videocompression techniques:
 ## Output of the Script
 
 1. MIME type (Content-Type/Sub-Type) followed by a newline according to the language's syntax (```\n``` in C e.g.)
+<<<<<<< HEAD
 	* This determines how the document shall be interpreted
 	* e.g.: text/html
 
 2. The script's data
 
+=======
+	* This determines how the document shall be interpreted 
+	* e.g.: text/html
+
+2. The script's data	
+	
+>>>>>>> CGI & Forms added
 
 # Forms
 
@@ -596,10 +628,17 @@ Videocompression techniques:
 	* Normal content
 	* Markup
 	* Controls (checkboxes, radio buttons, menus, etc.) + labels
+<<<<<<< HEAD
 
 
 ## How Are Forms Made Up?
 
+=======
+	
+
+## How Are Forms Made Up?
+	
+>>>>>>> CGI & Forms added
 ### Initializing a Form
 
 * action tag sets the script the content goes to
@@ -613,7 +652,11 @@ Videocompression techniques:
 		...
 	</form>
 	```
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> CGI & Forms added
 ### A Form's Content
 
 * input type tag defines how to display HTML content
@@ -636,7 +679,11 @@ Videocompression techniques:
 		```
 
 	* php:
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> CGI & Forms added
 		```c
 		<?php
 		...
@@ -645,11 +692,19 @@ Videocompression techniques:
 		...
 		?>
 		```
+<<<<<<< HEAD
 
 * The form can be filled with general HTML content (e.g. lists)
 
 #### CSS Styling
 
+=======
+		
+* The form can be filled with general HTML content (e.g. lists)
+
+#### CSS Styling
+	
+>>>>>>> CGI & Forms added
 ```c
 input[type=submit]
 {
@@ -665,24 +720,37 @@ input[type=submit]
 
 	```c
 	...
+<<<<<<< HEAD
 	<label for="vorname">Vorname:</label>
+=======
+	<label for="vorname">Vorname:</label>  
+>>>>>>> CGI & Forms added
 		<input type="text" name="vorname" id="vorname">
 	...
 	```
 * CSS (with the default settings set):
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> CGI & Forms added
 	```c
 	label
 	{
 		cursor:default; /* Doesn't change the display type on cursor hover */
 	}
 	```
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> CGI & Forms added
 ### Tag Attributes for Input
 
 * placeholder=""
 	* Not transmitted to server
 	* Used as input example
+<<<<<<< HEAD
 
 	```c
 	<input .... placeholder="Max Mustermann"....>
@@ -695,6 +763,20 @@ input[type=submit]
 * maxlength=""
 	* Defines the maximum number of allowed characters for an input tag
 
+=======
+	
+	```c
+	<input .... placeholder="Max Mustermann"....>
+	```
+	
+* value=""
+	* Similar to placeholder
+	* Transmits to server
+	
+* maxlength=""
+	* Defines the maximum number of allowed characters for an input tag
+	
+>>>>>>> CGI & Forms added
 ### Input Types
 
 * input type="password"
@@ -704,6 +786,7 @@ input[type=submit]
 * input type="radio"
 	* Buttons
 	* Need an extra value="" attribute
+<<<<<<< HEAD
 
 * input type="email"
 	* HTML5 specific
@@ -717,6 +800,21 @@ input[type=submit]
 	* Defines an extra text field to enter
 	* Syntax:
 
+=======
+	
+* input type="email"
+	* HTML5 specific
+	* Not supported by all browsers (e.g. IE9 and earlier)
+	
+* input type="date"
+	* HTML5 specific
+	* Not supported by all browsers (e.g. Safari, IE11 and earlier)
+	
+* "textarea"
+	* Defines an extra text field to enter
+	* Syntax:
+		
+>>>>>>> CGI & Forms added
 		```c
 		<textarea rows="4" cols="50">
 			Enter default text here...
