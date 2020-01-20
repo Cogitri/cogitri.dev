@@ -542,59 +542,34 @@ Videocompression techniques:
 		* P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
 		* B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.
 
-<<<<<<< HEAD
-
-# CGI (Common Gateway Interface)
-
-* A CGI provides a server-sided runtime environment for scripts
-
-=======
-		
 # CGI (Common Gateway Interface)
 
 * A CGI provides a server-sided runtime environment for scripts
 		
->>>>>>> CGI & Forms added
 * Serves as a platform-independant interface between the script and the HTTP server
 
 * Server takes care of
 	* Connection management
 	* Data transfer/transport
 	* Network issues related to the client request
-<<<<<<< HEAD
-
-* CGI scripts take care of
-	* Data access
-	* Document processing
-
-=======
 	
 * CGI scripts take care of
 	* Data access
 	* Document processing
 	
->>>>>>> CGI & Forms added
 ## Implementation
 
 * The web server needs to support CGI!
 
 * Certain URLs can be set to interpret CGI scripts (most commonly used: webpage.com/cgi-bin/script.cgi)
-<<<<<<< HEAD
-	* This path contains CGI scripts **only** (for security reasons)
-=======
 	* This path contains CGI scripts **only** (for security reasons)	
->>>>>>> CGI & Forms added
 
 * Certain file extensions can also get flagged to be treated as CGI scripts (e.g. .cgi, .php, ..)
 	* Very convenient, but also dangerous if an attacker manages to upload a script with an executable-flagged extension
 
 * HTTP PUT/POST
 	* User-input is treated as standard input
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> CGI & Forms added
 * The server passes environment variables (e.g. CONTENT_LENGTH, CONTENT_TYPE, ..) to the script to work with
 
 ## Supported Languages
@@ -606,19 +581,11 @@ Videocompression techniques:
 ## Output of the Script
 
 1. MIME type (Content-Type/Sub-Type) followed by a newline according to the language's syntax (```\n``` in C e.g.)
-<<<<<<< HEAD
-	* This determines how the document shall be interpreted
-	* e.g.: text/html
-
-2. The script's data
-
-=======
 	* This determines how the document shall be interpreted 
 	* e.g.: text/html
 
 2. The script's data	
 	
->>>>>>> CGI & Forms added
 
 # Forms
 
@@ -628,17 +595,10 @@ Videocompression techniques:
 	* Normal content
 	* Markup
 	* Controls (checkboxes, radio buttons, menus, etc.) + labels
-<<<<<<< HEAD
-
-
-## How Are Forms Made Up?
-
-=======
 	
 
 ## How Are Forms Made Up?
 	
->>>>>>> CGI & Forms added
 ### Initializing a Form
 
 * action tag sets the script the content goes to
@@ -652,11 +612,7 @@ Videocompression techniques:
 		...
 	</form>
 	```
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> CGI & Forms added
 ### A Form's Content
 
 * input type tag defines how to display HTML content
@@ -679,11 +635,7 @@ Videocompression techniques:
 		```
 
 	* php:
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> CGI & Forms added
 		```c
 		<?php
 		...
@@ -692,19 +644,11 @@ Videocompression techniques:
 		...
 		?>
 		```
-<<<<<<< HEAD
-
-* The form can be filled with general HTML content (e.g. lists)
-
-#### CSS Styling
-
-=======
 		
 * The form can be filled with general HTML content (e.g. lists)
 
 #### CSS Styling
 	
->>>>>>> CGI & Forms added
 ```c
 input[type=submit]
 {
@@ -720,50 +664,24 @@ input[type=submit]
 
 	```c
 	...
-<<<<<<< HEAD
-	<label for="vorname">Vorname:</label>
-=======
 	<label for="vorname">Vorname:</label>  
->>>>>>> CGI & Forms added
 		<input type="text" name="vorname" id="vorname">
 	...
 	```
 * CSS (with the default settings set):
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> CGI & Forms added
 	```c
 	label
 	{
 		cursor:default; /* Doesn't change the display type on cursor hover */
 	}
 	```
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> CGI & Forms added
 ### Tag Attributes for Input
 
 * placeholder=""
 	* Not transmitted to server
 	* Used as input example
-<<<<<<< HEAD
-
-	```c
-	<input .... placeholder="Max Mustermann"....>
-	```
-
-* value=""
-	* Similar to placeholder
-	* Transmits to server
-
-* maxlength=""
-	* Defines the maximum number of allowed characters for an input tag
-
-=======
 	
 	```c
 	<input .... placeholder="Max Mustermann"....>
@@ -776,7 +694,6 @@ input[type=submit]
 * maxlength=""
 	* Defines the maximum number of allowed characters for an input tag
 	
->>>>>>> CGI & Forms added
 ### Input Types
 
 * input type="password"
@@ -786,21 +703,6 @@ input[type=submit]
 * input type="radio"
 	* Buttons
 	* Need an extra value="" attribute
-<<<<<<< HEAD
-
-* input type="email"
-	* HTML5 specific
-	* Not supported by all browsers (e.g. IE9 and earlier)
-
-* input type="date"
-	* HTML5 specific
-	* Not supported by all browsers (e.g. Safari, IE11 and earlier)
-
-* "textarea"
-	* Defines an extra text field to enter
-	* Syntax:
-
-=======
 	
 * input type="email"
 	* HTML5 specific
@@ -814,9 +716,111 @@ input[type=submit]
 	* Defines an extra text field to enter
 	* Syntax:
 		
->>>>>>> CGI & Forms added
 		```c
 		<textarea rows="4" cols="50">
 			Enter default text here...
 		</textarea>
 		```
+		
+# Cryptography
+
+* Encryption of transmitted data
+
+* Uses a key to decrypt transmitted data
+
+* Used to make data transfer more safe
+
+
+## Key Exchange
+
+* Key exchange has to be safe
+	* Symmetrical key exchange (key gets sent to user)
+	* By safe channel
+	* By carrier
+	
+* Key gets calculated by safe algorithm
+	* Asymmetrical key exchange
+
+	
+### Diffie Hellman Key Exchange Algorithm
+
+* Asymmetrical
+	* Public Key
+		* Viewable by everyone
+	* Private Key
+		* Both server and client have their own Private Keys
+	* Mixture of individual Private and open Public Key create new key
+	* Both exchange their newly created key  
+	-> Reverse engineering is impossible
+	* Both use these new keys in combination with their private key to create another new key  
+	-> This key is identical and is used to decrypt transferred files
+	
+
+### Caesar Cipher
+
+* Cleartext gets shifted by a certain amount
+
+* Not particulary safe
+
+* Especially easy to crack when analyzing commonly used letters and comparing ciphered content
+	* Example:
+		* German texts most commonly use the letter 'E'
+		* The ciphered text has the letter 'O' most commonly used and is German  
+		-> The key must be 'J'
+
+* An alphabet letter serves as the key (not case-sensitive)
+	* The letter's position is used to determine the shifting (with a being 1 shift)
+	* Example:  
+		Key: A  
+		Clear: Test  
+		Encrypted: Uftu  
+		
+* Special occasion: ROT13
+	* Uses the letter 'M' to shift (-> shifts by 13 letters) (-> 2 "M-shifts" restore original)
+	* Sometimes used in chatrooms
+		
+### Vigenère Cipher
+
+* Similar to Caesar Cipher, but safer
+
+* Uses an individual letter for each cleartext letter instead of one letter only
+
+* Example:  
+	Key: ABC
+	Clear: ABC
+	Encrypted: ACE
+	
+* If the text is longer than the key, the key is repeated
+
+* If the key length is known, it can be cracked using the most-commonly-used-letters method
+
+* Weak against known-plaintext attacks
+
+
+### AES (Advanced Encryption Standard) Rijndael
+
+* Symmetrical key exchange
+
+* Standard algorithm to use
+
+* Has only been cracked theoretically 10 years after its launch
+
+* Block cipher
+	* Cleartext gets split up in data blocks
+	* Data blocks have set bit lenght
+	* Each block gets ciphered individually
+
+* Data blocks are 128 bits each
+
+* Key blocks are either 128 bits (AES-128), 192 bits (AES-192), or 256 bits (AES-256) long
+
+* Substitute & Permutation
+	* Permutiation mixes the order of multiple numbers
+		* E.g. 5,4,3 can be written as: "5,3,4", "4,5,3", "4,3,5", "3,4,5", "3,5,4"
+		* Grows with the faculty of how many number are mixed
+		
+* <a href="https://www.youtube.com/watch?v=gP4PqVGudtg">AES Rijndael Explained - YT</a>
+
+* <a href="http://www.formaestudio.com/rijndaelinspector/">AES Rijndael Explained - Flash</a>
+
+* **YT and Flash are identical in their content**
