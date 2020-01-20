@@ -46,7 +46,7 @@
                 <article>
                     <h3>What I need to learn for my Web Applications course.</h3>
                     <div class="less">
-                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;9 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 1803 words
+                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;11 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 2271 words
                     </div>
                     <div class="em"><h1 id="basic-html---1">Basic (HTML - 1)</h1>
 <h2 id="www">WWW</h2>
@@ -345,7 +345,7 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 </ul>
 </li>
 </ul>
-<h1 id="css-cgi">CSS, CGI</h1>
+<h1 id="css">CSS</h1>
 <h1 id="javascript">JavaScript</h1>
 <h1 id="cookies-dynamic-html-dom-events-web-20-ajax">Cookies, dynamic HTML, DOM, events, Web 2.0, AJAX</h1>
 <h1 id="network-basics">Network Basics</h1>
@@ -584,6 +584,244 @@ Compression via I,P and B frames:
 * I (Intra): A complete frame
 * P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
 * B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.</p>
+<h1 id="cgi-common-gateway-interface">CGI (Common Gateway Interface)</h1>
+<ul>
+<li>
+<p>A CGI provides a server-sided runtime environment for scripts</p>
+</li>
+<li>
+<p>Serves as a platform-independant interface between the script and the HTTP server</p>
+</li>
+<li>
+<p>Server takes care of</p>
+<ul>
+<li>Connection management</li>
+<li>Data transfer/transport</li>
+<li>Network issues related to the client request</li>
+</ul>
+</li>
+<li>
+<p>CGI scripts take care of</p>
+<ul>
+<li>Data access</li>
+<li>Document processing</li>
+</ul>
+</li>
+</ul>
+<h2 id="implementation">Implementation</h2>
+<ul>
+<li>
+<p>The web server needs to support CGI!</p>
+</li>
+<li>
+<p>Certain URLs can be set to interpret CGI scripts (most commonly used: webpage.com/cgi-bin/script.cgi)</p>
+<ul>
+<li>This path contains CGI scripts <strong>only</strong> (for security reasons)</li>
+</ul>
+</li>
+<li>
+<p>Certain file extensions can also get flagged to be treated as CGI scripts (e.g. .cgi, .php, ..)</p>
+<ul>
+<li>Very convenient, but also dangerous if an attacker manages to upload a script with an executable-flagged extension</li>
+</ul>
+</li>
+<li>
+<p>HTTP PUT/POST</p>
+<ul>
+<li>User-input is treated as standard input</li>
+</ul>
+</li>
+<li>
+<p>The server passes environment variables (e.g. CONTENT_LENGTH, CONTENT_TYPE, ..) to the script to work with</p>
+</li>
+</ul>
+<h2 id="supported-languages">Supported Languages</h2>
+<ul>
+<li>
+<p>Basically all languages are supported (php, unix scripts, C/C++, Perl, ..)</p>
+</li>
+<li>
+<p>Scripting and simple languages are most commonly used</p>
+</li>
+</ul>
+<h2 id="output-of-the-script">Output of the Script</h2>
+<ol>
+<li>
+<p>MIME type (Content-Type/Sub-Type) followed by a newline according to the language&rsquo;s syntax (<code>\n</code> in C e.g.)</p>
+<ul>
+<li>This determines how the document shall be interpreted</li>
+<li>e.g.: text/html</li>
+</ul>
+</li>
+<li>
+<p>The script&rsquo;s data</p>
+</li>
+</ol>
+<h1 id="forms">Forms</h1>
+<h2 id="what-are-forms">What are Forms?</h2>
+<ul>
+<li>HTML element
+<ul>
+<li>Normal content</li>
+<li>Markup</li>
+<li>Controls (checkboxes, radio buttons, menus, etc.) + labels</li>
+</ul>
+</li>
+</ul>
+<h2 id="how-are-forms-made-up">How Are Forms Made Up?</h2>
+<h3 id="initializing-a-form">Initializing a Form</h3>
+<ul>
+<li>
+<p>action tag sets the script the content goes to</p>
+</li>
+<li>
+<p>POST or GET method (GET is default)</p>
+</li>
+<li>
+<p>Syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>form action<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">cgi-bin/script.cgi</span><span style="color:#e6db74">&#34;</span> method<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">get</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+    ...
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>form<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>   
+</code></pre></li>
+</ul>
+<h3 id="a-forms-content">A Form&rsquo;s Content</h3>
+<ul>
+<li>
+<p>input type tag defines how to display HTML content</p>
+</li>
+<li>
+<p>name tag helps the script interpretating the form&rsquo;s content</p>
+</li>
+<li>
+<p>Syntax:</p>
+<ul>
+<li>
+<p>HTML</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>form action<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">cgi-bin/scipt.php</span><span style="color:#e6db74">&#34;</span> method<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">post</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+    Username: <span style="color:#f92672">&lt;</span>input type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text</span><span style="color:#e6db74">&#34;</span> name<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">username</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+    Password: <span style="color:#f92672">&lt;</span>input type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">password</span><span style="color:#e6db74">&#34;</span> name<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">password</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+    Gender: <span style="color:#f92672">&lt;</span>br <span style="color:#f92672">/</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span>input type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">radio</span><span style="color:#e6db74">&#34;</span> name<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">gender</span><span style="color:#e6db74">&#34;</span> value<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Diverse</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+    ...
+    <span style="color:#f92672">&lt;</span>input type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">submit</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>form<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>
+</code></pre></li>
+<li>
+<p>php:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span><span style="color:#f92672">?</span>php
+...
+<span style="color:#960050;background-color:#1e0010">$</span>username <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">$</span>_REQUEST[<span style="color:#960050;background-color:#1e0010">&#39;</span>username<span style="color:#960050;background-color:#1e0010">&#39;</span>];
+<span style="color:#960050;background-color:#1e0010">$</span>gender <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">$</span>_REQUEST[<span style="color:#960050;background-color:#1e0010">&#39;</span>gender<span style="color:#960050;background-color:#1e0010">&#39;</span>]
+...
+<span style="color:#f92672">?</span><span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>       
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>The form can be filled with general HTML content (e.g. lists)</p>
+</li>
+</ul>
+<h4 id="css-styling">CSS Styling</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">input[type<span style="color:#f92672">=</span>submit]
+{
+	...
+}
+</code></pre></div><ul>
+<li>
+<p>Lables can be used to further style a form&rsquo;s content</p>
+</li>
+<li>
+<p>They use a tag&rsquo;s ID to connect to them</p>
+</li>
+<li>
+<p>Example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">...
+<span style="color:#f92672">&lt;</span>label <span style="color:#66d9ef">for</span><span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>Vorname:<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>  
+    <span style="color:#f92672">&lt;</span>input type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text</span><span style="color:#e6db74">&#34;</span> name<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span> id<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+...
+</code></pre></div><pre><code></code></pre></li>
+<li>
+<p>CSS (with the default settings set):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">label
+{
+    cursor:<span style="color:#66d9ef">default</span>; <span style="color:#75715e">/* Doesn&#39;t change the display type on cursor hover */</span>
+}
+</code></pre></div><pre><code>   
+</code></pre></li>
+</ul>
+<h3 id="tag-attributes-for-input">Tag Attributes for Input</h3>
+<ul>
+<li>
+<p>placeholder=&rdquo;&rdquo;</p>
+<ul>
+<li>Not transmitted to server</li>
+<li>Used as input example</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>input .... placeholder<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Max Mustermann</span><span style="color:#e6db74">&#34;</span>....<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>   
+</code></pre></li>
+<li>
+<p>value=&rdquo;&rdquo;</p>
+<ul>
+<li>Similar to placeholder</li>
+<li>Transmits to server</li>
+</ul>
+</li>
+<li>
+<p>maxlength=&rdquo;&rdquo;</p>
+<ul>
+<li>Defines the maximum number of allowed characters for an input tag</li>
+</ul>
+</li>
+</ul>
+<h3 id="input-types">Input Types</h3>
+<ul>
+<li>
+<p>input type=&quot;password&rdquo;</p>
+<ul>
+<li><strong>Clear text in query when using GET instead of POST!</strong></li>
+<li><strong>Clear text when transmitted via HTTP -&gt; HTTPS required!</strong></li>
+</ul>
+</li>
+<li>
+<p>input type=&quot;radio&rdquo;</p>
+<ul>
+<li>Buttons</li>
+<li>Need an extra value=&rdquo;&rdquo; attribute</li>
+</ul>
+</li>
+<li>
+<p>input type=&quot;email&rdquo;</p>
+<ul>
+<li>HTML5 specific</li>
+<li>Not supported by all browsers (e.g. IE9 and earlier)</li>
+</ul>
+</li>
+<li>
+<p>input type=&quot;date&rdquo;</p>
+<ul>
+<li>HTML5 specific</li>
+<li>Not supported by all browsers (e.g. Safari, IE11 and earlier)</li>
+</ul>
+</li>
+<li>
+<p>&ldquo;textarea&rdquo;</p>
+<ul>
+<li>
+<p>Defines an extra text field to enter</p>
+</li>
+<li>
+<p>Syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>textarea rows<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">4</span><span style="color:#e6db74">&#34;</span> cols<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">50</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+    Enter <span style="color:#66d9ef">default</span> text here...
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>textarea<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code></code></pre></li>
+</ul>
+</li>
+</ul>
 </div>
                     <br />
                     <br />
