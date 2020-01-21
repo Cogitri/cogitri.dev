@@ -46,7 +46,7 @@
                 <article>
                     <h3>What I need to learn for my Web Applications course.</h3>
                     <div class="less">
-                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;13 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 2709 words
+                        <time>Published: Saturday, Jan 18, 2020</time>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;17 minute read&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Using 3578 words
                     </div>
                     <div class="em"><h1 id="basic-html---1">Basic (HTML - 1)</h1>
 <h2 id="www">WWW</h2>
@@ -346,6 +346,318 @@ Class used to identify a common kind of elements, e.g. to modify all paragraph&r
 </li>
 </ul>
 <h1 id="css">CSS</h1>
+<h2 id="what-is-css">What is CSS?</h2>
+<ul>
+<li>
+<p><strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets</p>
+</li>
+<li>
+<p>Styles define how to display HTML elements</p>
+</li>
+<li>
+<p>Introduced in HTML 4.0</p>
+</li>
+</ul>
+<h2 id="why-css">Why CSS?</h2>
+<ul>
+<li>
+<p>Solved the problem of HTML&rsquo;s scientific background (design and presentation were not in mind)</p>
+</li>
+<li>
+<p>Easier management and maintenance</p>
+</li>
+<li>
+<p>Cleaned-up HTML code</p>
+</li>
+<li>
+<p>Unified site design</p>
+</li>
+</ul>
+<h2 id="syntax-and-standards">Syntax and Standards</h2>
+<ul>
+<li>
+<p>MIME type (according to W3C) &ldquo;text/css&rdquo; (MIME type tells the user client which parser to use)</p>
+</li>
+<li>
+<p>Syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector
+{
+    property:value;
+}
+</code></pre></div><pre><code>
+
+</code></pre></li>
+</ul>
+<h2 id="types-of-style-sheets">Types of Style Sheets</h2>
+<ul>
+<li>
+<p>Author Style Sheets (highest priority)</p>
+<ul>
+<li>Made by the web page&rsquo;s author</li>
+<li>Makes up the biggest part</li>
+</ul>
+</li>
+<li>
+<p>User Style Sheets (mediocre priority)</p>
+<ul>
+<li>Set by the web page&rsquo;s user (user&rsquo;s own CSS files)</li>
+<li>Allows for greater customization/user friendliness</li>
+</ul>
+</li>
+<li>
+<p>User Agent Sytle Sheets (lowest priority)</p>
+<ul>
+<li>Automatic implementation by the browser</li>
+<li>Helps with compatibility (<code>&lt;em&gt;</code> tag is displayed as italicized in XHTML e.g.)</li>
+</ul>
+</li>
+<li>
+<p>General priority rules:</p>
+<ul>
+<li>&ldquo;Come first, serve first&rdquo; for external files (the higher their placing, the higher their priority)</li>
+<li>Gather all declarations for one element</li>
+<li>Sort by file origin</li>
+<li>Sort by definition rules of files</li>
+<li>Elements follow inheritance rules</li>
+</ul>
+</li>
+<li>
+<p><strong>!important tag</strong></p>
+<ul>
+<li>
+<p>Overwrites priority</p>
+</li>
+<li>
+<p>Syntax example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">body
+{
+    color:red <span style="color:#f92672">!</span>important;
+}
+</code></pre></div><pre><code>       
+       
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="html-integration">HTML integration</h2>
+<ul>
+<li>
+<p>Different ways of integration</p>
+<ul>
+<li>Inline (lower priority than internal/external)</li>
+<li>Internal</li>
+<li>External (seperate file)</li>
+</ul>
+</li>
+<li>
+<p>Inline</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>p style<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color:dodgerblue;font-family:</span><span style="color:#e6db74">&#34;</span>Comic Sans<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>...<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>p<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>
+</code></pre></li>
+<li>
+<p>Internal:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>style type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text/css</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+    p.special { color: rgb(<span style="color:#ae81ff">230</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">180</span>); }
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>style<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>
+</code></pre></li>
+<li>
+<p>External</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>head<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span>link rel<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">stylesheet</span><span style="color:#e6db74">&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">css/styles.css</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">!</span> optional media<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">print</span><span style="color:#e6db74">&#34;</span> mit einfügen <span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>
+...
+<span style="color:#f92672">&lt;</span>link rel<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">stylesheet</span><span style="color:#e6db74">&#34;</span> media<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">print</span><span style="color:#e6db74">&#34;</span> href<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">css/print.css</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>head<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>   
+</code></pre></li>
+</ul>
+<h2 id="tagging">Tagging</h2>
+<h4 id="identifiers-ids">Identifiers (IDs)</h4>
+<ul>
+<li>
+<p>Syntax</p>
+<ul>
+<li>
+<p>CSS syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">idname</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>{
+    ...
+}
+</code></pre></div><pre><code>   
+</code></pre></li>
+<li>
+<p>HTML syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>selector id<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">idname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>....<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>selector<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>       
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>Used for unique elements (one specific paragraph e.g.)</p>
+</li>
+</ul>
+<h4 id="classes">Classes</h4>
+<ul>
+<li>
+<p>Syntax</p>
+<ul>
+<li>
+<p>CSS syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector.classname <span style="color:#75715e">/* selector is optional for classes */</span>
+{
+    ...
+}
+</code></pre></div><pre><code>           
+</code></pre></li>
+<li>
+<p>HTML syntax:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>selector class<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">classname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>...<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>selector<span style="color:#f92672">&gt;</span>
+</code></pre></div><pre><code>       
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>Used to style repeatingly used elements (e.g. menues, special paragraphs)</p>
+</li>
+</ul>
+<h3 id="special-tagging-rules">Special Tagging Rules</h3>
+<h4 id="link-tagging">Link Tagging</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">a:status
+{
+	...
+}
+</code></pre></div><ul>
+<li>
+<p>&ldquo;Pseudo Class&rdquo;</p>
+</li>
+<li>
+<p>Possible statuses</p>
+<ul>
+<li>link (default (no action))</li>
+<li>visited (page was vistited once at least (no action))</li>
+<li>active (on-click)</li>
+<li>hover</li>
+</ul>
+</li>
+</ul>
+<h3 id="spans">Spans</h3>
+<ul>
+<li>Inline HTML tag to add some CSS</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>p<span style="color:#f92672">&gt;</span> This is text, <span style="color:#f92672">&lt;</span>span style<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">color:dodgerblue;font-family:</span><span style="color:#e6db74">&#34;</span>Comic Sans<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">;</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>though this is formatted.<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>span<span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>p<span style="color:#f92672">&gt;</span>
+</code></pre></div><h2 id="positioning">Positioning</h2>
+<ul>
+<li>Ordering
+<ul>
+<li>Lower number -&gt; more outer placing</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>
+<p>Margin</p>
+<ul>
+<li>Outer space of an element&rsquo;s border relative to its parent</li>
+</ul>
+</li>
+<li>
+<p>Border</p>
+</li>
+<li>
+<p>Padding</p>
+<ul>
+<li>Inner space of an element relative to its border</li>
+</ul>
+</li>
+</ol>
+<h4 id="css-attributes">CSS attributes</h4>
+<ul>
+<li>
+<p>Static</p>
+<ul>
+<li>Default (flow of the page)</li>
+</ul>
+</li>
+<li>
+<p>Fixed</p>
+<ul>
+<li>Relative to browser window (won&rsquo;t move, not even on scroll)</li>
+</ul>
+</li>
+<li>
+<p>Relative</p>
+<ul>
+<li>Relative to its normal position</li>
+</ul>
+</li>
+<li>
+<p>Absolute</p>
+<ul>
+<li>Relative to first parents that has no static tag (relative to browser window if no such element is found)</li>
+</ul>
+</li>
+<li>
+<p>Example</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#</span><span style="color:#75715e">idname</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>{
+    position: absolute;
+    ...
+}
+</code></pre></div><pre><code>
+</code></pre></li>
+<li>
+<p>z-index</p>
+<ul>
+<li>
+<p>Layering of different elements</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector
+{
+    z<span style="color:#f92672">-</span>index: <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+    ...
+}
+</code></pre></div><pre><code>
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>float</p>
+<ul>
+<li>
+<p>Elements &ldquo;float&rdquo; to the left or to the right</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">selector
+{
+    <span style="color:#66d9ef">float</span><span style="color:#f92672">:</span>right;
+}
+</code></pre></div><pre><code>       
+</code></pre></li>
+<li>
+<p>Can be &ldquo;cleared for other elements</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">other<span style="color:#f92672">-</span>selector
+{
+    clear:right; <span style="color:#75715e">/* left, right, and both are usable values */</span>
+}
+</code></pre></div><pre><code>   
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="units">Units</h2>
+<ul>
+<li>
+<p>Absolute</p>
+<ul>
+<li>pt = point</li>
+<li>in, cm, mm</li>
+</ul>
+</li>
+<li>
+<p>Relative</p>
+<ul>
+<li>px = pixel (relative to monitor res)</li>
+<li>% = percentage (relative to fontsize or box)</li>
+</ul>
+</li>
+</ul>
 <h1 id="javascript">JavaScript</h1>
 <p>(Client-side) JavaScript (that&rsquo;s run in a webbrowser) is an interpreted languaged that runs in a sandbox. Used in many websites for more functionality or fancier effects.</p>
 <h2 id="history">History</h2>
@@ -712,7 +1024,7 @@ Compression via I,P and B frames:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>form action<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">cgi-bin/script.cgi</span><span style="color:#e6db74">&#34;</span> method<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">get</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
     ...
 <span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>form<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>
+</code></pre></div><pre><code>   
 </code></pre></li>
 </ul>
 <h3 id="a-forms-content">A Form&rsquo;s Content</h3>
@@ -746,7 +1058,7 @@ Compression via I,P and B frames:
 <span style="color:#960050;background-color:#1e0010">$</span>gender <span style="color:#f92672">=</span> <span style="color:#960050;background-color:#1e0010">$</span>_REQUEST[<span style="color:#960050;background-color:#1e0010">&#39;</span>gender<span style="color:#960050;background-color:#1e0010">&#39;</span>]
 ...
 <span style="color:#f92672">?</span><span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>
+</code></pre></div><pre><code>       
 </code></pre></li>
 </ul>
 </li>
@@ -769,7 +1081,7 @@ Compression via I,P and B frames:
 <li>
 <p>Example:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">...
-<span style="color:#f92672">&lt;</span>label <span style="color:#66d9ef">for</span><span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>Vorname:<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&lt;</span>label <span style="color:#66d9ef">for</span><span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>Vorname:<span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>label<span style="color:#f92672">&gt;</span>  
     <span style="color:#f92672">&lt;</span>input type<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">text</span><span style="color:#e6db74">&#34;</span> name<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span> id<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">vorname</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
 ...
 </code></pre></div><pre><code></code></pre></li>
@@ -779,7 +1091,7 @@ Compression via I,P and B frames:
 {
     cursor:<span style="color:#66d9ef">default</span>; <span style="color:#75715e">/* Doesn&#39;t change the display type on cursor hover */</span>
 }
-</code></pre></div><pre><code>
+</code></pre></div><pre><code>   
 </code></pre></li>
 </ul>
 <h3 id="tag-attributes-for-input">Tag Attributes for Input</h3>
@@ -791,7 +1103,7 @@ Compression via I,P and B frames:
 <li>Used as input example</li>
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>input .... placeholder<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Max Mustermann</span><span style="color:#e6db74">&#34;</span>....<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code>
+</code></pre></div><pre><code>   
 </code></pre></li>
 <li>
 <p>value=&rdquo;&rdquo;</p>
@@ -848,8 +1160,168 @@ Compression via I,P and B frames:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#f92672">&lt;</span>textarea rows<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">4</span><span style="color:#e6db74">&#34;</span> cols<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">50</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">&gt;</span>
     Enter <span style="color:#66d9ef">default</span> text here...
 <span style="color:#f92672">&lt;</span><span style="color:#f92672">/</span>textarea<span style="color:#f92672">&gt;</span>
-</code></pre></div><pre><code></code></pre></li>
+</code></pre></div><pre><code>       
+</code></pre></li>
 </ul>
+</li>
+</ul>
+<h1 id="cryptography">Cryptography</h1>
+<ul>
+<li>
+<p>Encryption of transmitted data</p>
+</li>
+<li>
+<p>Uses a key to decrypt transmitted data</p>
+</li>
+<li>
+<p>Used to make data transfer more safe</p>
+</li>
+</ul>
+<h2 id="key-exchange">Key Exchange</h2>
+<ul>
+<li>
+<p>Key exchange has to be safe</p>
+<ul>
+<li>Symmetrical key exchange (key gets sent to user)</li>
+<li>By safe channel</li>
+<li>By carrier</li>
+</ul>
+</li>
+<li>
+<p>Key gets calculated by safe algorithm</p>
+<ul>
+<li>Asymmetrical key exchange</li>
+</ul>
+</li>
+</ul>
+<h3 id="diffie-hellman-key-exchange-algorithm">Diffie Hellman Key Exchange Algorithm</h3>
+<ul>
+<li>Asymmetrical
+<ul>
+<li>Public Key
+<ul>
+<li>Viewable by everyone</li>
+</ul>
+</li>
+<li>Private Key
+<ul>
+<li>Both server and client have their own Private Keys</li>
+</ul>
+</li>
+<li>Mixture of individual Private and open Public Key create new key</li>
+<li>Both exchange their newly created key<br>
+-&gt; Reverse engineering is impossible</li>
+<li>Both use these new keys in combination with their private key to create another new key<br>
+-&gt; This key is identical and is used to decrypt transferred files</li>
+</ul>
+</li>
+</ul>
+<h3 id="caesar-cipher">Caesar Cipher</h3>
+<ul>
+<li>
+<p>Cleartext gets shifted by a certain amount</p>
+</li>
+<li>
+<p>Not particulary safe</p>
+</li>
+<li>
+<p>Especially easy to crack when analyzing commonly used letters and comparing ciphered content</p>
+<ul>
+<li>Example:
+<ul>
+<li>German texts most commonly use the letter &lsquo;E&rsquo;</li>
+<li>The ciphered text has the letter &lsquo;O&rsquo; most commonly used and is German<br>
+-&gt; The key must be &lsquo;J&rsquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>An alphabet letter serves as the key (not case-sensitive)</p>
+<ul>
+<li>The letter&rsquo;s position is used to determine the shifting (with a being 1 shift)</li>
+<li>Example:<br>
+Key: A<br>
+Clear: Test<br>
+Encrypted: Uftu</li>
+</ul>
+</li>
+<li>
+<p>Special occasion: ROT13</p>
+<ul>
+<li>Uses the letter &lsquo;M&rsquo; to shift (-&gt; shifts by 13 letters) (-&gt; 2 &ldquo;M-shifts&rdquo; restore original)</li>
+<li>Sometimes used in chatrooms</li>
+</ul>
+</li>
+</ul>
+<h3 id="vigenère-cipher">Vigenère Cipher</h3>
+<ul>
+<li>
+<p>Similar to Caesar Cipher, but safer</p>
+</li>
+<li>
+<p>Uses an individual letter for each cleartext letter instead of one letter only</p>
+</li>
+<li>
+<p>Example:<br>
+Key: ABC
+Clear: ABC
+Encrypted: ACE</p>
+</li>
+<li>
+<p>If the text is longer than the key, the key is repeated</p>
+</li>
+<li>
+<p>If the key length is known, it can be cracked using the most-commonly-used-letters method</p>
+</li>
+<li>
+<p>Weak against known-plaintext attacks</p>
+</li>
+</ul>
+<h3 id="aes-advanced-encryption-standard-rijndael">AES (Advanced Encryption Standard) Rijndael</h3>
+<ul>
+<li>
+<p>Symmetrical key exchange</p>
+</li>
+<li>
+<p>Standard algorithm to use</p>
+</li>
+<li>
+<p>Has only been cracked theoretically 10 years after its launch</p>
+</li>
+<li>
+<p>Block cipher</p>
+<ul>
+<li>Cleartext gets split up in data blocks</li>
+<li>Data blocks have set bit lenght</li>
+<li>Each block gets ciphered individually</li>
+</ul>
+</li>
+<li>
+<p>Data blocks are 128 bits each</p>
+</li>
+<li>
+<p>Key blocks are either 128 bits (AES-128), 192 bits (AES-192), or 256 bits (AES-256) long</p>
+</li>
+<li>
+<p>Substitute &amp; Permutation</p>
+<ul>
+<li>Permutiation mixes the order of multiple numbers
+<ul>
+<li>E.g. 5,4,3 can be written as: &ldquo;5,3,4&rdquo;, &ldquo;4,5,3&rdquo;, &ldquo;4,3,5&rdquo;, &ldquo;3,4,5&rdquo;, &ldquo;3,5,4&rdquo;</li>
+<li>Grows with the faculty of how many number are mixed</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><!-- raw HTML omitted -->AES Rijndael Explained - YT<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p><!-- raw HTML omitted -->AES Rijndael Explained - Flash<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p><strong>YT and Flash are identical in their content</strong></p>
 </li>
 </ul>
 </div>
