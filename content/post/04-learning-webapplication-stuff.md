@@ -267,6 +267,251 @@ Protocols are encapsulated, so it's easy to swap out only a part of it (e.g. TCP
 
 # CSS
 
+## What is CSS?
+
+* **C**ascading **S**tyle **S**heets
+
+* Styles define how to display HTML elements
+
+* Introduced in HTML 4.0
+
+
+## Why CSS?
+
+* Solved the problem of HTML's scientific background (design and presentation were not in mind)
+
+* Easier management and maintenance
+
+* Cleaned-up HTML code
+
+* Unified site design
+
+
+## Syntax and Standards
+
+* MIME type (according to W3C) "text/css" (MIME type tells the user client which parser to use)
+
+* Syntax:
+
+	```c
+	selector
+	{
+		property:value;
+	}
+	```
+
+
+## Types of Style Sheets
+
+* Author Style Sheets (highest priority)
+	* Made by the web page's author
+	* Makes up the biggest part
+	
+* User Style Sheets (mediocre priority)
+	* Set by the web page's user (user's own CSS files)
+	* Allows for greater customization/user friendliness
+	
+* User Agent Sytle Sheets (lowest priority)
+	* Automatic implementation by the browser
+	* Helps with compatibility (```<em>``` tag is displayed as italicized in XHTML e.g.)
+	
+* General priority rules:
+	* "Come first, serve first" for external files (the higher their placing, the higher their priority)
+	* Gather all declarations for one element
+	* Sort by file origin
+	* Sort by definition rules of files
+	* Elements follow inheritance rules
+		
+* **!important tag**
+	* Overwrites priority
+	* Syntax example:
+	
+		```c 
+		body
+		{
+			color:red !important;
+		}
+		```
+		
+		
+## HTML integration
+
+* Different ways of integration
+	* Inline (lower priority than internal/external)
+	* Internal
+	* External (seperate file)
+	
+* Inline 
+
+	```c
+	<p style="color:dodgerblue;font-family:"Comic Sans";">...</p>
+	```
+
+* Internal:
+
+	```c
+	<style type="text/css">
+		p.special { color: rgb(230, 100, 180); }
+	</style>
+	```
+
+* External
+
+	```c
+	<head>
+	<link rel="stylesheet" href="css/styles.css"> <--! optional media="print" mit einfügen -->
+	...
+	<link rel="stylesheet" media="print" href="css/print.css">
+	</head>
+	```
+	
+## Tagging
+
+#### Identifiers (IDs)
+
+* Syntax
+	* CSS syntax:
+	
+		```c
+		#idname
+		{
+			...
+		}
+		```
+	
+	* HTML syntax:
+	
+		```c
+		<selector id="idname">....</selector>
+		```
+		
+* Used for unique elements (one specific paragraph e.g.)
+	
+#### Classes
+	
+* Syntax
+	* CSS syntax: 
+			
+		```c
+		selector.classname /* selector is optional for classes */
+		{
+			...
+		}
+		```
+			
+	* HTML syntax:
+		
+		```c
+		<selector class="classname">...</selector>
+		```
+		
+* Used to style repeatingly used elements (e.g. menues, special paragraphs)
+		
+### Special Tagging Rules
+
+#### Link Tagging
+
+```c
+a:status
+{
+	...
+}
+```
+
+* "Pseudo Class"
+
+* Possible statuses
+	* link (default (no action))
+	* visited (page was vistited once at least (no action))
+	* active (on-click)
+	* hover
+	
+### Spans
+
+* Inline HTML tag to add some CSS
+
+```c
+<p> This is text, <span style="color:dodgerblue;font-family:"Comic Sans";">though this is formatted.</span></p>
+```
+
+## Positioning
+
+* Ordering  
+	- Lower number -> more outer placing
+
+1. Margin
+	* Outer space of an element's border relative to its parent
+	
+2. Border
+
+3. Padding
+	* Inner space of an element relative to its border
+	
+#### CSS attributes
+
+* Static
+	* Default (flow of the page)
+	
+* Fixed
+	* Relative to browser window (won't move, not even on scroll)
+	
+* Relative
+	* Relative to its normal position
+	
+* Absolute
+	* Relative to first parents that has no static tag (relative to browser window if no such element is found)
+
+* Example
+	
+	```c
+	#idname
+	{
+		position: absolute;
+		...
+	}
+	```
+
+* z-index
+	* Layering of different elements
+	
+		```c
+		selector
+		{
+			z-index: -1;
+			...
+		}
+		```
+
+* float
+	* Elements "float" to the left or to the right
+	
+		```c
+		selector
+		{
+			float:right;
+		}
+		```
+		
+	* Can be "cleared for other elements
+	
+		```c
+		other-selector
+		{
+			clear:right; /* left, right, and both are usable values */
+		}
+		```
+	
+## Units
+
+* Absolute
+	* pt = point
+	* in, cm, mm
+
+* Relative
+	* px = pixel (relative to monitor res)
+	* % = percentage (relative to fontsize or box)
+
+
 # JavaScript
 
 (Client-side) JavaScript (that's run in a webbrowser) is an interpreted languaged that runs in a sandbox. Used in many websites for more functionality or fancier effects.
