@@ -267,6 +267,251 @@ Protocols are encapsulated, so it's easy to swap out only a part of it (e.g. TCP
 
 # CSS
 
+## What is CSS?
+
+* **C**ascading **S**tyle **S**heets
+
+* Styles define how to display HTML elements
+
+* Introduced in HTML 4.0
+
+
+## Why CSS?
+
+* Solved the problem of HTML's scientific background (design and presentation were not in mind)
+
+* Easier management and maintenance
+
+* Cleaned-up HTML code
+
+* Unified site design
+
+
+## Syntax and Standards
+
+* MIME type (according to W3C) "text/css" (MIME type tells the user client which parser to use)
+
+* Syntax:
+
+	```c
+	selector
+	{
+		property:value;
+	}
+	```
+
+
+## Types of Style Sheets
+
+* Author Style Sheets (highest priority)
+	* Made by the web page's author
+	* Makes up the biggest part
+	
+* User Style Sheets (mediocre priority)
+	* Set by the web page's user (user's own CSS files)
+	* Allows for greater customization/user friendliness
+	
+* User Agent Sytle Sheets (lowest priority)
+	* Automatic implementation by the browser
+	* Helps with compatibility (```<em>``` tag is displayed as italicized in XHTML e.g.)
+	
+* General priority rules:
+	* "Come first, serve first" for external files (the higher their placing, the higher their priority)
+	* Gather all declarations for one element
+	* Sort by file origin
+	* Sort by definition rules of files
+	* Elements follow inheritance rules
+		
+* **!important tag**
+	* Overwrites priority
+	* Syntax example:
+	
+		```c 
+		body
+		{
+			color:red !important;
+		}
+		```
+		
+		
+## HTML integration
+
+* Different ways of integration
+	* Inline (lower priority than internal/external)
+	* Internal
+	* External (seperate file)
+	
+* Inline 
+
+	```c
+	<p style="color:dodgerblue;font-family:"Comic Sans";">...</p>
+	```
+
+* Internal:
+
+	```c
+	<style type="text/css">
+		p.special { color: rgb(230, 100, 180); }
+	</style>
+	```
+
+* External
+
+	```c
+	<head>
+	<link rel="stylesheet" href="css/styles.css"> <--! optional media="print" mit einfügen -->
+	...
+	<link rel="stylesheet" media="print" href="css/print.css">
+	</head>
+	```
+	
+## Tagging
+
+#### Identifiers (IDs)
+
+* Syntax
+	* CSS syntax:
+	
+		```c
+		#idname
+		{
+			...
+		}
+		```
+	
+	* HTML syntax:
+	
+		```c
+		<selector id="idname">....</selector>
+		```
+		
+* Used for unique elements (one specific paragraph e.g.)
+	
+#### Classes
+	
+* Syntax
+	* CSS syntax: 
+			
+		```c
+		selector.classname /* selector is optional for classes */
+		{
+			...
+		}
+		```
+			
+	* HTML syntax:
+		
+		```c
+		<selector class="classname">...</selector>
+		```
+		
+* Used to style repeatingly used elements (e.g. menues, special paragraphs)
+		
+### Special Tagging Rules
+
+#### Link Tagging
+
+```c
+a:status
+{
+	...
+}
+```
+
+* "Pseudo Class"
+
+* Possible statuses
+	* link (default (no action))
+	* visited (page was vistited once at least (no action))
+	* active (on-click)
+	* hover
+	
+### Spans
+
+* Inline HTML tag to add some CSS
+
+```c
+<p> This is text, <span style="color:dodgerblue;font-family:"Comic Sans";">though this is formatted.</span></p>
+```
+
+## Positioning
+
+* Ordering  
+	- Lower number -> more outer placing
+
+1. Margin
+	* Outer space of an element's border relative to its parent
+	
+2. Border
+
+3. Padding
+	* Inner space of an element relative to its border
+	
+#### CSS attributes
+
+* Static
+	* Default (flow of the page)
+	
+* Fixed
+	* Relative to browser window (won't move, not even on scroll)
+	
+* Relative
+	* Relative to its normal position
+	
+* Absolute
+	* Relative to first parents that has no static tag (relative to browser window if no such element is found)
+
+* Example
+	
+	```c
+	#idname
+	{
+		position: absolute;
+		...
+	}
+	```
+
+* z-index
+	* Layering of different elements
+	
+		```c
+		selector
+		{
+			z-index: -1;
+			...
+		}
+		```
+
+* float
+	* Elements "float" to the left or to the right
+	
+		```c
+		selector
+		{
+			float:right;
+		}
+		```
+		
+	* Can be "cleared for other elements
+	
+		```c
+		other-selector
+		{
+			clear:right; /* left, right, and both are usable values */
+		}
+		```
+	
+## Units
+
+* Absolute
+	* pt = point
+	* in, cm, mm
+
+* Relative
+	* px = pixel (relative to monitor res)
+	* % = percentage (relative to fontsize or box)
+
+
 # JavaScript
 
 (Client-side) JavaScript (that's run in a webbrowser) is an interpreted languaged that runs in a sandbox. Used in many websites for more functionality or fancier effects.
@@ -542,35 +787,34 @@ Videocompression techniques:
 		* P (Predicted): Changes (delta) between I frames. Weak compression. Uses data from previous frame for delta and compresses that
 		* B (Bidirectional): Changes (delta) between a I or P frame. Strong compression. Uses data from previous and forward frames for compression.
 
-
 # CGI (Common Gateway Interface)
 
 * A CGI provides a server-sided runtime environment for scripts
-
+		
 * Serves as a platform-independant interface between the script and the HTTP server
 
 * Server takes care of
 	* Connection management
 	* Data transfer/transport
 	* Network issues related to the client request
-
+	
 * CGI scripts take care of
 	* Data access
 	* Document processing
-
+	
 ## Implementation
 
 * The web server needs to support CGI!
 
 * Certain URLs can be set to interpret CGI scripts (most commonly used: webpage.com/cgi-bin/script.cgi)
-	* This path contains CGI scripts **only** (for security reasons)
+	* This path contains CGI scripts **only** (for security reasons)	
 
 * Certain file extensions can also get flagged to be treated as CGI scripts (e.g. .cgi, .php, ..)
 	* Very convenient, but also dangerous if an attacker manages to upload a script with an executable-flagged extension
 
 * HTTP PUT/POST
 	* User-input is treated as standard input
-
+	
 * The server passes environment variables (e.g. CONTENT_LENGTH, CONTENT_TYPE, ..) to the script to work with
 
 ## Supported Languages
@@ -582,11 +826,11 @@ Videocompression techniques:
 ## Output of the Script
 
 1. MIME type (Content-Type/Sub-Type) followed by a newline according to the language's syntax (```\n``` in C e.g.)
-	* This determines how the document shall be interpreted
+	* This determines how the document shall be interpreted 
 	* e.g.: text/html
 
-2. The script's data
-
+2. The script's data	
+	
 
 # Forms
 
@@ -596,10 +840,10 @@ Videocompression techniques:
 	* Normal content
 	* Markup
 	* Controls (checkboxes, radio buttons, menus, etc.) + labels
-
+	
 
 ## How Are Forms Made Up?
-
+	
 ### Initializing a Form
 
 * action tag sets the script the content goes to
@@ -613,7 +857,7 @@ Videocompression techniques:
 		...
 	</form>
 	```
-
+	
 ### A Form's Content
 
 * input type tag defines how to display HTML content
@@ -636,7 +880,7 @@ Videocompression techniques:
 		```
 
 	* php:
-
+	
 		```c
 		<?php
 		...
@@ -645,11 +889,11 @@ Videocompression techniques:
 		...
 		?>
 		```
-
+		
 * The form can be filled with general HTML content (e.g. lists)
 
 #### CSS Styling
-
+	
 ```c
 input[type=submit]
 {
@@ -665,36 +909,36 @@ input[type=submit]
 
 	```c
 	...
-	<label for="vorname">Vorname:</label>
+	<label for="vorname">Vorname:</label>  
 		<input type="text" name="vorname" id="vorname">
 	...
 	```
 * CSS (with the default settings set):
-
+	
 	```c
 	label
 	{
 		cursor:default; /* Doesn't change the display type on cursor hover */
 	}
 	```
-
+	
 ### Tag Attributes for Input
 
 * placeholder=""
 	* Not transmitted to server
 	* Used as input example
-
+	
 	```c
 	<input .... placeholder="Max Mustermann"....>
 	```
-
+	
 * value=""
 	* Similar to placeholder
 	* Transmits to server
-
+	
 * maxlength=""
 	* Defines the maximum number of allowed characters for an input tag
-
+	
 ### Input Types
 
 * input type="password"
@@ -704,21 +948,124 @@ input[type=submit]
 * input type="radio"
 	* Buttons
 	* Need an extra value="" attribute
-
+	
 * input type="email"
 	* HTML5 specific
 	* Not supported by all browsers (e.g. IE9 and earlier)
-
+	
 * input type="date"
 	* HTML5 specific
 	* Not supported by all browsers (e.g. Safari, IE11 and earlier)
-
+	
 * "textarea"
 	* Defines an extra text field to enter
 	* Syntax:
-
+		
 		```c
 		<textarea rows="4" cols="50">
 			Enter default text here...
 		</textarea>
 		```
+		
+# Cryptography
+
+* Encryption of transmitted data
+
+* Uses a key to decrypt transmitted data
+
+* Used to make data transfer more safe
+
+
+## Key Exchange
+
+* Key exchange has to be safe
+	* Symmetrical key exchange (key gets sent to user)
+	* By safe channel
+	* By carrier
+	
+* Key gets calculated by safe algorithm
+	* Asymmetrical key exchange
+
+	
+### Diffie Hellman Key Exchange Algorithm
+
+* Asymmetrical
+	* Public Key
+		* Viewable by everyone
+	* Private Key
+		* Both server and client have their own Private Keys
+	* Mixture of individual Private and open Public Key create new key
+	* Both exchange their newly created key  
+	-> Reverse engineering is impossible
+	* Both use these new keys in combination with their private key to create another new key  
+	-> This key is identical and is used to decrypt transferred files
+	
+
+### Caesar Cipher
+
+* Cleartext gets shifted by a certain amount
+
+* Not particulary safe
+
+* Especially easy to crack when analyzing commonly used letters and comparing ciphered content
+	* Example:
+		* German texts most commonly use the letter 'E'
+		* The ciphered text has the letter 'O' most commonly used and is German  
+		-> The key must be 'J'
+
+* An alphabet letter serves as the key (not case-sensitive)
+	* The letter's position is used to determine the shifting (with a being 1 shift)
+	* Example:  
+		Key: A  
+		Clear: Test  
+		Encrypted: Uftu  
+		
+* Special occasion: ROT13
+	* Uses the letter 'M' to shift (-> shifts by 13 letters) (-> 2 "M-shifts" restore original)
+	* Sometimes used in chatrooms
+		
+### Vigenère Cipher
+
+* Similar to Caesar Cipher, but safer
+
+* Uses an individual letter for each cleartext letter instead of one letter only
+
+* Example:  
+	Key: ABC
+	Clear: ABC
+	Encrypted: ACE
+	
+* If the text is longer than the key, the key is repeated
+
+* If the key length is known, it can be cracked using the most-commonly-used-letters method
+
+* Weak against known-plaintext attacks
+
+
+### AES (Advanced Encryption Standard) Rijndael
+
+* Symmetrical key exchange
+
+* Standard algorithm to use
+
+* Has only been cracked theoretically 10 years after its launch
+
+* Block cipher
+	* Cleartext gets split up in data blocks
+	* Data blocks have set bit lenght
+	* Each block gets ciphered individually
+
+* Data blocks are 128 bits each
+
+* Key blocks are either 128 bits (AES-128), 192 bits (AES-192), or 256 bits (AES-256) long
+
+* Substitute & Permutation
+	* Permutiation mixes the order of multiple numbers
+		* E.g. 5,4,3 can be written as: "5,3,4", "4,5,3", "4,3,5", "3,4,5", "3,5,4"
+		* Grows with the faculty of how many number are mixed
+		
+* <a href="https://www.youtube.com/watch?v=gP4PqVGudtg">AES Rijndael Explained - YT</a>
+
+* <a href="http://www.formaestudio.com/rijndaelinspector/">AES Rijndael Explained - Flash</a>
+
+* **YT and Flash are identical in their content**
