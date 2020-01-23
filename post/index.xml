@@ -6,19 +6,10 @@
     <description>Recent content in Posts on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 18 Jan 2020 17:25:58 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 04 Nov 2019 11:33:37 -0300</lastBuildDate>
     
 	<atom:link href="https://cogitri.dev/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>What I need to learn for my Web Applications course.</title>
-      <link>https://cogitri.dev/post/04-learning-webapplication-stuff/</link>
-      <pubDate>Sat, 18 Jan 2020 17:25:58 +0100</pubDate>
-      
-      <guid>https://cogitri.dev/post/04-learning-webapplication-stuff/</guid>
-      <description>Basic (HTML - 1) WWW  Tim Berners-Lee, proposed WWW to CERN. Predecessor: ARPANET  HTTP  HyperTextTransportProtocol Stateless URI =&amp;gt; Uniform Resource Identifier URL =&amp;gt; Subset of URIs, Uniform Resource Locator. Describes primary access mechanism  Request Methods GET  Retrieve Info Request: Request Header Response: Responser Header + Response Entity  POST  Send + Retrieve Info Request Same + Request Entity Respinse: Same  Status Codes  200 OK 301 Moved Permanently 302 Moved Temporarily 304 Not Modified (caching) 401 Unauthorized 403 Forbidden 404 Not Found 418 I&amp;rsquo;m a Teapot!</description>
-    </item>
     
     <item>
       <title>Using KeePassXC as your system-keyring and ssh-agent</title>
