@@ -2,6 +2,9 @@
 title: "Contributing to Alpine Linux: making Merge Requests"
 date: 2019-10-29T11:28:05-03:00
 draft: false
+aliases:
+    - /posts/02-gitlab-alpinelinux-v4-api/
+    - /post/02-gitlab-alpinelinux-v4-api/
 ---
 
 # Introduction

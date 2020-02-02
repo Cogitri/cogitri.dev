@@ -2,6 +2,9 @@
 title: "Using KeePassXC as your system-keyring and ssh-agent"
 date: 2019-11-04T11:33:37-03:00
 draft: false
+aliases:
+    - /posts/03-keepassxc-freedesktop-secret/
+    - /post/03-keepassxc-freedesktop-secret/
 ---
 
 # Introduction
