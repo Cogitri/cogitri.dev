@@ -1,4 +1,4 @@
-baseURL = "https://cogitri.dev"
+baseURL = "https://www.cogitri.dev"
 languageCode = "en-gb"
 title = "Cogitri's blog"
 theme = "github-style"
