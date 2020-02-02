@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
-	<meta name="generator" content="Hugo 0.64.0-DEV" />
     <meta charset="utf-8">
     <link crossorigin="anonymous" media="all"
         rel="stylesheet"
@@ -10,7 +9,7 @@
         rel="stylesheet" href="https://cogitri.dev/css/github.css" />
     <meta name="viewport" content="width=device-width">
 
-    <title>Cogitri&#39;s blog</title>
+    <title>Categories - Cogitri&#39;s blog</title>
 
     <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://cogitri.dev/images/favicon.ico">
     <meta name="theme-color" content="#1e2327">
@@ -177,12 +176,15 @@
 
 
 <div class="col-lg-9 col-md-8 col-12 float-md-left pl-md-2">
-    <div class="UnderlineNav width-full user-profile-nav js-sticky top-0">
+    <div class="UnderlineNav width-full user-profile-nav top-0 is-placeholder"
+        style="visibility: hidden; display: none; height: 56px;"></div>
+    <div class="UnderlineNav width-full user-profile-nav js-sticky top-0"
+        style="position: static; top: 0px; left: 330.5px; width: 911.5px;">
         <nav class="UnderlineNav-body" data-pjax aria-label="User profile">
-            <a aria-current="page" class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected " href="https://cogitri.dev">
+            <a aria-current="page" class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://cogitri.dev">
                 Overview
             </a>
-            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://cogitri.dev/posts/">
+            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected" href="https://cogitri.dev/posts/">
                 Posts
                 <span class="Counter hide-lg hide-md hide-sm">
                     4
@@ -193,132 +195,20 @@
             </a>
         </nav>
     </div>
-    <div class="position-relative">
-        <div class="mt-4">
-            <div class="js-pinned-items-reorder-container">
-                <h2 class="f4 mb-2 text-normal">
-                    Pinned
-                </h2>
 
-                <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
-                    
-                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-                        <div
-                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
-                            <div class="pinned-item-list-item-content" name="pinned-post">
-                                <div class="d-flex width-full flex-items-center position-relative">
-                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
-                                        version="1.1" width="12" height="16" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
-                                    </svg>
-                                    <a href="https://cogitri.dev/posts/04-secure-boot-with-unified-kernel-image/" class="text-bold flex-auto min-width-0 ">
-                                        <span class="repo js-pinnable-item" title="Booting Alpine Linux with a Unified Kernel Image and Secure Boot">Booting Alpine Linux with a Unified Kernel Image and Secure Boot</span>
-                                    </a>
-                                </div>
-                                Introduction  Guest article by maxice8
- Recently I got myself into package sd-boot from the Systemd project into Alpine Linux. I previously packaged it as an April&rsquo;s fools joke for Void Linux Here.
-After receiving some negative feedback on including it, more specifically about the fact I had to include 23 patches (which could be trimmed but would be more work than just copying the work of the OpenEmbedded and NixOS Musl people) to make it compile.
-                                <div class="f6 text-gray mt-2">
-                                    Updated <relative-time datetime="2020-02-02"
-                                        class="no-wrap" title="Modify at 2020/02/02">
-                                        February 2, 2020</relative-time>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-                        <div
-                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
-                            <div class="pinned-item-list-item-content" name="pinned-post">
-                                <div class="d-flex width-full flex-items-center position-relative">
-                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
-                                        version="1.1" width="12" height="16" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
-                                    </svg>
-                                    <a href="https://cogitri.dev/posts/03-keepassxc-freedesktop-secret/" class="text-bold flex-auto min-width-0 ">
-                                        <span class="repo js-pinnable-item" title="Using KeePassXC as your system-keyring and ssh-agent">Using KeePassXC as your system-keyring and ssh-agent</span>
-                                    </a>
-                                </div>
-                                Introduction  Guest article by maxice8
- Recently the community-oriented password manager KeePassXC made a new major release, 2.5.0.
-In this new release there was a really important change, the implementation of the secrets API from Freedesktop.
- This is oversimplified
- For those that don&rsquo;t know, the secrets API is a specification for storing and querying secrets (duh) like passwords, tokens and ssh keys, and really anything you wanted.
-                                <div class="f6 text-gray mt-2">
-                                    Updated <relative-time datetime="2019-11-04"
-                                        class="no-wrap" title="Modify at 2019/11/04">
-                                        November 4, 2019</relative-time>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-                        <div
-                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
-                            <div class="pinned-item-list-item-content" name="pinned-post">
-                                <div class="d-flex width-full flex-items-center position-relative">
-                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
-                                        version="1.1" width="12" height="16" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
-                                    </svg>
-                                    <a href="https://cogitri.dev/posts/02-gitlab-alpinelinux-v4-api/" class="text-bold flex-auto min-width-0 ">
-                                        <span class="repo js-pinnable-item" title="Contributing to Alpine Linux: making Merge Requests">Contributing to Alpine Linux: making Merge Requests</span>
-                                    </a>
-                                </div>
-                                Introduction  Guest article by maxice8
- Some time ago, Alpine Linux started using their self-hosted GitLab instance to accept contributions via merge requests.
-I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it is currently a mirror to git.alpinelinux.org).
-How it was before Before using their GitLab instance I used their GitHub repo to contribute, I would use the amazing hub tool, which after login with my personal access token would allow me to easily check out pull requests and merge them from the CLI.
-                                <div class="f6 text-gray mt-2">
-                                    Updated <relative-time datetime="2019-10-29"
-                                        class="no-wrap" title="Modify at 2019/10/29">
-                                        October 29, 2019</relative-time>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-                        <div
-                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
-                            <div class="pinned-item-list-item-content" name="pinned-post">
-                                <div class="d-flex width-full flex-items-center position-relative">
-                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
-                                        version="1.1" width="12" height="16" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
-                                    </svg>
-                                    <a href="https://cogitri.dev/posts/01-introducing-tmplgen/" class="text-bold flex-auto min-width-0 ">
-                                        <span class="repo js-pinnable-item" title="Introducing tmplgen">Introducing tmplgen</span>
-                                    </a>
-                                </div>
-                                Introduction Some time ago maxice8 had told me about gemnator, a simple script written in SH to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from the rubygems.org API and generates a ready to use template from it. I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.
-                                <div class="f6 text-gray mt-2">
-                                    Updated <relative-time datetime="2019-02-03"
-                                        class="no-wrap" title="Modify at 2019/02/03">
-                                        February 3, 2019</relative-time>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                </ol>
-            </div>
+    <div class="position-relative">
+        <div id="user-repositories-list">
+            <ul data-filterable-for="your-repos-filter" data-filterable-type="substring">
+                
+            </ul>
+            
         </div>
-        <div id="pinned-items-modal-wrapper"></div>
     </div>
-</div>
 </div>
 
 
     </main>
 </div>
-
 
   <div class="footer container-lg width-full p-responsive" role="contentinfo">
     <div

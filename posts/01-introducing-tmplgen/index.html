@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <link crossorigin="anonymous" media="all"
+        rel="stylesheet"
+        href="https://cogitri.dev/css/frameworks.css" />
+    <link crossorigin="anonymous" media="all"
+        rel="stylesheet" href="https://cogitri.dev/css/github.css" />
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introducing tmplgen - Cogitri&#39;s blog</title>
+
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://cogitri.dev/images/favicon.ico">
+    <meta name="theme-color" content="#1e2327">
+    
+</head>
+
+<body class="env-production emoji-size-boost page-responsive page-profile">
+  <div class="position-relative js-header-wrapper ">
+    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+        <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+    </span>
+    <header class="Header js-details-container Details flex-wrap flex-lg-nowrap p-responsive" role="banner">
+        <div class="Header-item d-none d-lg-flex">
+            <a class="Header-link" href="https://cogitri.dev" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div
+            class="Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden">
+            <div class="header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+                role="combobox" aria-owns="jump-to-results" aria-label="Search or jump to" aria-haspopup="listbox"
+                aria-expanded="false">
+                <div class="position-relative">
+                </div>
+            </div>
+        </div>
+        <div class="Header-item Header-item--full flex-justify-center d-lg-none position-relative" style="margin-right: auto;">
+            <a class="Header-link" href="https://cogitri.dev" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div class="Header-item position-relative mr-0 d-none d-lg-flex">
+            <details class="details-overlay details-reset">
+                <summary class="Header-link" aria-label="View profile and more"
+                    data-ga-click="Header, show menu, icon:avatar">
+                    
+                    <img alt="" class="avatar" src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4" height="20" width="20">
+                    
+                </summary>
+            </details>
+        </div>
+    </header>
+</div>
+
+<div id="start-of-content" class="show-on-focus"></div>
+<div id="js-flash-container">
+</div>
+
+  
+<div class="application-main " data-commit-hovercards-enabled="">
+    <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+        <main id="js-repo-pjax-container" data-pjax-container="">
+            <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav pt-0 pt-lg-4 ">
+                <div class="repohead-details-container clearfix container-lg p-responsive d-none d-lg-block">
+                    <div class="mb-3 d-flex">
+                        <h1 class="public css-truncate float-none flex-auto width-fit pl-0">
+                            <a class="avatar mr-1" href="https://cogitri.dev/about/">
+                            
+
+                                <img
+                                    src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4" width="26" height="26">
+                            
+                            </a>
+                            <span class="author"><a
+                                    href="https://cogitri.dev">Rasmus Thomsen</a></span>
+                            <span class="path-divider">/</span>
+                            <strong itemprop="name" class="css-truncate-target" style="max-width: 410px"><a
+                                    href="https://cogitri.dev/posts/01-introducing-tmplgen/">Introducing tmplgen</a></strong>
+
+                            <div class="d-block text-small text-gray">
+                                Created <time-ago datetime="2019-02-03" class="no-wrap"
+                                    title="Created at 2019/02/03">
+                                    2019-02-03</time-ago>
+                                <span class="file-info-divider"></span>
+                                Modifyed <time-ago datetime="2019-02-03" class="no-wrap"
+                                    title="Modifyed  at 2019/02/03">
+                                    2019-02-03</time-ago>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  p-responsive">
+                <div class="repository-content ">
+                    <div class="Box mt-3 position-relative">
+                        <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
+                            <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                                1197 Words
+                                
+                            </div>
+                        </div>
+
+                        <div id="readme" class="Box-body readme blob instapaper_body js-code-block-container">
+                            <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><h1 id="introduction">Introduction</h1>
+<p>Some time ago <a href="https://github.com/maxice8">maxice8</a> had told me about <a href="https://github.com/maxice8/meltryllis/blob/d3b7383e95a3be987a4a252530347ae9a7b6a266/bin/gemnerator">gemnator</a>, a simple script written in SH
+to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from  the rubygems.org API and generates a ready to use template from it.
+I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.io, metacpan.org) and adding more functionality to it, like updating existing templates.</p>
+<h1 id="how-everything-started-out">How everything started out</h1>
+<p>I&rsquo;ve started writing tmplgen in late October 2018, mainly to get into writing Rust (which is an amazing programming language, but I won&rsquo;t get too much into this in this article).
+When I started out tmplgen only did one thing: writing build templates for crates (Rust packages hosted on crates.io). Running <code>cloc</code> shows us how tiny it was:</p>
+<pre><code>-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Rust                             1             25              0             76
+YAML                             1              0              0             19
+-------------------------------------------------------------------------------
+SUM:                             2             25              0             95
+-------------------------------------------------------------------------------
+</code></pre><p>It basically only consisted of a <code>main.rs</code>which used the <a href="https://creates.io/crates_io_api">crates_io_api</a> crate to download the info of a crate, call <code>git</code> to figure out the maintainer&rsquo;s name and eMail
+and then repeatedly call <code>replace</code> (think of it as Rust&rsquo;s sed &lsquo;s/')  on a generic template file which was built into tmplgen. There was no error handling to speak of, it&rsquo;d simply panic if anything
+(e.g. downloading, figuring out the maintainer via git) went wrong.</p>
+<h1 id="supporting-more-data-sources">Supporting more data sources</h1>
+<p>tmplgen got support for creating build files for Ruby Gems only a week after its creation, on November 2nd. Since it was a pretty simple (Yeah, let&rsquo;s go with that) project at that point adding support for it was pretty trivial, see <a href="https://github.com/Cogitri/tmplgen/commit/c5974bbe4bf6b02bcee438cdf860ddc85ea541ed">c5974bbe4b</a>:</p>
+<pre><code>+fn gem_info(gem_name: &amp;String) -&gt; Result&lt;PkgInfo, rubygems_api::Error&gt; {
++    let client = rubygems_api::SyncClient::new();
++
++    let query_result = client.gem_info(gem_name)?;
++
++    let pkg_info = PkgInfo {
++        pkg_name: gem_name.clone(),
++        version: query_result.version,
++        description: query_result.info.unwrap_or_default(),
++        homepage: query_result.homepage_uri.unwrap_or_default(),
++        license: query_result.licenses.unwrap_or_default(),
++    };
++
++    Ok(pkg_info)
++}
++
+ // Writes the PkgInfo to a file called &quot;template&quot;
+ fn write_template(pkg_info: &amp;PkgInfo, force_overwrite: bool) -&gt; Result&lt;(), std::io::Error&gt; {
+     let template_in = include_str!(&quot;template.in&quot;);
+@@ -153,14 +168,18 @@ fn main() {
+     let help_tuple = help_string();
+     let pkg_name = help_tuple.0;
+     let tmpl_type = help_tuple.1;
+    let force_overwite = help_tuple.2;
+ 
+     println!(
+         &quot;Generating template for package {} of type {}&quot;,
+         pkg_name, tmpl_type
+     );
+ https://gist.github.com/4da080659b0821759b7525bc242d35d2
+-    let pkg_info = crate_info(&amp;pkg_name);
++    let pkg_info= if tmpl_type == &quot;crate&quot; {
++        crate_info(&amp;pkg_name)
++    } else {
++        gem_info(&amp;pkg_name).unwrap()
++    };
+ }
+</code></pre><p>You can see that that commit already had some (basic) error handling! Rust has a built in type to make handling errors easy: <a href="https://doc.rust-lang.org/std/result/">Result</a>!
+A function which may fail can return a <code>Result&lt;(), Error&gt;</code> where <code>()</code> is the type we actually want to return (<code>()</code>would be the &lsquo;unit type&rsquo;, meaning we don&rsquo;t have anything to return). E.g. in the
+<code>gem_info</code> function we return a <code>Result&lt;PkgInfo, rubygems_api::Error&gt;</code>. If the function runs sucessfully, it runs <code>Ok(pkg_info)</code>which means that the the function
+has been run sucessfully. If an error occurs before (and is handeled, e.g. via <code>?</code>) the Result won&rsquo;t contain the <code>PkgInfo</code> but instead only a <code>rubygems_api::Error</code>.
+Since we still run <code>gem_info(&amp;pkg_name).unwrap()</code> this doesn&rsquo;t exactly help us just now, the program still panics, just like before!</p>
+<h1 id="implementing-actual-error-handling-into-tmplgen">Implementing actual error handling into tmplgen</h1>
+<p>For better error messages (or even handling errors gracefully) we need to handle errors better. You&rsquo;ve already received a glimpse at <code>rubygems_api::Error</code>. Rust crates usually implement
+their own set of <code>Errors</code> (sometimes called <code>ErrorKinds</code> instead), see <a href="https://github.com/Cogitri/tmplgen/blob/0b60fbe17ee9f5985b4050dc251e15ef8fabe267/src/lib/errors.rs">here</a> for
+a list of tmplgen&rsquo;s current errors. Here&rsquo;s one example:</p>
+<pre><code>#/// The Error enum containing all Errors that may occur when running tmplgen
+#[derive(Clone, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Fail)]
+pub enum Error {
+    #[fail(display = &quot;Failed to read/write the template! Error: {}&quot;, _0)]
+	File(String),
+	...
+</code></pre><p>This <code>Error</code> is thrown if tmplgen can&rsquo;t read/write the template. With this the error message when writing a templates may look like this:</p>
+<pre><code>Failed to read/write the template! Error: File exists (os error 17)
+</code></pre><p>Otherwise it&rsquo;d look this this:</p>
+<pre><code>thread 'main' panicked at 'File(Os { code: 17, kind: AlreadyExists, message: &quot;File exists&quot; })', src/libcore/result.rs:1009:5
+note: Run with `RUST_BACKTRACE=1` for a backtrace.
+</code></pre><p>The former clearly states what <em>actually</em> went wrong (Reading/Writing the template),
+instead of only panicking and telling us that some file (what file?!?) already exists.</p>
+<p>This is mainly thanks to <a href="https://crates.io/failure">failure</a>, an amazinh crate which makes error handling rather pleasent.</p>
+<h1 id="making-the-api-nice-to-use">Making the API nice to use</h1>
+<p>tmplgen simply kept growing until version 0.9.0, adding some nice features like automatically figuring out from what source a package might come from, so that one wouldn&rsquo;t have to do <code>tmplgen -t gem mocha</code> to create a package for the
+Ruby Gem <code>mocha</code>anymore, but instead simply run <code>tmplgen mocha</code> in <a href="https://github.com/Cogitri/tmplgen/commit/7e6ea50f2451393550a4f49bb096c2c1610826cb">7e6ea50f2</a>. This was rather easy to pull of at first, but small changes (such as this one)
+resulted in rather big diffs since I just piled up functions in <code>helpers.rs</code>. Using the API also was rather confusing:</p>
+<pre><code>// Get the PkgType of this crate
+let pkg_type = figure_out_provider(&quot;tmplgen&quot;).unwrap();
+// Get a PkgInfo struct of this crate
+let pkg_info = get_pkginfo(&quot;tmplgen&quot;, pkg_type).unwrap();
+// Don't overwrite existing templates
+let force_overwrite = false;
+// This isn't a recursive dep, error out if there's an error
+let is_rec = false;
+
+// Actually write the template
+template_handler(&amp;pkg_info, pkg_type, force_overwrite, is_rec);
+</code></pre><h2 id="builder-api-pattern-to-the-rescue">Builder API pattern to the rescue!</h2>
+<p>I&rsquo;ve decided to get tmplgen to 1.x by changing tmplgen over to a <a href="https://doc.rust-lang.org/1.0.0/style/ownership/builders.html#non-consuming-builders-(preferred):">Builder API</a>. It was supposed to look like this:</p>
+<pre><code>pub struct TmplHandle {
+	pkg_name: String,
+	pkg_type: String,
+}
+
+impl TmplHandle {
+	/// Return a TmplHandle to build upon.
+	pub fn new(pkg_name: String, pkg_type: String) -&gt; TmplHandle {
+		TmplHandle { pkg_name, pkg_type }
+	}
+
+	/// Generate a template. Takes in a PkgInfo which contains all necessary info
+	pub fn gen_tmpl(pkg_info: PkgInfo){
+		...
+	}
+</code></pre><p>This kind of sucked. One still had to call some random function from <code>helper.rs</code>to figure out the pkg_type to use and get a PkgInfo by themself.</p>
+<p>In the end I&rsquo;ve gone with the following:</p>
+<pre><code>pub struct TmplBuilder {
+    pub pkg_name: String,
+    pub pkg_type: Option&lt;PkgType&gt;,
+    pub pkg_info: Option&lt;PkgInfo&gt;,
+}
+
+impl TmplBuilder {
+    pub fn new(pkg_name: &amp;str) -&gt; Self {
+        ...
+    }
+
+    pub fn from_pkg_info(pkg_info: PkgInfo) -&gt; Self {
+        ...
+    }
+
+    pub fn get_type(&amp;mut self) -&gt; Result&lt;&amp;mut Self, Error&gt; {
+        ...
+     }
+
+    pub fn set_type(&amp;mut self, pkg_type: PkgType) -&gt; &amp;mut Self {
+        ...
+    }
+
+    pub fn get_info(&amp;mut self) -&gt; Result&lt;&amp;mut Self, Error&gt; {
+        ...
+    }
+
+    pub fn set_info(&amp;mut self, pkg_info: PkgInfo) -&gt; &amp;mut Self {
+        ...
+    }
+
+    pub fn is_built_in(&amp;self) -&gt; Result&lt;bool, Error&gt; {
+        ...
+    }
+
+    pub fn gen_deps(&amp;self, tmpl_path: Option&lt;&amp;str&gt;) -&gt; Result&lt;Vec&lt;Template&gt;, Error&gt; {
+		....
+    }
+
+    pub fn update(&amp;self, old_template: &amp;Template, update_all: bool) -&gt; Result&lt;Template, Error&gt; {
+		...
+    }
+
+    pub fn generate(&amp;self, prefix: bool) -&gt; Result&lt;Template, Error&gt; {
+		...
+    }
+</code></pre><p>Generating a template now works like this:</p>
+<pre><code>let tmpl_builder = TmplBuilder::new(pkg_name)
+	.get_type()?
+	.get_info()?
+	.generate(true)?;
+</code></pre><p>This is way more intuitive than searching for some random function which may (or may not) get the pkg_type and pkg_info for you.</p>
+<p>It&rsquo;s also very nice to use in an IDE:</p>
+<p><img src="https://cogitri.github.io/post/post-01.png" alt="Smart IntelliSense"></p>
+<p>See <a href="https://github.com/Cogitri/tmplgen/blob/master/src/lib/tmplwriter.rs">the source</a> for more details.</p>
+<p>Overall tmplgen has been a great experience for me. It helped me getting into Rust and understand different ways to package software.</p>
+</article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+
+  <div class="footer container-lg width-full p-responsive" role="contentinfo">
+    <div
+        class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+            <li class="mr-3 mr-lg-0">© 2019. Theme by <a href="https://github.com/MeiK2333/github-style"><span>github-style</span></a></li>
+        </ul>
+
+        <a aria-label="Homepage" title="Cogitri&#39;s blog" class="footer-octicon d-none d-lg-block mx-lg-4"
+            href="https://cogitri.dev">
+            <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                </path>
+            </svg>
+        </a>
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        </ul>
+    </div>
+    <div class="d-flex flex-justify-center pb-6">
+        <span class="f6 text-gray-light"></span>
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+    type="application/javascript" src="https://cogitri.dev/js/frameworks.js"></script>
+
+<script crossorigin="anonymous" async="async"
+    type="application/javascript" src="https://cogitri.dev/js/github-bootstrap.js"></script>
+<script>
+    let classs = ['pinned-item-desc', 'text-gray', 'text-small', 'd-block', 'mt-2', 'mb-3'];
+    const pinned_posts = document.getElementsByName('pinned-post');
+    for (let i = 0; i < pinned_posts.length; i++) {
+        for (let j = 0; j < classs.length; j++) {
+            const ps = pinned_posts[i].getElementsByTagName('p');
+            for (let k = 0; k < ps.length; k++) {
+                ps[k].classList.add(classs[j]);
+            }
+        }
+    }
+    classs = [ 'd-inline-block', 'text-gray', 'mb-2', 'pr-4'];
+    const posts_posts = document.getElementsByName('posts-post');
+    for (let i = 0; i < posts_posts.length; i++) {
+        for (let j = 0; j < classs.length; j++) {
+            const ps = posts_posts[i].getElementsByTagName('p');
+            for (let k = 0; k < ps.length; k++) {
+                ps[k].classList.add(classs[j]);
+            }
+        }
+    }
+</script>
+</body>
+
+</html>
