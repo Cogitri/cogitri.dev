@@ -7,13 +7,13 @@ aliases:
     - /post/04-secure-boot-with-unified-kernel-image/
 ---
 
-# Introduction
-
-> Guest article by maxice8
+###### Guest article by maxice8
 
 Recently I got myself into package `sd-boot` from the Systemd project
 into Alpine Linux. I previously packaged it as an April's fools joke
 for Void Linux [Here](https://github.com/void-linux/void-packages/pull/10469/).
+
+<!--more-->
 
 After receiving some negative feedback on including it, more specifically
 about the fact I had to include 23 patches (which could be trimmed but would

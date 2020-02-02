@@ -7,9 +7,7 @@ aliases:
     - /post/03-keepassxc-freedesktop-secret/
 ---
 
-# Introduction
-
-> Guest article by maxice8
+###### Guest article by maxice8
 
 Recently the community-oriented password manager [KeePassXC](https://keepassxc.org/) made a new
 major release, 2.5.0.
@@ -17,6 +15,8 @@ major release, 2.5.0.
 In this new release there was a really important change, the implementation of the
 [secrets API](https://freedesktop.org/wiki/Specifications/secret-storage-spec/secrets-api-0.1.html)
 from Freedesktop.
+
+<!--more-->
 
 > This is oversimplified
 

@@ -7,15 +7,15 @@ aliases:
     - /post/02-gitlab-alpinelinux-v4-api/
 ---
 
-# Introduction
-
-> Guest article by maxice8
+###### Guest article by maxice8
 
 Some time ago, [Alpine Linux](https://alpinelinux.org) started using their self-hosted
 [GitLab instance](https://gitlab.alpinelinux.org) to accept contributions via merge requests.
 
 I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it
 is currently a mirror to git.alpinelinux.org).
+
+<!--more-->
 
 # How it was before
 

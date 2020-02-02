@@ -7,11 +7,11 @@ aliases:
     - /post/01-introducing-tmplgen/
 ---
 
-# Introduction
-
 Some time ago [maxice8](https://github.com/maxice8) had told me about [gemnator](https://github.com/maxice8/meltryllis/blob/d3b7383e95a3be987a4a252530347ae9a7b6a266/bin/gemnerator), a simple script written in SH
 to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from  the rubygems.org API and generates a ready to use template from it.
 I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.io, metacpan.org) and adding more functionality to it, like updating existing templates.
+
+<!--more-->
 
 # How everything started out
 
