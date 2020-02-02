@@ -2,6 +2,9 @@
 title: "Introducing tmplgen"
 date: 2019-02-03T22:00:58+01:00
 draft: false
+aliases:
+    - /posts/01-introducing-tmplgen/
+    - /post/01-introducing-tmplgen/
 ---
 
 # Introduction

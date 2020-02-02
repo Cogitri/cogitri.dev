@@ -2,8 +2,7 @@ baseURL = "https://cogitri.dev"
 languageCode = "en-gb"
 title = "Cogitri's blog"
 theme = "github-style"
-
-staticDir = ["static", "themes/github-style/static"]
+paginatePath = ""
 
 [params]
 	author = "Rasmus Thomsen"

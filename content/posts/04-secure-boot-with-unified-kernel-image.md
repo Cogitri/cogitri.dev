@@ -2,6 +2,9 @@
 title: "Booting Alpine Linux with a Unified Kernel Image and Secure Boot"
 date: 2020-02-02T06:07:10+0100
 draft: false
+aliases:
+    - /posts/04-secure-boot-with-unified-kernel-image/
+    - /post/04-secure-boot-with-unified-kernel-image/
 ---
 
 # Introduction
