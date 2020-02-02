@@ -6,10 +6,21 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 04 Nov 2019 11:33:37 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 02 Feb 2020 06:07:10 +0100</lastBuildDate>
     
 	<atom:link href="https://cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Booting Alpine Linux with a Unified Kernel Image and Secure Boot</title>
+      <link>https://cogitri.dev/post/04-secure-boot-with-unified-kernel-image/</link>
+      <pubDate>Sun, 02 Feb 2020 06:07:10 +0100</pubDate>
+      
+      <guid>https://cogitri.dev/post/04-secure-boot-with-unified-kernel-image/</guid>
+      <description>Introduction  Guest article by maxice8
+ Recently I got myself into package sd-boot from the Systemd project into Alpine Linux. I previously packaged it as an April&amp;rsquo;s fools joke for Void Linux Here.
+After receiving some negative feedback on including it, more specifically about the fact I had to include 23 patches (which could be trimmed but would be more work than just copying the work of the OpenEmbedded and NixOS Musl people) to make it compile.</description>
+    </item>
     
     <item>
       <title>Using KeePassXC as your system-keyring and ssh-agent</title>
