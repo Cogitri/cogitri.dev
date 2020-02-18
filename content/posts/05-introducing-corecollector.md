@@ -1,6 +1,6 @@
 ---
 title: "Introducing Corecollector, a coredump collector written in D "
-date: 2020-02-18T22:07:10+0100
+date: 2020-02-18T23:13:10+0100
 draft: false
 ---
 
@@ -14,6 +14,8 @@ I figured it'd be nice having a manager for these coredumps so one can
 see what programs crashed, why and how and to easily rotate them. I've remembered
 using systemd-coredumpd at some point and kind of liked that, but since I'm
 using Alpine Linux that wasn't an option, so I wrote corecollector.
+
+<!--more-->
 
 # Installation
 
@@ -37,7 +39,7 @@ by the kernel when a program crashes and a core is dumped, will save
 the coredumps to avoid running as root for longer than required. You can add
 users to the `corecollector` group to allow them to access coredumps without
 root, but be mindful that coredumps are snapshots of the memory of a program
-and can contain highly sensitive data as such.
+and can contain highly sensitive data.
 
 # Using (the CLI)
 
