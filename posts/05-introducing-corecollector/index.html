@@ -9,7 +9,7 @@
         rel="stylesheet" href="https://www.cogitri.dev/css/github.css" />
     <meta name="viewport" content="width=device-width">
 
-    <title>Using KeePassXC as your system-keyring and ssh-agent - Cogitri&#39;s blog</title>
+    <title>Introducing Corecollector, a coredump collector written in D  - Cogitri&#39;s blog</title>
 
     <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://www.cogitri.dev/images/favicon.ico">
     <meta name="theme-color" content="#1e2327">
@@ -87,16 +87,16 @@
                                     href="https://www.cogitri.dev">Rasmus Thomsen</a></span>
                             <span class="path-divider">/</span>
                             <strong itemprop="name" class="css-truncate-target" style="max-width: 410px"><a
-                                    href="https://www.cogitri.dev/posts/03-keepassxc-freedesktop-secret/">Using KeePassXC as your system-keyring and ssh-agent</a></strong>
+                                    href="https://www.cogitri.dev/posts/05-introducing-corecollector/">Introducing Corecollector, a coredump collector written in D </a></strong>
 
                             <div class="d-block text-small text-gray">
-                                Created <time-ago datetime="2019-11-04" class="no-wrap"
-                                    title="Created at 2019/11/04">
-                                    2019-11-04</time-ago>
+                                Created <time-ago datetime="2020-02-18" class="no-wrap"
+                                    title="Created at 2020/02/18">
+                                    2020-02-18</time-ago>
                                 <span class="file-info-divider"></span>
-                                Modifyed <time-ago datetime="2019-11-04" class="no-wrap"
-                                    title="Modifyed  at 2019/11/04">
-                                    2019-11-04</time-ago>
+                                Modifyed <time-ago datetime="2020-02-18" class="no-wrap"
+                                    title="Modifyed  at 2020/02/18">
+                                    2020-02-18</time-ago>
                             </div>
                         </h1>
                     </div>
@@ -111,112 +111,157 @@
                     <div class="Box mt-3 position-relative">
                         <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
                             <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
-                                751 Words
+                                1068 Words
                                 
                             </div>
                         </div>
 
                         <div id="readme" class="Box-body readme blob instapaper_body js-code-block-container">
-                            <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><h6 id="guest-article-by-maxice8">Guest article by maxice8</h6>
-<p>Recently the community-oriented password manager <a href="https://keepassxc.org/">KeePassXC</a> made a new
-major release, 2.5.0.</p>
-<p>In this new release there was a really important change, the implementation of the
-<a href="https://freedesktop.org/wiki/Specifications/secret-storage-spec/secrets-api-0.1.html">secrets API</a>
-from Freedesktop.</p>
-<blockquote>
-<p>This is oversimplified</p>
-</blockquote>
-<p>For those that don&rsquo;t know, the secrets API is a specification for
-storing and querying secrets (duh) like passwords, tokens and ssh keys, and really
-anything you wanted.</p>
-<p>After getting pleasantly surprised that someone else updated the keepassxc package on
-Alpine Linux, I decided to enable keepassxc as my system-keyring instead of gnome-keyring</p>
-<h1 id="setting-up-within-keepassxc">Setting up within keepassxc</h1>
-<p>First thing to do is enabling the <code>Secret Service Integration</code> on keepassxc itself, this can
-be done by clicking on <code>Tools</code> in the bar on top, then <code>Settings</code> and scrolling down the left bar
-and clicking on <code>Secret Service Integration</code>. Then tick
-<code>Enable KeepassXC Freedesktop.org Secret Service Integration</code>.</p>
-<p>After enabling the <code>Secret Service Integration</code>, you need to change the database settings so
-the entries of the database are exposed via the integration.</p>
-<p>First click on <code>Database</code> on the bar on top then on <code>Database Settings ...</code> and then click on
-<code>Secret Service Integration</code> and tick the option <code>Expose entries under this group:</code>, below the
-option there is a tree manager so you can pick only a part of the entries of the database to
-be exposed.</p>
-<p>To make sure it works, have your database unlocked (should already be for changing the setting
-above) and use <code>secret-tool(1)</code> to query for a secret on your database.</p>
-<blockquote>
-<p>The key called &lsquo;secret&rsquo; is [REDACTED] for obvious reasons</p>
-</blockquote>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">$ secret-tool search --unlock Path lichess</span>
-<span style="color:#66d9ef">[/org/freedesktop/secrets/collection/all/8cbc4c2af67a428a8b7859fdaf25881b]</span>
-<span style="color:#a6e22e">label</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">lichess</span>
-<span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">[REDACTED]</span>
-<span style="color:#a6e22e">created</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2019-09-06 17:31:10</span>
-<span style="color:#a6e22e">modified</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2019-10-30 01:18:16</span>
-<span style="color:#a6e22e">attribute.Title</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">lichess</span>
-<span style="color:#a6e22e">attribute.URL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">https://lichess.org</span>
-<span style="color:#a6e22e">attribute.UserName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">voidlinux1</span>
-<span style="color:#a6e22e">attribute.Path</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/lichess</span>
-<span style="color:#a6e22e">attribute.Uuid</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8cbc4c2af67a428a8b7859fdaf25881b</span>
-<span style="color:#a6e22e">attribute.Notes</span> <span style="color:#f92672">=</span> 
-</code></pre></div><blockquote>
-<p>PS: hit me up on lichess.org if you want to play :D</p>
-</blockquote>
-<h1 id="experience-thus-far">Experience thus far</h1>
-<p>Replacing my previous system-keyring provider, gnome-keyring, proved to be
-overall good but with some very annoying quirks.</p>
-<p>Benefits:</p>
-<ul>
-<li>I don&rsquo;t need more shell code to properly initialize gnome-keyring</li>
-<li>I don&rsquo;t need to wrestle around with PAM to properly initialize and unlock the keyring</li>
-<li>The place where I store my secrets in my computer and everywhere else is the same</li>
-</ul>
-<p>Drawbacks:</p>
-<ul>
-<li>I can&rsquo;t use my system-keyring to automatically unlock the database on login and unlock</li>
-<li>There is no pop-up dialog like in gnome-keyring to unlock the database when something queries
-for secrets using the freedesktop API</li>
-</ul>
-<h1 id="integrating-with-ssh-agent">Integrating with ssh-agent</h1>
-<p>Speaking of which, since gnome-keyring was gone i needed to re-enable <code>ssh-agent(1)</code> so
-i can use my precious precious (that i dispose and replace a lot) ssh keys everywhere.</p>
-<p>I start <code>ssh-agent(1)</code> on my .profile, which is run every time I login with the following
-code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">if</span> ! pgrep -x ssh-agent -u <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span> &gt;/dev/null; <span style="color:#66d9ef">then</span>
-	<span style="color:#75715e"># This sets SSH_AUTH_SOCK and SSH_AGENT_PID variables</span>
-	eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-	export SSH_AUTH_SOCK SSH_AGENT_PID
-	cat &gt; <span style="color:#e6db74">&#34;</span>$XDG_RUNTIME_DIR<span style="color:#e6db74">/ssh-agent-env&#34;</span> <span style="color:#e6db74">&lt;&lt;- __EOF__
-</span><span style="color:#e6db74">	export SSH_AUTH_SOCK=$SSH_AUTH_SOCK
-</span><span style="color:#e6db74">	export SSH_AGENT_PID=$SSH_AGENT_PID
-</span><span style="color:#e6db74">	__EOF__</span>
-<span style="color:#66d9ef">else</span>
-	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -s <span style="color:#e6db74">&#34;</span>$XDG_RUNTIME_DIR<span style="color:#e6db74">/ssh-agent-env&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-		. $XDG_RUNTIME_DIR/ssh-agent-env
-	<span style="color:#66d9ef">fi</span>
-<span style="color:#66d9ef">fi</span>
-</code></pre></div><p>It checks if there is an <code>ssh-agent(1)</code> running under my user, If not then it starts
-it and exports <code>SSH_AUTH_SOCK</code> which is the path of the socket you can use
-to communicate with <code>ssh-agent(1)</code>.</p>
-<p>It also writes a file called <code>ssh-agent-env</code> to my <code>XDG_RUNTIME_DIR</code> which is sourced
-by any shell that reads .profile (all of the shells started in the console)
-so all my sessions can use the same ssh-agent.</p>
-<p><code>SSH_AUTH_SOCK</code> is used by keepassxc for ssh-agent integration, having the
-variable being set in .profile guarantees that it will be available for keepassxc
-to use, since .profile also starts X and keepassxc is started within X.</p>
-<p>To enable ssh-agent integration on keepassxc just click on <code>Tools</code> in the top bar
-then click on <code>Settings</code> and then on the left-side click on <code>SSH Agent</code> and tick
-the box <code>Enable SSH Agent (requires restart)</code> and restart (as told 4 to 5 words ago)
-keepassxc.</p>
-<h1 id="adding-an-ssh-key">Adding an SSH key</h1>
-<p>Adding a ssh-key is very simple, just create a new entry which has its password field
-be the password for the key being used, then click on <code>Advanced</code> and add the private key
-as an attachment.</p>
-<p>After adding the SSH key as an attachment, click on <code>SSH Agent</code> on the left side and tick
-<code>Add key to agent when database is opened/unlocked</code> and select the attachment you just
-added on the private key section.</p>
-<p>You can then copy the public key part to your clipboard and use it wherever you have to
-use, like GitHub, GitLab, etc.</p></article>
+                            <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><p>I&rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly
+random times for me (especially after hibernating), but attaching a debugger
+to gnome-shell isn&rsquo;t as easy as it appears. I&rsquo;ve noticed that it tended
+to dump a <code>core.$pid</code> file in my <code>$HOME</code>, which is a coredump file one
+can load into a debugger to print the backtrace among other things to
+after the fact. It annoyed me a little that it cluttered my <code>$HOME</code> and
+I figured it&rsquo;d be nice having a manager for these coredumps so one can
+see what programs crashed, why and how and to easily rotate them. I&rsquo;ve remembered
+using systemd-coredumpd at some point and kind of liked that, but since I&rsquo;m
+using Alpine Linux that wasn&rsquo;t an option, so I wrote corecollector.</p>
+<h1 id="installation">Installation</h1>
+<p>If corecollector is packaged in your distribution installing corecollector
+should be as simple as installing it via your package manager. From then
+on corecollector will collect coredumps for you (see further down for the usage).</p>
+<p>If corecollector hasn&rsquo;t been packaged yet, you can install it manually:</p>
+<p>Simply download a release from <a href="https://github.com/Cogitri/corecollector/releases">https://github.com/Cogitri/corecollector/releases</a> ,
+unpack the tarball and <code>cd</code> into the resulting dir. Then run:</p>
+<pre><code>ninja --buildtype=release build
+ninja -C build install
+</code></pre><p>You&rsquo;ll need a functional D compiler for this to work. You&rsquo;ll also have to
+create a <code>corecollector</code> user and group, as which <code>corehelper</code>, which is invoked
+by the kernel when a program crashes and a core is dumped, will save
+the coredumps to avoid running as root for longer than required. You can add
+users to the <code>corecollector</code> group to allow them to access coredumps without
+root, but be mindful that coredumps are snapshots of the memory of a program
+and can contain highly sensitive data as such.</p>
+<h1 id="using-the-cli">Using (the CLI)</h1>
+<p>The main binary to interact with is <code>corectl</code>, here&rsquo;s it&rsquo;s <code>--help</code> which explains
+most things:</p>
+<pre><code>Usage:
+  corectl &lt;subcommand&gt; [OPTION...]
+
+List and interact with coredumps
+
+Subcommands:
+  backtrace [ID]    - Print the backtrace of the coredump identified by ID.
+  debug [ID]        - Open the coredump identified by ID in a debugger.
+  dump  [ID] [FILE] - Dump the coredump identified by ID to file denoted by FILE.
+                      Defaults to 'stdout'.
+  info [ID]         - Get more detailed information for the coredump identified by ID.
+  list              - List all available coredumps.
+
+Help Options:
+  -h, --help         - Show help options.
+
+Application Options:
+  -v, --version      - Print program version.
+  -d, --debug [0-3]  - Specify the debug level.
+</code></pre><p>If you want to know what programs have crashed you can simply run <code>corectl list</code>:</p>
+<pre><code>$ corectl list
+
+ID    SIGNAL   UID      GID      PID      TIMESTAMP             EXE
+1     6        1000     1000     4837     2020-Feb-18 18:32:05  /usr/bin/Xwayland
+2     5        105      109      30052    2020-Feb-18 18:32:06  /usr/bin/gnome-shell
+3     11       1000     1000     5296     2020-Feb-18 21:17:49  /usr/bin/gnome-software
+4     31       1000     1000     6830     2020-Feb-18 21:19:21  /usr/libexec/tracker-extract
+5     11       1000     1000     7770     2020-Feb-18 21:24:41  /usr/local/bin/gnome-software
+</code></pre><p>You can then run <code>corectl debug $ID</code> to attach a debugger to one of the coredumps:</p>
+<pre><code>$ corectl debug 3
+GNU gdb (GDB) 9.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type &quot;show copying&quot; and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;x86_64-alpine-linux-musl&quot;.
+Type &quot;show configuration&quot; for configuration details.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+Find the GDB manual and other documentation resources online at:
+    &lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+
+For help, type &quot;help&quot;.
+Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;...
+Reading symbols from /usr/local/bin/gnome-software...
+[New LWP 28750]
+[New LWP 28749]
+[New LWP 28755]
+[New LWP 28753]
+[New LWP 28747]
+[New LWP 28748]
+[New LWP 28757]
+[New LWP 28751]
+[New LWP 28752]
+[New LWP 28759]
+[New LWP 28756]
+[New LWP 28754]
+
+Core was generated by `gnome-software'.
+Program terminated with signal SIGSEGV, Segmentation fault.
+#0  0x00007ffbdf330a2c in composite_boxes (compositor=compositor@entry=0x7ffbdf3cc920 &lt;spans&gt;, extents=extents@entry=0x7ffbdd9c76f0, boxes=boxes@entry=0x7ffbdd9c72d0) at cairo-spans-compositor.c:720
+720	cairo-spans-compositor.c: No such file or directory.
+[Current thread is 1 (LWP 28750)]
+(gdb) bt
+#0  0x00007ffbdf330a2c in composite_boxes (compositor=compositor@entry=0x7ffbdf3cc920 &lt;spans&gt;, extents=extents@entry=0x7ffbdd9c76f0, boxes=boxes@entry=0x7ffbdd9c72d0) at cairo-spans-compositor.c:720
+...
+..
+.
+</code></pre><p>You can also print the backtrace directly via <code>corectl backtrace $ID</code> which tends
+to be the most frequently used feature:</p>
+<pre><code>$corectl backtrace 3
+#0  0x00007ffbdf330a2c in composite_boxes (compositor=compositor@entry=0x7ffbdf3cc920 &lt;spans&gt;, extents=extents@entry=0x7ffbdd9c76f0, boxes=boxes@entry=0x7ffbdd9c72d0) at cairo-spans-compositor.c:720
+...
+..
+.
+</code></pre><h1 id="configuration">Configuration</h1>
+<p>Corecollector also has a few configuration options, see <code>/etc/corecollector/corecollector.conf</code>:</p>
+<pre><code># What compression to use for coredumps.
+# Available choices: none zlib
+compression = zlib
+# The maximum size of coredumps.
+# Unset or set to 0 to set no size limit.
+# Measured in KByte, must be whole numbers.
+maxSize = 0
+# The path to save coredumps to.
+targetPath = /var/lib/corecollector
+# Where to log to. Pass /dev/null to only log to syslog
+logPath = /var/log/corecollector.log
+# Enable debugging
+enableDebug = false
+# The maximum size of the coredumpdir.
+# Unset or set to 0 to set no size limit.
+# Measured in KByte, must be whole numbers.
+maxDirSize = 0
+</code></pre><p>It uses zlib for compression by default, since coredumps tend to be very easy to compress.
+As such a coredump might be some 400KiB big when uncompressed but be as small as 5 KiB
+when compressed. Corecollector also offers options to limit the maximum size of coredumps,
+rotate the coredump directory once it reaches a certain size or to log to a certain
+path (additionally to syslog).</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Corecollector is made to make debugging programs easy and to make users aware
+of crashing programs, since it can be easy to miss them in the logs or <code>dmesg</code>.
+I hope it proves useful to you :)</p>
+<p>Corecollector was my first project in DLang and it was a very pleasant experience.
+Since DLang has a pretty small community (and as such doesn&rsquo;t have a too broad
+library landscape) it can seem a little frightening to get started with it, but
+I&rsquo;ve found it to be an incredibly productive language: I don&rsquo;t feel held back because
+it&rsquo;s somewhat &ldquo;low-level-ish&rdquo;, but due to it&rsquo;s GC (which can easily be controlled or
+even turned off completely for performance critical areas) it&rsquo;s easy to use without
+introducing security vulnerabilities due to use-after-frees or double-frees and without
+having to worry about lifetimes or similar. It&rsquo;s also easy to bind to C libraries
+in D (one only needs the function declaration and link against the right library
+and it&rsquo;s as if you&rsquo;re calling it from C), so the library landscape doesn&rsquo;t look
+so bad after all :)</p>
+</article>
                         </div>
                     </div>
                 </div>

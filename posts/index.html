@@ -187,7 +187,7 @@
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected" href="https://www.cogitri.dev/posts/">
                 Posts
                 <span class="Counter hide-lg hide-md hide-sm">
-                    4
+                    5
                 </span>
             </a>
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/about/">
@@ -199,6 +199,26 @@
     <div class="position-relative">
         <div id="user-repositories-list">
             <ul data-filterable-for="your-repos-filter" data-filterable-type="substring">
+                
+                <li class="col-12 d-flex width-full py-4 border-bottom public fork">
+                    <div class="col-12 col-lg-12 d-inline-block">
+                        <div class="d-inline-block mb-1">
+                            <h3>
+                                <a href="https://www.cogitri.dev/posts/05-introducing-corecollector/">Introducing Corecollector, a coredump collector written in D </a>
+                            </h3>
+                        </div>
+
+                        <div name="posts-post">
+                            I&rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly random times for me (especially after hibernating), but attaching a debugger to gnome-shell isn&rsquo;t as easy as it appears. I&rsquo;ve noticed that it tended to dump a core.$pid file in my $HOME, which is a coredump file one can load into a debugger to print the backtrace among other things to after the fact. It annoyed me a little that it cluttered my $HOME and I figured it&rsquo;d be nice having a manager for these coredumps so one can see what programs crashed, why and how and to easily rotate them.
+                        </div>
+
+                        <div class="f6 text-gray mt-2">
+                            Updated <relative-time datetime="2020-02-18" class="no-wrap"
+                                title="Modifyd at 2020/02/18">
+                                February 18, 2020</relative-time>
+                        </div>
+                    </div>
+                </li>
                 
                 <li class="col-12 d-flex width-full py-4 border-bottom public fork">
                     <div class="col-12 col-lg-12 d-inline-block">
