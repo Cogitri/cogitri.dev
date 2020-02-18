@@ -216,7 +216,16 @@
                                         <span class="repo js-pinnable-item" title="Introducing Corecollector, a coredump collector written in D ">Introducing Corecollector, a coredump collector written in D </span>
                                     </a>
                                 </div>
-                                I&rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly random times for me (especially after hibernating), but attaching a debugger to gnome-shell isn&rsquo;t as easy as it appears. I&rsquo;ve noticed that it tended to dump a core.$pid file in my $HOME, which is a coredump file one can load into a debugger to print the backtrace among other things to after the fact. It annoyed me a little that it cluttered my $HOME and I figured it&rsquo;d be nice having a manager for these coredumps so one can see what programs crashed, why and how and to easily rotate them.
+                                <p>I&rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly
+random times for me (especially after hibernating), but attaching a debugger
+to gnome-shell isn&rsquo;t as easy as it appears. I&rsquo;ve noticed that it tended
+to dump a <code>core.$pid</code> file in my <code>$HOME</code>, which is a coredump file one
+can load into a debugger to print the backtrace among other things to
+after the fact. It annoyed me a little that it cluttered my <code>$HOME</code> and
+I figured it&rsquo;d be nice having a manager for these coredumps so one can
+see what programs crashed, why and how and to easily rotate them. I&rsquo;ve remembered
+using systemd-coredumpd at some point and kind of liked that, but since I&rsquo;m
+using Alpine Linux that wasn&rsquo;t an option, so I wrote corecollector.</p>
                                 <div class="f6 text-gray mt-2">
                                     Updated <relative-time datetime="2020-02-18"
                                         class="no-wrap" title="Modify at 2020/02/18">
