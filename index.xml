@@ -12,6 +12,21 @@
     
     
     <item>
+      <title>Using VSCode in a Flatpak</title>
+      <link>https://www.cogitri.dev/posts/06-using-flatpaked-vscode/</link>
+      <pubDate>Fri, 27 Mar 2020 09:25:10 +0100</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/06-using-flatpaked-vscode/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve recently started using VSCode as my main editor, mainly due to its
+extensibility, meaning I can use it in almost all scenarios (at work, for
+personal projects, &amp;hellip;) and it&amp;rsquo;s easy to customize to my needs (although the
+defaults are pretty nice already). However, since it uses Electron (which
+currently still needs glibc, &lt;a href=&#34;https://github.com/electron/electron/issues/9662#issuecomment-591719521&#34;&gt;although that might change soon&lt;/a&gt;)
+I currently need to run it in a Flatpak, which needed some setup in order
+to be suitable for development&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Introducing Corecollector, a coredump collector written in D </title>
       <link>https://www.cogitri.dev/posts/05-introducing-corecollector/</link>
       <pubDate>Tue, 18 Feb 2020 23:13:10 +0100</pubDate>
