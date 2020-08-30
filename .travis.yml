@@ -1,9 +1,6 @@
 branches:
     only:
         - devel
-language: go
-go:
-  - master
 dist: xenial
 deploy:
   provider: pages
@@ -16,13 +13,9 @@ deploy:
   on:
     branch: devel
 
-# Ubuntu Hugo is soooo outdated!
-install:
-  - mkdir $HOME/src
-  - cd $HOME/src
-  - git clone https://github.com/gohugoio/hugo.git
-  - cd hugo
-  - go install
+services:
+  - docker
 
 script:
-  - hugo
+  - docker pull alpine
+  - docker run -v $(pwd):/build alpine /bin/sh -c "apk add --no-cache hugo; cd build; hugo"
