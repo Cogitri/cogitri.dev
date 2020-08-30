@@ -6,10 +6,27 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 02 Feb 2020 11:16:06 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2020 18:44:02 -0300</lastBuildDate>
     
 	<atom:link href="https://www.cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Introducing mkmr, a collection of python3 tools to interact with GitLab</title>
+      <link>https://www.cogitri.dev/posts/07-meet-mkmr/</link>
+      <pubDate>Wed, 12 Aug 2020 18:44:02 -0300</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/07-meet-mkmr/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The Linux distribution I contribute to, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;,
+has recently switched fully to using GitLab (self-hosted instance) and has started
+gradually phasing out support for sending patches via the Mailing List.&lt;/p&gt;
+&lt;p&gt;To help smooth the transition for Mailing List contributors and also make contributing
+to Alpine Linux in general more efficient, I decided to step up and help by making it
+easier to create, edit and merge Merge Requests.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Using VSCode in a Flatpak</title>
