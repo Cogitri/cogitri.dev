@@ -1,5 +1,5 @@
 ---
-title: "APKBUILD.vim: filetype, plugins, syntax and plugins for APKBUILDs on vim"
+title: "APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim"
 date: 2020-10-30T17:39:23-03:00
 draft: false
 ---
