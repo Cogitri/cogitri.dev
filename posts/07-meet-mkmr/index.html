@@ -144,7 +144,7 @@ be installed.</p>
 <p>On first use, any of the binaries provided by <code>mkmr</code> it will ask you for your
 Personal Access Token. This is required for python-gitlab to authenticate to the GitLab
 instance and do actions as your user.</p>
-<p><img src="07-meet-mkmr-01.png" alt="Asking User for Personal Access Token"></p>
+<p><img src="/posts/07-meet-mkmr-01.png" alt="Asking User for Personal Access Token"></p>
 <p>In the repository you wish to contribute to you will need 2 remotes set, one that has
 a URL that points to your fork of the repo and one that points to the repo you want to
 contribute to. By default they are <code>origin</code> and <code>upstream</code>.</p>
@@ -155,7 +155,7 @@ remote names. For tools that only interact with upstream one can use <code>--rem
 of the requested tool) or <code>--write</code> (save and exit). The configuration is written to
 <code>${XDG_CONFIG_HOME:-$HOME/.config}/mkmr/config</code> and resides in a section named after
 the directory the repository resides.</p>
-<p><img src="07-meet-mkmr-05.png" alt="Example Configuration"></p>
+<p><img src="/posts/07-meet-mkmr-05.png" alt="Example Configuration"></p>
 <p>The configuration takes the form of INI files, the section refers to the repo, and stores
 configuration for the repository generally, such as <code>--origin</code>, <code>--upstream</code> and <code>--remote</code>.</p>
 <p>Each tool also has its own per-repository configuration, <code>[aports mkmr]</code> as shown above
@@ -172,13 +172,13 @@ creating the merge request via the GitLab API.</p>
 <p><code>mkmr</code> will prompt before making the merge request, letting you check if your values are
 as expected. This can be skipped by passing <code>--yes</code> (and made permanent by passing
 <code>--save</code> with it).</p>
-<p><img src="07-meet-mkmr-02.png" alt="Prompting the user"></p>
+<p><img src="/posts/07-meet-mkmr-02.png" alt="Prompting the user"></p>
 <p>If one wants to pass a different title, description or labels when creating the merge
 request, one can pass <code>--edit</code> (can be made permanent with <code>--save</code>), which will open
 <code>$EDITOR</code> with instructions, inspired by <code>git rebase -i</code>.</p>
-<p><img src="07-meet-mkmr-03.png" alt="Editing the attributes"></p>
+<p><img src="/posts/07-meet-mkmr-03.png" alt="Editing the attributes"></p>
 <p>After checking everything and passing yes to the prompt, the merge request will be created</p>
-<p><img src="07-meet-mkmr-04.png" alt="Merge Request created"></p>
+<p><img src="/posts/07-meet-mkmr-04.png" alt="Merge Request created"></p>
 <p>After creating the merge request, the iid of the merge request will be saved in the cache,
 in a file named after the branch of the merge request. This is used by other tools to connect
 a branch name to an specific merge request.</p>
@@ -205,14 +205,14 @@ a branch name to an specific merge request.</p>
 <p><code>mgmr</code>, the second most important of the <code>mkmr</code> tools, handles merging merge requests by
 rebasing them until they are matching upstream, then merging them. It works only on FF
 merges.</p>
-<p><img src="07-meet-mkmr-06.png" alt="Mixed args to merge"></p>
+<p><img src="/posts/07-meet-mkmr-06.png" alt="Mixed args to merge"></p>
 <p>It can take lots of merge requests and try to merge them all sequentially, it does it by
 creating its own merge train, which attempts to rebase-and-merge each until it succeeds or
 it hits an an error it cannot recover from. It then prints out a summary to the user
 of what merge requests were merged and if not what was the error message.</p>
 <p>It can take the iid of the merge request (the number on the URL one can refer with !N) or
 it can take the name of a branch which will be looked up on the cache and matched to an iid.</p>
-<p><img src="07-meet-mkmr-07.png" alt="Final Report"></p>
+<p><img src="/posts/07-meet-mkmr-07.png" alt="Final Report"></p>
 <p>After merging, <code>mgmr</code> will delete all branches that were merged by usage of the cache.</p>
 <h3 id="vimr">vimr</h3>
 <p>This one allows users to edit attributes of a given merge request by opening them in <code>$EDITOR</code>.</p>
