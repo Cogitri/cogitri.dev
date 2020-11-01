@@ -187,7 +187,7 @@
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected" href="https://www.cogitri.dev/posts/">
                 Posts
                 <span class="Counter hide-lg hide-md hide-sm">
-                    7
+                    8
                 </span>
             </a>
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/about/">
@@ -199,6 +199,39 @@
     <div class="position-relative">
         <div id="user-repositories-list">
             <ul data-filterable-for="your-repos-filter" data-filterable-type="substring">
+                
+                <li class="col-12 d-flex width-full py-4 border-bottom public fork">
+                    <div class="col-12 col-lg-12 d-inline-block">
+                        <div class="d-inline-block mb-1">
+                            <h3>
+                                <a href="https://www.cogitri.dev/posts/08-meet-apkbuild.vim/">APKBUILD.vim: filetype, plugins, syntax and plugins for APKBUILDs on vim</a>
+                            </h3>
+                        </div>
+
+                        <div name="posts-post">
+                            <blockquote>
+<p>Article by editor Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<p>The Linux distro I contribute to, <a href="https://alpinelinux.org">Alpine Linux</a>, uses build recipes called
+APKBUILDs. They are shell scripts but with context-aware variables that can
+affect the final result of package. APKBUILDs are subject to policies that only
+apply to <a href="https://alpinelinux.org">Alpine Linux</a> and its packaging system <code>abuild</code>.</p>
+<p><a href="https://www.vim.org/">Vim</a> is a text editor used by many of our developers and users use for
+editing APKBUILDs. But while vim has a filetype for shellscripts, it is
+insufficient to provide syntax, plugins, indentation and other nice to have
+features that are specific to the context of an APKBUILD.</p>
+<p>In light of that I took upon myself to write a complete implementation of
+a vim <code>filetype</code> for APKBUILDs.</p>
+<p>Meet <a href="https://gitlab.alpinelinux.org/Leo/apkbuild.vim">APKBUILD.vim</a>.</p>
+                        </div>
+
+                        <div class="f6 text-gray mt-2">
+                            Updated <relative-time datetime="2020-10-30" class="no-wrap"
+                                title="Modifyd at 2020/10/30">
+                                October 30, 2020</relative-time>
+                        </div>
+                    </div>
+                </li>
                 
                 <li class="col-12 d-flex width-full py-4 border-bottom public fork">
                     <div class="col-12 col-lg-12 d-inline-block">

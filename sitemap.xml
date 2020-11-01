@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.cogitri.dev/</loc>
-    <lastmod>2020-08-12T18:44:02-03:00</lastmod>
+    <loc>https://www.cogitri.dev/posts/08-meet-apkbuild.vim/</loc>
+    <lastmod>2020-10-30T17:39:23-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.cogitri.dev/posts/07-meet-mkmr/</loc>
-    <lastmod>2020-08-12T18:44:02-03:00</lastmod>
+    <loc>https://www.cogitri.dev/</loc>
+    <lastmod>2020-10-30T17:39:23-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.cogitri.dev/posts/</loc>
+    <lastmod>2020-10-30T17:39:23-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cogitri.dev/posts/07-meet-mkmr/</loc>
     <lastmod>2020-08-12T18:44:02-03:00</lastmod>
   </url>
   

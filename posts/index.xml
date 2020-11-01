@@ -6,10 +6,32 @@
     <description>Recent content in Posts on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Wed, 12 Aug 2020 18:44:02 -0300</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 17:39:23 -0300</lastBuildDate>
     
 	<atom:link href="https://www.cogitri.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>APKBUILD.vim: filetype, plugins, syntax and plugins for APKBUILDs on vim</title>
+      <link>https://www.cogitri.dev/posts/08-meet-apkbuild.vim/</link>
+      <pubDate>Fri, 30 Oct 2020 17:39:23 -0300</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/08-meet-apkbuild.vim/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The Linux distro I contribute to, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;, uses build recipes called
+APKBUILDs. They are shell scripts but with context-aware variables that can
+affect the final result of package. APKBUILDs are subject to policies that only
+apply to &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; and its packaging system &lt;code&gt;abuild&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.vim.org/&#34;&gt;Vim&lt;/a&gt; is a text editor used by many of our developers and users use for
+editing APKBUILDs. But while vim has a filetype for shellscripts, it is
+insufficient to provide syntax, plugins, indentation and other nice to have
+features that are specific to the context of an APKBUILD.&lt;/p&gt;
+&lt;p&gt;In light of that I took upon myself to write a complete implementation of
+a vim &lt;code&gt;filetype&lt;/code&gt; for APKBUILDs.&lt;/p&gt;
+&lt;p&gt;Meet &lt;a href=&#34;https://gitlab.alpinelinux.org/Leo/apkbuild.vim&#34;&gt;APKBUILD.vim&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Introducing mkmr, a collection of python3 tools to interact with GitLab</title>
