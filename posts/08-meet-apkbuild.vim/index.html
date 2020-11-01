@@ -90,13 +90,13 @@
                                     href="https://www.cogitri.dev/posts/08-meet-apkbuild.vim/">APKBUILD.vim: filetype, plugins, syntax and plugins for APKBUILDs on vim</a></strong>
 
                             <div class="d-block text-small text-gray">
-                                Created <time-ago datetime="2020-11-01" class="no-wrap"
-                                    title="Created at 2020/11/01">
-                                    2020-11-01</time-ago>
+                                Created <time-ago datetime="2020-10-30" class="no-wrap"
+                                    title="Created at 2020/10/30">
+                                    2020-10-30</time-ago>
                                 <span class="file-info-divider"></span>
-                                Modifyed <time-ago datetime="2020-11-01" class="no-wrap"
-                                    title="Modifyed  at 2020/11/01">
-                                    2020-11-01</time-ago>
+                                Modifyed <time-ago datetime="2020-10-30" class="no-wrap"
+                                    title="Modifyed  at 2020/10/30">
+                                    2020-10-30</time-ago>
                             </div>
                         </h1>
                     </div>
@@ -111,7 +111,7 @@
                     <div class="Box mt-3 position-relative">
                         <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
                             <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
-                                317 Words
+                                309 Words
                                 
                             </div>
                         </div>
@@ -142,28 +142,30 @@ a vim <code>filetype</code> for APKBUILDs.</p>
 <li>Configuration:<br>
 2.1. Sets correct <code>textwidth</code> of 80 columns.<br>
 2.2: Sets <code>noexpandtab</code> as APKBUILD use tabs for indentation.<br>
-2.3: Sets <code>softtabstop</code> to 4.
-2.4: Sets <code>tabstop</code> and <code>shiftwidth</code> to 4.</li>
+2.3: Sets <code>softtabstop</code> and <code>shiftwidth</code> to 4.</li>
 <li><a href="https://github.com/dense-analysis/ale">ALE</a> Integration:<br>
 3.1. Provides a script to run <a href="https://www.shellcheck.net/">shellcheck</a> with APKBUILD aware filtering and register it into ALE.<br>
 3.2. Adds support for the linters <code>apkbuild-lint</code> and <code>secfixes-check</code> from <a href="https://gitlab.alpinelinux.org/Leo/atools">atools</a> and registers a handler for them.</li>
 </ol>
 <h2 id="pictures">Pictures</h2>
-<p>Here are some side by side comparisons of APKBUILDs with <code>filetype=sh</code> and <code>filetype=APKBUILD</code>:</p>
+<p>Here are some comparisons of APKBUILDs with <code>filetype=sh</code> and <code>filetype=APKBUILD</code>:</p>
 <blockquote>
 <p>Main block of variables used by <code>abuild</code>, notice that the variables that are from <code>abuild</code>
 have a different color than the ones normally used by shell.</p>
 </blockquote>
-<p><img src="08-comparison-main-block.png" alt="Comparison of the main block"></p>
+<p><img src="/posts/08-main-block-apkbuild.png" alt="Main block under filetype=apkbuild"></p>
+<p><img src="/posts/08-main-block-sh.png" alt="Main block under filetype=sh"></p>
 <blockquote>
 <p>Comparison of secfixes, notice how the <code>secfixes:</code> declaration, the versions and the security
 identifiers are all highlighted.</p>
 </blockquote>
-<p><img src="08-comparison-secfixes.png" alt="Comparison of secfixes block"></p>
+<p><img src="/posts/08-secfixes-apkbuild.png" alt="Secfixes under filetype=apkbuild"></p>
+<p><img src="/posts/08-secfixes-sh.png" alt="Secfixes under filetype=sh"></p>
 <blockquote>
 <p>General comparison of <code>Error</code> highlighting.</p>
 </blockquote>
-<p><img src="08-comparison-errors.png" alt="Comparison of Error Highlighting"></p></article>
+<p><img src="/posts/08-errors-apkbuild.png" alt="Errors under apkbuild"></p>
+<p><img src="/posts/08-errors-sh.png" alt="Errors under sh"></p></article>
                         </div>
                     </div>
                 </div>
