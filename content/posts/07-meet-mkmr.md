@@ -42,7 +42,7 @@ On first use, any of the binaries provided by `mkmr` it will ask you for your
 Personal Access Token. This is required for python-gitlab to authenticate to the GitLab
 instance and do actions as your user.
 
-![Asking User for Personal Access Token](07-meet-mkmr-01.png)
+![Asking User for Personal Access Token](/posts/07-meet-mkmr-01.png)
 
 In the repository you wish to contribute to you will need 2 remotes set, one that has
 a URL that points to your fork of the repo and one that points to the repo you want to
@@ -57,7 +57,7 @@ of the requested tool) or `--write` (save and exit). The configuration is writte
 `${XDG_CONFIG_HOME:-$HOME/.config}/mkmr/config` and resides in a section named after
 the directory the repository resides.
 
-![Example Configuration](07-meet-mkmr-05.png)
+![Example Configuration](/posts/07-meet-mkmr-05.png)
 
 The configuration takes the form of INI files, the section refers to the repo, and stores
 configuration for the repository generally, such as `--origin`, `--upstream` and `--remote`.
@@ -81,17 +81,17 @@ creating the merge request via the GitLab API.
 as expected. This can be skipped by passing `--yes` (and made permanent by passing
 `--save` with it).
 
-![Prompting the user](07-meet-mkmr-02.png)
+![Prompting the user](/posts/07-meet-mkmr-02.png)
 
 If one wants to pass a different title, description or labels when creating the merge
 request, one can pass `--edit` (can be made permanent with `--save`), which will open
 `$EDITOR` with instructions, inspired by `git rebase -i`.
 
-![Editing the attributes](07-meet-mkmr-03.png)
+![Editing the attributes](/posts/07-meet-mkmr-03.png)
 
 After checking everything and passing yes to the prompt, the merge request will be created
 
-![Merge Request created](07-meet-mkmr-04.png)
+![Merge Request created](/posts/07-meet-mkmr-04.png)
 
 After creating the merge request, the iid of the merge request will be saved in the cache,
 in a file named after the branch of the merge request. This is used by other tools to connect
@@ -125,7 +125,7 @@ $ tree $XDG_CACHE_HOME/mkmr/gitlab.alpinelinux.org/alpine/aports/branches
 rebasing them until they are matching upstream, then merging them. It works only on FF
 merges.
 
-![Mixed args to merge](07-meet-mkmr-06.png)
+![Mixed args to merge](/posts/07-meet-mkmr-06.png)
 
 It can take lots of merge requests and try to merge them all sequentially, it does it by
 creating its own merge train, which attempts to rebase-and-merge each until it succeeds or
@@ -135,7 +135,7 @@ of what merge requests were merged and if not what was the error message.
 It can take the iid of the merge request (the number on the URL one can refer with !N) or
 it can take the name of a branch which will be looked up on the cache and matched to an iid.
 
-![Final Report](07-meet-mkmr-07.png)
+![Final Report](/posts/07-meet-mkmr-07.png)
 
 After merging, `mgmr` will delete all branches that were merged by usage of the cache.
 
