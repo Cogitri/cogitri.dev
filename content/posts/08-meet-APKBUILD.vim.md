@@ -1,6 +1,6 @@
 ---
 title: "APKBUILD.vim: filetype, plugins, syntax and plugins for APKBUILDs on vim"
-date: 2020-10-30T17:39:23-03:00
+date: 2020-11-01T16:06:13-03:00
 draft: false
 ---
 
@@ -35,7 +35,8 @@ Meet [APKBUILD.vim][2].
 2. Configuration:  
     2.1. Sets correct `textwidth` of 80 columns.  
     2.2: Sets `noexpandtab` as APKBUILD use tabs for indentation.  
-    2.3: Sets `softtabstop` and `shiftwidth` to 4.
+    2.3: Sets `softtabstop` to 4.
+    2.4: Sets `tabstop` and `shiftwidth` to 4.
 3. [ALE][5] Integration:  
     3.1. Provides a script to run [shellcheck][6] with APKBUILD aware filtering and register it into ALE.  
     3.2. Adds support for the linters `apkbuild-lint` and `secfixes-check` from [atools][7] and registers a handler for them.
