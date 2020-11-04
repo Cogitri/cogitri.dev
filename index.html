@@ -185,7 +185,7 @@
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/posts/">
                 Posts
                 <span class="Counter hide-lg hide-md hide-sm">
-                    8
+                    9
                 </span>
             </a>
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/about/">
@@ -230,6 +230,48 @@ features that are specific to the context of an APKBUILD.</p>
 <p>In light of that I took upon myself to write a complete implementation of
 a vim <code>filetype</code> for APKBUILDs.</p>
 <p>Meet <a href="https://gitlab.alpinelinux.org/Leo/apkbuild.vim">APKBUILD.vim</a>.</p>
+                                <div class="f6 text-gray mt-2">
+                                    Updated <relative-time datetime="2020-10-30"
+                                        class="no-wrap" title="Modify at 2020/10/30">
+                                        October 30, 2020</relative-time>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+                        <div
+                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
+                            <div class="pinned-item-list-item-content" name="pinned-post">
+                                <div class="d-flex width-full flex-items-center position-relative">
+                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
+                                        version="1.1" width="12" height="16" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
+                                    </svg>
+                                    <a href="https://www.cogitri.dev/posts/09-nibbler-flatpak/" class="text-bold flex-auto min-width-0 ">
+                                        <span class="repo js-pinnable-item" title="Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines">Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines</span>
+                                    </a>
+                                </div>
+                                <blockquote>
+<p>Article by editor Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<blockquote>
+<p>The Machine Learning terminology here is simplified and will have a loss
+quality, but not pertinent to the point.</p>
+</blockquote>
+<p>Nibbler is a Graphical User Interface to analyse chess games using mainly
+the <a href="https://lczero.org">Leela Chess Zero</a> chess engine (software that plays chess and provides
+an evaluation of positions). It is written specifically for using Leela.</p>
+<p>Nibbler is written specifically to make use of Leela&rsquo;s output. While traditional
+engines ouptut centipawns to indicate how much hundredths of a pawn either side
+is ahead. Leela outputs what it believes what is the Win, Draw and Loss chance
+for the current side, along with how certain it is of its evaluation and other
+information like how many moves left until the games reaches its conclusion.</p>
+<p>Unfortunately for us it is written in Electron which makes it very hard to package
+for <a href="https://musl.libc.org">musl</a> systems like <a href="https://alpinelinux.org">Alpine Linux</a> which I use and am a developer of.
+Fortunately there is <a href="https://flatpak.org">flatpak</a> which is a godsend for packaging heavyweight apps,
+so lets go package it.</p>
                                 <div class="f6 text-gray mt-2">
                                     Updated <relative-time datetime="2020-10-30"
                                         class="no-wrap" title="Modify at 2020/10/30">
@@ -356,35 +398,6 @@ for Void Linux <a href="https://github.com/void-linux/void-packages/pull/10469/"
                                     Updated <relative-time datetime="2020-02-02"
                                         class="no-wrap" title="Modify at 2020/02/02">
                                         February 2, 2020</relative-time>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-                        <div
-                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
-                            <div class="pinned-item-list-item-content" name="pinned-post">
-                                <div class="d-flex width-full flex-items-center position-relative">
-                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
-                                        version="1.1" width="12" height="16" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
-                                    </svg>
-                                    <a href="https://www.cogitri.dev/posts/03-keepassxc-freedesktop-secret/" class="text-bold flex-auto min-width-0 ">
-                                        <span class="repo js-pinnable-item" title="Using KeePassXC as your system-keyring and ssh-agent">Using KeePassXC as your system-keyring and ssh-agent</span>
-                                    </a>
-                                </div>
-                                <h6 id="guest-article-by-maxice8">Guest article by maxice8</h6>
-<p>Recently the community-oriented password manager <a href="https://keepassxc.org/">KeePassXC</a> made a new
-major release, 2.5.0.</p>
-<p>In this new release there was a really important change, the implementation of the
-<a href="https://freedesktop.org/wiki/Specifications/secret-storage-spec/secrets-api-0.1.html">secrets API</a>
-from Freedesktop.</p>
-                                <div class="f6 text-gray mt-2">
-                                    Updated <relative-time datetime="2019-11-04"
-                                        class="no-wrap" title="Modify at 2019/11/04">
-                                        November 4, 2019</relative-time>
                                 </div>
                             </div>
                         </div>

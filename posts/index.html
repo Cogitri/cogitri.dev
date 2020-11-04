@@ -187,7 +187,7 @@
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected" href="https://www.cogitri.dev/posts/">
                 Posts
                 <span class="Counter hide-lg hide-md hide-sm">
-                    8
+                    9
                 </span>
             </a>
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/about/">
@@ -223,6 +223,44 @@ features that are specific to the context of an APKBUILD.</p>
 <p>In light of that I took upon myself to write a complete implementation of
 a vim <code>filetype</code> for APKBUILDs.</p>
 <p>Meet <a href="https://gitlab.alpinelinux.org/Leo/apkbuild.vim">APKBUILD.vim</a>.</p>
+                        </div>
+
+                        <div class="f6 text-gray mt-2">
+                            Updated <relative-time datetime="2020-10-30" class="no-wrap"
+                                title="Modifyd at 2020/10/30">
+                                October 30, 2020</relative-time>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="col-12 d-flex width-full py-4 border-bottom public fork">
+                    <div class="col-12 col-lg-12 d-inline-block">
+                        <div class="d-inline-block mb-1">
+                            <h3>
+                                <a href="https://www.cogitri.dev/posts/09-nibbler-flatpak/">Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines</a>
+                            </h3>
+                        </div>
+
+                        <div name="posts-post">
+                            <blockquote>
+<p>Article by editor Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<blockquote>
+<p>The Machine Learning terminology here is simplified and will have a loss
+quality, but not pertinent to the point.</p>
+</blockquote>
+<p>Nibbler is a Graphical User Interface to analyse chess games using mainly
+the <a href="https://lczero.org">Leela Chess Zero</a> chess engine (software that plays chess and provides
+an evaluation of positions). It is written specifically for using Leela.</p>
+<p>Nibbler is written specifically to make use of Leela&rsquo;s output. While traditional
+engines ouptut centipawns to indicate how much hundredths of a pawn either side
+is ahead. Leela outputs what it believes what is the Win, Draw and Loss chance
+for the current side, along with how certain it is of its evaluation and other
+information like how many moves left until the games reaches its conclusion.</p>
+<p>Unfortunately for us it is written in Electron which makes it very hard to package
+for <a href="https://musl.libc.org">musl</a> systems like <a href="https://alpinelinux.org">Alpine Linux</a> which I use and am a developer of.
+Fortunately there is <a href="https://flatpak.org">flatpak</a> which is a godsend for packaging heavyweight apps,
+so lets go package it.</p>
                         </div>
 
                         <div class="f6 text-gray mt-2">

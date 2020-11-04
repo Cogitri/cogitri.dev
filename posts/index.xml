@@ -34,6 +34,33 @@ a vim &lt;code&gt;filetype&lt;/code&gt; for APKBUILDs.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines</title>
+      <link>https://www.cogitri.dev/posts/09-nibbler-flatpak/</link>
+      <pubDate>Fri, 30 Oct 2020 17:39:23 -0300</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/09-nibbler-flatpak/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Machine Learning terminology here is simplified and will have a loss
+quality, but not pertinent to the point.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Nibbler is a Graphical User Interface to analyse chess games using mainly
+the &lt;a href=&#34;https://lczero.org&#34;&gt;Leela Chess Zero&lt;/a&gt; chess engine (software that plays chess and provides
+an evaluation of positions). It is written specifically for using Leela.&lt;/p&gt;
+&lt;p&gt;Nibbler is written specifically to make use of Leela&amp;rsquo;s output. While traditional
+engines ouptut centipawns to indicate how much hundredths of a pawn either side
+is ahead. Leela outputs what it believes what is the Win, Draw and Loss chance
+for the current side, along with how certain it is of its evaluation and other
+information like how many moves left until the games reaches its conclusion.&lt;/p&gt;
+&lt;p&gt;Unfortunately for us it is written in Electron which makes it very hard to package
+for &lt;a href=&#34;https://musl.libc.org&#34;&gt;musl&lt;/a&gt; systems like &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; which I use and am a developer of.
+Fortunately there is &lt;a href=&#34;https://flatpak.org&#34;&gt;flatpak&lt;/a&gt; which is a godsend for packaging heavyweight apps,
+so lets go package it.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Introducing mkmr, a collection of python3 tools to interact with GitLab</title>
       <link>https://www.cogitri.dev/posts/07-meet-mkmr/</link>
       <pubDate>Wed, 12 Aug 2020 18:44:02 -0300</pubDate>

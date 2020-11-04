@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <link crossorigin="anonymous" media="all"
+        rel="stylesheet"
+        href="https://www.cogitri.dev/css/frameworks.css" />
+    <link crossorigin="anonymous" media="all"
+        rel="stylesheet" href="https://www.cogitri.dev/css/github.css" />
+    <meta name="viewport" content="width=device-width">
+
+    <title>Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines - Cogitri&#39;s blog</title>
+
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://www.cogitri.dev/images/favicon.ico">
+    <meta name="theme-color" content="#1e2327">
+    
+</head>
+
+<body class="env-production emoji-size-boost page-responsive page-profile">
+  <div class="position-relative js-header-wrapper ">
+    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+        <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+    </span>
+    <header class="Header js-details-container Details flex-wrap flex-lg-nowrap p-responsive" role="banner">
+        <div class="Header-item d-none d-lg-flex">
+            <a class="Header-link" href="https://www.cogitri.dev" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div
+            class="Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden">
+            <div class="header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+                role="combobox" aria-owns="jump-to-results" aria-label="Search or jump to" aria-haspopup="listbox"
+                aria-expanded="false">
+                <div class="position-relative">
+                </div>
+            </div>
+        </div>
+        <div class="Header-item Header-item--full flex-justify-center d-lg-none position-relative" style="margin-right: auto;">
+            <a class="Header-link" href="https://www.cogitri.dev" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div class="Header-item position-relative mr-0 d-none d-lg-flex">
+            <details class="details-overlay details-reset">
+                <summary class="Header-link" aria-label="View profile and more"
+                    data-ga-click="Header, show menu, icon:avatar">
+                    
+                    <img alt="" class="avatar" src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4" height="20" width="20">
+                    
+                </summary>
+            </details>
+        </div>
+    </header>
+</div>
+
+<div id="start-of-content" class="show-on-focus"></div>
+<div id="js-flash-container">
+</div>
+
+  
+<div class="application-main " data-commit-hovercards-enabled="">
+    <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+        <main id="js-repo-pjax-container" data-pjax-container="">
+            <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav pt-0 pt-lg-4 ">
+                <div class="repohead-details-container clearfix container-lg p-responsive d-none d-lg-block">
+                    <div class="mb-3 d-flex">
+                        <h1 class="public css-truncate float-none flex-auto width-fit pl-0">
+                            <a class="avatar mr-1" href="https://www.cogitri.dev/about/">
+                            
+
+                                <img
+                                    src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4" width="26" height="26">
+                            
+                            </a>
+                            <span class="author"><a
+                                    href="https://www.cogitri.dev">Rasmus Thomsen</a></span>
+                            <span class="path-divider">/</span>
+                            <strong itemprop="name" class="css-truncate-target" style="max-width: 410px"><a
+                                    href="https://www.cogitri.dev/posts/09-nibbler-flatpak/">Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines</a></strong>
+
+                            <div class="d-block text-small text-gray">
+                                Created <time-ago datetime="2020-10-30" class="no-wrap"
+                                    title="Created at 2020/10/30">
+                                    2020-10-30</time-ago>
+                                <span class="file-info-divider"></span>
+                                Modifyed <time-ago datetime="2020-10-30" class="no-wrap"
+                                    title="Modifyed  at 2020/10/30">
+                                    2020-10-30</time-ago>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  p-responsive">
+                <div class="repository-content ">
+                    <div class="Box mt-3 position-relative">
+                        <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
+                            <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                                968 Words
+                                
+                            </div>
+                        </div>
+
+                        <div id="readme" class="Box-body readme blob instapaper_body js-code-block-container">
+                            <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><blockquote>
+<p>Article by editor Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<blockquote>
+<p>The Machine Learning terminology here is simplified and will have a loss
+quality, but not pertinent to the point.</p>
+</blockquote>
+<p>Nibbler is a Graphical User Interface to analyse chess games using mainly
+the <a href="https://lczero.org">Leela Chess Zero</a> chess engine (software that plays chess and provides
+an evaluation of positions). It is written specifically for using Leela.</p>
+<p>Nibbler is written specifically to make use of Leela&rsquo;s output. While traditional
+engines ouptut centipawns to indicate how much hundredths of a pawn either side
+is ahead. Leela outputs what it believes what is the Win, Draw and Loss chance
+for the current side, along with how certain it is of its evaluation and other
+information like how many moves left until the games reaches its conclusion.</p>
+<p>Unfortunately for us it is written in Electron which makes it very hard to package
+for <a href="https://musl.libc.org">musl</a> systems like <a href="https://alpinelinux.org">Alpine Linux</a> which I use and am a developer of.
+Fortunately there is <a href="https://flatpak.org">flatpak</a> which is a godsend for packaging heavyweight apps,
+so lets go package it.</p>
+<h2 id="writing-the-boilerplate">Writing the boilerplate</h2>
+<p>Lets start by writing the boilerplate we need to get started on any Flatpak app.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">app-id</span>: org.fohristiwhirl.nibbler
+<span style="color:#66d9ef">runtime</span>: org.freedesktop.Platform
+<span style="color:#66d9ef">runtime-version</span>: <span style="color:#e6db74">&#39;20.08&#39;</span>
+<span style="color:#66d9ef">branch</span>: stable
+<span style="color:#66d9ef">sdk</span>: org.freedesktop.Sdk
+<span style="color:#66d9ef">command</span>: /app/nibbler/nibbler
+
+<span style="color:#66d9ef">finish-args</span>:
+  - --share=ipc <span style="color:#75715e"># Needed for X11</span>
+  - --socket=x11 <span style="color:#75715e"># Electron needs Ozone to support Wayland but it is not there yet</span>
+  - --device=dri <span style="color:#75715e"># need access to the GPU</span>
+  - --filesystem=xdg-data <span style="color:#75715e"># Access to $XDG_DATA_HOME, letting the user load networks</span>
+</code></pre></div><h2 id="writing-the-module">Writing the module</h2>
+<p>Now lets package Nibbler itself, in this case we will use the pre-packaged Nibbler
+for Glibc x86_64 instead of compiling Electron ourselves, which is rather time intensive.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">modules</span>:
+    - <span style="color:#66d9ef">name</span>: nibbler
+    <span style="color:#66d9ef">buildsystem</span>: simple
+    <span style="color:#66d9ef">sources</span>:
+      - <span style="color:#66d9ef">type</span>: archive
+        <span style="color:#66d9ef">url</span>: https://github.com/fohristiwhirl/nibbler/releases/download/v1<span style="color:#ae81ff">.5.7</span>/nibbler<span style="color:#ae81ff">-1.5.7</span>-linux.zip
+        <span style="color:#66d9ef">sha256</span>: f64d7fc89f5cd68b41dccff4fc7aa2f03a482750f2d7fa6af522f78d74264f4d
+      - <span style="color:#66d9ef">type</span>: file
+        <span style="color:#66d9ef">path</span>: org.fohristiwhirl.nibbler.desktop
+        <span style="color:#66d9ef">sha256</span>: 75ce7081b35321eeeb80043483a6977babe11055ed41f3a22cc718b63fabc6fa
+    <span style="color:#66d9ef">build-commands</span>:
+      - <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        install -Dm0644 org.fohristiwhirl.nibbler.desktop -t /app/share/applications</span>
+        mkdir -p /nibbler
+        mv * /nibbler
+        mkdir -p /app
+        mv /nibbler /app
+        chmod +x /app/nibbler/nibbler
+</code></pre></div><h3 id="desktop-file">.desktop file</h3>
+<p>Nibbler itself has no .desktop file, so let&rsquo;s write one for it. One can notice that
+<code>--no-sandbox</code> is passed, which is required because Flatpak doesn&rsquo;t allow SUID or
+root-owned binaries, which are required for Electron&rsquo;s sandbox.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[Desktop Entry]</span>
+<span style="color:#a6e22e">Name</span><span style="color:#f92672">=</span><span style="color:#e6db74">Nibbler (Flatpak)</span>
+<span style="color:#a6e22e">Comment</span><span style="color:#f92672">=</span><span style="color:#e6db74">Leela Chess Zero (Lc0) Interface</span>
+<span style="color:#a6e22e">Exec</span><span style="color:#f92672">=</span><span style="color:#e6db74">/app/nibbler/nibbler --no-sandbox %U</span>
+<span style="color:#a6e22e">Icon</span><span style="color:#f92672">=</span><span style="color:#e6db74">Nibbler</span>
+<span style="color:#a6e22e">StartupNotify</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+<span style="color:#a6e22e">Terminal</span><span style="color:#f92672">=</span><span style="color:#e6db74">false</span>
+<span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">Application</span>
+<span style="color:#a6e22e">Categories</span><span style="color:#f92672">=</span><span style="color:#e6db74">Game</span>
+</code></pre></div><h3 id="packaging-lc0">Packaging Lc0</h3>
+<p>Now the hardest part, packaging the Neural Network Engine itself. Neural Network chess
+engines have two main components:</p>
+<ol>
+<li>A binary which looks at a position on a chess board and uses a neural network
+to derive information from the position, such as the expected win rate for each
+side (or draw), the certainty of those win rates, and how many moves are left before
+the conclusion of the game. All that information and more is passed to Nibbler.</li>
+<li>A weights file, which is a representation of a Neural Network that was trained through
+either playing itself, observing high-level games, or both. Storing in it the useful
+connections (like a super simple model of a brain) that allow it to evaluate a position
+on a chess board with great accuracy.</li>
+</ol>
+<p>Lets package them, by starting with the dependencies of lc0. These can be found in
+<a href="https://github.com/flathub">Flathub&rsquo;s repos</a> as they are used in other Flatpak-ed packages:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#66d9ef">name</span>: eigen
+    <span style="color:#66d9ef">buildsystem</span>: cmake-ninja
+    <span style="color:#66d9ef">builddir</span>: <span style="color:#66d9ef">true</span>
+    <span style="color:#66d9ef">sources</span>:
+     - <span style="color:#66d9ef">type</span>: archive
+       <span style="color:#66d9ef">url</span>: https://gitlab.com/libeigen/eigen/-/archive/<span style="color:#ae81ff">3.3.8</span>/eigen<span style="color:#ae81ff">-3.3.8</span>.tar.gz
+       <span style="color:#66d9ef">sha256</span>: 146a480b8ed1fb6ac7cd33fec9eb5e8f8f62c3683b3f850094d9d5c35a92419a
+  - <span style="color:#66d9ef">name</span>: openblas
+    <span style="color:#66d9ef">no-autogen</span>: <span style="color:#66d9ef">true</span>
+    <span style="color:#66d9ef">make-args</span>:
+      - DYNAMIC_ARCH=<span style="color:#ae81ff">1</span>
+      - FC=gfortran
+      - NO_LAPACKE=<span style="color:#ae81ff">1</span>
+      - USE_OPENMP=<span style="color:#ae81ff">0</span> <span style="color:#75715e"># OpenMP off by default, this hack skips &#39;test_fork&#39; which crashes on i386</span>
+    <span style="color:#66d9ef">make-install-args</span>:
+      - PREFIX=/app
+    <span style="color:#66d9ef">sources</span>:
+      - <span style="color:#66d9ef">type</span>: archive
+        <span style="color:#66d9ef">url</span>: https://github.com/xianyi/OpenBLAS/archive/v0<span style="color:#ae81ff">.3.12</span>.tar.gz
+        <span style="color:#66d9ef">sha256</span>: 65a7d3a4010a4e3bd5c0baa41a234797cd3a1735449a4a5902129152601dc57b
+</code></pre></div><p>And now we package lc0 and the weights file it uses. Under default settings the weights
+need to be in the same directory as the executable and be named <code>nn</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#66d9ef">name</span>: lc0
+    <span style="color:#66d9ef">buildsystem</span>: meson
+    <span style="color:#66d9ef">config-opts</span>:
+      - -Dopenblas=<span style="color:#66d9ef">true</span>
+      - -Dopenblas_libdirs=/app/lib
+      - -Dgtest=<span style="color:#66d9ef">false</span>
+      - -Db_lto=<span style="color:#66d9ef">true</span>
+      - -Dopencl=<span style="color:#66d9ef">false</span>
+    <span style="color:#66d9ef">sources</span>:
+      - <span style="color:#66d9ef">type</span>: git
+        <span style="color:#66d9ef">url</span>: https://github.com/LeelaChessZero/lc0
+        <span style="color:#66d9ef">tag</span>: v0<span style="color:#ae81ff">.26.3</span>
+  - <span style="color:#66d9ef">name</span>: nn
+    <span style="color:#66d9ef">buildsystem</span>: simple
+    <span style="color:#66d9ef">build-commands</span>:
+      - <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        mkdir -p /app/bin</span>
+        mv nn /app/bin
+    <span style="color:#66d9ef">sources</span>:
+      - <span style="color:#66d9ef">type</span>: file
+        <span style="color:#66d9ef">dest-filename</span>: nn
+        <span style="color:#66d9ef">url</span>: https://training.lczero.org/get_network?sha=4df05b0f0e80523018c073fd151ba26d955140ba303e84cebd96e027c6e06a3e
+        <span style="color:#66d9ef">sha256</span>: 821aabc4316d49a526ba737a218fb868dd7c72c5e7b1a91eb8e6c805e3503028
+</code></pre></div><p>This is good enough, but let&rsquo;s go further.</p>
+<h3 id="packaging-a-nnue-chess-engine">Packaging a NNUE Chess Engine</h3>
+<p>There is a different Neural Network type than the one used by lc0, called
+<a href="https://www.chessprogramming.org/NNUE">Efficiently Updatable Neural Networks</a>. It is much smaller and gives
+less outputs that can be used by Nibbler but it is fast on CPUs, specially
+with instructions like AVX512, while Leela excels when using GPUs specially
+RTXes with CUDA.</p>
+<p>So let&rsquo;s package <a href="https://github.com/syzygy1/Cfish">cfish</a>, a C rewrite of <a href="https://stockfishchess.org">Stockfish</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#66d9ef">name</span>: cfish-pure-NNUE
+    <span style="color:#66d9ef">buildsystem</span>: simple
+    <span style="color:#66d9ef">build-options</span>:
+      <span style="color:#66d9ef">env</span>:
+        <span style="color:#66d9ef">ARCH</span>: x86<span style="color:#ae81ff">-64</span>-bmi2
+        <span style="color:#66d9ef">COMP</span>: clang
+        <span style="color:#66d9ef">COMPXX</span>: clang+<span style="color:#e6db74">+
+</span><span style="color:#e6db74">    build-commands:</span>
+      - <span style="color:#e6db74">|
+</span><span style="color:#e6db74">        # Replace their network with the one we want to use, in this case it is</span>
+        <span style="color:#75715e"># dark horse 0.2a &#34;Aldi&#34;</span>
+        <span style="color:#75715e"># Taken from: https://www.patreon.com/posts/dark-horse-0-2a-40420324</span>
+        sed -i <span style="color:#e6db74">&#39;s|nn-2eb2e0707c2b.nnue|nn-c2fd094bce06.nnue|&#39;</span> src/evaluate.h
+        <span style="color:#75715e"># Move the Neural Network to src, so we don&#39;t need to download it</span>
+        mv nn-c2fd094bce06.nnue src
+        <span style="color:#75715e"># Farthest I can go in my CPU, others might want to use avx512, vnni256</span>
+        <span style="color:#75715e"># or even vnni512 instead</span>
+        make -C src build nnue=yes pure=yes embed=yes numa=no lto=yes extra=yes
+        install -Dm0755 src/cfish -t /app/bin
+    <span style="color:#66d9ef">sources</span>:
+      - <span style="color:#66d9ef">type</span>: git
+        <span style="color:#66d9ef">url</span>: https://github.com/syzygy1/Cfish.git
+        <span style="color:#66d9ef">commit</span>: b5576f28b82828143fad03b52d3f041240204d6c
+      - <span style="color:#66d9ef">type</span>: file
+        <span style="color:#66d9ef">path</span>: nn-c2fd094bce06.nnue
+        <span style="color:#66d9ef">sha256</span>: c2fd094bce06942e882a7526a7443007a511ed5ee256613cf3a60a9f4ac744e8
+</code></pre></div><p>This will give us a binary called <code>cfish</code> that has an embedded NNUE network in it
+which guarantees it will always work, as long as you have a CPU that supports the
+instructions enabled by <code>bmi2</code>. Those with more modern CPUs might want to go even
+further and enable AVX512 or even VNNI by changing <code>x86-64-bmi2</code> to the appropriate
+value.</p>
+<h3 id="wrapping-up">Wrapping up</h3>
+<p>In this article we have packaged a Chess GUI Interface for Leela, Leela itself,
+a very strong weights file for Leela to use and an engine that uses a different
+type of Neural Network that is meant for CPU users.</p>
+<p>All this and more (another Stockfish engine, patches for different functionality
+in Nibber) can be found in my <a href="https://github.com/maxice8/nibbler-flatpak">Nibbler-flatpak</a> repository.</p></article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+
+  <div class="footer container-lg width-full p-responsive" role="contentinfo">
+    <div
+        class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+            <li class="mr-3 mr-lg-0">© 2019. Theme by <a href="https://github.com/MeiK2333/github-style"><span>github-style</span></a></li>
+        </ul>
+
+        <a aria-label="Homepage" title="Cogitri&#39;s blog" class="footer-octicon d-none d-lg-block mx-lg-4"
+            href="https://www.cogitri.dev">
+            <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                </path>
+            </svg>
+        </a>
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        </ul>
+    </div>
+    <div class="d-flex flex-justify-center pb-6">
+        <span class="f6 text-gray-light"></span>
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+    type="application/javascript" src="https://www.cogitri.dev/js/frameworks.js"></script>
+
+<script crossorigin="anonymous" async="async"
+    type="application/javascript" src="https://www.cogitri.dev/js/github-bootstrap.js"></script>
+<script>
+    let classs = ['pinned-item-desc', 'text-gray', 'text-small', 'd-block', 'mt-2', 'mb-3'];
+    const pinned_posts = document.getElementsByName('pinned-post');
+    for (let i = 0; i < pinned_posts.length; i++) {
+        for (let j = 0; j < classs.length; j++) {
+            const ps = pinned_posts[i].getElementsByTagName('p');
+            for (let k = 0; k < ps.length; k++) {
+                ps[k].classList.add(classs[j]);
+            }
+        }
+    }
+    classs = [ 'd-inline-block', 'text-gray', 'mb-2', 'pr-4'];
+    const posts_posts = document.getElementsByName('posts-post');
+    for (let i = 0; i < posts_posts.length; i++) {
+        for (let j = 0; j < classs.length; j++) {
+            const ps = posts_posts[i].getElementsByTagName('p');
+            for (let k = 0; k < ps.length; k++) {
+                ps[k].classList.add(classs[j]);
+            }
+        }
+    }
+</script>
+</body>
+
+</html>
