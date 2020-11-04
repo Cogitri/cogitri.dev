@@ -3,22 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.cogitri.dev/</loc>
+    <lastmod>2020-11-01T19:39:20-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cogitri.dev/posts/</loc>
+    <lastmod>2020-11-01T19:39:20-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cogitri.dev/posts/10-pantalaimon-setup/</loc>
+    <lastmod>2020-11-01T19:39:20-03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.cogitri.dev/posts/08-meet-apkbuild.vim/</loc>
     <lastmod>2020-10-30T17:39:23-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.cogitri.dev/</loc>
-    <lastmod>2020-10-30T17:39:23-03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.cogitri.dev/posts/09-nibbler-flatpak/</loc>
-    <lastmod>2020-10-30T17:39:23-03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.cogitri.dev/posts/</loc>
     <lastmod>2020-10-30T17:39:23-03:00</lastmod>
   </url>
   

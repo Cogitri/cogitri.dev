@@ -185,7 +185,7 @@
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/posts/">
                 Posts
                 <span class="Counter hide-lg hide-md hide-sm">
-                    9
+                    10
                 </span>
             </a>
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/about/">
@@ -201,6 +201,43 @@
                 </h2>
 
                 <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
+                    
+                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+                        <div
+                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
+                            <div class="pinned-item-list-item-content" name="pinned-post">
+                                <div class="d-flex width-full flex-items-center position-relative">
+                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
+                                        version="1.1" width="12" height="16" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
+                                    </svg>
+                                    <a href="https://www.cogitri.dev/posts/10-pantalaimon-setup/" class="text-bold flex-auto min-width-0 ">
+                                        <span class="repo js-pinnable-item" title="Setting up Pantalaimon for usage with Matrix clients and using panctl">Setting up Pantalaimon for usage with Matrix clients and using panctl</span>
+                                    </a>
+                                </div>
+                                <blockquote>
+<p>Article by editor Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<p><a href="https://github.com/matrix-org/pantalaimon">Pantalaimon</a> is a End-to-End Encryption (E2EE) aware proxy daemon that
+connects to a <a href="https://matrix.org/">Matrix</a> server and handles sending and receiving messages.
+It also handles verifying sessions, verifying or blacklisting devices, and
+exporting/importing session keys.</p>
+<p>Its main use-case is to provide clients that have not yet fully implemented
+some of the most important Matrix&rsquo;s features, namely verifying devices and
+End-to-End encryption, a good man-in-the-middle that does it transparently
+for you.</p>
+<p>Today we will set up a local <code>pantalaimon</code> daemon and log in with
+<a href="https://wiki.gnome.org/Apps/Fractal">Fractal</a>, the GNOME client for Matrix. We will also learn how to use the
+<code>panctl</code> program from Pantalaimon to verify the session we started with Fractal.</p>
+                                <div class="f6 text-gray mt-2">
+                                    Updated <relative-time datetime="2020-11-01"
+                                        class="no-wrap" title="Modify at 2020/11/01">
+                                        November 1, 2020</relative-time>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                     
                     <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
                         <div
@@ -371,33 +408,6 @@ using Alpine Linux that wasn&rsquo;t an option, so I wrote corecollector.</p>
                                     Updated <relative-time datetime="2020-02-18"
                                         class="no-wrap" title="Modify at 2020/02/18">
                                         February 18, 2020</relative-time>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    
-                    <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-                        <div
-                            class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source  sortable-button-item">
-                            <div class="pinned-item-list-item-content" name="pinned-post">
-                                <div class="d-flex width-full flex-items-center position-relative">
-                                    <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 12 16"
-                                        version="1.1" width="12" height="16" aria-hidden="true">
-                                        <path fill-rule="evenodd"
-                                            d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z" />
-                                    </svg>
-                                    <a href="https://www.cogitri.dev/posts/04-secure-boot-with-unified-kernel-image/" class="text-bold flex-auto min-width-0 ">
-                                        <span class="repo js-pinnable-item" title="Booting Alpine Linux with a Unified Kernel Image and Secure Boot">Booting Alpine Linux with a Unified Kernel Image and Secure Boot</span>
-                                    </a>
-                                </div>
-                                <h6 id="guest-article-by-maxice8">Guest article by maxice8</h6>
-<p>Recently I got myself into package <code>sd-boot</code> from the Systemd project
-into Alpine Linux. I previously packaged it as an April&rsquo;s fools joke
-for Void Linux <a href="https://github.com/void-linux/void-packages/pull/10469/">Here</a>.</p>
-                                <div class="f6 text-gray mt-2">
-                                    Updated <relative-time datetime="2020-02-02"
-                                        class="no-wrap" title="Modify at 2020/02/02">
-                                        February 2, 2020</relative-time>
                                 </div>
                             </div>
                         </div>

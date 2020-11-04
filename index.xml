@@ -6,10 +6,32 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Fri, 30 Oct 2020 17:39:23 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 01 Nov 2020 19:39:20 -0300</lastBuildDate>
     
 	<atom:link href="https://www.cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Setting up Pantalaimon for usage with Matrix clients and using panctl</title>
+      <link>https://www.cogitri.dev/posts/10-pantalaimon-setup/</link>
+      <pubDate>Sun, 01 Nov 2020 19:39:20 -0300</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/10-pantalaimon-setup/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/matrix-org/pantalaimon&#34;&gt;Pantalaimon&lt;/a&gt; is a End-to-End Encryption (E2EE) aware proxy daemon that
+connects to a &lt;a href=&#34;https://matrix.org/&#34;&gt;Matrix&lt;/a&gt; server and handles sending and receiving messages.
+It also handles verifying sessions, verifying or blacklisting devices, and
+exporting/importing session keys.&lt;/p&gt;
+&lt;p&gt;Its main use-case is to provide clients that have not yet fully implemented
+some of the most important Matrix&amp;rsquo;s features, namely verifying devices and
+End-to-End encryption, a good man-in-the-middle that does it transparently
+for you.&lt;/p&gt;
+&lt;p&gt;Today we will set up a local &lt;code&gt;pantalaimon&lt;/code&gt; daemon and log in with
+&lt;a href=&#34;https://wiki.gnome.org/Apps/Fractal&#34;&gt;Fractal&lt;/a&gt;, the GNOME client for Matrix. We will also learn how to use the
+&lt;code&gt;panctl&lt;/code&gt; program from Pantalaimon to verify the session we started with Fractal.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim</title>
