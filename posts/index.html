@@ -187,7 +187,7 @@
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected" href="https://www.cogitri.dev/posts/">
                 Posts
                 <span class="Counter hide-lg hide-md hide-sm">
-                    10
+                    11
                 </span>
             </a>
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="https://www.cogitri.dev/about/">
@@ -199,6 +199,37 @@
     <div class="position-relative">
         <div id="user-repositories-list">
             <ul data-filterable-for="your-repos-filter" data-filterable-type="substring">
+                
+                <li class="col-12 d-flex width-full py-4 border-bottom public fork">
+                    <div class="col-12 col-lg-12 d-inline-block">
+                        <div class="d-inline-block mb-1">
+                            <h3>
+                                <a href="https://www.cogitri.dev/posts/11-update-apkbuild/">APKBUILD.vim: updates, new stuff, better</a>
+                            </h3>
+                        </div>
+
+                        <div name="posts-post">
+                            <blockquote>
+<p>Article by Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<p>This is an update on
+<a href="/posts/08-meet-apkbuild.vim">APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim</a>,
+as of now APKBUILD.vim is under very active constant development, and it will
+remain this way until all features have been implemented and there is nothing
+else to remove.</p>
+<p>In fact the development is so fast that the article was outdated the moment
+it arrived. So lets catch up on everything that happened until
+247b647ba47cb9a091020e4e5c4df7894cc05b1d.</p>
+<p>If you wish to follow along then here are the <a href="https://gitlab.alpinelinux.org/Leo/apkbuild.vim/-/commits/master">commits</a>.</p>
+                        </div>
+
+                        <div class="f6 text-gray mt-2">
+                            Updated <relative-time datetime="2020-11-03" class="no-wrap"
+                                title="Modifyd at 2020/11/03">
+                                November 3, 2020</relative-time>
+                        </div>
+                    </div>
+                </li>
                 
                 <li class="col-12 d-flex width-full py-4 border-bottom public fork">
                     <div class="col-12 col-lg-12 d-inline-block">
@@ -459,29 +490,18 @@ is currently a mirror to git.alpinelinux.org).</p>
                     </div>
                 </li>
                 
-                <li class="col-12 d-flex width-full py-4 border-bottom public fork">
-                    <div class="col-12 col-lg-12 d-inline-block">
-                        <div class="d-inline-block mb-1">
-                            <h3>
-                                <a href="https://www.cogitri.dev/posts/01-introducing-tmplgen/">Introducing tmplgen</a>
-                            </h3>
-                        </div>
-
-                        <div name="posts-post">
-                            <p>Some time ago <a href="https://github.com/maxice8">maxice8</a> had told me about <a href="https://github.com/maxice8/meltryllis/blob/d3b7383e95a3be987a4a252530347ae9a7b6a266/bin/gemnerator">gemnator</a>, a simple script written in SH
-to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from  the rubygems.org API and generates a ready to use template from it.
-I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.io, metacpan.org) and adding more functionality to it, like updating existing templates.</p>
-                        </div>
-
-                        <div class="f6 text-gray mt-2">
-                            Updated <relative-time datetime="2019-02-03" class="no-wrap"
-                                title="Modifyd at 2019/02/03">
-                                February 3, 2019</relative-time>
-                        </div>
-                    </div>
-                </li>
-                
             </ul>
+            
+            <div class="paginate-container">
+                <div class="BtnGroup" data-test-selector="pagination">
+                    
+                    <button class="btn btn-outline BtnGroup-item" disabled="disabled">Previous</button>
+                    
+                    
+                    <a rel="nofollow" class="btn btn-outline BtnGroup-item" href="/posts/2/">Next</a>
+                    
+                </div>
+            </div>
             
         </div>
     </div>

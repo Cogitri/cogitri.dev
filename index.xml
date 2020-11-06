@@ -6,10 +6,30 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 01 Nov 2020 19:39:20 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2020 23:59:41 -0300</lastBuildDate>
     
 	<atom:link href="https://www.cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>APKBUILD.vim: updates, new stuff, better</title>
+      <link>https://www.cogitri.dev/posts/11-update-apkbuild/</link>
+      <pubDate>Tue, 03 Nov 2020 23:59:41 -0300</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/11-update-apkbuild/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Article by Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is an update on
+&lt;a href=&#34;https://www.cogitri.dev/posts/08-meet-apkbuild.vim&#34;&gt;APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim&lt;/a&gt;,
+as of now APKBUILD.vim is under very active constant development, and it will
+remain this way until all features have been implemented and there is nothing
+else to remove.&lt;/p&gt;
+&lt;p&gt;In fact the development is so fast that the article was outdated the moment
+it arrived. So lets catch up on everything that happened until
+247b647ba47cb9a091020e4e5c4df7894cc05b1d.&lt;/p&gt;
+&lt;p&gt;If you wish to follow along then here are the &lt;a href=&#34;https://gitlab.alpinelinux.org/Leo/apkbuild.vim/-/commits/master&#34;&gt;commits&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Setting up Pantalaimon for usage with Matrix clients and using panctl</title>
