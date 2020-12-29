@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.cogitri.dev/posts/11-update-apkbuild/</loc>
-    <lastmod>2020-11-03T23:59:41-03:00</lastmod>
+    <loc>https://www.cogitri.dev/</loc>
+    <lastmod>2020-12-27T21:57:24-03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.cogitri.dev/</loc>
-    <lastmod>2020-11-03T23:59:41-03:00</lastmod>
+    <loc>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</loc>
+    <lastmod>2020-12-27T21:57:24-03:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.cogitri.dev/posts/</loc>
+    <lastmod>2020-12-27T21:57:24-03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cogitri.dev/posts/11-update-apkbuild/</loc>
     <lastmod>2020-11-03T23:59:41-03:00</lastmod>
   </url>
   

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <link crossorigin="anonymous" media="all"
+        rel="stylesheet"
+        href="https://www.cogitri.dev/css/frameworks.css" />
+    <link crossorigin="anonymous" media="all"
+        rel="stylesheet" href="https://www.cogitri.dev/css/github.css" />
+    <meta name="viewport" content="width=device-width">
+
+    <title>Creating an Alpine Developer Environment for Fedora Silverblue - Cogitri&#39;s blog</title>
+
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://www.cogitri.dev/images/favicon.ico">
+    <meta name="theme-color" content="#1e2327">
+    
+</head>
+
+<body class="env-production emoji-size-boost page-responsive page-profile">
+  <div class="position-relative js-header-wrapper ">
+    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+        <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+    </span>
+    <header class="Header js-details-container Details flex-wrap flex-lg-nowrap p-responsive" role="banner">
+        <div class="Header-item d-none d-lg-flex">
+            <a class="Header-link" href="https://www.cogitri.dev" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div
+            class="Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden">
+            <div class="header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+                role="combobox" aria-owns="jump-to-results" aria-label="Search or jump to" aria-haspopup="listbox"
+                aria-expanded="false">
+                <div class="position-relative">
+                </div>
+            </div>
+        </div>
+        <div class="Header-item Header-item--full flex-justify-center d-lg-none position-relative" style="margin-right: auto;">
+            <a class="Header-link" href="https://www.cogitri.dev" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div class="Header-item position-relative mr-0 d-none d-lg-flex">
+            <details class="details-overlay details-reset">
+                <summary class="Header-link" aria-label="View profile and more"
+                    data-ga-click="Header, show menu, icon:avatar">
+                    
+                    <img alt="" class="avatar" src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4" height="20" width="20">
+                    
+                </summary>
+            </details>
+        </div>
+    </header>
+</div>
+
+<div id="start-of-content" class="show-on-focus"></div>
+<div id="js-flash-container">
+</div>
+
+  
+<div class="application-main " data-commit-hovercards-enabled="">
+    <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+        <main id="js-repo-pjax-container" data-pjax-container="">
+            <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav pt-0 pt-lg-4 ">
+                <div class="repohead-details-container clearfix container-lg p-responsive d-none d-lg-block">
+                    <div class="mb-3 d-flex">
+                        <h1 class="public css-truncate float-none flex-auto width-fit pl-0">
+                            <a class="avatar mr-1" href="https://www.cogitri.dev/about/">
+                            
+
+                                <img
+                                    src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4" width="26" height="26">
+                            
+                            </a>
+                            <span class="author"><a
+                                    href="https://www.cogitri.dev">Rasmus Thomsen</a></span>
+                            <span class="path-divider">/</span>
+                            <strong itemprop="name" class="css-truncate-target" style="max-width: 410px"><a
+                                    href="https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/">Creating an Alpine Developer Environment for Fedora Silverblue</a></strong>
+
+                            <div class="d-block text-small text-gray">
+                                Created <time-ago datetime="2020-12-27" class="no-wrap"
+                                    title="Created at 2020/12/27">
+                                    2020-12-27</time-ago>
+                                <span class="file-info-divider"></span>
+                                Modifyed <time-ago datetime="2020-12-27" class="no-wrap"
+                                    title="Modifyed  at 2020/12/27">
+                                    2020-12-27</time-ago>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  p-responsive">
+                <div class="repository-content ">
+                    <div class="Box mt-3 position-relative">
+                        <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
+                            <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                                2627 Words
+                                
+                            </div>
+                        </div>
+
+                        <div id="readme" class="Box-body readme blob instapaper_body js-code-block-container">
+                            <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><blockquote>
+<p>Article by editor Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<p>As readers know I&rsquo;m a developer for <a href="https://alpinelinux.org">Alpine Linux</a>, it is a very nice simple distribution for running containers.</p>
+<p>Unforunately it is not very nice when using GNOME, it has less developers than other distros and its integration isn&rsquo;t as good as it is in the more popular distros like Debian and Fedora.</p>
+<p>With that in mind I have decided to test <a href="https://silverblue.fedoraproject.org/">Fedora Silverblue</a>, a flavour of Fedora with GNOME that uses <a href="https://ostree.readthedocs.io/en/latest/">OSTree</a> to provide reliable upgrades and rollbacks of the operating system, allowing the user to overlay their own packages on top and using container technologies (like <a href="https://podman.io/">podman</a> and <a href="https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/">toolbox</a>) to provide an alternative to installing packages onto the system itself.</p>
+<p>In this article I&rsquo;ll describe the process of creating an <a href="https://alpinelinux.org">Alpine Linux</a> image to be used in podman and accessed via SSH or <code>podman exec</code>, while taking into account the peculirarities of working from inside toolbox.</p>
+<h2 id="dockerfile">Dockerfile</h2>
+<p>The first thing we need is the image itself, so lets write a <code>Dockerfile</code> that has:</p>
+<ul>
+<li><code>alpine-sdk</code> (equivalent to <code>build-essentials</code>), <code>alpine-conf</code>, <code>abuild</code>, <code>sudo</code> and <code>openssh-server</code></li>
+<li><code>fish</code> (because I like a nice interactive shell)</li>
+<li>It must have a SSH Daemon configuration that exposes a port for us to use</li>
+<li>Has Hostkeys generated</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> alpine:edge</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Leo &lt;thinkabit.ukim@gmail.com&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rm /etc/apk/repositories <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> printf -- &gt;&gt; /etc/apk/repositories <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#39;http://dl-cdn.alpinelinux.org/alpine/edge/%s\n&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    main community testing<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add -U --no-cache <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    alpine-conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    alpine-sdk <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    abuild <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    sudo <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    openssh-server <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    fish<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk upgrade -a<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> setup-apkcache /var/cache/apk<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> /usr/bin/ssh-keygen -A<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> printf <span style="color:#e6db74">&#34;Port %%PORT%%\nListenAddress localhost\n&#34;</span> &gt;&gt; /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> root</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Slightly daunting, lets break it down into simpler pieces and explain them one-by-one.</p>
+<hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> alpine:edge</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Leo &lt;thinkabit.ukim@gmail.com&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Use the <code>edge</code> image from Alpine Linux and set myself as maintainer.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">RUN</span> rm /etc/apk/repositories <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">&amp;&amp;</span> printf -- &gt;&gt; /etc/apk/repositories <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#e6db74">&#39;http://dl-cdn.alpinelinux.org/alpine/edge/%s\n&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    main community testing<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Delete previous configuration and enable <code>main</code>, <code>community</code> and <code>testing</code> repositories from edge.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">RUN</span> apk add -U --no-cache <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    alpine-conf <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    alpine-sdk <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    abuild <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    sudo <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    openssh-server <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    fish<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk upgrade -a<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> setup-apkcache /var/cache/apk<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Install the packages mentioned above, then run an upgrade and finally set up a cache for apk so it doesn&rsquo;t need to download the same package multiple times in different <code>apk</code> invocations.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">RUN</span> /usr/bin/ssh-keygen -A<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> printf <span style="color:#e6db74">&#34;Port %%PORT%%\nListenAddress localhost\n&#34;</span> &gt;&gt; /etc/ssh/sshd_config<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>First generate the hostkeys for the SSH Daemon, and then write some simple configuration options we need.</p>
+<p><code>Port</code> is a placeholder value that can be replaced on-the-fly, <code>ListenAddress</code> sets what host <code>sshd</code> will listen on.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> root</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;/usr/sbin/sshd&#34;</span>, <span style="color:#e6db74">&#34;-D&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Force ourselves to run as <code>root</code> because the SSH Daemon requires it and set the default startup command to start the SSH Daemon.</p>
+<h2 id="systemd-service">Systemd service</h2>
+<p>Now that we are done with the image to be run in podman, let&rsquo;s make use of systemd to manage the podman container for us.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[Unit]</span>
+<span style="color:#a6e22e">Description</span><span style="color:#f92672">=</span><span style="color:#e6db74">Podman container-alpine-dev-env-for-%u.service</span>
+
+<span style="color:#66d9ef">[Service]</span>
+<span style="color:#a6e22e">Environment</span><span style="color:#f92672">=</span><span style="color:#e6db74">PODMAN_SYSTEMD_UNIT=%n</span>
+<span style="color:#a6e22e">Restart</span><span style="color:#f92672">=</span><span style="color:#e6db74">on-failure</span>
+<span style="color:#a6e22e">ExecStartPre</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/bin/rm -f %t/alpine-dev-env-for-%u.pid %t/alpine-dev-env-for-%u.ctr-id</span>
+<span style="color:#a6e22e">ExecStart</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% run \
+</span><span style="color:#e6db74">    --replace \
+</span><span style="color:#e6db74">    --conmon-pidfile %t/alpine-dev-env-for-%u.pid \
+</span><span style="color:#e6db74">    --cidfile %t/alpine-dev-env-for-%u.ctr-id \
+</span><span style="color:#e6db74">    --publish %%PORT%%:%%PORT%% \
+</span><span style="color:#e6db74">    --volume %h:%h \
+</span><span style="color:#e6db74">    --security-opt label=disable \
+</span><span style="color:#e6db74">    --userns=keep-id \
+</span><span style="color:#e6db74">    --tty \
+</span><span style="color:#e6db74">    --name alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    --detach \
+</span><span style="color:#e6db74">    alpine-dev-env</span>
+<span style="color:#75715e"># Add our user to abuild group, we require it to access the distfiless</span>
+<span style="color:#a6e22e">ExecStartPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% exec \
+</span><span style="color:#e6db74">    alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    adduser %u abuild</span>
+<span style="color:#75715e"># Allow our user to run sudo without any problems</span>
+<span style="color:#a6e22e">ExecStartPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% exec \
+</span><span style="color:#e6db74">    alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    sh -c &#34;echo &#39;%u ALL=(ALL) NOPASSWD: ALL&#39; &gt;&gt; /etc/sudoers.d/%u-all-nopasswd&#34;</span>
+<span style="color:#75715e"># Add local repos</span>
+<span style="color:#a6e22e">ExecStartPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% exec \
+</span><span style="color:#e6db74">    alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    sh -c &#34;printf -- &gt;&gt; /etc/apk/repositories &#39;%h/packages/%%s\n&#39; main community testing&#34;</span>
+<span style="color:#a6e22e">ExecStop</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% stop \
+</span><span style="color:#e6db74">    --time 2 \
+</span><span style="color:#e6db74">    --cidfile %t/alpine-dev-env-for-%u.ctr-id</span>
+<span style="color:#a6e22e">ExecStopPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% rm \
+</span><span style="color:#e6db74">    --ignore \
+</span><span style="color:#e6db74">    --force \
+</span><span style="color:#e6db74">    --cidfile %t/alpine-dev-env-for-%u.ctr-id</span>
+<span style="color:#a6e22e">PIDFile</span><span style="color:#f92672">=</span><span style="color:#e6db74">%t/alpine-dev-env-for-%u.pid</span>
+<span style="color:#a6e22e">KillMode</span><span style="color:#f92672">=</span><span style="color:#e6db74">none</span>
+<span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">forking</span>
+
+<span style="color:#66d9ef">[Install]</span>
+<span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
+</code></pre></div><p>That is kinda big, lets break it down.</p>
+<hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[Unit]</span>
+<span style="color:#a6e22e">Description</span><span style="color:#f92672">=</span><span style="color:#e6db74">Podman container-alpine-dev-env-for-%u.service</span>
+</code></pre></div><p>Fairly simple, the description for our services, the <code>%u</code> is a systemd specifier that is replaced with the user running it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[Service]</span>
+<span style="color:#a6e22e">Environment</span><span style="color:#f92672">=</span><span style="color:#e6db74">PODMAN_SYSTEMD_UNIT=%n</span>
+<span style="color:#a6e22e">Restart</span><span style="color:#f92672">=</span><span style="color:#e6db74">on-failure</span>
+<span style="color:#a6e22e">ExecStartPre</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/bin/rm -f %t/alpine-dev-env-for-%u.pid %t/alpine-dev-env-for-%u.ctr-id</span>
+</code></pre></div><p>Things that are happening here:</p>
+<ul>
+<li>Set PODMAN_SYSTEMD_UNIT=%n, <code>%n</code> is a systemd specifier that is replaced with the full name of the service</li>
+<li>Make the service only restart when it wasn&rsquo;t brought down by a signal or with a clean exit code.</li>
+<li>Before running the service itself, remove some files, the <code>%t</code> systemd specifier is replaced with the runtime directory root</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">ExecStart</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% run \
+</span><span style="color:#e6db74">    --replace \
+</span><span style="color:#e6db74">    --conmon-pidfile %t/alpine-dev-env-for-%u.pid \
+</span><span style="color:#e6db74">    --cidfile %t/alpine-dev-env-for-%u.ctr-id \
+</span><span style="color:#e6db74">    --publish %%PORT%%:%%PORT%% \
+</span><span style="color:#e6db74">    --volume %h:%h \
+</span><span style="color:#e6db74">    --security-opt label=disable \
+</span><span style="color:#e6db74">    --userns=keep-id \
+</span><span style="color:#e6db74">    --tty \
+</span><span style="color:#e6db74">    --name alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    --detach \
+</span><span style="color:#e6db74">    alpine-dev-env</span>
+</code></pre></div><p>Let&rsquo;s go line-by-line.</p>
+<ol>
+<li><code>%%PODMAN%%</code> will be replaced with the absolute path to the podman binary, <code>run</code> is the command to start a container</li>
+<li><code>--replace</code> means if the container is running we bring it down and start ours, default is to fail if it is already running</li>
+<li><code>--conmon-pidfile</code> is the path to where the PID of <code>conmon</code> will be written</li>
+<li><code>--cidfile</code> is the path to where the ID of the container will be written</li>
+<li><code>--publish</code> will expose a port from the container into our host, in this case the port we expose is decided by the user when generating the service</li>
+<li><code>--volume</code> uses the <code>%h</code> (home directory) systemd specifier to mount the host home into the container</li>
+<li><code>--security-opt label=disable</code> because you can&rsquo;t mount above unless you disable SELinux labels in the container</li>
+<li><code>--userns=keep-id</code> use the container namespace but keep our ID, if you run this as user 1000 then user 1000 will be avialble in the container</li>
+<li><code>--tty</code>, request a tty, so our SSH experience won&rsquo;t be miserable</li>
+<li><code>--name</code> a simple name for the container, so it won&rsquo;t assign a random one</li>
+<li><code>--detach</code>, don&rsquo;t run in the foreground</li>
+<li><code>alpine-dev-env</code>, name of the image</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#75715e"># Add our user to abuild group, we require it to access the distfiless</span>
+<span style="color:#a6e22e">ExecStartPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% exec \
+</span><span style="color:#e6db74">    alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    adduser %u abuild</span>
+<span style="color:#75715e"># Allow our user to run sudo without any problems</span>
+<span style="color:#a6e22e">ExecStartPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% exec \
+</span><span style="color:#e6db74">    alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    sh -c &#34;echo &#39;%u ALL=(ALL) NOPASSWD: ALL&#39; &gt;&gt; /etc/sudoers.d/%u-all-nopasswd&#34;</span>
+<span style="color:#75715e"># Add local repos</span>
+<span style="color:#a6e22e">ExecStartPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% exec \
+</span><span style="color:#e6db74">    alpine-dev-env-for-%u \
+</span><span style="color:#e6db74">    sh -c &#34;printf -- &gt;&gt; /etc/apk/repositories &#39;%h/packages/%%s\n&#39; main community testing&#34;</span>
+</code></pre></div><p>Someone already commented so lets go to the next one.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">ExecStop</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% stop \
+</span><span style="color:#e6db74">    --time 2 \
+</span><span style="color:#e6db74">    --cidfile %t/alpine-dev-env-for-%u.ctr-id</span>
+<span style="color:#a6e22e">ExecStopPost</span><span style="color:#f92672">=</span><span style="color:#e6db74">%%PODMAN%% rm \
+</span><span style="color:#e6db74">    --ignore \
+</span><span style="color:#e6db74">    --force \
+</span><span style="color:#e6db74">    --cidfile %t/alpine-dev-env-for-%u.ctr-id</span>
+</code></pre></div><p>When stopping, wait 2 seconds before we force our way in, after stopping the service, delete the container forcefully.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">PIDFile</span><span style="color:#f92672">=</span><span style="color:#e6db74">%t/alpine-dev-env-for-%u.pid</span>
+<span style="color:#a6e22e">KillMode</span><span style="color:#f92672">=</span><span style="color:#e6db74">none</span>
+<span style="color:#a6e22e">Type</span><span style="color:#f92672">=</span><span style="color:#e6db74">forking</span>
+
+<span style="color:#66d9ef">[Install]</span>
+<span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
+</code></pre></div><ul>
+<li><code>PIDFile</code> uses the one created by <code>podman run</code> in <code>ExecStart</code></li>
+<li><code>KillMode</code> is set to <code>none</code> because we bring down a container, not a service</li>
+<li><code>Type</code> is <code>forking</code> because we make podman <code>--detach</code> itself into the background</li>
+</ul>
+<h2 id="abuild">abuild</h2>
+<p>We now need a wrapper for running abuild commands, it needs to perform certain actions before we run in the container.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>die<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    printf <span style="color:#e6db74">&#34;%s\\n&#34;</span> <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span> &gt;&amp;<span style="color:#ae81ff">2</span>
+    exit <span style="color:#ae81ff">1</span>
+<span style="color:#f92672">}</span>
+
+run<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    ssh -p %%PORT%% -tt <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        -o User<span style="color:#f92672">=</span>$USER <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        -o IdentityFile<span style="color:#f92672">=</span>~/.ssh/alpine-dev-env <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        -o NoHostAuthenticationForLocalhost<span style="color:#f92672">=</span>yes <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        -o LogLevel<span style="color:#f92672">=</span>QUIET <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        localhost <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">}</span>
+
+: <span style="color:#e6db74">${</span>APORTSDIR:=%%APORTSDIR%%<span style="color:#e6db74">}</span>
+
+APORTSDIRNAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename $APORTSDIR<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e">## check running from within an `aports` tree</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PWD%*/$APORTSDIRNAME/*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span>$PWD<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    die <span style="color:#e6db74">&#34;Error: expecting to be run from within an aports tree!&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        <span style="color:#e6db74">&#34;It must be run under &#39;</span>$APORTSDIR<span style="color:#e6db74">&#39;&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+<span style="color:#75715e"># Generate new abuild key if not set</span>
+cmd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;grep -sq &#39;^PACKAGER_PRIVKEY=&#39; </span>$HOME<span style="color:#e6db74">/.abuild/abuild.conf || abuild-keygen -n -a&#34;</span>
+
+<span style="color:#75715e"># Copy keys over, we need this so packages will actually succeed when</span>
+<span style="color:#75715e"># building (because of the signing stage), this is also required to</span>
+<span style="color:#75715e"># install them</span>
+cmd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$cmd<span style="color:#e6db74"> &amp;&amp; sudo cp </span>$HOME<span style="color:#e6db74">/.abuild/*.rsa.pub /etc/apk/keys&#34;</span>
+
+<span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> in
+    checksum|unpack<span style="color:#f92672">)</span> cmd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$cmd<span style="color:#e6db74">; cd </span>$APORTSDIR<span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>PWD#*/$APORTSDIRNAME/<span style="color:#e6db74">}</span><span style="color:#e6db74"> &amp;&amp; abuild </span>$@<span style="color:#e6db74">&#34;</span> ;;
+    *<span style="color:#f92672">)</span> cmd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$cmd<span style="color:#e6db74"> &amp;&amp; cd </span>$APORTSDIR<span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>PWD#*/$APORTSDIRNAME/<span style="color:#e6db74">}</span><span style="color:#e6db74"> &amp;&amp; sudo apk upgrade -U -a &amp;&amp; abuild </span>$@<span style="color:#e6db74">&#34;</span> ;;
+<span style="color:#66d9ef">esac</span>
+
+<span style="color:#66d9ef">if</span> ! systemctl --user is-active --quiet alpine-ssh.service; <span style="color:#66d9ef">then</span>
+    die <span style="color:#e6db74">&#34;alpine-ssh.service must be active, run systemctl --user start alpine-ssh.service&#34;</span>
+<span style="color:#66d9ef">fi</span>
+
+run <span style="color:#e6db74">&#34;</span>$cmd<span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>Notice a few things:</p>
+<ul>
+<li>We run <code>apk upgrade -U -a</code> for any command other than <code>checksum</code> and <code>unpack</code>, the latter don&rsquo;t build anything and won&rsquo;t get maluses from having an outdated system.</li>
+<li>We use systemd to tell us if we are running the service</li>
+</ul>
+<h2 id="makefile">Makefile</h2>
+<p>To bring it all together and provide a nice workflow for building the image and installing the files lets write a makefile.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile">PORT <span style="color:#f92672">?=</span> <span style="color:#ae81ff">2223</span>
+PODMAN <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell command -v podman<span style="color:#66d9ef">)</span>
+PODMAN_BUILD <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell command -v podman<span style="color:#66d9ef">)</span>
+SSH_KEYGEN <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell command -v ssh-keygen<span style="color:#66d9ef">)</span>
+HOME <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell echo $$HOME<span style="color:#66d9ef">)</span>
+APORTSDIR <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell echo $$APORTSDIR<span style="color:#66d9ef">)</span>
+BINDIR <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/bin
+
+.DEFAULT_GOAL <span style="color:#f92672">:=</span> install
+
+<span style="color:#a6e22e">sanity</span><span style="color:#f92672">:</span> sanity-podman \
+		sanity-podman-build \
+		sanity-aportsdir \
+		sanity-ssh-keygen \
+		sanity-home
+
+<span style="color:#a6e22e">sanity-podman</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>PODMAN<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error podman to run in the systemd system service could not be found, set it with PODMAN=<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-podman-build</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>PODMAN_BUILD<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error podman used to build the image could not be found, set it with PODMAN_BUILD=<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-aportsdir</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>APORTSDIR<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error APORTSDIR is not set, must be absolute path to aports<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-ssh-keygen</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>SSH_KEYGEN<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error ssh-keygen not installed, pass path to ssh-keygen binary via SSH_KEYGEN=<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-home</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+    <span style="color:#66d9ef">$(</span>error HOME is not set, it must be set to the home directory<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">abuild</span><span style="color:#f92672">:</span> abuild.in
+	sed -e <span style="color:#e6db74">&#39;s|%%PORT%%|$(PORT)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-e <span style="color:#e6db74">&#39;s|%%APORTSDIR%%|$(APORTSDIR)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		abuild.in &gt;| abuild
+	chmod +x abuild
+
+<span style="color:#a6e22e">keygen</span><span style="color:#f92672">:</span> sanity-ssh-keygen sanity-home
+	@if <span style="color:#f92672">[</span> ! -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[</span> ! -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env.pub <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		echo y | <span style="color:#66d9ef">$(</span>SSH_KEYGEN<span style="color:#66d9ef">)</span> -t ed25519 -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env -q -N <span style="color:#e6db74">&#34;&#34;</span>; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">fi</span>
+	@if <span style="color:#f92672">[</span> ! -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		cat <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env.pub &gt;&gt; <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">elif</span> ! grep -q <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">(cat </span><span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span><span style="color:#e6db74">/.ssh/alpine-dev-env.pub)&#34;</span> <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		cat <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env.pub &gt;&gt; <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">fi</span>
+
+<span style="color:#a6e22e">systemd</span><span style="color:#f92672">:</span> sanity-podman alpine-ssh.service.in
+	sed -e <span style="color:#e6db74">&#39;s|%%PORT%%|$(PORT)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-e <span style="color:#e6db74">&#39;s|%%PODMAN%%|$(PODMAN)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		alpine-ssh.service.in &gt;| alpine-ssh.service
+
+<span style="color:#a6e22e">dockerfile</span><span style="color:#f92672">:</span> Dockerfile.in
+	sed	-e <span style="color:#e6db74">&#39;s|%%PORT%%|$(PORT)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		Dockerfile.in &gt;| Dockerfile
+
+<span style="color:#a6e22e">image</span><span style="color:#f92672">:</span> sanity-podman-build
+	<span style="color:#66d9ef">$(</span>PODMAN_BUILD<span style="color:#66d9ef">)</span> build -t alpine-dev-env .
+
+<span style="color:#a6e22e">install</span><span style="color:#f92672">:</span> sanity abuild keygen systemd dockerfile image
+	install -Dm0755 abuild -t <span style="color:#66d9ef">$(</span>BINDIR<span style="color:#66d9ef">)</span>
+	install -Dm0644 alpine-ssh.service -t <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.config/systemd/user
+</code></pre></div><p>Even if it was one line, makefile would still warrant an explanation.</p>
+<hr>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile">PORT <span style="color:#f92672">?=</span> <span style="color:#ae81ff">2223</span>
+PODMAN <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell command -v podman<span style="color:#66d9ef">)</span>
+PODMAN_BUILD <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell command -v podman<span style="color:#66d9ef">)</span>
+SSH_KEYGEN <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell command -v ssh-keygen<span style="color:#66d9ef">)</span>
+HOME <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell echo $$HOME<span style="color:#66d9ef">)</span>
+APORTSDIR <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>shell echo $$APORTSDIR<span style="color:#66d9ef">)</span>
+BINDIR <span style="color:#f92672">?=</span> <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/bin
+
+.DEFAULT_GOAL <span style="color:#f92672">:=</span> install
+</code></pre></div><p>Set some variables we will use later, all of them can be overriden if desired.</p>
+<p>Notice how we split <code>PODMAN</code> and <code>PODMAN_BUILD</code>, only the latter is actually ran on the system.</p>
+<p>Also make <code>install</code> the goal, if you just type <code>make</code> it will run that target.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#a6e22e">sanity</span><span style="color:#f92672">:</span> sanity-podman \
+		sanity-podman-build \
+		sanity-aportsdir \
+		sanity-ssh-keygen \
+		sanity-home
+
+<span style="color:#a6e22e">sanity-podman</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>PODMAN<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error podman to run in the systemd system service could not be found, set it with PODMAN=<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-podman-build</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>PODMAN_BUILD<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error podman used to build the image could not be found, set it with PODMAN_BUILD=<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-aportsdir</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>APORTSDIR<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error APORTSDIR is not set, must be absolute path to aports<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-ssh-keygen</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>SSH_KEYGEN<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+	<span style="color:#66d9ef">$(</span>error ssh-keygen not installed, pass path to ssh-keygen binary via SSH_KEYGEN=<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+
+<span style="color:#a6e22e">sanity-home</span><span style="color:#f92672">:</span>
+<span style="color:#960050;background-color:#1e0010">ifeq</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#66d9ef">$(</span>strip <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">))</span><span style="color:#960050;background-color:#1e0010">,)</span>
+    <span style="color:#66d9ef">$(</span>error HOME is not set, it must be set to the home directory<span style="color:#66d9ef">)</span>
+<span style="color:#960050;background-color:#1e0010">endif</span>
+</code></pre></div><p>Simple enough, define some targets that will check the sanity of values, we don&rsquo;t want to fail with some weird error because one of our values isn&rsquo;t set to at least something.</p>
+<p>If the user sets it to something stupid then it is the user&rsquo;s fault.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#a6e22e">abuild</span><span style="color:#f92672">:</span> abuild.in
+	sed -e <span style="color:#e6db74">&#39;s|%%PORT%%|$(PORT)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-e <span style="color:#e6db74">&#39;s|%%APORTSDIR%%|$(APORTSDIR)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		abuild.in &gt;| abuild
+	chmod +x abuild
+</code></pre></div><p>Now the placeholders make sense, we replace them with the almighty <code>sed</code> and write them to a final file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#a6e22e">keygen</span><span style="color:#f92672">:</span> sanity-ssh-keygen sanity-home
+	@if <span style="color:#f92672">[</span> ! -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#f92672">[</span> ! -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env.pub <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		echo y | <span style="color:#66d9ef">$(</span>SSH_KEYGEN<span style="color:#66d9ef">)</span> -t ed25519 -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env -q -N <span style="color:#e6db74">&#34;&#34;</span>; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">fi</span>
+	@if <span style="color:#f92672">[</span> ! -f <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		cat <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env.pub &gt;&gt; <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">elif</span> ! grep -q <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">(cat </span><span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span><span style="color:#e6db74">/.ssh/alpine-dev-env.pub)&#34;</span> <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		cat <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/alpine-dev-env.pub &gt;&gt; <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.ssh/authorized_keys; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">fi</span>
+</code></pre></div><p>Here we generate a key called <code>alpine-dev-env</code> and write it to our <code>authorized_keys</code>, it does a lot of hoop-dancing to do it without messing with prior user configuration.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#a6e22e">systemd</span><span style="color:#f92672">:</span> sanity-podman alpine-ssh.service.in
+	sed -e <span style="color:#e6db74">&#39;s|%%PORT%%|$(PORT)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		-e <span style="color:#e6db74">&#39;s|%%PODMAN%%|$(PODMAN)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		alpine-ssh.service.in &gt;| alpine-ssh.service
+
+<span style="color:#a6e22e">dockerfile</span><span style="color:#f92672">:</span> Dockerfile.in
+	sed	-e <span style="color:#e6db74">&#39;s|%%PORT%%|$(PORT)|g&#39;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>		Dockerfile.in &gt;| Dockerfile
+</code></pre></div><p>Simple enough, just replacing placeholders with <code>sed</code> and writing them out for later use.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#a6e22e">image</span><span style="color:#f92672">:</span> sanity-podman-build
+	<span style="color:#66d9ef">$(</span>PODMAN_BUILD<span style="color:#66d9ef">)</span> build -t alpine-dev-env .
+
+<span style="color:#a6e22e">install</span><span style="color:#f92672">:</span> sanity abuild keygen systemd dockerfile image
+	install -Dm0755 abuild -t <span style="color:#66d9ef">$(</span>BINDIR<span style="color:#66d9ef">)</span>
+	install -Dm0644 alpine-ssh.service -t <span style="color:#66d9ef">$(</span>HOME<span style="color:#66d9ef">)</span>/.config/systemd/user
+</code></pre></div><p>Here we use <code>PODMAN_BUILD</code> to build the image and in the install we install the systemd service and the abuild wrapper.</p>
+<h2 id="building-it">Building it</h2>
+<p>Lets run it ourselves!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">$ make PODMAN=/usr/bin/podman PODMAN_BUILD=&#34;flatpak-spawn --host podman&#34; APORTSDIR=$HOME/Repositories/aports
+sed -e &#39;s|%%PORT%%|2223|g&#39; \
+	-e &#39;s|%%APORTSDIR%%|/var/home/mx/Repositories/aports|g&#39; \
+	abuild.in &gt;| abuild
+chmod +x abuild
+sed -e &#39;s|%%PORT%%|2223|g&#39; \
+	-e &#39;s|%%PODMAN%%|/usr/bin/podman|g&#39; \
+	alpine-ssh.service.in &gt;| alpine-ssh.service
+sed	-e &#39;s|%%PORT%%|2223|g&#39; \
+	Dockerfile.in &gt;| Dockerfile
+flatpak-spawn --host podman build -t alpine-dev-env .
+STEP 1: FROM alpine:edge
+STEP 2: MAINTAINER Leo &lt;thinkabit.ukim@gmail.com&gt;
+--&gt; 778bf6c70a3
+STEP 3: RUN rm /etc/apk/repositories     &amp;&amp; printf -- &gt;&gt; /etc/apk/repositories     &#39;http://dl-cdn.alpinelinux.org/alpine/edge/%s\n&#39;     main community testing
+--&gt; 5feeea8c404
+STEP 4: RUN apk add -U --no-cache     alpine-conf     alpine-sdk     abuild     sudo     openssh-server     fish
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/community/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/testing/x86_64/APKINDEX.tar.gz
+(1/51) Installing fakeroot (1.25.3-r3)
+(2/51) Installing openssl (1.1.1i-r0)
+(3/51) Installing libattr (2.4.48-r0)
+(4/51) Installing attr (2.4.48-r0)
+(5/51) Installing libacl (2.2.53-r0)
+(6/51) Installing tar (1.32-r1)
+(7/51) Installing pkgconf (1.7.3-r0)
+(8/51) Installing patch (2.7.6-r6)
+(9/51) Installing libgcc (10.2.1_pre1-r1)
+(10/51) Installing libstdc++ (10.2.1_pre1-r1)
+(11/51) Installing lzip (1.21-r0)
+(12/51) Installing ca-certificates (20191127-r5)
+(13/51) Installing brotli-libs (1.0.9-r2)
+(14/51) Installing nghttp2-libs (1.42.0-r0)
+(15/51) Installing libcurl (7.74.0-r0)
+(16/51) Installing curl (7.74.0-r0)
+(17/51) Installing abuild (3.7.0_rc1-r2)
+Executing abuild-3.7.0_rc1-r2.pre-install
+(18/51) Installing ifupdown-ng (0.10.2-r1)
+(19/51) Installing openrc (0.42.1-r17)
+Executing openrc-0.42.1-r17.post-install
+(20/51) Installing alpine-conf (3.9.0-r1)
+(21/51) Installing binutils (2.35.1-r1)
+(22/51) Installing libmagic (5.39-r0)
+(23/51) Installing file (5.39-r0)
+(24/51) Installing libgomp (10.2.1_pre1-r1)
+(25/51) Installing libatomic (10.2.1_pre1-r1)
+(26/51) Installing libgphobos (10.2.1_pre1-r1)
+(27/51) Installing gmp (6.2.1-r0)
+(28/51) Installing isl22 (0.22-r0)
+(29/51) Installing mpfr4 (4.1.0-r0)
+(30/51) Installing mpc1 (1.2.0-r0)
+(31/51) Installing gcc (10.2.1_pre1-r1)
+(32/51) Installing musl-dev (1.2.2_pre6-r0)
+(33/51) Installing libc-dev (0.7.2-r3)
+(34/51) Installing g++ (10.2.1_pre1-r1)
+(35/51) Installing make (4.3-r0)
+(36/51) Installing fortify-headers (1.1-r0)
+(37/51) Installing build-base (0.5-r2)
+(38/51) Installing expat (2.2.10-r0)
+(39/51) Installing pcre2 (10.36-r0)
+(40/51) Installing git (2.29.2-r0)
+(41/51) Installing alpine-sdk (1.0-r0)
+(42/51) Installing ncurses-terminfo-base (6.2_p20201219-r0)
+(43/51) Installing ncurses-libs (6.2_p20201219-r0)
+(44/51) Installing readline (8.0.4-r0)
+(45/51) Installing bc (1.07.1-r1)
+(46/51) Installing libpcre2-32 (10.36-r0)
+(47/51) Installing fish (3.1.2-r2)
+Executing fish-3.1.2-r2.post-install
+(48/51) Installing openssh-keygen (8.4_p1-r2)
+(49/51) Installing openssh-server-common (8.4_p1-r2)
+(50/51) Installing openssh-server (8.4_p1-r2)
+(51/51) Installing sudo (1.9.4p2-r0)
+Executing busybox-1.32.0-r8.trigger
+Executing ca-certificates-20191127-r5.trigger
+OK: 227 MiB in 65 packages
+--&gt; 32cf4ad3bc5
+STEP 5: RUN apk upgrade -a
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/community/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/edge/testing/x86_64/APKINDEX.tar.gz
+(1/1) Upgrading scanelf (1.2.6-r1 -&gt; 1.2.8-r0)
+Executing busybox-1.32.0-r8.trigger
+OK: 227 MiB in 65 packages
+--&gt; e2912f31f70
+STEP 6: RUN setup-apkcache /var/cache/apk
+--&gt; ca2d3c87fa7
+STEP 7: RUN /usr/bin/ssh-keygen -A
+ssh-keygen: generating new host keys: RSA DSA ECDSA ED25519 
+--&gt; 9acb5894b83
+STEP 8: RUN printf &#34;Port 2223\nListenAddress localhost\n&#34; &gt;&gt; /etc/ssh/sshd_config
+--&gt; 597d6599e84
+STEP 9: USER root
+--&gt; 6eb7556707f
+STEP 10: CMD [&#34;/usr/sbin/sshd&#34;, &#34;-D&#34;]
+STEP 11: COMMIT alpine-dev-env
+--&gt; 40e2133df8e
+40e2133df8efa540d5a0eb0b67c6e3c0f5a02d7bd00dfca662b298a331c20a59
+install -Dm0755 abuild -t /var/home/mx/bin
+install -Dm0644 alpine-ssh.service -t /var/home/mx/.config/systemd/user
+</code></pre></div><p>Now let&rsquo;s run it!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">$ systemctl --user daemon-reload
+$ systemctl --user start alpine-ssh.service
+$ systemctl --user status alpine-ssh.service
+● alpine-ssh.service - Podman container-alpine-dev-env-for-mx.service
+     Loaded: loaded (/var/home/mx/.config/systemd/user/alpine-ssh.service; enabled; vendor preset: disabled)
+     Active: active (running) since Sun 2020-12-27 23:04:46 -03; 16s ago
+    Process: 960938 ExecStartPre=/usr/bin/rm -f /run/user/1000/alpine-dev-env-for-mx.pid /run/user/1000/alpine-dev-env-for-mx.ctr-id (code=exited, status=0/SUCCESS)
+    Process: 960939 ExecStart=/usr/bin/podman run --replace --conmon-pidfile /run/user/1000/alpine-dev-env-for-mx.pid --cidfile /run/user/1000/alpine-dev-env-for-mx.ctr-id --publish 2223:2223 --volume /var/home/mx:/var/home/mx --security-opt label=disable --userns=keep-id --tty --name alpine-dev-env-for-mx --detach alpine-dev-env (code=exited, status=0/SUCCESS)
+    Process: 960996 ExecStartPost=/usr/bin/podman exec alpine-dev-env-for-mx adduser mx abuild (code=exited, status=0/SUCCESS)
+    Process: 961026 ExecStartPost=/usr/bin/podman exec alpine-dev-env-for-mx sh -c echo &#39;mx ALL=(ALL) NOPASSWD: ALL&#39; &gt;&gt; /etc/sudoers.d/mx-all-nopasswd (code=exited, status=0/SUCCESS)
+    Process: 961054 ExecStartPost=/usr/bin/podman exec alpine-dev-env-for-mx sh -c printf -- &gt;&gt; /etc/apk/repositories &#39;/var/home/mx/packages/%s
+&#39; main community testing (code=exited, status=0/SUCCESS)
+   Main PID: 960965 (conmon)
+      Tasks: 26 (limit: 18990)
+     Memory: 99.3M
+        CPU: 1.186s
+[truncated]
+</code></pre></div><p>Can we SSH into it ?</p>
+<p><img src="/posts/11-ssh.png" alt="We can SSH into it"></p>
+<h2 id="future">Future</h2>
+<p>This is basically done as far as having a developer environment is concerned, all that is left is more improvments to hardening and user experience itself:</p>
+<ul>
+<li>Find a way to not even need a key, just allow the same user to connect with no worries</li>
+<li>If the above is not possible then
+<ul>
+<li>add <code>from=</code> in the <code>authorized_keys</code> so only <code>127.0.0.1</code> can connect.</li>
+<li>add <code>$USER</code> to the end of our keys in <code>authorized_keys</code> so only our user can connect.</li>
+</ul>
+</li>
+</ul></article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+
+  <div class="footer container-lg width-full p-responsive" role="contentinfo">
+    <div
+        class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+            <li class="mr-3 mr-lg-0">© 2019. Theme by <a href="https://github.com/MeiK2333/github-style"><span>github-style</span></a></li>
+        </ul>
+
+        <a aria-label="Homepage" title="Cogitri&#39;s blog" class="footer-octicon d-none d-lg-block mx-lg-4"
+            href="https://www.cogitri.dev">
+            <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                </path>
+            </svg>
+        </a>
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        </ul>
+    </div>
+    <div class="d-flex flex-justify-center pb-6">
+        <span class="f6 text-gray-light"></span>
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+    type="application/javascript" src="https://www.cogitri.dev/js/frameworks.js"></script>
+
+<script crossorigin="anonymous" async="async"
+    type="application/javascript" src="https://www.cogitri.dev/js/github-bootstrap.js"></script>
+<script>
+    let classs = ['pinned-item-desc', 'text-gray', 'text-small', 'd-block', 'mt-2', 'mb-3'];
+    const pinned_posts = document.getElementsByName('pinned-post');
+    for (let i = 0; i < pinned_posts.length; i++) {
+        for (let j = 0; j < classs.length; j++) {
+            const ps = pinned_posts[i].getElementsByTagName('p');
+            for (let k = 0; k < ps.length; k++) {
+                ps[k].classList.add(classs[j]);
+            }
+        }
+    }
+    classs = [ 'd-inline-block', 'text-gray', 'mb-2', 'pr-4'];
+    const posts_posts = document.getElementsByName('posts-post');
+    for (let i = 0; i < posts_posts.length; i++) {
+        for (let j = 0; j < classs.length; j++) {
+            const ps = posts_posts[i].getElementsByTagName('p');
+            for (let k = 0; k < ps.length; k++) {
+                ps[k].classList.add(classs[j]);
+            }
+        }
+    }
+</script>
+</body>
+
+</html>

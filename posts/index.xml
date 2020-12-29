@@ -6,10 +6,25 @@
     <description>Recent content in Posts on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 03 Nov 2020 23:59:41 -0300</lastBuildDate>
+    <lastBuildDate>Sun, 27 Dec 2020 21:57:24 -0300</lastBuildDate>
     
 	<atom:link href="https://www.cogitri.dev/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Creating an Alpine Developer Environment for Fedora Silverblue</title>
+      <link>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</link>
+      <pubDate>Sun, 27 Dec 2020 21:57:24 -0300</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As readers know I&amp;rsquo;m a developer for &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;, it is a very nice simple distribution for running containers.&lt;/p&gt;
+&lt;p&gt;Unforunately it is not very nice when using GNOME, it has less developers than other distros and its integration isn&amp;rsquo;t as good as it is in the more popular distros like Debian and Fedora.&lt;/p&gt;
+&lt;p&gt;With that in mind I have decided to test &lt;a href=&#34;https://silverblue.fedoraproject.org/&#34;&gt;Fedora Silverblue&lt;/a&gt;, a flavour of Fedora with GNOME that uses &lt;a href=&#34;https://ostree.readthedocs.io/en/latest/&#34;&gt;OSTree&lt;/a&gt; to provide reliable upgrades and rollbacks of the operating system, allowing the user to overlay their own packages on top and using container technologies (like &lt;a href=&#34;https://podman.io/&#34;&gt;podman&lt;/a&gt; and &lt;a href=&#34;https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/&#34;&gt;toolbox&lt;/a&gt;) to provide an alternative to installing packages onto the system itself.&lt;/p&gt;
+&lt;p&gt;In this article I&amp;rsquo;ll describe the process of creating an &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; image to be used in podman and accessed via SSH or &lt;code&gt;podman exec&lt;/code&gt;, while taking into account the peculirarities of working from inside toolbox.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>APKBUILD.vim: updates, new stuff, better</title>
