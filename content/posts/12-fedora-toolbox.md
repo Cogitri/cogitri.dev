@@ -8,6 +8,8 @@ Recently I've been using Fedora Toolbox a lot for development to have a reproduc
 development enviroment across my different systems. To make it easier to have the
 same container on multiple machines I've created my own Dockerfile:
 
+<!--more-->
+
 ```
 FROM registry.fedoraproject.org/fedora:33
 
