@@ -132,7 +132,7 @@ YAML                             1              0              0             19
 SUM:                             2             25              0             95
 -------------------------------------------------------------------------------
 </code></pre><p>It basically only consisted of a <code>main.rs</code>which used the <a href="https://creates.io/crates_io_api">crates_io_api</a> crate to download the info of a crate, call <code>git</code> to figure out the maintainer&rsquo;s name and eMail
-and then repeatedly call <code>replace</code> (think of it as Rust&rsquo;s sed &lsquo;s/')  on a generic template file which was built into tmplgen. There was no error handling to speak of, it&rsquo;d simply panic if anything
+and then repeatedly call <code>replace</code> (think of it as Rust&rsquo;s sed &rsquo;s/')  on a generic template file which was built into tmplgen. There was no error handling to speak of, it&rsquo;d simply panic if anything
 (e.g. downloading, figuring out the maintainer via git) went wrong.</p>
 <h1 id="supporting-more-data-sources">Supporting more data sources</h1>
 <p>tmplgen got support for creating build files for Ruby Gems only a week after its creation, on November 2nd. Since it was a pretty simple (Yeah, let&rsquo;s go with that) project at that point adding support for it was pretty trivial, see <a href="https://github.com/Cogitri/tmplgen/commit/c5974bbe4bf6b02bcee438cdf860ddc85ea541ed">c5974bbe4b</a>:</p>

@@ -6,10 +6,16 @@
     <description>Recent content in Posts on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 27 Dec 2020 21:57:24 -0300</lastBuildDate>
-    
-	<atom:link href="https://www.cogitri.dev/posts/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 06 Feb 2021 10:59:41 +0100</lastBuildDate><atom:link href="https://www.cogitri.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fedora Toolbox with custom container images</title>
+      <link>https://www.cogitri.dev/posts/12-fedora-toolbox/</link>
+      <pubDate>Sat, 06 Feb 2021 10:59:41 +0100</pubDate>
+      
+      <guid>https://www.cogitri.dev/posts/12-fedora-toolbox/</guid>
+      <description>Recently I&amp;rsquo;ve been using Fedora Toolbox a lot for development to have a reproducible development enviroment across my different systems. To make it easier to have the same container on multiple machines I&amp;rsquo;ve created my own Dockerfile:
+FROM registry.fedoraproject.org/fedora:33 # Install extra packages COPY extra-packages / RUN dnf -y install $(&amp;lt;extra-packages) RUN rm /extra-packages It basically just uses the base image that&amp;rsquo;s used for toolbox by default and installs packages that are in the extra-packages file.</description>
+    </item>
     
     <item>
       <title>Creating an Alpine Developer Environment for Fedora Silverblue</title>

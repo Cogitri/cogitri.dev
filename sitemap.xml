@@ -4,16 +4,21 @@
   
   <url>
     <loc>https://www.cogitri.dev/</loc>
-    <lastmod>2020-12-27T21:57:24-03:00</lastmod>
+    <lastmod>2021-02-06T10:59:41+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</loc>
-    <lastmod>2020-12-27T21:57:24-03:00</lastmod>
+    <loc>https://www.cogitri.dev/posts/12-fedora-toolbox/</loc>
+    <lastmod>2021-02-06T10:59:41+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.cogitri.dev/posts/</loc>
+    <lastmod>2021-02-06T10:59:41+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</loc>
     <lastmod>2020-12-27T21:57:24-03:00</lastmod>
   </url>
   

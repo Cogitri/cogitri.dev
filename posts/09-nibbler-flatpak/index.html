@@ -111,7 +111,7 @@
                     <div class="Box mt-3 position-relative">
                         <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
                             <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
-                                968 Words
+                                965 Words
                                 
                             </div>
                         </div>
@@ -138,39 +138,39 @@ Fortunately there is <a href="https://flatpak.org">flatpak</a> which is a godsen
 so lets go package it.</p>
 <h2 id="writing-the-boilerplate">Writing the boilerplate</h2>
 <p>Lets start by writing the boilerplate we need to get started on any Flatpak app.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">app-id</span>: org.fohristiwhirl.nibbler
-<span style="color:#66d9ef">runtime</span>: org.freedesktop.Platform
-<span style="color:#66d9ef">runtime-version</span>: <span style="color:#e6db74">&#39;20.08&#39;</span>
-<span style="color:#66d9ef">branch</span>: stable
-<span style="color:#66d9ef">sdk</span>: org.freedesktop.Sdk
-<span style="color:#66d9ef">command</span>: /app/nibbler/nibbler
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">app-id</span>: <span style="color:#ae81ff">org.fohristiwhirl.nibbler</span>
+<span style="color:#f92672">runtime</span>: <span style="color:#ae81ff">org.freedesktop.Platform</span>
+<span style="color:#f92672">runtime-version</span>: <span style="color:#e6db74">&#39;20.08&#39;</span>
+<span style="color:#f92672">branch</span>: <span style="color:#ae81ff">stable</span>
+<span style="color:#f92672">sdk</span>: <span style="color:#ae81ff">org.freedesktop.Sdk</span>
+<span style="color:#f92672">command</span>: <span style="color:#ae81ff">/app/nibbler/nibbler</span>
 
-<span style="color:#66d9ef">finish-args</span>:
-  - --share=ipc <span style="color:#75715e"># Needed for X11</span>
-  - --socket=x11 <span style="color:#75715e"># Electron needs Ozone to support Wayland but it is not there yet</span>
-  - --device=dri <span style="color:#75715e"># need access to the GPU</span>
-  - --filesystem=xdg-data <span style="color:#75715e"># Access to $XDG_DATA_HOME, letting the user load networks</span>
+<span style="color:#f92672">finish-args</span>:
+  - --<span style="color:#ae81ff">share=ipc</span> <span style="color:#75715e"># Needed for X11</span>
+  - --<span style="color:#ae81ff">socket=x11</span> <span style="color:#75715e"># Electron needs Ozone to support Wayland but it is not there yet</span>
+  - --<span style="color:#ae81ff">device=dri</span> <span style="color:#75715e"># need access to the GPU</span>
+  - --<span style="color:#ae81ff">filesystem=xdg-data</span> <span style="color:#75715e"># Access to $XDG_DATA_HOME, letting the user load networks</span>
 </code></pre></div><h2 id="writing-the-module">Writing the module</h2>
 <p>Now lets package Nibbler itself, in this case we will use the pre-packaged Nibbler
 for Glibc x86_64 instead of compiling Electron ourselves, which is rather time intensive.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">modules</span>:
-    - <span style="color:#66d9ef">name</span>: nibbler
-    <span style="color:#66d9ef">buildsystem</span>: simple
-    <span style="color:#66d9ef">sources</span>:
-      - <span style="color:#66d9ef">type</span>: archive
-        <span style="color:#66d9ef">url</span>: https://github.com/fohristiwhirl/nibbler/releases/download/v1<span style="color:#ae81ff">.5.7</span>/nibbler<span style="color:#ae81ff">-1.5.7</span>-linux.zip
-        <span style="color:#66d9ef">sha256</span>: f64d7fc89f5cd68b41dccff4fc7aa2f03a482750f2d7fa6af522f78d74264f4d
-      - <span style="color:#66d9ef">type</span>: file
-        <span style="color:#66d9ef">path</span>: org.fohristiwhirl.nibbler.desktop
-        <span style="color:#66d9ef">sha256</span>: 75ce7081b35321eeeb80043483a6977babe11055ed41f3a22cc718b63fabc6fa
-    <span style="color:#66d9ef">build-commands</span>:
-      - <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        install -Dm0644 org.fohristiwhirl.nibbler.desktop -t /app/share/applications</span>
-        mkdir -p /nibbler
-        mv * /nibbler
-        mkdir -p /app
-        mv /nibbler /app
-        chmod +x /app/nibbler/nibbler
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">modules</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nibbler</span>
+    <span style="color:#f92672">buildsystem</span>: <span style="color:#ae81ff">simple</span>
+    <span style="color:#f92672">sources</span>:
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">archive</span>
+        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://github.com/fohristiwhirl/nibbler/releases/download/v1.5.7/nibbler-1.5.7-linux.zip</span>
+        <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">f64d7fc89f5cd68b41dccff4fc7aa2f03a482750f2d7fa6af522f78d74264f4d</span>
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">file</span>
+        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">org.fohristiwhirl.nibbler.desktop</span>
+        <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">75ce7081b35321eeeb80043483a6977babe11055ed41f3a22cc718b63fabc6fa</span>
+    <span style="color:#f92672">build-commands</span>:
+      - |<span style="color:#e6db74">
+</span><span style="color:#e6db74">        install -Dm0644 org.fohristiwhirl.nibbler.desktop -t /app/share/applications
+</span><span style="color:#e6db74">        mkdir -p /nibbler
+</span><span style="color:#e6db74">        mv * /nibbler
+</span><span style="color:#e6db74">        mkdir -p /app
+</span><span style="color:#e6db74">        mv /nibbler /app
+</span><span style="color:#e6db74">        chmod +x /app/nibbler/nibbler</span>        
 </code></pre></div><h3 id="desktop-file">.desktop file</h3>
 <p>Nibbler itself has no .desktop file, so let&rsquo;s write one for it. One can notice that
 <code>--no-sandbox</code> is passed, which is required because Flatpak doesn&rsquo;t allow SUID or
@@ -199,51 +199,51 @@ on a chess board with great accuracy.</li>
 </ol>
 <p>Lets package them, by starting with the dependencies of lc0. These can be found in
 <a href="https://github.com/flathub">Flathub&rsquo;s repos</a> as they are used in other Flatpak-ed packages:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#66d9ef">name</span>: eigen
-    <span style="color:#66d9ef">buildsystem</span>: cmake-ninja
-    <span style="color:#66d9ef">builddir</span>: <span style="color:#66d9ef">true</span>
-    <span style="color:#66d9ef">sources</span>:
-     - <span style="color:#66d9ef">type</span>: archive
-       <span style="color:#66d9ef">url</span>: https://gitlab.com/libeigen/eigen/-/archive/<span style="color:#ae81ff">3.3.8</span>/eigen<span style="color:#ae81ff">-3.3.8</span>.tar.gz
-       <span style="color:#66d9ef">sha256</span>: 146a480b8ed1fb6ac7cd33fec9eb5e8f8f62c3683b3f850094d9d5c35a92419a
-  - <span style="color:#66d9ef">name</span>: openblas
-    <span style="color:#66d9ef">no-autogen</span>: <span style="color:#66d9ef">true</span>
-    <span style="color:#66d9ef">make-args</span>:
-      - DYNAMIC_ARCH=<span style="color:#ae81ff">1</span>
-      - FC=gfortran
-      - NO_LAPACKE=<span style="color:#ae81ff">1</span>
-      - USE_OPENMP=<span style="color:#ae81ff">0</span> <span style="color:#75715e"># OpenMP off by default, this hack skips &#39;test_fork&#39; which crashes on i386</span>
-    <span style="color:#66d9ef">make-install-args</span>:
-      - PREFIX=/app
-    <span style="color:#66d9ef">sources</span>:
-      - <span style="color:#66d9ef">type</span>: archive
-        <span style="color:#66d9ef">url</span>: https://github.com/xianyi/OpenBLAS/archive/v0<span style="color:#ae81ff">.3.12</span>.tar.gz
-        <span style="color:#66d9ef">sha256</span>: 65a7d3a4010a4e3bd5c0baa41a234797cd3a1735449a4a5902129152601dc57b
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">eigen</span>
+    <span style="color:#f92672">buildsystem</span>: <span style="color:#ae81ff">cmake-ninja</span>
+    <span style="color:#f92672">builddir</span>: <span style="color:#66d9ef">true</span>
+    <span style="color:#f92672">sources</span>:
+     - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">archive</span>
+       <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://gitlab.com/libeigen/eigen/-/archive/3.3.8/eigen-3.3.8.tar.gz</span>
+       <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">146a480b8ed1fb6ac7cd33fec9eb5e8f8f62c3683b3f850094d9d5c35a92419a</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">openblas</span>
+    <span style="color:#f92672">no-autogen</span>: <span style="color:#66d9ef">true</span>
+    <span style="color:#f92672">make-args</span>:
+      - <span style="color:#ae81ff">DYNAMIC_ARCH=1</span>
+      - <span style="color:#ae81ff">FC=gfortran</span>
+      - <span style="color:#ae81ff">NO_LAPACKE=1</span>
+      - <span style="color:#ae81ff">USE_OPENMP=0</span> <span style="color:#75715e"># OpenMP off by default, this hack skips &#39;test_fork&#39; which crashes on i386</span>
+    <span style="color:#f92672">make-install-args</span>:
+      - <span style="color:#ae81ff">PREFIX=/app</span>
+    <span style="color:#f92672">sources</span>:
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">archive</span>
+        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://github.com/xianyi/OpenBLAS/archive/v0.3.12.tar.gz</span>
+        <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">65a7d3a4010a4e3bd5c0baa41a234797cd3a1735449a4a5902129152601dc57b</span>
 </code></pre></div><p>And now we package lc0 and the weights file it uses. Under default settings the weights
 need to be in the same directory as the executable and be named <code>nn</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#66d9ef">name</span>: lc0
-    <span style="color:#66d9ef">buildsystem</span>: meson
-    <span style="color:#66d9ef">config-opts</span>:
-      - -Dopenblas=<span style="color:#66d9ef">true</span>
-      - -Dopenblas_libdirs=/app/lib
-      - -Dgtest=<span style="color:#66d9ef">false</span>
-      - -Db_lto=<span style="color:#66d9ef">true</span>
-      - -Dopencl=<span style="color:#66d9ef">false</span>
-    <span style="color:#66d9ef">sources</span>:
-      - <span style="color:#66d9ef">type</span>: git
-        <span style="color:#66d9ef">url</span>: https://github.com/LeelaChessZero/lc0
-        <span style="color:#66d9ef">tag</span>: v0<span style="color:#ae81ff">.26.3</span>
-  - <span style="color:#66d9ef">name</span>: nn
-    <span style="color:#66d9ef">buildsystem</span>: simple
-    <span style="color:#66d9ef">build-commands</span>:
-      - <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        mkdir -p /app/bin</span>
-        mv nn /app/bin
-    <span style="color:#66d9ef">sources</span>:
-      - <span style="color:#66d9ef">type</span>: file
-        <span style="color:#66d9ef">dest-filename</span>: nn
-        <span style="color:#66d9ef">url</span>: https://training.lczero.org/get_network?sha=4df05b0f0e80523018c073fd151ba26d955140ba303e84cebd96e027c6e06a3e
-        <span style="color:#66d9ef">sha256</span>: 821aabc4316d49a526ba737a218fb868dd7c72c5e7b1a91eb8e6c805e3503028
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">lc0</span>
+    <span style="color:#f92672">buildsystem</span>: <span style="color:#ae81ff">meson</span>
+    <span style="color:#f92672">config-opts</span>:
+      - -<span style="color:#ae81ff">Dopenblas=true</span>
+      - -<span style="color:#ae81ff">Dopenblas_libdirs=/app/lib</span>
+      - -<span style="color:#ae81ff">Dgtest=false</span>
+      - -<span style="color:#ae81ff">Db_lto=true</span>
+      - -<span style="color:#ae81ff">Dopencl=false</span>
+    <span style="color:#f92672">sources</span>:
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://github.com/LeelaChessZero/lc0</span>
+        <span style="color:#f92672">tag</span>: <span style="color:#ae81ff">v0.26.3</span>
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">nn</span>
+    <span style="color:#f92672">buildsystem</span>: <span style="color:#ae81ff">simple</span>
+    <span style="color:#f92672">build-commands</span>:
+      - |<span style="color:#e6db74">
+</span><span style="color:#e6db74">        mkdir -p /app/bin
+</span><span style="color:#e6db74">        mv nn /app/bin</span>        
+    <span style="color:#f92672">sources</span>:
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">file</span>
+        <span style="color:#f92672">dest-filename</span>: <span style="color:#ae81ff">nn</span>
+        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://training.lczero.org/get_network?sha=4df05b0f0e80523018c073fd151ba26d955140ba303e84cebd96e027c6e06a3e</span>
+        <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">821aabc4316d49a526ba737a218fb868dd7c72c5e7b1a91eb8e6c805e3503028</span>
 </code></pre></div><p>This is good enough, but let&rsquo;s go further.</p>
 <h3 id="packaging-a-nnue-chess-engine">Packaging a NNUE Chess Engine</h3>
 <p>There is a different Neural Network type than the one used by lc0, called
@@ -252,32 +252,32 @@ less outputs that can be used by Nibbler but it is fast on CPUs, specially
 with instructions like AVX512, while Leela excels when using GPUs specially
 RTXes with CUDA.</p>
 <p>So let&rsquo;s package <a href="https://github.com/syzygy1/Cfish">cfish</a>, a C rewrite of <a href="https://stockfishchess.org">Stockfish</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#66d9ef">name</span>: cfish-pure-NNUE
-    <span style="color:#66d9ef">buildsystem</span>: simple
-    <span style="color:#66d9ef">build-options</span>:
-      <span style="color:#66d9ef">env</span>:
-        <span style="color:#66d9ef">ARCH</span>: x86<span style="color:#ae81ff">-64</span>-bmi2
-        <span style="color:#66d9ef">COMP</span>: clang
-        <span style="color:#66d9ef">COMPXX</span>: clang+<span style="color:#e6db74">+
-</span><span style="color:#e6db74">    build-commands:</span>
-      - <span style="color:#e6db74">|
-</span><span style="color:#e6db74">        # Replace their network with the one we want to use, in this case it is</span>
-        <span style="color:#75715e"># dark horse 0.2a &#34;Aldi&#34;</span>
-        <span style="color:#75715e"># Taken from: https://www.patreon.com/posts/dark-horse-0-2a-40420324</span>
-        sed -i <span style="color:#e6db74">&#39;s|nn-2eb2e0707c2b.nnue|nn-c2fd094bce06.nnue|&#39;</span> src/evaluate.h
-        <span style="color:#75715e"># Move the Neural Network to src, so we don&#39;t need to download it</span>
-        mv nn-c2fd094bce06.nnue src
-        <span style="color:#75715e"># Farthest I can go in my CPU, others might want to use avx512, vnni256</span>
-        <span style="color:#75715e"># or even vnni512 instead</span>
-        make -C src build nnue=yes pure=yes embed=yes numa=no lto=yes extra=yes
-        install -Dm0755 src/cfish -t /app/bin
-    <span style="color:#66d9ef">sources</span>:
-      - <span style="color:#66d9ef">type</span>: git
-        <span style="color:#66d9ef">url</span>: https://github.com/syzygy1/Cfish.git
-        <span style="color:#66d9ef">commit</span>: b5576f28b82828143fad03b52d3f041240204d6c
-      - <span style="color:#66d9ef">type</span>: file
-        <span style="color:#66d9ef">path</span>: nn-c2fd094bce06.nnue
-        <span style="color:#66d9ef">sha256</span>: c2fd094bce06942e882a7526a7443007a511ed5ee256613cf3a60a9f4ac744e8
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cfish-pure-NNUE</span>
+    <span style="color:#f92672">buildsystem</span>: <span style="color:#ae81ff">simple</span>
+    <span style="color:#f92672">build-options</span>:
+      <span style="color:#f92672">env</span>:
+        <span style="color:#f92672">ARCH</span>: <span style="color:#ae81ff">x86-64-bmi2</span>
+        <span style="color:#f92672">COMP</span>: <span style="color:#ae81ff">clang</span>
+        <span style="color:#f92672">COMPXX</span>: <span style="color:#ae81ff">clang++</span>
+    <span style="color:#f92672">build-commands</span>:
+      - |<span style="color:#e6db74">
+</span><span style="color:#e6db74">        # Replace their network with the one we want to use, in this case it is
+</span><span style="color:#e6db74">        # dark horse 0.2a &#34;Aldi&#34;
+</span><span style="color:#e6db74">        # Taken from: https://www.patreon.com/posts/dark-horse-0-2a-40420324
+</span><span style="color:#e6db74">        sed -i &#39;s|nn-2eb2e0707c2b.nnue|nn-c2fd094bce06.nnue|&#39; src/evaluate.h
+</span><span style="color:#e6db74">        # Move the Neural Network to src, so we don&#39;t need to download it
+</span><span style="color:#e6db74">        mv nn-c2fd094bce06.nnue src
+</span><span style="color:#e6db74">        # Farthest I can go in my CPU, others might want to use avx512, vnni256
+</span><span style="color:#e6db74">        # or even vnni512 instead
+</span><span style="color:#e6db74">        make -C src build nnue=yes pure=yes embed=yes numa=no lto=yes extra=yes
+</span><span style="color:#e6db74">        install -Dm0755 src/cfish -t /app/bin</span>        
+    <span style="color:#f92672">sources</span>:
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://github.com/syzygy1/Cfish.git</span>
+        <span style="color:#f92672">commit</span>: <span style="color:#ae81ff">b5576f28b82828143fad03b52d3f041240204d6c</span>
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">file</span>
+        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">nn-c2fd094bce06.nnue</span>
+        <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">c2fd094bce06942e882a7526a7443007a511ed5ee256613cf3a60a9f4ac744e8</span>
 </code></pre></div><p>This will give us a binary called <code>cfish</code> that has an embedded NNUE network in it
 which guarantees it will always work, as long as you have a CPU that supports the
 instructions enabled by <code>bmi2</code>. Those with more modern CPUs might want to go even

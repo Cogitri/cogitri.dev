@@ -147,40 +147,40 @@ will probably be more annoying in the long run when updating packages</p>
 This means creating a build recipe in a YML file and building it with <code>flatpak-builder</code>
 and installing it. A simple build recipe which only builds one package could look like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#75715e"># app-id, you can set this to whatever if you want to</span>
-<span style="color:#66d9ef">app-id</span>: org.freedesktop.Sdk.Extension.Cogitri
+<span style="color:#f92672">app-id</span>: <span style="color:#ae81ff">org.freedesktop.Sdk.Extension.Cogitri</span>
 <span style="color:#75715e"># The branch this extension is for. Make sure to keep this in sync with</span>
 <span style="color:#75715e"># runtime-version</span>
-<span style="color:#66d9ef">branch</span>: <span style="color:#e6db74">&#39;19.08&#39;</span>
-<span style="color:#66d9ef">runtime</span>: org.freedesktop.Sdk
+<span style="color:#f92672">branch</span>: <span style="color:#e6db74">&#39;19.08&#39;</span>
+<span style="color:#f92672">runtime</span>: <span style="color:#ae81ff">org.freedesktop.Sdk</span>
 <span style="color:#75715e"># What version the runtime we build against has. Make sure this is the same</span>
 <span style="color:#75715e"># version as VSCode uses!</span>
-<span style="color:#66d9ef">runtime-version</span>: <span style="color:#e6db74">&#39;19.08&#39;</span>
-<span style="color:#66d9ef">sdk</span>: org.freedesktop.Sdk
-<span style="color:#66d9ef">build-extension</span>: <span style="color:#66d9ef">true</span>
-<span style="color:#66d9ef">build-options</span>:
+<span style="color:#f92672">runtime-version</span>: <span style="color:#e6db74">&#39;19.08&#39;</span>
+<span style="color:#f92672">sdk</span>: <span style="color:#ae81ff">org.freedesktop.Sdk</span>
+<span style="color:#f92672">build-extension</span>: <span style="color:#66d9ef">true</span>
+<span style="color:#f92672">build-options</span>:
   <span style="color:#75715e"># We want to install to this dir. This is passed to CMake/Meson/Configure etc.</span>
   <span style="color:#75715e"># if you set the `buildsystem` (see below in the vte module)</span>
-  <span style="color:#66d9ef">prefix</span>: /usr/lib/sdk/Cogitri
+  <span style="color:#f92672">prefix</span>: <span style="color:#ae81ff">/usr/lib/sdk/Cogitri</span>
   <span style="color:#75715e"># This is only required if one of the dependencies you build needs a binary from</span>
   <span style="color:#75715e"># another package you build in this module</span>
-  <span style="color:#66d9ef">prepend-path</span>: /usr/lib/sdk/Cogitri/bin
+  <span style="color:#f92672">prepend-path</span>: <span style="color:#ae81ff">/usr/lib/sdk/Cogitri/bin</span>
   <span style="color:#75715e"># Same as above, but for libraries instead of binaries</span>
-  <span style="color:#66d9ef">prepend-ld-library-path</span>: /usr/lib/sdk/Cogitri/lib
-<span style="color:#66d9ef">modules</span>:
+  <span style="color:#f92672">prepend-ld-library-path</span>: <span style="color:#ae81ff">/usr/lib/sdk/Cogitri/lib</span>
+<span style="color:#f92672">modules</span>:
   <span style="color:#75715e"># It&#39;s best to make one module here for every dependencies you need, since flatpak</span>
   <span style="color:#75715e"># caches per-module: If you bump the dependency of one module you don&#39;t need to</span>
   <span style="color:#75715e"># rebuild everything then</span>
-  - <span style="color:#66d9ef">name</span>: vte2<span style="color:#ae81ff">.91</span>
-    <span style="color:#66d9ef">buildsystem</span>: meson
-    <span style="color:#66d9ef">config-opts</span>:
-      - -Ddocs=<span style="color:#66d9ef">false</span>
-      - -Dvapi=<span style="color:#66d9ef">false</span>
-    <span style="color:#66d9ef">build-options</span>:
-      <span style="color:#66d9ef">env</span>: { <span style="color:#66d9ef">CXXFLAGS</span>: <span style="color:#e6db74">&#34;-fno-exceptions&#34;</span> }
-    <span style="color:#66d9ef">sources</span>:
-      - <span style="color:#66d9ef">type</span>: archive
-        <span style="color:#66d9ef">url</span>: https://download.gnome.org/sources/vte/<span style="color:#ae81ff">0.58</span>/vte<span style="color:#ae81ff">-0.58.3</span>.tar.xz
-        <span style="color:#66d9ef">sha256</span>: 22dcb54ac2ad1a56ab0a745e16ccfeb383f0b5860b5bfa1784561216f98d4975
+  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">vte2.91</span>
+    <span style="color:#f92672">buildsystem</span>: <span style="color:#ae81ff">meson</span>
+    <span style="color:#f92672">config-opts</span>:
+      - -<span style="color:#ae81ff">Ddocs=false</span>
+      - -<span style="color:#ae81ff">Dvapi=false</span>
+    <span style="color:#f92672">build-options</span>:
+      <span style="color:#f92672">env</span>: { <span style="color:#f92672">CXXFLAGS</span>: <span style="color:#e6db74">&#34;-fno-exceptions&#34;</span> }
+    <span style="color:#f92672">sources</span>:
+      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">archive</span>
+        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://download.gnome.org/sources/vte/0.58/vte-0.58.3.tar.xz</span>
+        <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">22dcb54ac2ad1a56ab0a745e16ccfeb383f0b5860b5bfa1784561216f98d4975</span>
 </code></pre></div><p>See <a href="https://jlk.fjfi.cvut.cz/arch/manpages/man/flatpak-manifest.5.en">man 5 flatpak-manifest</a> for
 more information. See <a href="https://github.com/Cogitri/org.freedesktop.Extension.Cogitri/blob/master/org.freedesktop.Sdk.Extension.Cogitri.yml">my GitHub repo</a> for how I made my build recipe.</p>
 <p>Once you&rsquo;re done adding all packages to your build recipe it&rsquo;s time to build it like this:</p>

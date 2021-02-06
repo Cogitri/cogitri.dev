@@ -192,23 +192,23 @@ daemon and allows us to verify our session.</p>
 very important as we need the the correct ID of the device.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ panctl
 panctl&gt; list-servers
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">pantalaimon servers</span>:
- - <span style="color:#66d9ef">Name</span>: local-matrix
- - <span style="color:#66d9ef">Pan users</span>:
-   - @maxice8:matrix.org BFXSMBOBLH
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">pantalaimon servers</span>:
+ - <span style="color:#f92672">Name</span>: <span style="color:#ae81ff">local-matrix</span>
+ - <span style="color:#f92672">Pan users</span>:
+   - @<span style="color:#ae81ff">maxice8:matrix.org BFXSMBOBLH</span>
 </code></pre></div><p>We have one server running, the <code>Name</code> key holds the value that is present in
 our configuration, and the <code>Pan users</code> collection holds all the users that are
 logged in, in this case we are logged in via fractal and our id is <code>BFXSMBOBLH</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">panctl&gt; list-devices @maxice8:matrix.org @maxice8:matrix.org
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">Devices for user @maxice8:matrix.org</span>:
- - <span style="color:#66d9ef">Display name</span>:  FluffyChat android
-   - <span style="color:#66d9ef">Device id</span>:   UXOXMSYWMH
-   - <span style="color:#66d9ef">Device key</span>:  [STRENG GEHEIM]
-   - <span style="color:#66d9ef">Trust state</span>: Verified
- - <span style="color:#66d9ef">Display name</span>:  Element Desktop (Linux)
-   - <span style="color:#66d9ef">Device id</span>:   QPOOTXJLUS
-   - <span style="color:#66d9ef">Device key</span>:  [STRENG GEHEIM]
-   - <span style="color:#66d9ef">Trust state</span>: Verified
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">Devices for user @maxice8:matrix.org</span>:
+ - <span style="color:#f92672">Display name</span>:  <span style="color:#ae81ff">FluffyChat android</span>
+   - <span style="color:#f92672">Device id</span>:   <span style="color:#ae81ff">UXOXMSYWMH</span>
+   - <span style="color:#f92672">Device key</span>:  [<span style="color:#ae81ff">STRENG GEHEIM]</span>
+   - <span style="color:#f92672">Trust state</span>: <span style="color:#ae81ff">Verified</span>
+ - <span style="color:#f92672">Display name</span>:  <span style="color:#ae81ff">Element Desktop (Linux)</span>
+   - <span style="color:#f92672">Device id</span>:   <span style="color:#ae81ff">QPOOTXJLUS</span>
+   - <span style="color:#f92672">Device key</span>:  [<span style="color:#ae81ff">STRENG GEHEIM]</span>
+   - <span style="color:#f92672">Trust state</span>: <span style="color:#ae81ff">Verified</span>
 </code></pre></div><p>Those are my devices, you can see I use <a href="https://fluffychat.im/">FlufflyChat</a> on my Android phone
 and have Element Desktop on my desktop, we will use the latter to perform
 the confirmation.</p>
