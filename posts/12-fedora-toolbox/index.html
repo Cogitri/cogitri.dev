@@ -111,7 +111,7 @@
                     <div class="Box mt-3 position-relative">
                         <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
                             <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
-                                355 Words
+                                505 Words
                                 
                             </div>
                         </div>
@@ -159,7 +159,7 @@ ExecPre=/usr/bin/podman start fedora-toolbox-33
 ExecStart=/usr/bin/toolbox run sudo /usr/sbin/sshd -D
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 </code></pre><p>Afterwards we can enable &amp; start the service with:</p>
 <pre><code>systemctl --user daemon-reload
 systemctl --user enable --now toolbox_sshd
@@ -173,7 +173,32 @@ systemctl --user enable --now toolbox_sshd
 of the container will change every time we regenerate the container.</p>
 <p>Afterwards we can SSH into our container by installing the <code>Remote - SSH</code> extension
 in VSCode:</p>
-<p><img src="/posts/12-fedora-toolbox-vscode.png" alt="VSCode Screenshot"></p></article>
+<p><img src="/posts/12-fedora-toolbox-vscode.png" alt="VSCode Screenshot"></p>
+<h3 id="launching-x11d-bus-applications-in-vscode">Launching X11/D-Bus Applications in VSCode</h3>
+<p>By default, you won&rsquo;t be able to launch X11 or D-Bus applications in VSCode&rsquo;s
+integrated terminal when using the &ldquo;Remote - SSH&rdquo; extension. To fix this,
+you have to set the <code>DISPLAY</code> and <code>DBUS_SESSION_BUS_ADDRESS</code>. The easiest way
+to set these to the right values is to enter your toolbox via your normal terminal
+(as in not via SSH) and doing <code>echo $DISPLAY</code> and <code>echo $DBUS_SESSION_BUS_ADDRESS</code>.
+Afterwards add these values to your launch.json, for my project it looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.2.0&#34;</span>,
+    <span style="color:#f92672">&#34;configurations&#34;</span>: [
+        {
+            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;(lldb) Launch&#34;</span>,
+            <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;lldb&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">if</span> <span style="color:#960050;background-color:#1e0010">you&#39;re</span> <span style="color:#960050;background-color:#1e0010">not</span> <span style="color:#960050;background-color:#1e0010">using</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">CodeLLDB</span> <span style="color:#960050;background-color:#1e0010">extension</span> <span style="color:#960050;background-color:#1e0010">for</span> <span style="color:#960050;background-color:#1e0010">debugging</span> <span style="color:#960050;background-color:#1e0010">but</span> <span style="color:#960050;background-color:#1e0010">instead</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">C/C++</span> <span style="color:#960050;background-color:#1e0010">one,</span> <span style="color:#960050;background-color:#1e0010">change</span> <span style="color:#960050;background-color:#1e0010">this</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">cppdbg</span>
+            <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+            <span style="color:#f92672">&#34;program&#34;</span>: <span style="color:#e6db74">&#34;${workspaceRoot}/build/src/dev.Cogitri.Health.Devel&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Change</span> <span style="color:#960050;background-color:#1e0010">this</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">path</span> <span style="color:#960050;background-color:#1e0010">of</span> <span style="color:#960050;background-color:#1e0010">your</span> <span style="color:#960050;background-color:#1e0010">exe</span>
+            <span style="color:#f92672">&#34;args&#34;</span>: [],
+            <span style="color:#f92672">&#34;cwd&#34;</span>: <span style="color:#e6db74">&#34;${workspaceFolder}&#34;</span>,
+            <span style="color:#f92672">&#34;env&#34;</span>: {
+                <span style="color:#f92672">&#34;DISPLAY&#34;</span>: <span style="color:#e6db74">&#34;:0&#34;</span>,
+                <span style="color:#f92672">&#34;DBUS_SESSION_BUS_ADDRESS&#34;</span>: <span style="color:#e6db74">&#34;unix:path=/run/user/1000/bus&#34;</span>
+            }
+        }
+    ]
+}
+</code></pre></div><p>Afterwards launching applications via your debugger should just work.</p></article>
                         </div>
                     </div>
                 </div>
