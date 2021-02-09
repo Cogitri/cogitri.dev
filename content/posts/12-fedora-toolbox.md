@@ -76,7 +76,7 @@ ExecPre=/usr/bin/podman start fedora-toolbox-33
 ExecStart=/usr/bin/toolbox run sudo /usr/sbin/sshd -D
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 ```
 
 Afterwards we can enable & start the service with:
@@ -104,3 +104,33 @@ in VSCode:
 
 ![VSCode Screenshot](/posts/12-fedora-toolbox-vscode.png)
 
+### Launching X11/D-Bus Applications in VSCode
+
+By default, you won't be able to launch X11 or D-Bus applications in VSCode's
+integrated terminal when using the "Remote - SSH" extension. To fix this,
+you have to set the `DISPLAY` and `DBUS_SESSION_BUS_ADDRESS`. The easiest way
+to set these to the right values is to enter your toolbox via your normal terminal
+(as in not via SSH) and doing `echo $DISPLAY` and `echo $DBUS_SESSION_BUS_ADDRESS`.
+Afterwards add these values to your launch.json, for my project it looks like this:
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(lldb) Launch",
+            "type": "lldb", // if you're not using the CodeLLDB extension for debugging but instead the C/C++ one, change this to cppdbg
+            "request": "launch",
+            "program": "${workspaceRoot}/build/src/dev.Cogitri.Health.Devel", // Change this to the path of your exe
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "DISPLAY": ":0",
+                "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus"
+            }
+        }
+    ]
+}
+```
+
+Afterwards launching applications via your debugger should just work.
