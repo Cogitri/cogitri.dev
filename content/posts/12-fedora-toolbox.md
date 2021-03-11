@@ -25,8 +25,9 @@ e.g. building other packages from source and so on. The `extra-packages` has one
 that should be installed per line, like this:
 
 ```
-fish
 clang
+fish
+openssh-server
 ```
 
 We can build the image by having the following folder structure:
@@ -54,7 +55,8 @@ And voilà, you can enter the new toolbox with `toolbox enter`! :)
 
 Since I'm using the VSCode flatpak I have to use the VSCode Remote extension to
 access my Toolbox container. To do that we have to install a SSH server into our container.
-We can do that by adding the following lines to our Dockerfile:
+You can do that by adding `openssh-server` to your `extra-packages`. Afterwards, you can configure
+the server by adding the following lines to our Dockerfile:
 
 ```
 RUN printf "Port 2222\nListenAddress localhost\nPermitEmptyPasswords yes\n" >> /etc/ssh/sshd_config \
