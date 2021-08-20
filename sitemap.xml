@@ -1,93 +1,57 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://www.cogitri.dev/</loc>
     <lastmod>2021-02-06T10:59:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/12-fedora-toolbox/</loc>
     <lastmod>2021-02-06T10:59:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/</loc>
     <lastmod>2021-02-06T10:59:41+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</loc>
     <lastmod>2020-12-27T21:57:24-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/11-update-apkbuild/</loc>
     <lastmod>2020-11-03T23:59:41-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/10-pantalaimon-setup/</loc>
     <lastmod>2020-11-01T19:39:20-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/08-meet-apkbuild.vim/</loc>
     <lastmod>2020-10-30T17:39:23-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/09-nibbler-flatpak/</loc>
     <lastmod>2020-10-30T17:39:23-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/07-meet-mkmr/</loc>
     <lastmod>2020-08-12T18:44:02-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/06-using-flatpaked-vscode/</loc>
     <lastmod>2020-03-27T09:25:10+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/05-introducing-corecollector/</loc>
     <lastmod>2020-02-18T23:13:10+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/about/</loc>
     <lastmod>2020-02-02T11:16:06+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/04-secure-boot-with-unified-kernel-image/</loc>
     <lastmod>2020-02-02T06:07:10+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/03-keepassxc-freedesktop-secret/</loc>
     <lastmod>2019-11-04T11:33:37-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/02-gitlab-alpinelinux-v4-api/</loc>
     <lastmod>2019-10-29T11:28:05-03:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/posts/01-introducing-tmplgen/</loc>
     <lastmod>2019-02-03T22:00:58+01:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.cogitri.dev/tags/</loc>
   </url>
-  
 </urlset>

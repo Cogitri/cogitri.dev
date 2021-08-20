@@ -120,7 +120,7 @@
                             <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><p>Recently I&rsquo;ve been using Fedora Toolbox a lot for development to have a reproducible
 development enviroment across my different systems. To make it easier to have the
 same container on multiple machines I&rsquo;ve created my own Dockerfile:</p>
-<pre><code>FROM registry.fedoraproject.org/fedora:33
+<pre><code>FROM registry.fedoraproject.org/fedora-toolbox:34
 
 # Install extra packages
 COPY extra-packages /
@@ -139,7 +139,7 @@ Dockerfile extra-packages
 </code></pre><p>And issuing the following podman command:</p>
 <pre><code>podman build . -t $USER/fedora-toolbox:latest
 </code></pre><p>Afterwards the toolbox with the custom image can be created with:</p>
-<pre><code>toolbox create -c fedora-toolbox-33 -i $USER/fedora-toolbox
+<pre><code>toolbox create -c fedora-toolbox-34 -i $USER/fedora-toolbox
 </code></pre><p>And voilà, you can enter the new toolbox with <code>toolbox enter</code>! :)</p>
 <h2 id="hooking-it-up-with-vscode">Hooking it up with VSCode</h2>
 <p>Since I&rsquo;m using the VSCode flatpak I have to use the VSCode Remote extension to
@@ -157,7 +157,7 @@ Description=Launch sshd in Fedora Toolbox
 
 [Service]
 Type=longrun
-ExecPre=/usr/bin/podman start fedora-toolbox-33
+ExecPre=/usr/bin/podman start fedora-toolbox-34
 ExecStart=/usr/bin/toolbox run sudo /usr/sbin/sshd -D
 
 [Install]
