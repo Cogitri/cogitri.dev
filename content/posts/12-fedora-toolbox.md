@@ -11,7 +11,7 @@ same container on multiple machines I've created my own Dockerfile:
 <!--more-->
 
 ```
-FROM registry.fedoraproject.org/fedora:33
+FROM registry.fedoraproject.org/fedora-toolbox:34
 
 # Install extra packages
 COPY extra-packages /
@@ -46,7 +46,7 @@ podman build . -t $USER/fedora-toolbox:latest
 Afterwards the toolbox with the custom image can be created with:
 
 ```
-toolbox create -c fedora-toolbox-33 -i $USER/fedora-toolbox
+toolbox create -c fedora-toolbox-34 -i $USER/fedora-toolbox
 ```
 
 And voilà, you can enter the new toolbox with `toolbox enter`! :)
@@ -74,7 +74,7 @@ Description=Launch sshd in Fedora Toolbox
 
 [Service]
 Type=longrun
-ExecPre=/usr/bin/podman start fedora-toolbox-33
+ExecPre=/usr/bin/podman start fedora-toolbox-34
 ExecStart=/usr/bin/toolbox run sudo /usr/sbin/sshd -D
 
 [Install]
