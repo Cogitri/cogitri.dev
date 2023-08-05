@@ -1,7 +1,7 @@
 ---
 title: "GUADEC 2023 (Rīga, Latvia) and how to retain GSoC students after GSoC"
 date: 2023-07-31T22:36:48+03:00
-draft: true
+draft: false
 ---
 
 ![Sponsored by GNOME Foundation](https://cogitri.dev/post/13-sponsored.png)
