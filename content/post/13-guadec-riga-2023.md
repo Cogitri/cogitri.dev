@@ -4,7 +4,7 @@ date: 2023-07-31T22:36:48+03:00
 draft: false
 ---
 
-![Sponsored by GNOME Foundation](https://cogitri.dev/post/13-sponsored.png)
+![Sponsored by GNOME Foundation](https://www.cogitri.dev/post/13-sponsored.png)
 
 This year I attended my first in-person GNOME conference (the GUADEC) in Rīga, Latvia. It was great to meet all the other GNOME folks, and there were loads of interesting talks, so if you haven't had the chance to attend the GUADEC yet, I'd strongly encourage you to do so next year. The GUADEC 2024 will take place in Denver, Colorado, but there will also be a Mini-GUADEC in Berlin again.
 
