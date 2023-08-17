@@ -1,1 +1,381 @@
-<!DOCTYPE html><html><head><title>https://www.cogitri.dev/posts/02-gitlab-alpinelinux-v4-api/</title><link rel="canonical" href="https://www.cogitri.dev/posts/02-gitlab-alpinelinux-v4-api/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://www.cogitri.dev/posts/02-gitlab-alpinelinux-v4-api/" /></head></html>
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://www.cogitri.dev/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github-style.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/light.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/dark.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/syntax.css' />
+    <title>Contributing to Alpine Linux: making Merge Requests - Cogitri&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://www.cogitri.dev/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="Guest article by maxice8 Some time ago, Alpine Linux started using their self-hosted GitLab instance to accept contributions via merge requests.
+I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it is currently a mirror to git.alpinelinux.org).
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://www.cogitri.dev/post/02-gitlab-alpinelinux-v4-api/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Contributing to Alpine Linux: making Merge Requests - Cogitri&#39;s blog" />
+<meta name="twitter:description"
+  content="Guest article by maxice8 Some time ago, Alpine Linux started using their self-hosted GitLab instance to accept contributions via merge requests.
+I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it is currently a mirror to git.alpinelinux.org).
+" />
+<meta name="twitter:site" content="https://www.cogitri.dev" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://www.cogitri.dev">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Contributing to Alpine Linux: making Merge Requests - Cogitri&#39;s blog">
+<meta property="og:description"
+  content="Guest article by maxice8 Some time ago, Alpine Linux started using their self-hosted GitLab instance to accept contributions via merge requests.
+I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it is currently a mirror to git.alpinelinux.org).
+" />
+<meta property="og:url" content="https://www.cogitri.dev/post/02-gitlab-alpinelinux-v4-api/" />
+<meta property="og:site_name" content="Contributing to Alpine Linux: making Merge Requests" />
+<meta property="og:image"
+  content="https://www.cogitri.dev">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2019-10-29 11:28:05 -0300 -0300" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://www.cogitri.dev">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://www.cogitri.dev">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://www.cogitri.dev">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://www.cogitri.dev">
+                  <img class=" avatar-user"
+                    src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://www.cogitri.dev">Rasmus Thomsen</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://www.cogitri.dev/post/02-gitlab-alpinelinux-v4-api/">Contributing to Alpine Linux: making Merge Requests</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Tue, 29 Oct 2019 11:28:05 -0300"
+                    class="no-wrap">
+                    Tue, 29 Oct 2019 11:28:05 -0300</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1038 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><h6 id="guest-article-by-maxice8">Guest article by maxice8</h6>
+<p>Some time ago, <a href="https://alpinelinux.org">Alpine Linux</a> started using their self-hosted
+<a href="https://gitlab.alpinelinux.org">GitLab instance</a> to accept contributions via merge requests.</p>
+<p>I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it
+is currently a mirror to git.alpinelinux.org).</p>
+<h1 id="how-it-was-before">How it was before</h1>
+<p>Before using their GitLab instance I used their <a href="https://github.com/alpinelinux/aports">GitHub repo</a> to
+contribute, I would use the amazing <a href="https://github.com/github/hub">hub</a> tool, which after login with my
+personal access token would allow me to easily check out pull requests and merge them from the CLI.</p>
+<p>The scripts for it are very simple, most of the logic is on hub and a few lines of shell just wrap around
+it for my most common use cases.</p>
+<p>This one uses hub to checkout a PR someone has made:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set -eu
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> $# -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -gt <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>		args<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74"> </span>$2<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>		shift <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>		args<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>		shift <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>	hub pr checkout $args
+</span></span><span style="display:flex;"><span>	pullp
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><h1 id="moving-to-gitlab">Moving to GitLab</h1>
+<p>GitLab doesn&rsquo;t have a tool like hub that makes it super easy to interact with the GitLab V4 API like
+hub does with the GitHub API. So I turned into accessing the API by myself with the ever trustworthy curl.</p>
+<h2 id="finding-the-endpoint">Finding the endpoint</h2>
+<p>Since GitLab allows self hosting, the first thing you have to do is find our respective GitLab endpoint. GitHub
+is a centralized proprietary service so it doesn&rsquo;t have this issue.</p>
+<p>This is the following code present in all my scripts that deal with GitLab (I believe the comments
+are enough to tell what they are for and what they meant).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># Try to detect host, strip the .git suffix</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This is where the domain is, most normally gitlab.com</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># but also works with other custom domains.</span>
+</span></span><span style="display:flex;"><span>HOST<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>git config remote.upstream.url | cut -d / -f -3<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This is the ENDPOINT of the project you forked, if we call this with</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># curl we get a JSON payload that describes the repo, including stuff like</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># its :id and :name</span>
+</span></span><span style="display:flex;"><span>ENDPOINT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOST<span style="color:#e6db74">&#34;</span>/api/v4/projects/<span style="color:#e6db74">&#34;</span>$origin_owner<span style="color:#e6db74">&#34;</span>%2F<span style="color:#e6db74">&#34;</span>$origin_repo<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># This is the ENDPOINT of the project itself, we need to get its :id value to</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pass as the &#39;target_project_id&#39;</span>
+</span></span><span style="display:flex;"><span>UPSTREAM_ENDPOINT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOST<span style="color:#e6db74">&#34;</span>/api/v4/projects/<span style="color:#e6db74">&#34;</span>$upstream_owner<span style="color:#e6db74">&#34;</span>%2F<span style="color:#e6db74">&#34;</span>$upstream_repo<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h2 id="finding-the-project-id">Finding the project id</h2>
+<p>Each project has its own id, which we need to pass in the request to the GitLab API so it
+knows which repo we target when creating the merge request.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>_get_project_id<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	repo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>			| sed -e <span style="color:#e6db74">&#39;s|https://||g&#39;</span> -e <span style="color:#e6db74">&#39;s|%2F|.|&#39;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>			| tr <span style="color:#e6db74">&#39;/&#39;</span> <span style="color:#e6db74">&#39;.&#39;</span> <span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Create cache directory if it doesn&#39;t exist</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">[</span> -d <span style="color:#e6db74">&#34;</span>$XDG_CACHE_HOME<span style="color:#e6db74">&#34;</span>/mkmr <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> mkdir -p <span style="color:#e6db74">&#34;</span>$XDG_CACHE_HOME<span style="color:#e6db74">&#34;</span>/mkmr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># The project ID is cached, read it out</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f <span style="color:#e6db74">&#34;</span>$XDG_CACHE_HOME<span style="color:#e6db74">&#34;</span>/mkmr/<span style="color:#e6db74">&#34;</span>$repo<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>		cat <span style="color:#e6db74">&#34;</span>$XDG_CACHE_HOME<span style="color:#e6db74">&#34;</span>/mkmr/<span style="color:#e6db74">&#34;</span>$repo<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Call the GitLab API to see the id of the repo and write it to the cache</span>
+</span></span><span style="display:flex;"><span>	curl --silent <span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span> | jq <span style="color:#e6db74">&#39;.id // empty&#39;</span> | tee <span style="color:#e6db74">&#34;</span>$XDG_CACHE_HOME<span style="color:#e6db74">&#34;</span>/mkmr/<span style="color:#e6db74">&#34;</span>$repo<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">[</span> -s <span style="color:#e6db74">&#34;</span>$XDG_CACHE_HOME<span style="color:#e6db74">&#34;</span>/mkmr/<span style="color:#e6db74">&#34;</span>$repo<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The code above finds the project id via a request to the GitLab API which can be slow
+so we cache the id of the project so you don&rsquo;t need to call it every time you have to
+make a merge request.</p>
+<h2 id="crafting-the-json-payload">Crafting the JSON payload</h2>
+<p>The GitLab API takes a JSON payload for its requests, so we need to craft one in shell
+for it, which is easier than initially thought.</p>
+<p>This is the first part of the payload, and will always appear, regardless of whatever
+options the user has passed to the script when creating the merge requests</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>	<span style="color:#75715e"># JSON payload that will be used to create the branch</span>
+</span></span><span style="display:flex;"><span>	BODY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;id\&#34;: \&#34;</span><span style="color:#e6db74">${</span>origin_owner<span style="color:#e6db74">}</span><span style="color:#e6db74">%2F</span><span style="color:#e6db74">${</span>origin_repo<span style="color:#e6db74">}</span><span style="color:#e6db74">\&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;source_branch\&#34;: \&#34;</span><span style="color:#66d9ef">$(</span>git rev-parse --abbrev-ref HEAD<span style="color:#66d9ef">)</span><span style="color:#e6db74">\&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;remove_source_branch\&#34;: true,&#34;</span>
+</span></span></code></pre></div><p>The second part adds labels to the merge request if the user passed them via the &ndash;labels
+option. It also sets the description of the merge request, which the user can set by passing
+&ndash;description and/or passing &ndash;edit (edit with $EDITOR).</p>
+<blockquote>
+<p>the A-upgrade label is automatically added if it detects an Alpine Linux upgrade commit
+<!-- raw HTML omitted -->/<!-- raw HTML omitted -->: upgrade to <!-- raw HTML omitted --></p>
+<p>The A-add label is automatically added if it detects an Alpine Linux add commit
+<!-- raw HTML omitted -->/<!-- raw HTML omitted -->: new aport</p>
+<p>The A-move label is automatically added if it detects an Alpine Linux move commit
+<!-- raw HTML omitted -->/<!-- raw HTML omitted -->: move from <!-- raw HTML omitted --></p>
+</blockquote>
+<p>Note that we use awk to convert all newlines to literal \n, this is required and GitLab will
+translate them back from literal \n to newlines.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>	<span style="color:#75715e"># If we set labels then append it to body</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$LABEL<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>		BODY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$BODY<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;labels\&#34;: \&#34;</span>$LABEL<span style="color:#e6db74">\&#34;,&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -n <span style="color:#e6db74">&#34;</span>$DESCRIPTION<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>		BODY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$BODY<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;description\&#34;: \&#34;</span><span style="color:#66d9ef">$(</span>printf <span style="color:#e6db74">&#34;%s&#34;</span> <span style="color:#e6db74">&#34;</span>$DESCRIPTION<span style="color:#e6db74">&#34;</span> | awk <span style="color:#e6db74">&#39;{printf  &#34;%s\\n&#34;, $0}&#39;</span> <span style="color:#66d9ef">)</span><span style="color:#e6db74">\&#34;,&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p>The last part sets the target_branch, which is where you want to merge the merge request into,
+most of the time it is the master branch, but in some cases you might want to merge into other
+branches with &ndash;target-branch.</p>
+<blockquote>
+<p>There is also logic specific to Alpine Linux for setting the target_branch to one of its
+stable branches for backporting</p>
+</blockquote>
+<p>If the branch only contains one commit deviating from the target branch it sets the title and description of the merge request to the commit&rsquo;s text. If there are multiple deviating commits it allows the user to pick one of the commits to use its text. Users can also pass the <code>--title</code>  option to the script to write their own title</p>
+<p>The assignee_id is rarely used since it is very annoying to use but if you pass it with &ndash;assignees then
+the user that matches the id will be marked as assignee on the merge request.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>	BODY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$BODY<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;target_branch\&#34;: \&#34;</span>$TARGET_BRANCH<span style="color:#e6db74">\&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;title\&#34;: \&#34;</span>$TITLE<span style="color:#e6db74">\&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;assignee_id\&#34;: \&#34;</span>$ASSIGN<span style="color:#e6db74">\&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		\&#34;target_project_id\&#34;: </span>$PROJECT_ID<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	}&#34;</span>;
+</span></span></code></pre></div><h2 id="calling-the-api">Calling the API</h2>
+<p>After the JSON payload is done we now call the API with curl.</p>
+<p>For it we have to provide our own personal access token. To do it we use the
+freedesktop <a href="https://freedesktop.org/wiki/Specifications/secret-storage-spec/secrets-api-0.1.html">Secrets API</a>
+and <a href="https://manpages.ubuntu.com/manpages/bionic/man1/secret-tool.1.html">secret-tool(1)</a> to
+query the system keyring for the private token. Users can just put the value for
+their own personal access token.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>	JSON<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -X POST <span style="color:#e6db74">&#34;</span>$ENDPOINT<span style="color:#e6db74">&#34;</span>/merge_requests <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>			--header <span style="color:#e6db74">&#34;PRIVATE-TOKEN: </span><span style="color:#66d9ef">$(</span>secret-tool lookup Path a.o/gitlab/token/mkmr<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>			--header <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>			--data <span style="color:#e6db74">&#34;</span>$BODY<span style="color:#e6db74">&#34;</span> --silent<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	WEB_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>echo <span style="color:#e6db74">&#34;</span>$JSON<span style="color:#e6db74">&#34;</span> | jq <span style="color:#e6db74">&#39;.web_url // empty&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$WEB_URL<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>		echo <span style="color:#e6db74">&#34;</span>$JSON<span style="color:#e6db74">&#34;</span> | jq -r .
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>		echo <span style="color:#e6db74">&#34;</span>$WEB_URL<span style="color:#e6db74">&#34;</span> | tr -d <span style="color:#e6db74">&#39;&#34;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://www.cogitri.dev/js/toc.js'></script>
+<link rel="stylesheet" href='https://www.cogitri.dev/css/toc.css' />
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://www.cogitri.dev">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://www.cogitri.dev/js/github-style.js"></script>
+
+
+
+
+</html>

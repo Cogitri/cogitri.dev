@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://www.cogitri.dev/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github-style.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/light.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/dark.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/syntax.css' />
+    <title>Introducing Corecollector, a coredump collector written in D  - Cogitri&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://www.cogitri.dev/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="I&amp;rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly random times for me (especially after hibernating), but attaching a debugger to gnome-shell isn&amp;rsquo;t as easy as it appears. I&amp;rsquo;ve noticed that it tended to dump a core.$pid file in my $HOME, which is a coredump file one can load into a debugger to print the backtrace among other things to after the fact. It annoyed me a little that it cluttered my $HOME and I figured it&amp;rsquo;d be nice having a manager for these coredumps so one can see what programs crashed, why and how and to easily rotate them. I&amp;rsquo;ve remembered using systemd-coredumpd at some point and kind of liked that, but since I&amp;rsquo;m using Alpine Linux that wasn&amp;rsquo;t an option, so I wrote corecollector.
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://www.cogitri.dev/post/05-introducing-corecollector/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Introducing Corecollector, a coredump collector written in D  - Cogitri&#39;s blog" />
+<meta name="twitter:description"
+  content="I&amp;rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly random times for me (especially after hibernating), but attaching a debugger to gnome-shell isn&amp;rsquo;t as easy as it appears. I&amp;rsquo;ve noticed that it tended to dump a core.$pid file in my $HOME, which is a coredump file one can load into a debugger to print the backtrace among other things to after the fact. It annoyed me a little that it cluttered my $HOME and I figured it&amp;rsquo;d be nice having a manager for these coredumps so one can see what programs crashed, why and how and to easily rotate them. I&amp;rsquo;ve remembered using systemd-coredumpd at some point and kind of liked that, but since I&amp;rsquo;m using Alpine Linux that wasn&amp;rsquo;t an option, so I wrote corecollector.
+" />
+<meta name="twitter:site" content="https://www.cogitri.dev" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://www.cogitri.dev">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Introducing Corecollector, a coredump collector written in D  - Cogitri&#39;s blog">
+<meta property="og:description"
+  content="I&amp;rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly random times for me (especially after hibernating), but attaching a debugger to gnome-shell isn&amp;rsquo;t as easy as it appears. I&amp;rsquo;ve noticed that it tended to dump a core.$pid file in my $HOME, which is a coredump file one can load into a debugger to print the backtrace among other things to after the fact. It annoyed me a little that it cluttered my $HOME and I figured it&amp;rsquo;d be nice having a manager for these coredumps so one can see what programs crashed, why and how and to easily rotate them. I&amp;rsquo;ve remembered using systemd-coredumpd at some point and kind of liked that, but since I&amp;rsquo;m using Alpine Linux that wasn&amp;rsquo;t an option, so I wrote corecollector.
+" />
+<meta property="og:url" content="https://www.cogitri.dev/post/05-introducing-corecollector/" />
+<meta property="og:site_name" content="Introducing Corecollector, a coredump collector written in D " />
+<meta property="og:image"
+  content="https://www.cogitri.dev">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-02-18 23:13:10 &#43;0100 CET" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://www.cogitri.dev">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://www.cogitri.dev">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://www.cogitri.dev">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://www.cogitri.dev">
+                  <img class=" avatar-user"
+                    src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://www.cogitri.dev">Rasmus Thomsen</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://www.cogitri.dev/post/05-introducing-corecollector/">Introducing Corecollector, a coredump collector written in D </a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Tue, 18 Feb 2020 23:13:10 &#43;0100"
+                    class="no-wrap">
+                    Tue, 18 Feb 2020 23:13:10 &#43;0100</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      1066 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>I&rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly
+random times for me (especially after hibernating), but attaching a debugger
+to gnome-shell isn&rsquo;t as easy as it appears. I&rsquo;ve noticed that it tended
+to dump a <code>core.$pid</code> file in my <code>$HOME</code>, which is a coredump file one
+can load into a debugger to print the backtrace among other things to
+after the fact. It annoyed me a little that it cluttered my <code>$HOME</code> and
+I figured it&rsquo;d be nice having a manager for these coredumps so one can
+see what programs crashed, why and how and to easily rotate them. I&rsquo;ve remembered
+using systemd-coredumpd at some point and kind of liked that, but since I&rsquo;m
+using Alpine Linux that wasn&rsquo;t an option, so I wrote corecollector.</p>
+<h1 id="installation">Installation</h1>
+<p>If corecollector is packaged in your distribution installing corecollector
+should be as simple as installing it via your package manager. From then
+on corecollector will collect coredumps for you (see further down for the usage).</p>
+<p>If corecollector hasn&rsquo;t been packaged yet, you can install it manually:</p>
+<p>Simply download a release from <a href="https://github.com/Cogitri/corecollector/releases">https://github.com/Cogitri/corecollector/releases</a> ,
+unpack the tarball and <code>cd</code> into the resulting dir. Then run:</p>
+<pre tabindex="0"><code>ninja --buildtype=release build
+ninja -C build install
+</code></pre><p>You&rsquo;ll need a functional D compiler for this to work. You&rsquo;ll also have to
+create a <code>corecollector</code> user and group, as which <code>corehelper</code>, which is invoked
+by the kernel when a program crashes and a core is dumped, will save
+the coredumps to avoid running as root for longer than required. You can add
+users to the <code>corecollector</code> group to allow them to access coredumps without
+root, but be mindful that coredumps are snapshots of the memory of a program
+and can contain highly sensitive data.</p>
+<h1 id="using-the-cli">Using (the CLI)</h1>
+<p>The main binary to interact with is <code>corectl</code>, here&rsquo;s it&rsquo;s <code>--help</code> which explains
+most things:</p>
+<pre tabindex="0"><code>Usage:
+  corectl &lt;subcommand&gt; [OPTION...]
+
+List and interact with coredumps
+
+Subcommands:
+  backtrace [ID]    - Print the backtrace of the coredump identified by ID.
+  debug [ID]        - Open the coredump identified by ID in a debugger.
+  dump  [ID] [FILE] - Dump the coredump identified by ID to file denoted by FILE.
+                      Defaults to &#39;stdout&#39;.
+  info [ID]         - Get more detailed information for the coredump identified by ID.
+  list              - List all available coredumps.
+
+Help Options:
+  -h, --help         - Show help options.
+
+Application Options:
+  -v, --version      - Print program version.
+  -d, --debug [0-3]  - Specify the debug level.
+</code></pre><p>If you want to know what programs have crashed you can simply run <code>corectl list</code>:</p>
+<pre tabindex="0"><code>$ corectl list
+
+ID    SIGNAL   UID      GID      PID      TIMESTAMP             EXE
+1     6        1000     1000     4837     2020-Feb-18 18:32:05  /usr/bin/Xwayland
+2     5        105      109      30052    2020-Feb-18 18:32:06  /usr/bin/gnome-shell
+3     11       1000     1000     5296     2020-Feb-18 21:17:49  /usr/bin/gnome-software
+4     31       1000     1000     6830     2020-Feb-18 21:19:21  /usr/libexec/tracker-extract
+5     11       1000     1000     7770     2020-Feb-18 21:24:41  /usr/local/bin/gnome-software
+</code></pre><p>You can then run <code>corectl debug $ID</code> to attach a debugger to one of the coredumps:</p>
+<pre tabindex="0"><code>$ corectl debug 3
+GNU gdb (GDB) 9.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type &#34;show copying&#34; and &#34;show warranty&#34; for details.
+This GDB was configured as &#34;x86_64-alpine-linux-musl&#34;.
+Type &#34;show configuration&#34; for configuration details.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.
+Find the GDB manual and other documentation resources online at:
+    &lt;http://www.gnu.org/software/gdb/documentation/&gt;.
+
+For help, type &#34;help&#34;.
+Type &#34;apropos word&#34; to search for commands related to &#34;word&#34;...
+Reading symbols from /usr/local/bin/gnome-software...
+[New LWP 28750]
+[New LWP 28749]
+[New LWP 28755]
+[New LWP 28753]
+[New LWP 28747]
+[New LWP 28748]
+[New LWP 28757]
+[New LWP 28751]
+[New LWP 28752]
+[New LWP 28759]
+[New LWP 28756]
+[New LWP 28754]
+
+Core was generated by `gnome-software&#39;.
+Program terminated with signal SIGSEGV, Segmentation fault.
+#0  0x00007ffbdf330a2c in composite_boxes (compositor=compositor@entry=0x7ffbdf3cc920 &lt;spans&gt;, extents=extents@entry=0x7ffbdd9c76f0, boxes=boxes@entry=0x7ffbdd9c72d0) at cairo-spans-compositor.c:720
+720	cairo-spans-compositor.c: No such file or directory.
+[Current thread is 1 (LWP 28750)]
+(gdb) bt
+#0  0x00007ffbdf330a2c in composite_boxes (compositor=compositor@entry=0x7ffbdf3cc920 &lt;spans&gt;, extents=extents@entry=0x7ffbdd9c76f0, boxes=boxes@entry=0x7ffbdd9c72d0) at cairo-spans-compositor.c:720
+...
+..
+.
+</code></pre><p>You can also print the backtrace directly via <code>corectl backtrace $ID</code> which tends
+to be the most frequently used feature:</p>
+<pre tabindex="0"><code>$corectl backtrace 3
+#0  0x00007ffbdf330a2c in composite_boxes (compositor=compositor@entry=0x7ffbdf3cc920 &lt;spans&gt;, extents=extents@entry=0x7ffbdd9c76f0, boxes=boxes@entry=0x7ffbdd9c72d0) at cairo-spans-compositor.c:720
+...
+..
+.
+</code></pre><h1 id="configuration">Configuration</h1>
+<p>Corecollector also has a few configuration options, see <code>/etc/corecollector/corecollector.conf</code>:</p>
+<pre tabindex="0"><code># What compression to use for coredumps.
+# Available choices: none zlib
+compression = zlib
+# The maximum size of coredumps.
+# Unset or set to 0 to set no size limit.
+# Measured in KByte, must be whole numbers.
+maxSize = 0
+# The path to save coredumps to.
+targetPath = /var/lib/corecollector
+# Where to log to. Pass /dev/null to only log to syslog
+logPath = /var/log/corecollector.log
+# Enable debugging
+enableDebug = false
+# The maximum size of the coredumpdir.
+# Unset or set to 0 to set no size limit.
+# Measured in KByte, must be whole numbers.
+maxDirSize = 0
+</code></pre><p>It uses zlib for compression by default, since coredumps tend to be very easy to compress.
+As such a coredump might be some 400KiB big when uncompressed but be as small as 5 KiB
+when compressed. Corecollector also offers options to limit the maximum size of coredumps,
+rotate the coredump directory once it reaches a certain size or to log to a certain
+path (additionally to syslog).</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Corecollector is made to make debugging programs easy and to make users aware
+of crashing programs, since it can be easy to miss them in the logs or <code>dmesg</code>.
+I hope it proves useful to you :)</p>
+<p>Corecollector was my first project in DLang and it was a very pleasant experience.
+Since DLang has a pretty small community (and as such doesn&rsquo;t have a too broad
+library landscape) it can seem a little frightening to get started with it, but
+I&rsquo;ve found it to be an incredibly productive language: I don&rsquo;t feel held back because
+it&rsquo;s somewhat &ldquo;low-level-ish&rdquo;, but due to it&rsquo;s GC (which can easily be controlled or
+even turned off completely for performance critical areas) it&rsquo;s easy to use without
+introducing security vulnerabilities due to use-after-frees or double-frees and without
+having to worry about lifetimes or similar. It&rsquo;s also easy to bind to C libraries
+in D (one only needs the function declaration and link against the right library
+and it&rsquo;s as if you&rsquo;re calling it from C), so the library landscape doesn&rsquo;t look
+so bad after all :)</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://www.cogitri.dev/js/toc.js'></script>
+<link rel="stylesheet" href='https://www.cogitri.dev/css/toc.css' />
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://www.cogitri.dev">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://www.cogitri.dev/js/github-style.js"></script>
+
+
+
+
+</html>

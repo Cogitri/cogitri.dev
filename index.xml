@@ -6,13 +6,22 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 06 Feb 2021 10:59:41 +0100</lastBuildDate><atom:link href="https://www.cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Jul 2023 22:36:48 +0300</lastBuildDate><atom:link href="https://www.cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GUADEC 2023 (Rīga, Latvia) and how to retain GSoC students after GSoC</title>
+      <link>https://www.cogitri.dev/post/13-guadec-riga-2023/</link>
+      <pubDate>Mon, 31 Jul 2023 22:36:48 +0300</pubDate>
+      
+      <guid>https://www.cogitri.dev/post/13-guadec-riga-2023/</guid>
+      <description>This year I attended my first in-person GNOME conference (the GUADEC) in Rīga, Latvia. It was great to meet all the other GNOME folks, and there were loads of interesting talks, so if you haven&amp;rsquo;t had the chance to attend the GUADEC yet, I&amp;rsquo;d strongly encourage you to do so next year. The GUADEC 2024 will take place in Denver, Colorado, but there will also be a Mini-GUADEC in Berlin again.</description>
+    </item>
+    
     <item>
       <title>Fedora Toolbox with custom container images</title>
-      <link>https://www.cogitri.dev/posts/12-fedora-toolbox/</link>
+      <link>https://www.cogitri.dev/post/12-fedora-toolbox/</link>
       <pubDate>Sat, 06 Feb 2021 10:59:41 +0100</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/12-fedora-toolbox/</guid>
+      <guid>https://www.cogitri.dev/post/12-fedora-toolbox/</guid>
       <description>&lt;p&gt;Recently I&amp;rsquo;ve been using Fedora Toolbox a lot for development to have a reproducible
 development enviroment across my different systems. To make it easier to have the
 same container on multiple machines I&amp;rsquo;ve created my own Dockerfile:&lt;/p&gt;</description>
@@ -20,10 +29,10 @@ same container on multiple machines I&amp;rsquo;ve created my own Dockerfile:&lt
     
     <item>
       <title>Creating an Alpine Developer Environment for Fedora Silverblue</title>
-      <link>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</link>
+      <link>https://www.cogitri.dev/post/11-alpine-dev-env-in-fedora/</link>
       <pubDate>Sun, 27 Dec 2020 21:57:24 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/11-alpine-dev-env-in-fedora/</guid>
+      <guid>https://www.cogitri.dev/post/11-alpine-dev-env-in-fedora/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -35,10 +44,10 @@ same container on multiple machines I&amp;rsquo;ve created my own Dockerfile:&lt
     
     <item>
       <title>APKBUILD.vim: updates, new stuff, better</title>
-      <link>https://www.cogitri.dev/posts/11-update-apkbuild/</link>
+      <link>https://www.cogitri.dev/post/11-update-apkbuild/</link>
       <pubDate>Tue, 03 Nov 2020 23:59:41 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/11-update-apkbuild/</guid>
+      <guid>https://www.cogitri.dev/post/11-update-apkbuild/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Article by Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -55,10 +64,10 @@ it arrived. So lets catch up on everything that happened until
     
     <item>
       <title>Setting up Pantalaimon for usage with Matrix clients and using panctl</title>
-      <link>https://www.cogitri.dev/posts/10-pantalaimon-setup/</link>
+      <link>https://www.cogitri.dev/post/10-pantalaimon-setup/</link>
       <pubDate>Sun, 01 Nov 2020 19:39:20 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/10-pantalaimon-setup/</guid>
+      <guid>https://www.cogitri.dev/post/10-pantalaimon-setup/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -77,10 +86,10 @@ for you.&lt;/p&gt;
     
     <item>
       <title>APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim</title>
-      <link>https://www.cogitri.dev/posts/08-meet-apkbuild.vim/</link>
+      <link>https://www.cogitri.dev/post/08-meet-apkbuild.vim/</link>
       <pubDate>Fri, 30 Oct 2020 17:39:23 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/08-meet-apkbuild.vim/</guid>
+      <guid>https://www.cogitri.dev/post/08-meet-apkbuild.vim/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -99,10 +108,10 @@ a vim &lt;code&gt;filetype&lt;/code&gt; for APKBUILDs.&lt;/p&gt;
     
     <item>
       <title>Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines</title>
-      <link>https://www.cogitri.dev/posts/09-nibbler-flatpak/</link>
+      <link>https://www.cogitri.dev/post/09-nibbler-flatpak/</link>
       <pubDate>Fri, 30 Oct 2020 17:39:23 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/09-nibbler-flatpak/</guid>
+      <guid>https://www.cogitri.dev/post/09-nibbler-flatpak/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -126,10 +135,10 @@ so lets go package it.&lt;/p&gt;</description>
     
     <item>
       <title>Introducing mkmr, a collection of python3 tools to interact with GitLab</title>
-      <link>https://www.cogitri.dev/posts/07-meet-mkmr/</link>
+      <link>https://www.cogitri.dev/post/07-meet-mkmr/</link>
       <pubDate>Wed, 12 Aug 2020 18:44:02 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/07-meet-mkmr/</guid>
+      <guid>https://www.cogitri.dev/post/07-meet-mkmr/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -143,10 +152,10 @@ easier to create, edit and merge Merge Requests.&lt;/p&gt;</description>
     
     <item>
       <title>Using VSCode in a Flatpak</title>
-      <link>https://www.cogitri.dev/posts/06-using-flatpaked-vscode/</link>
+      <link>https://www.cogitri.dev/post/06-using-flatpaked-vscode/</link>
       <pubDate>Fri, 27 Mar 2020 09:25:10 +0100</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/06-using-flatpaked-vscode/</guid>
+      <guid>https://www.cogitri.dev/post/06-using-flatpaked-vscode/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve recently started using VSCode as my main editor, mainly due to its
 extensibility, meaning I can use it in almost all scenarios (at work, for
 personal projects, &amp;hellip;) and it&amp;rsquo;s easy to customize to my needs (although the
@@ -158,10 +167,10 @@ to be suitable for development&lt;/p&gt;</description>
     
     <item>
       <title>Introducing Corecollector, a coredump collector written in D </title>
-      <link>https://www.cogitri.dev/posts/05-introducing-corecollector/</link>
+      <link>https://www.cogitri.dev/post/05-introducing-corecollector/</link>
       <pubDate>Tue, 18 Feb 2020 23:13:10 +0100</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/05-introducing-corecollector/</guid>
+      <guid>https://www.cogitri.dev/post/05-introducing-corecollector/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly
 random times for me (especially after hibernating), but attaching a debugger
 to gnome-shell isn&amp;rsquo;t as easy as it appears. I&amp;rsquo;ve noticed that it tended
@@ -185,10 +194,10 @@ using Alpine Linux that wasn&amp;rsquo;t an option, so I wrote corecollector.&lt
     
     <item>
       <title>Booting Alpine Linux with a Unified Kernel Image and Secure Boot</title>
-      <link>https://www.cogitri.dev/posts/04-secure-boot-with-unified-kernel-image/</link>
+      <link>https://www.cogitri.dev/post/04-secure-boot-with-unified-kernel-image/</link>
       <pubDate>Sun, 02 Feb 2020 06:07:10 +0100</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/04-secure-boot-with-unified-kernel-image/</guid>
+      <guid>https://www.cogitri.dev/post/04-secure-boot-with-unified-kernel-image/</guid>
       <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;
 &lt;p&gt;Recently I got myself into package &lt;code&gt;sd-boot&lt;/code&gt; from the Systemd project
 into Alpine Linux. I previously packaged it as an April&amp;rsquo;s fools joke
@@ -197,10 +206,10 @@ for Void Linux &lt;a href=&#34;https://github.com/void-linux/void-packages/pull/
     
     <item>
       <title>Using KeePassXC as your system-keyring and ssh-agent</title>
-      <link>https://www.cogitri.dev/posts/03-keepassxc-freedesktop-secret/</link>
+      <link>https://www.cogitri.dev/post/03-keepassxc-freedesktop-secret/</link>
       <pubDate>Mon, 04 Nov 2019 11:33:37 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/03-keepassxc-freedesktop-secret/</guid>
+      <guid>https://www.cogitri.dev/post/03-keepassxc-freedesktop-secret/</guid>
       <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;
 &lt;p&gt;Recently the community-oriented password manager &lt;a href=&#34;https://keepassxc.org/&#34;&gt;KeePassXC&lt;/a&gt; made a new
 major release, 2.5.0.&lt;/p&gt;
@@ -211,10 +220,10 @@ from Freedesktop.&lt;/p&gt;</description>
     
     <item>
       <title>Contributing to Alpine Linux: making Merge Requests</title>
-      <link>https://www.cogitri.dev/posts/02-gitlab-alpinelinux-v4-api/</link>
+      <link>https://www.cogitri.dev/post/02-gitlab-alpinelinux-v4-api/</link>
       <pubDate>Tue, 29 Oct 2019 11:28:05 -0300</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/02-gitlab-alpinelinux-v4-api/</guid>
+      <guid>https://www.cogitri.dev/post/02-gitlab-alpinelinux-v4-api/</guid>
       <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;
 &lt;p&gt;Some time ago, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; started using their self-hosted
 &lt;a href=&#34;https://gitlab.alpinelinux.org&#34;&gt;GitLab instance&lt;/a&gt; to accept contributions via merge requests.&lt;/p&gt;
@@ -224,10 +233,10 @@ is currently a mirror to git.alpinelinux.org).&lt;/p&gt;</description>
     
     <item>
       <title>Introducing tmplgen</title>
-      <link>https://www.cogitri.dev/posts/01-introducing-tmplgen/</link>
+      <link>https://www.cogitri.dev/post/01-introducing-tmplgen/</link>
       <pubDate>Sun, 03 Feb 2019 22:00:58 +0100</pubDate>
       
-      <guid>https://www.cogitri.dev/posts/01-introducing-tmplgen/</guid>
+      <guid>https://www.cogitri.dev/post/01-introducing-tmplgen/</guid>
       <description>&lt;p&gt;Some time ago &lt;a href=&#34;https://github.com/maxice8&#34;&gt;maxice8&lt;/a&gt; had told me about &lt;a href=&#34;https://github.com/maxice8/meltryllis/blob/d3b7383e95a3be987a4a252530347ae9a7b6a266/bin/gemnerator&#34;&gt;gemnator&lt;/a&gt;, a simple script written in SH
 to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from  the rubygems.org API and generates a ready to use template from it.
 I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.io, metacpan.org) and adding more functionality to it, like updating existing templates.&lt;/p&gt;</description>

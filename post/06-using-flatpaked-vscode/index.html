@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://www.cogitri.dev/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github-style.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/light.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/dark.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/syntax.css' />
+    <title>Using VSCode in a Flatpak - Cogitri&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://www.cogitri.dev/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content="I&amp;rsquo;ve recently started using VSCode as my main editor, mainly due to its extensibility, meaning I can use it in almost all scenarios (at work, for personal projects, &amp;hellip;) and it&amp;rsquo;s easy to customize to my needs (although the defaults are pretty nice already). However, since it uses Electron (which currently still needs glibc, although that might change soon) I currently need to run it in a Flatpak, which needed some setup in order to be suitable for development
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://www.cogitri.dev/post/06-using-flatpaked-vscode/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Using VSCode in a Flatpak - Cogitri&#39;s blog" />
+<meta name="twitter:description"
+  content="I&amp;rsquo;ve recently started using VSCode as my main editor, mainly due to its extensibility, meaning I can use it in almost all scenarios (at work, for personal projects, &amp;hellip;) and it&amp;rsquo;s easy to customize to my needs (although the defaults are pretty nice already). However, since it uses Electron (which currently still needs glibc, although that might change soon) I currently need to run it in a Flatpak, which needed some setup in order to be suitable for development
+" />
+<meta name="twitter:site" content="https://www.cogitri.dev" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://www.cogitri.dev">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Using VSCode in a Flatpak - Cogitri&#39;s blog">
+<meta property="og:description"
+  content="I&amp;rsquo;ve recently started using VSCode as my main editor, mainly due to its extensibility, meaning I can use it in almost all scenarios (at work, for personal projects, &amp;hellip;) and it&amp;rsquo;s easy to customize to my needs (although the defaults are pretty nice already). However, since it uses Electron (which currently still needs glibc, although that might change soon) I currently need to run it in a Flatpak, which needed some setup in order to be suitable for development
+" />
+<meta property="og:url" content="https://www.cogitri.dev/post/06-using-flatpaked-vscode/" />
+<meta property="og:site_name" content="Using VSCode in a Flatpak" />
+<meta property="og:image"
+  content="https://www.cogitri.dev">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-03-27 09:25:10 &#43;0100 CET" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://www.cogitri.dev">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://www.cogitri.dev">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://www.cogitri.dev">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://www.cogitri.dev">
+                  <img class=" avatar-user"
+                    src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://www.cogitri.dev">Rasmus Thomsen</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://www.cogitri.dev/post/06-using-flatpaked-vscode/">Using VSCode in a Flatpak</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Fri, 27 Mar 2020 09:25:10 &#43;0100"
+                    class="no-wrap">
+                    Fri, 27 Mar 2020 09:25:10 &#43;0100</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      739 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><p>I&rsquo;ve recently started using VSCode as my main editor, mainly due to its
+extensibility, meaning I can use it in almost all scenarios (at work, for
+personal projects, &hellip;) and it&rsquo;s easy to customize to my needs (although the
+defaults are pretty nice already). However, since it uses Electron (which
+currently still needs glibc, <a href="https://github.com/electron/electron/issues/9662#issuecomment-591719521">although that might change soon</a>)
+I currently need to run it in a Flatpak, which needed some setup in order
+to be suitable for development</p>
+<h1 id="setting-up-dependencies">Setting up dependencies</h1>
+<p>Overall, there are two ways to do this: The (somewhat) quick and messy way
+and the less quick but <em>way</em> nicer way.</p>
+<h2 id="the-messy-way">The messy way</h2>
+<p>Flatpak mounts folders in its / read-only, so you don&rsquo;t mess with it, so you
+can&rsquo;t really install deps there, unless you bindmount a folder into the VSCode
+flatpak, like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>flatpak override --filesystem<span style="color:#f92672">=</span>/packages com.visualstudio.Code
+</span></span></code></pre></div><p>Alternatively you could also use one of the folders in your $HOME, since the
+VSCode flatpak permits full access to $HOME through the sandbox. You can now
+build packages and install them to your new folder (which boils down to downloading the tarball, runing
+<code>./configure --prefix=/packages &amp;&amp; make install</code> or <code>meson --prefix=/packages build &amp;&amp; ninja -C build install</code>
+or something along those lines). Afterwards you have to adjust some environment
+variables so that VSCode is able to find your new libs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>flatpak override --env<span style="color:#f92672">=</span>LD_LIBRARY_PATH<span style="color:#f92672">=</span>/packages/lib --env<span style="color:#f92672">=</span>LIBRARY_PATH<span style="color:#f92672">=</span>/packages/lib --env<span style="color:#f92672">=</span>PKG_CONFIG_PATH<span style="color:#f92672">=</span>/packages/lib --env<span style="color:#f92672">=</span>GETTEXTDATADIRS<span style="color:#f92672">=</span>/packages/share/gettext
+</span></span></code></pre></div><p>The disadvantage of this method is that it&rsquo;s not really reproducible (which is annoying
+if you have multiple systems), prone to breaking and while it is easy to setup it
+will probably be more annoying in the long run when updating packages</p>
+<h2 id="the-less-messy-way">The less messy way</h2>
+<p>It&rsquo;s possible to create so called Sdk-Extensions which can then be used in your Flatpak.
+This means creating a build recipe in a YML file and building it with <code>flatpak-builder</code>
+and installing it. A simple build recipe which only builds one package could look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#75715e"># app-id, you can set this to whatever if you want to</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">app-id</span>: <span style="color:#ae81ff">org.freedesktop.Sdk.Extension.Cogitri</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The branch this extension is for. Make sure to keep this in sync with</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># runtime-version</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">branch</span>: <span style="color:#e6db74">&#39;19.08&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">runtime</span>: <span style="color:#ae81ff">org.freedesktop.Sdk</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># What version the runtime we build against has. Make sure this is the same</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># version as VSCode uses!</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">runtime-version</span>: <span style="color:#e6db74">&#39;19.08&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">sdk</span>: <span style="color:#ae81ff">org.freedesktop.Sdk</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">build-extension</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">build-options</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># We want to install to this dir. This is passed to CMake/Meson/Configure etc.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># if you set the `buildsystem` (see below in the vte module)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">prefix</span>: <span style="color:#ae81ff">/usr/lib/sdk/Cogitri</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># This is only required if one of the dependencies you build needs a binary from</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># another package you build in this module</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">prepend-path</span>: <span style="color:#ae81ff">/usr/lib/sdk/Cogitri/bin</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Same as above, but for libraries instead of binaries</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">prepend-ld-library-path</span>: <span style="color:#ae81ff">/usr/lib/sdk/Cogitri/lib</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">modules</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># It&#39;s best to make one module here for every dependencies you need, since flatpak</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># caches per-module: If you bump the dependency of one module you don&#39;t need to</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># rebuild everything then</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">vte2.91</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">buildsystem</span>: <span style="color:#ae81ff">meson</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">config-opts</span>:
+</span></span><span style="display:flex;"><span>      - -<span style="color:#ae81ff">Ddocs=false</span>
+</span></span><span style="display:flex;"><span>      - -<span style="color:#ae81ff">Dvapi=false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">build-options</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">env</span>: { <span style="color:#f92672">CXXFLAGS</span>: <span style="color:#e6db74">&#34;-fno-exceptions&#34;</span> }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sources</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">archive</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://download.gnome.org/sources/vte/0.58/vte-0.58.3.tar.xz</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">sha256</span>: <span style="color:#ae81ff">22dcb54ac2ad1a56ab0a745e16ccfeb383f0b5860b5bfa1784561216f98d4975</span>
+</span></span></code></pre></div><p>See <a href="https://jlk.fjfi.cvut.cz/arch/manpages/man/flatpak-manifest.5.en">man 5 flatpak-manifest</a> for
+more information. See <a href="https://github.com/Cogitri/org.freedesktop.Extension.Cogitri/blob/master/org.freedesktop.Sdk.Extension.Cogitri.yml">my GitHub repo</a> for how I made my build recipe.</p>
+<p>Once you&rsquo;re done adding all packages to your build recipe it&rsquo;s time to build it like this:</p>
+<pre tabindex="0"><code>flatpak-builder --user --install --force-clean app org.freedesktop.Sdk.Extension.Cogitri.yml
+</code></pre><p>This will build and install your extension for you. The only thing that&rsquo;s left now is to adjust
+your paths:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>flatpak override --env<span style="color:#f92672">=</span>LD_LIBRARY_PATH<span style="color:#f92672">=</span>/usr/lib/sdk/Cogitri/lib --env<span style="color:#f92672">=</span>LIBRARY_PATH<span style="color:#f92672">=</span>/usr/lib/sdk/Cogitri/lib --env<span style="color:#f92672">=</span>PKG_CONFIG_PATH<span style="color:#f92672">=</span>/usr/lib/sdk/Cogitri/lib --env<span style="color:#f92672">=</span>GETTEXTDATADIRS<span style="color:#f92672">=</span>/usr/lib/sdk/Cogitri/share/gettext
+</span></span></code></pre></div><p>And now your dependencies should be available in your flatpak! :)</p>
+<h3 id="updating-dependencies">Updating dependencies</h3>
+<p>Updating dependencies is pretty easy with this approach. For example if I want to bump vte2.91
+to version 0.60.0 I only need to change two things: the <code>url</code> to point at <code>0.60.0</code> instead of
+<code>0.58.3</code> and the <code>sha256</code> to be the sha256sum of the new tarball. Flatpak has some fancy tool
+to automatically update the sha256sum for you, but I forgot it&rsquo;s name - and <code>curl $url | sha256sum</code>
+does the trick for now :)
+After updating your build recipe simple re-run flatpak-builder like above. Since flatpak will only
+rebuild changed modules (and modules that are built after that module, in case the other modules
+need the changes of that new module) it shouldn&rsquo;t take as long as the initial build. It&rsquo;s a good
+idea to place dependencies which are updated often to at the end of the file, so you don&rsquo;t have
+to rebuild as many modules when bumping it.</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://www.cogitri.dev/js/toc.js'></script>
+<link rel="stylesheet" href='https://www.cogitri.dev/css/toc.css' />
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://www.cogitri.dev">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://www.cogitri.dev/js/github-style.js"></script>
+
+
+
+
+</html>

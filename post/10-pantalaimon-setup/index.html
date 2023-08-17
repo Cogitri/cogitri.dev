@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="application/javascript" src='https://www.cogitri.dev/js/theme-mode.js'></script>
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/frameworks.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github.min.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/github-style.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/light.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/dark.css' />
+    <link rel="stylesheet" href='https://www.cogitri.dev/css/syntax.css' />
+    <title>Setting up Pantalaimon for usage with Matrix clients and using panctl - Cogitri&#39;s blog</title>
+    
+    <link rel="icon" type="image/x-icon" href='https://www.cogitri.dev/images/favicon.ico'>
+    
+    <meta name="theme-color" content="#1e2327">
+
+    
+    <meta name="description"
+  content=" Article by editor Leo thinkabit.ukim@gmail.com
+Pantalaimon is a End-to-End Encryption (E2EE) aware proxy daemon that connects to a Matrix server and handles sending and receiving messages. It also handles verifying sessions, verifying or blacklisting devices, and exporting/importing session keys.
+Its main use-case is to provide clients that have not yet fully implemented some of the most important Matrix&amp;rsquo;s features, namely verifying devices and End-to-End encryption, a good man-in-the-middle that does it transparently for you.
+Today we will set up a local pantalaimon daemon and log in with Fractal, the GNOME client for Matrix. We will also learn how to use the panctl program from Pantalaimon to verify the session we started with Fractal.
+" />
+<meta name="keywords"
+  content='' />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://www.cogitri.dev/post/10-pantalaimon-setup/" />
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Setting up Pantalaimon for usage with Matrix clients and using panctl - Cogitri&#39;s blog" />
+<meta name="twitter:description"
+  content=" Article by editor Leo thinkabit.ukim@gmail.com
+Pantalaimon is a End-to-End Encryption (E2EE) aware proxy daemon that connects to a Matrix server and handles sending and receiving messages. It also handles verifying sessions, verifying or blacklisting devices, and exporting/importing session keys.
+Its main use-case is to provide clients that have not yet fully implemented some of the most important Matrix&amp;rsquo;s features, namely verifying devices and End-to-End encryption, a good man-in-the-middle that does it transparently for you.
+Today we will set up a local pantalaimon daemon and log in with Fractal, the GNOME client for Matrix. We will also learn how to use the panctl program from Pantalaimon to verify the session we started with Fractal.
+" />
+<meta name="twitter:site" content="https://www.cogitri.dev" />
+<meta name="twitter:creator" content="" />
+<meta name="twitter:image"
+  content="https://www.cogitri.dev">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Setting up Pantalaimon for usage with Matrix clients and using panctl - Cogitri&#39;s blog">
+<meta property="og:description"
+  content=" Article by editor Leo thinkabit.ukim@gmail.com
+Pantalaimon is a End-to-End Encryption (E2EE) aware proxy daemon that connects to a Matrix server and handles sending and receiving messages. It also handles verifying sessions, verifying or blacklisting devices, and exporting/importing session keys.
+Its main use-case is to provide clients that have not yet fully implemented some of the most important Matrix&amp;rsquo;s features, namely verifying devices and End-to-End encryption, a good man-in-the-middle that does it transparently for you.
+Today we will set up a local pantalaimon daemon and log in with Fractal, the GNOME client for Matrix. We will also learn how to use the panctl program from Pantalaimon to verify the session we started with Fractal.
+" />
+<meta property="og:url" content="https://www.cogitri.dev/post/10-pantalaimon-setup/" />
+<meta property="og:site_name" content="Setting up Pantalaimon for usage with Matrix clients and using panctl" />
+<meta property="og:image"
+  content="https://www.cogitri.dev">
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2020-11-01 19:39:20 -0300 -0300" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div style="position: relative">
+  <header class="Header js-details-container Details px-3 px-md-4 px-lg-5 flex-wrap flex-md-nowrap open Details--on">
+    <div class="Header-item mobile-none" style="margin-top: -4px; margin-bottom: -4px;">
+      <a class="Header-link" href="https://www.cogitri.dev">
+        <svg class="octicon" height="32" viewBox="0 0 16 16" version="1.1" width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item d-md-none">
+      <button class="Header-link btn-link js-details-target" type="button"
+        onclick="document.querySelector('#header-search').style.display = document.querySelector('#header-search').style.display == 'none'? 'block': 'none'">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 16 16" version="1.1" width="24">
+          <path fill-rule="evenodd"
+            d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div style="display: none;" id="header-search"
+      class="Header-item Header-item--full flex-column flex-md-row width-full flex-order-2 flex-md-order-none mr-0 mr-md-3 mt-3 mt-md-0 Details-content--hidden-not-important d-md-flex">
+      <div
+        class="Header-search header-search flex-auto js-site-search position-relative flex-self-stretch flex-md-self-auto mb-3 mb-md-0 mr-0 mr-md-3 scoped-search site-scoped-search js-jump-to">
+        <div class="position-relative">
+          <form target="_blank" action="https://www.google.com/search" accept-charset="UTF-8" method="get"
+            autocomplete="off">
+            <label
+              class="Header-search-label form-control input-sm header-search-wrapper p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
+              <input type="text"
+                class="Header-search-input form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field is-clearable"
+                name="q" value="" placeholder="Search" autocomplete="off">
+              <input type="hidden" name="q" value="site:https://www.cogitri.dev">
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-md-none position-relative">
+      <a class="Header-link " href="https://www.cogitri.dev">
+        <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+          width="32">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg>
+      </a>
+    </div>
+    <div class="Header-item" style="margin-right: 0;">
+      <a href="javascript:void(0)" class="Header-link no-select" onclick="switchTheme()">
+        <svg style="fill: var(--color-profile-color-modes-toggle-moon);" class="no-select" viewBox="0 0 16 16"
+          version="1.1" width="16" height="16">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M4.52208 7.71754C7.5782 7.71754 10.0557 5.24006 10.0557 2.18394C10.0557 1.93498 10.0392 1.68986 10.0074 1.44961C9.95801 1.07727 10.3495 0.771159 10.6474 0.99992C12.1153 2.12716 13.0615 3.89999 13.0615 5.89383C13.0615 9.29958 10.3006 12.0605 6.89485 12.0605C3.95334 12.0605 1.49286 10.001 0.876728 7.24527C0.794841 6.87902 1.23668 6.65289 1.55321 6.85451C2.41106 7.40095 3.4296 7.71754 4.52208 7.71754Z">
+          </path>
+        </svg>
+      </a>
+    </div>
+  </header>
+</div>
+  
+<div>
+  <main>
+    <div class="gisthead pagehead bg-gray-light pb-0 pt-3 mb-4">
+      <div class="px-0">
+        <div class="mb-3 d-flex px-3 px-md-3 px-lg-5">
+          <div class="flex-auto min-width-0 width-fit mr-3">
+            <div class="d-flex">
+              <div class="d-none d-md-block">
+                <a class="avatar mr-2 flex-shrink-0" href="https://www.cogitri.dev">
+                  <img class=" avatar-user"
+                    src="https://avatars1.githubusercontent.com/u/8766773?s=460&amp;v=4"
+                    width="32" height="32"></a>
+              </div>
+              <div class="d-flex flex-column">
+                <h1 class="break-word f3 text-normal mb-md-0 mb-1">
+                  <span class="author">
+                    <a href="https://www.cogitri.dev">Rasmus Thomsen</a></span><span
+                    class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
+                      href="https://www.cogitri.dev/post/10-pantalaimon-setup/">Setting up Pantalaimon for usage with Matrix clients and using panctl</a></strong>
+                </h1>
+                <div class="note m-0">
+                  Created <relative-time datetime="Sun, 01 Nov 2020 19:39:20 -0300"
+                    class="no-wrap">
+                    Sun, 01 Nov 2020 19:39:20 -0300</relative-time>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lg px-3 new-discussion-timeline">
+      <div class="repository-content gist-content">
+        <div>
+          <div class="js-gist-file-update-container js-task-list-container file-box">
+            <div id="file-pytest" class="file my-2">
+              <div id="post-header" class="file-header d-flex flex-md-items-center flex-items-start sticky-header" style="z-index: 2">
+                <div class="file-info d-flex flex-md-items-center flex-items-start flex-order-1 flex-auto">
+                  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                    
+                    <summary id="toc-toggle" onclick="clickToc()" class="btn btn-octicon m-0 mr-2 p-2">
+                      <svg aria-hidden="true" viewBox="0 0 16 16" height="16" width="16" class="octicon octicon-list-unordered">
+                        <path fill-rule="evenodd" d="M2 4a1 1 0 100-2 1 1 0 000 2zm3.75-1.5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zm0 5a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5zM3 8a1 1 0 11-2 0 1 1 0 012 0zm-1 6a1 1 0 100-2 1 1 0 000 2z"></path>
+                      </svg>
+                    </summary>
+                    <details-menu class="SelectMenu" id="toc-details" style="display: none;">
+                      <div class="SelectMenu-modal rounded-3 mt-1" style="max-height: 340px;">
+                        <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" id="toc-list">
+                        </div>
+                      </div>
+                    </details-menu>
+                      814 Words
+                    
+
+                  </div>
+                  <div class="file-actions flex-order-2 pt-0">
+                    
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="Box-body px-5 pb-5" style="z-index: 1">
+                <article class="markdown-body entry-content container-lg"><blockquote>
+<p>Article by editor Leo <a href="mailto:thinkabit.ukim@gmail.com">thinkabit.ukim@gmail.com</a></p>
+</blockquote>
+<p><a href="https://github.com/matrix-org/pantalaimon">Pantalaimon</a> is a End-to-End Encryption (E2EE) aware proxy daemon that
+connects to a <a href="https://matrix.org/">Matrix</a> server and handles sending and receiving messages.
+It also handles verifying sessions, verifying or blacklisting devices, and
+exporting/importing session keys.</p>
+<p>Its main use-case is to provide clients that have not yet fully implemented
+some of the most important Matrix&rsquo;s features, namely verifying devices and
+End-to-End encryption, a good man-in-the-middle that does it transparently
+for you.</p>
+<p>Today we will set up a local <code>pantalaimon</code> daemon and log in with
+<a href="https://wiki.gnome.org/Apps/Fractal">Fractal</a>, the GNOME client for Matrix. We will also learn how to use the
+<code>panctl</code> program from Pantalaimon to verify the session we started with Fractal.</p>
+<h2 id="installation">Installation</h2>
+<p>The first step is installing Pantalaimon. It can be installed via <code>pip</code> as it
+is a python program, but we will instead use our distro repositories, in this
+case <a href="https://alpinelinux.org">Alpine Linux</a>.</p>
+<pre tabindex="0"><code class="language-prompt" data-lang="prompt"># apk add pantalaimon pantalaimon-ui 
+</code></pre><p>We also need to install Fractal, instead of using the distro repositories lets
+use the flatpak-ed version from <a href="https://flathub.org/apps/details/org.gnome.Fractal">FlatHub</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ flatpak install fractal
+</span></span><span style="display:flex;"><span>Looking for matches…
+</span></span><span style="display:flex;"><span>Found similar ref(s) for ‘fractal’ in remote ‘flathub’ (user).
+</span></span><span style="display:flex;"><span>Use this remote? [Y/n]:
+</span></span><span style="display:flex;"><span>Found ref ‘app/org.gnome.Fractal/x86_64/stable’ in remote ‘flathub’ (user).
+</span></span><span style="display:flex;"><span>Use this ref? [Y/n]:
+</span></span><span style="display:flex;"><span>Required runtime for org.gnome.Fractal/x86_64/stable (runtime/org.gnome.Platform/x86_64/3.36) found in remote flathub
+</span></span><span style="display:flex;"><span>Do you want to install it? [Y/n]:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>org.gnome.Fractal permissions:
+</span></span><span style="display:flex;"><span>    ipc                  network      pulseaudio      wayland     x11     dri
+</span></span><span style="display:flex;"><span>    dbus access [1]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    [1] org.freedesktop.Notifications, org.freedesktop.secrets
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        ID                                  Branch          Op          Remote           Download
+</span></span><span style="display:flex;"><span> 1. [✓] org.gnome.Fractal.Locale            stable          i           flathub            4.8 kB / 233.8 kB
+</span></span><span style="display:flex;"><span> 2. [✓] org.gnome.Platform.Locale           3.36            i           flathub           17.7 kB / 323.1 MB
+</span></span><span style="display:flex;"><span> 3. [✓] org.gnome.Platform                  3.36            i           flathub          172.7 MB / 326.0 MB
+</span></span><span style="display:flex;"><span> 4. [✓] org.gnome.Fractal                   stable          i           flathub            3.5 MB / 3.6 MB
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Installation complete.
+</span></span></code></pre></div><h2 id="configuration">Configuration</h2>
+<p>Now that we have Pantalaimon installed we need to create the configuration file,
+the location is <code>${XDG_CONFIG_HOME:-$HOME/.config}/pantalaimon/pantalaimon.conf</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[local-matrix]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">Homeserver</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">https://matrix.org</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ListenAddress</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">localhost</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ListenPort</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">8010</span>
+</span></span></code></pre></div><p>The <code>Homeserver</code> key holds what is the server you&rsquo;re connecting to.</p>
+<p>The <code>ListenAddress</code> key decides the URL where the daemon will listen for
+connections, in this case we are doing a local server so use localhost.</p>
+<p>Finally <code>ListenPort</code> decides what port of the URL that pantalaimon is going to
+listen in.</p>
+<h2 id="running">Running</h2>
+<p>Now we run the daemon and start our client, just invoke the <code>pantalaimon</code> binary
+and start the flatpak via <code>flatpak run org.gnome.Fractal</code>.</p>
+<h3 id="fractal">Fractal</h3>
+<p>When Fractal asks us for our provider instead of using the <code>Homeserver</code>, which is
+normally expected, we instead put the <code>ListenAddress</code> and <code>ListenPort</code> from
+pantalaimon as shown below:</p>
+<p><img src="/posts/10-provider.png" alt="Our Provider is Local"></p>
+<h2 id="panctl">panctl</h2>
+<p>We now need to verify the Pantalaimon session, in this case we need an already
+verified device running that can perform verification, one can safely use the
+Element Web on the Desktop or the Mobile application.</p>
+<p>We will use the <code>panctl</code> binary, which interacts with the running <code>pantalaimon</code>
+daemon and allows us to verify our session.</p>
+<h3 id="getting-info-from-panctl">Getting info from panctl</h3>
+<p>But first lets take a look at what information <code>panctl</code> can give to us. It is
+very important as we need the the correct ID of the device.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ panctl
+</span></span><span style="display:flex;"><span>panctl&gt; list-servers
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">pantalaimon servers</span>:
+</span></span><span style="display:flex;"><span> - <span style="color:#f92672">Name</span>: <span style="color:#ae81ff">local-matrix</span>
+</span></span><span style="display:flex;"><span> - <span style="color:#f92672">Pan users</span>:
+</span></span><span style="display:flex;"><span>   - @<span style="color:#ae81ff">maxice8:matrix.org BFXSMBOBLH</span>
+</span></span></code></pre></div><p>We have one server running, the <code>Name</code> key holds the value that is present in
+our configuration, and the <code>Pan users</code> collection holds all the users that are
+logged in, in this case we are logged in via fractal and our id is <code>BFXSMBOBLH</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>panctl&gt; list-devices @maxice8:matrix.org @maxice8:matrix.org
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Devices for user @maxice8:matrix.org</span>:
+</span></span><span style="display:flex;"><span> - <span style="color:#f92672">Display name</span>:  <span style="color:#ae81ff">FluffyChat android</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">Device id</span>:   <span style="color:#ae81ff">UXOXMSYWMH</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">Device key</span>:  [<span style="color:#ae81ff">STRENG GEHEIM]</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">Trust state</span>: <span style="color:#ae81ff">Verified</span>
+</span></span><span style="display:flex;"><span> - <span style="color:#f92672">Display name</span>:  <span style="color:#ae81ff">Element Desktop (Linux)</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">Device id</span>:   <span style="color:#ae81ff">QPOOTXJLUS</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">Device key</span>:  [<span style="color:#ae81ff">STRENG GEHEIM]</span>
+</span></span><span style="display:flex;"><span>   - <span style="color:#f92672">Trust state</span>: <span style="color:#ae81ff">Verified</span>
+</span></span></code></pre></div><p>Those are my devices, you can see I use <a href="https://fluffychat.im/">FlufflyChat</a> on my Android phone
+and have Element Desktop on my desktop, we will use the latter to perform
+the confirmation.</p>
+<p>Important here is to take note of the ID of the device we want to start the
+verification with, in this case the ID is <code>QPOOTXJLUS</code>.</p>
+<h3 id="starting-verification-from-panctl">Starting verification from panctl</h3>
+<p>First we call the start-verification program</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>panctl&gt; start-verification @maxice8:matrix.org @maxice8:matrix.org QPOOTXJLUS
+</span></span><span style="display:flex;"><span>Successfully started the key verification request
+</span></span></code></pre></div><p>Then we look at our Element client:</p>
+<p><img src="/posts/10-verification.png" alt="On Element Web"></p>
+<p>Click <code>continue</code>, and then switch back to <code>panctl</code> we need to check if the
+emojis match.</p>
+<p><img src="/posts/10-match.png" alt="Do They Match?"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Short authentication string for pan user @maxice8:matrix.org from @maxice8:matrix.org via QPOOTXJLUS:
+</span></span><span style="display:flex;"><span>     🚀          🔑          🍎          🚂          🎸          ⚓          🔧
+</span></span><span style="display:flex;"><span>   Rocket       Key        Apple       Train       Guitar      Anchor      Wrench
+</span></span></code></pre></div><p>If they match we can click <code>They match</code> in Element and on panctl we need to
+confirm-verification:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>panctl&gt; confirm-verification @maxice8:matrix.org @maxice8:matrix.org QPOOTXJLUS
+</span></span><span style="display:flex;"><span>Device QPOOTXJLUS of user @maxice8:matrix.org succesfully verified for pan user @maxice8:matrix.org.
+</span></span></code></pre></div><p>And in your Element client ?</p>
+<p><img src="/posts/10-verified.png" alt="Success!"></p>
+<p>Now, that doesn&rsquo;t mean we are done, we can also import/export the End-to-End
+encryption keys to be used in other contexts.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>panctl&gt; export-keys @maxice8:matrix.org ~/tmp/ourkeys pass
+</span></span><span style="display:flex;"><span>Succesfully exported keys for @maxice8:matrix.org to /home/enty/tmp/ourkeys
+</span></span><span style="display:flex;"><span>panctl&gt; import-keys @maxice8:matrix.org ~/tmp/ourkeys pass
+</span></span><span style="display:flex;"><span>Succesfully imported keys for @maxice8:matrix.org from /home/enty/tmp/ourkeys
+</span></span></code></pre></div></article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="application/javascript" src='https://www.cogitri.dev/js/toc.js'></script>
+<link rel="stylesheet" href='https://www.cogitri.dev/css/toc.css' />
+
+
+  <div class="footer container-xl width-full p-responsive">
+  <div
+    class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between flex-sm-items-center pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mr-lg-4" href="https://www.cogitri.dev">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24">
+        <path fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+        </path>
+      </svg>
+    </a>
+    <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      
+      <li class="mr-3 mr-lg-0">Theme by <a href='https://github.com/MeiK2333/github-style'>github-style</a></li>
+      
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+
+
+</div>
+</body>
+
+<script type="application/javascript" src="https://www.cogitri.dev/js/github-style.js"></script>
+
+
+
+
+</html>
