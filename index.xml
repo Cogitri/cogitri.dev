@@ -6,241 +6,112 @@
     <description>Recent content on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 31 Jul 2023 22:36:48 +0300</lastBuildDate><atom:link href="https://www.cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 31 Jul 2023 22:36:48 +0300</lastBuildDate>
+    <atom:link href="https://www.cogitri.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GUADEC 2023 (Rīga, Latvia) and how to retain GSoC students after GSoC</title>
       <link>https://www.cogitri.dev/post/13-guadec-riga-2023/</link>
       <pubDate>Mon, 31 Jul 2023 22:36:48 +0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/13-guadec-riga-2023/</guid>
       <description>This year I attended my first in-person GNOME conference (the GUADEC) in Rīga, Latvia. It was great to meet all the other GNOME folks, and there were loads of interesting talks, so if you haven&amp;rsquo;t had the chance to attend the GUADEC yet, I&amp;rsquo;d strongly encourage you to do so next year. The GUADEC 2024 will take place in Denver, Colorado, but there will also be a Mini-GUADEC in Berlin again.</description>
     </item>
-    
     <item>
       <title>Fedora Toolbox with custom container images</title>
       <link>https://www.cogitri.dev/post/12-fedora-toolbox/</link>
       <pubDate>Sat, 06 Feb 2021 10:59:41 +0100</pubDate>
-      
       <guid>https://www.cogitri.dev/post/12-fedora-toolbox/</guid>
-      <description>&lt;p&gt;Recently I&amp;rsquo;ve been using Fedora Toolbox a lot for development to have a reproducible
-development enviroment across my different systems. To make it easier to have the
-same container on multiple machines I&amp;rsquo;ve created my own Dockerfile:&lt;/p&gt;</description>
+      <description>&lt;p&gt;Recently I&amp;rsquo;ve been using Fedora Toolbox a lot for development to have a reproducible&#xA;development enviroment across my different systems. To make it easier to have the&#xA;same container on multiple machines I&amp;rsquo;ve created my own Dockerfile:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Creating an Alpine Developer Environment for Fedora Silverblue</title>
       <link>https://www.cogitri.dev/post/11-alpine-dev-env-in-fedora/</link>
       <pubDate>Sun, 27 Dec 2020 21:57:24 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/11-alpine-dev-env-in-fedora/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;As readers know I&amp;rsquo;m a developer for &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;, it is a very nice simple distribution for running containers.&lt;/p&gt;
-&lt;p&gt;Unforunately it is not very nice when using GNOME, it has less developers than other distros and its integration isn&amp;rsquo;t as good as it is in the more popular distros like Debian and Fedora.&lt;/p&gt;
-&lt;p&gt;With that in mind I have decided to test &lt;a href=&#34;https://silverblue.fedoraproject.org/&#34;&gt;Fedora Silverblue&lt;/a&gt;, a flavour of Fedora with GNOME that uses &lt;a href=&#34;https://ostree.readthedocs.io/en/latest/&#34;&gt;OSTree&lt;/a&gt; to provide reliable upgrades and rollbacks of the operating system, allowing the user to overlay their own packages on top and using container technologies (like &lt;a href=&#34;https://podman.io/&#34;&gt;podman&lt;/a&gt; and &lt;a href=&#34;https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/&#34;&gt;toolbox&lt;/a&gt;) to provide an alternative to installing packages onto the system itself.&lt;/p&gt;
-&lt;p&gt;In this article I&amp;rsquo;ll describe the process of creating an &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; image to be used in podman and accessed via SSH or &lt;code&gt;podman exec&lt;/code&gt;, while taking into account the peculirarities of working from inside toolbox.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;As readers know I&amp;rsquo;m a developer for &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;, it is a very nice simple distribution for running containers.&lt;/p&gt;&#xA;&lt;p&gt;Unforunately it is not very nice when using GNOME, it has less developers than other distros and its integration isn&amp;rsquo;t as good as it is in the more popular distros like Debian and Fedora.&lt;/p&gt;&#xA;&lt;p&gt;With that in mind I have decided to test &lt;a href=&#34;https://silverblue.fedoraproject.org/&#34;&gt;Fedora Silverblue&lt;/a&gt;, a flavour of Fedora with GNOME that uses &lt;a href=&#34;https://ostree.readthedocs.io/en/latest/&#34;&gt;OSTree&lt;/a&gt; to provide reliable upgrades and rollbacks of the operating system, allowing the user to overlay their own packages on top and using container technologies (like &lt;a href=&#34;https://podman.io/&#34;&gt;podman&lt;/a&gt; and &lt;a href=&#34;https://docs.fedoraproject.org/en-US/fedora-silverblue/toolbox/&#34;&gt;toolbox&lt;/a&gt;) to provide an alternative to installing packages onto the system itself.&lt;/p&gt;&#xA;&lt;p&gt;In this article I&amp;rsquo;ll describe the process of creating an &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; image to be used in podman and accessed via SSH or &lt;code&gt;podman exec&lt;/code&gt;, while taking into account the peculirarities of working from inside toolbox.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>APKBUILD.vim: updates, new stuff, better</title>
       <link>https://www.cogitri.dev/post/11-update-apkbuild/</link>
       <pubDate>Tue, 03 Nov 2020 23:59:41 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/11-update-apkbuild/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Article by Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;This is an update on
-&lt;a href=&#34;https://www.cogitri.dev/posts/08-meet-apkbuild.vim&#34;&gt;APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim&lt;/a&gt;,
-as of now APKBUILD.vim is under very active constant development, and it will
-remain this way until all features have been implemented and there is nothing
-else to remove.&lt;/p&gt;
-&lt;p&gt;In fact the development is so fast that the article was outdated the moment
-it arrived. So lets catch up on everything that happened until
-247b647ba47cb9a091020e4e5c4df7894cc05b1d.&lt;/p&gt;
-&lt;p&gt;If you wish to follow along then here are the &lt;a href=&#34;https://gitlab.alpinelinux.org/Leo/apkbuild.vim/-/commits/master&#34;&gt;commits&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Article by Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;This is an update on&#xA;&lt;a href=&#34;https://www.cogitri.dev/posts/08-meet-apkbuild.vim&#34;&gt;APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim&lt;/a&gt;,&#xA;as of now APKBUILD.vim is under very active constant development, and it will&#xA;remain this way until all features have been implemented and there is nothing&#xA;else to remove.&lt;/p&gt;&#xA;&lt;p&gt;In fact the development is so fast that the article was outdated the moment&#xA;it arrived. So lets catch up on everything that happened until&#xA;247b647ba47cb9a091020e4e5c4df7894cc05b1d.&lt;/p&gt;&#xA;&lt;p&gt;If you wish to follow along then here are the &lt;a href=&#34;https://gitlab.alpinelinux.org/Leo/apkbuild.vim/-/commits/master&#34;&gt;commits&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Setting up Pantalaimon for usage with Matrix clients and using panctl</title>
       <link>https://www.cogitri.dev/post/10-pantalaimon-setup/</link>
       <pubDate>Sun, 01 Nov 2020 19:39:20 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/10-pantalaimon-setup/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/matrix-org/pantalaimon&#34;&gt;Pantalaimon&lt;/a&gt; is a End-to-End Encryption (E2EE) aware proxy daemon that
-connects to a &lt;a href=&#34;https://matrix.org/&#34;&gt;Matrix&lt;/a&gt; server and handles sending and receiving messages.
-It also handles verifying sessions, verifying or blacklisting devices, and
-exporting/importing session keys.&lt;/p&gt;
-&lt;p&gt;Its main use-case is to provide clients that have not yet fully implemented
-some of the most important Matrix&amp;rsquo;s features, namely verifying devices and
-End-to-End encryption, a good man-in-the-middle that does it transparently
-for you.&lt;/p&gt;
-&lt;p&gt;Today we will set up a local &lt;code&gt;pantalaimon&lt;/code&gt; daemon and log in with
-&lt;a href=&#34;https://wiki.gnome.org/Apps/Fractal&#34;&gt;Fractal&lt;/a&gt;, the GNOME client for Matrix. We will also learn how to use the
-&lt;code&gt;panctl&lt;/code&gt; program from Pantalaimon to verify the session we started with Fractal.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/matrix-org/pantalaimon&#34;&gt;Pantalaimon&lt;/a&gt; is a End-to-End Encryption (E2EE) aware proxy daemon that&#xA;connects to a &lt;a href=&#34;https://matrix.org/&#34;&gt;Matrix&lt;/a&gt; server and handles sending and receiving messages.&#xA;It also handles verifying sessions, verifying or blacklisting devices, and&#xA;exporting/importing session keys.&lt;/p&gt;&#xA;&lt;p&gt;Its main use-case is to provide clients that have not yet fully implemented&#xA;some of the most important Matrix&amp;rsquo;s features, namely verifying devices and&#xA;End-to-End encryption, a good man-in-the-middle that does it transparently&#xA;for you.&lt;/p&gt;&#xA;&lt;p&gt;Today we will set up a local &lt;code&gt;pantalaimon&lt;/code&gt; daemon and log in with&#xA;&lt;a href=&#34;https://wiki.gnome.org/Apps/Fractal&#34;&gt;Fractal&lt;/a&gt;, the GNOME client for Matrix. We will also learn how to use the&#xA;&lt;code&gt;panctl&lt;/code&gt; program from Pantalaimon to verify the session we started with Fractal.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>APKBUILD.vim: filetype, plugins, syntax and linters for APKBUILDs on vim</title>
       <link>https://www.cogitri.dev/post/08-meet-apkbuild.vim/</link>
       <pubDate>Fri, 30 Oct 2020 17:39:23 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/08-meet-apkbuild.vim/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;The Linux distro I contribute to, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;, uses build recipes called
-APKBUILDs. They are shell scripts but with context-aware variables that can
-affect the final result of package. APKBUILDs are subject to policies that only
-apply to &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; and its packaging system &lt;code&gt;abuild&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.vim.org/&#34;&gt;Vim&lt;/a&gt; is a text editor used by many of our developers and users use for
-editing APKBUILDs. But while vim has a filetype for shellscripts, it is
-insufficient to provide syntax, plugins, indentation and other nice to have
-features that are specific to the context of an APKBUILD.&lt;/p&gt;
-&lt;p&gt;In light of that I took upon myself to write a complete implementation of
-a vim &lt;code&gt;filetype&lt;/code&gt; for APKBUILDs.&lt;/p&gt;
-&lt;p&gt;Meet &lt;a href=&#34;https://gitlab.alpinelinux.org/Leo/apkbuild.vim&#34;&gt;APKBUILD.vim&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The Linux distro I contribute to, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;, uses build recipes called&#xA;APKBUILDs. They are shell scripts but with context-aware variables that can&#xA;affect the final result of package. APKBUILDs are subject to policies that only&#xA;apply to &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; and its packaging system &lt;code&gt;abuild&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.vim.org/&#34;&gt;Vim&lt;/a&gt; is a text editor used by many of our developers and users use for&#xA;editing APKBUILDs. But while vim has a filetype for shellscripts, it is&#xA;insufficient to provide syntax, plugins, indentation and other nice to have&#xA;features that are specific to the context of an APKBUILD.&lt;/p&gt;&#xA;&lt;p&gt;In light of that I took upon myself to write a complete implementation of&#xA;a vim &lt;code&gt;filetype&lt;/code&gt; for APKBUILDs.&lt;/p&gt;&#xA;&lt;p&gt;Meet &lt;a href=&#34;https://gitlab.alpinelinux.org/Leo/apkbuild.vim&#34;&gt;APKBUILD.vim&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Flatpak-ing Nibbler, a Leela Chess Zero Interface and some Neural Network Engines</title>
       <link>https://www.cogitri.dev/post/09-nibbler-flatpak/</link>
       <pubDate>Fri, 30 Oct 2020 17:39:23 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/09-nibbler-flatpak/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The Machine Learning terminology here is simplified and will have a loss
-quality, but not pertinent to the point.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Nibbler is a Graphical User Interface to analyse chess games using mainly
-the &lt;a href=&#34;https://lczero.org&#34;&gt;Leela Chess Zero&lt;/a&gt; chess engine (software that plays chess and provides
-an evaluation of positions). It is written specifically for using Leela.&lt;/p&gt;
-&lt;p&gt;Nibbler is written specifically to make use of Leela&amp;rsquo;s output. While traditional
-engines ouptut centipawns to indicate how much hundredths of a pawn either side
-is ahead. Leela outputs what it believes what is the Win, Draw and Loss chance
-for the current side, along with how certain it is of its evaluation and other
-information like how many moves left until the games reaches its conclusion.&lt;/p&gt;
-&lt;p&gt;Unfortunately for us it is written in Electron which makes it very hard to package
-for &lt;a href=&#34;https://musl.libc.org&#34;&gt;musl&lt;/a&gt; systems like &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; which I use and am a developer of.
-Fortunately there is &lt;a href=&#34;https://flatpak.org&#34;&gt;flatpak&lt;/a&gt; which is a godsend for packaging heavyweight apps,
-so lets go package it.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The Machine Learning terminology here is simplified and will have a loss&#xA;quality, but not pertinent to the point.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Nibbler is a Graphical User Interface to analyse chess games using mainly&#xA;the &lt;a href=&#34;https://lczero.org&#34;&gt;Leela Chess Zero&lt;/a&gt; chess engine (software that plays chess and provides&#xA;an evaluation of positions). It is written specifically for using Leela.&lt;/p&gt;&#xA;&lt;p&gt;Nibbler is written specifically to make use of Leela&amp;rsquo;s output. While traditional&#xA;engines ouptut centipawns to indicate how much hundredths of a pawn either side&#xA;is ahead. Leela outputs what it believes what is the Win, Draw and Loss chance&#xA;for the current side, along with how certain it is of its evaluation and other&#xA;information like how many moves left until the games reaches its conclusion.&lt;/p&gt;&#xA;&lt;p&gt;Unfortunately for us it is written in Electron which makes it very hard to package&#xA;for &lt;a href=&#34;https://musl.libc.org&#34;&gt;musl&lt;/a&gt; systems like &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; which I use and am a developer of.&#xA;Fortunately there is &lt;a href=&#34;https://flatpak.org&#34;&gt;flatpak&lt;/a&gt; which is a godsend for packaging heavyweight apps,&#xA;so lets go package it.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Introducing mkmr, a collection of python3 tools to interact with GitLab</title>
       <link>https://www.cogitri.dev/post/07-meet-mkmr/</link>
       <pubDate>Wed, 12 Aug 2020 18:44:02 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/07-meet-mkmr/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;The Linux distribution I contribute to, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;,
-has recently switched fully to using GitLab (self-hosted instance) and has started
-gradually phasing out support for sending patches via the Mailing List.&lt;/p&gt;
-&lt;p&gt;To help smooth the transition for Mailing List contributors and also make contributing
-to Alpine Linux in general more efficient, I decided to step up and help by making it
-easier to create, edit and merge Merge Requests.&lt;/p&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Article by editor Leo &lt;a href=&#34;mailto:thinkabit.ukim@gmail.com&#34;&gt;thinkabit.ukim@gmail.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;The Linux distribution I contribute to, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt;,&#xA;has recently switched fully to using GitLab (self-hosted instance) and has started&#xA;gradually phasing out support for sending patches via the Mailing List.&lt;/p&gt;&#xA;&lt;p&gt;To help smooth the transition for Mailing List contributors and also make contributing&#xA;to Alpine Linux in general more efficient, I decided to step up and help by making it&#xA;easier to create, edit and merge Merge Requests.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using VSCode in a Flatpak</title>
       <link>https://www.cogitri.dev/post/06-using-flatpaked-vscode/</link>
       <pubDate>Fri, 27 Mar 2020 09:25:10 +0100</pubDate>
-      
       <guid>https://www.cogitri.dev/post/06-using-flatpaked-vscode/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve recently started using VSCode as my main editor, mainly due to its
-extensibility, meaning I can use it in almost all scenarios (at work, for
-personal projects, &amp;hellip;) and it&amp;rsquo;s easy to customize to my needs (although the
-defaults are pretty nice already). However, since it uses Electron (which
-currently still needs glibc, &lt;a href=&#34;https://github.com/electron/electron/issues/9662#issuecomment-591719521&#34;&gt;although that might change soon&lt;/a&gt;)
-I currently need to run it in a Flatpak, which needed some setup in order
-to be suitable for development&lt;/p&gt;</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve recently started using VSCode as my main editor, mainly due to its&#xA;extensibility, meaning I can use it in almost all scenarios (at work, for&#xA;personal projects, &amp;hellip;) and it&amp;rsquo;s easy to customize to my needs (although the&#xA;defaults are pretty nice already). However, since it uses Electron (which&#xA;currently still needs glibc, &lt;a href=&#34;https://github.com/electron/electron/issues/9662#issuecomment-591719521&#34;&gt;although that might change soon&lt;/a&gt;)&#xA;I currently need to run it in a Flatpak, which needed some setup in order&#xA;to be suitable for development&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Introducing Corecollector, a coredump collector written in D </title>
       <link>https://www.cogitri.dev/post/05-introducing-corecollector/</link>
       <pubDate>Tue, 18 Feb 2020 23:13:10 +0100</pubDate>
-      
       <guid>https://www.cogitri.dev/post/05-introducing-corecollector/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly
-random times for me (especially after hibernating), but attaching a debugger
-to gnome-shell isn&amp;rsquo;t as easy as it appears. I&amp;rsquo;ve noticed that it tended
-to dump a &lt;code&gt;core.$pid&lt;/code&gt; file in my &lt;code&gt;$HOME&lt;/code&gt;, which is a coredump file one
-can load into a debugger to print the backtrace among other things to
-after the fact. It annoyed me a little that it cluttered my &lt;code&gt;$HOME&lt;/code&gt; and
-I figured it&amp;rsquo;d be nice having a manager for these coredumps so one can
-see what programs crashed, why and how and to easily rotate them. I&amp;rsquo;ve remembered
-using systemd-coredumpd at some point and kind of liked that, but since I&amp;rsquo;m
-using Alpine Linux that wasn&amp;rsquo;t an option, so I wrote corecollector.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve recently wanted to debug gnome-shell, that was crashing at seemingly&#xA;random times for me (especially after hibernating), but attaching a debugger&#xA;to gnome-shell isn&amp;rsquo;t as easy as it appears. I&amp;rsquo;ve noticed that it tended&#xA;to dump a &lt;code&gt;core.$pid&lt;/code&gt; file in my &lt;code&gt;$HOME&lt;/code&gt;, which is a coredump file one&#xA;can load into a debugger to print the backtrace among other things to&#xA;after the fact. It annoyed me a little that it cluttered my &lt;code&gt;$HOME&lt;/code&gt; and&#xA;I figured it&amp;rsquo;d be nice having a manager for these coredumps so one can&#xA;see what programs crashed, why and how and to easily rotate them. I&amp;rsquo;ve remembered&#xA;using systemd-coredumpd at some point and kind of liked that, but since I&amp;rsquo;m&#xA;using Alpine Linux that wasn&amp;rsquo;t an option, so I wrote corecollector.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>About</title>
       <link>https://www.cogitri.dev/about/</link>
       <pubDate>Sun, 02 Feb 2020 11:16:06 +0100</pubDate>
-      
       <guid>https://www.cogitri.dev/about/</guid>
       <description>Hey, welcome to my blog! My name is Rasmus &amp;ldquo;Cogitri&amp;rdquo; Thomsen and I&amp;rsquo;m a contributor to numerous OSS projects. These days I&amp;rsquo;m mostly focussing my efforts on Alpine Linux and various GNOME projects.</description>
     </item>
-    
     <item>
       <title>Booting Alpine Linux with a Unified Kernel Image and Secure Boot</title>
       <link>https://www.cogitri.dev/post/04-secure-boot-with-unified-kernel-image/</link>
       <pubDate>Sun, 02 Feb 2020 06:07:10 +0100</pubDate>
-      
       <guid>https://www.cogitri.dev/post/04-secure-boot-with-unified-kernel-image/</guid>
-      <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;
-&lt;p&gt;Recently I got myself into package &lt;code&gt;sd-boot&lt;/code&gt; from the Systemd project
-into Alpine Linux. I previously packaged it as an April&amp;rsquo;s fools joke
-for Void Linux &lt;a href=&#34;https://github.com/void-linux/void-packages/pull/10469/&#34;&gt;Here&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;&#xA;&lt;p&gt;Recently I got myself into package &lt;code&gt;sd-boot&lt;/code&gt; from the Systemd project&#xA;into Alpine Linux. I previously packaged it as an April&amp;rsquo;s fools joke&#xA;for Void Linux &lt;a href=&#34;https://github.com/void-linux/void-packages/pull/10469/&#34;&gt;Here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Using KeePassXC as your system-keyring and ssh-agent</title>
       <link>https://www.cogitri.dev/post/03-keepassxc-freedesktop-secret/</link>
       <pubDate>Mon, 04 Nov 2019 11:33:37 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/03-keepassxc-freedesktop-secret/</guid>
-      <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;
-&lt;p&gt;Recently the community-oriented password manager &lt;a href=&#34;https://keepassxc.org/&#34;&gt;KeePassXC&lt;/a&gt; made a new
-major release, 2.5.0.&lt;/p&gt;
-&lt;p&gt;In this new release there was a really important change, the implementation of the
-&lt;a href=&#34;https://freedesktop.org/wiki/Specifications/secret-storage-spec/secrets-api-0.1.html&#34;&gt;secrets API&lt;/a&gt;
-from Freedesktop.&lt;/p&gt;</description>
+      <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;&#xA;&lt;p&gt;Recently the community-oriented password manager &lt;a href=&#34;https://keepassxc.org/&#34;&gt;KeePassXC&lt;/a&gt; made a new&#xA;major release, 2.5.0.&lt;/p&gt;&#xA;&lt;p&gt;In this new release there was a really important change, the implementation of the&#xA;&lt;a href=&#34;https://freedesktop.org/wiki/Specifications/secret-storage-spec/secrets-api-0.1.html&#34;&gt;secrets API&lt;/a&gt;&#xA;from Freedesktop.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Contributing to Alpine Linux: making Merge Requests</title>
       <link>https://www.cogitri.dev/post/02-gitlab-alpinelinux-v4-api/</link>
       <pubDate>Tue, 29 Oct 2019 11:28:05 -0300</pubDate>
-      
       <guid>https://www.cogitri.dev/post/02-gitlab-alpinelinux-v4-api/</guid>
-      <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;
-&lt;p&gt;Some time ago, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; started using their self-hosted
-&lt;a href=&#34;https://gitlab.alpinelinux.org&#34;&gt;GitLab instance&lt;/a&gt; to accept contributions via merge requests.&lt;/p&gt;
-&lt;p&gt;I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it
-is currently a mirror to git.alpinelinux.org).&lt;/p&gt;</description>
+      <description>&lt;h6 id=&#34;guest-article-by-maxice8&#34;&gt;Guest article by maxice8&lt;/h6&gt;&#xA;&lt;p&gt;Some time ago, &lt;a href=&#34;https://alpinelinux.org&#34;&gt;Alpine Linux&lt;/a&gt; started using their self-hosted&#xA;&lt;a href=&#34;https://gitlab.alpinelinux.org&#34;&gt;GitLab instance&lt;/a&gt; to accept contributions via merge requests.&lt;/p&gt;&#xA;&lt;p&gt;I wanted to move to it immediately as using their GitLab instance is planned to be the main repo (it&#xA;is currently a mirror to git.alpinelinux.org).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Introducing tmplgen</title>
       <link>https://www.cogitri.dev/post/01-introducing-tmplgen/</link>
       <pubDate>Sun, 03 Feb 2019 22:00:58 +0100</pubDate>
-      
       <guid>https://www.cogitri.dev/post/01-introducing-tmplgen/</guid>
-      <description>&lt;p&gt;Some time ago &lt;a href=&#34;https://github.com/maxice8&#34;&gt;maxice8&lt;/a&gt; had told me about &lt;a href=&#34;https://github.com/maxice8/meltryllis/blob/d3b7383e95a3be987a4a252530347ae9a7b6a266/bin/gemnerator&#34;&gt;gemnator&lt;/a&gt;, a simple script written in SH
-to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from  the rubygems.org API and generates a ready to use template from it.
-I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.io, metacpan.org) and adding more functionality to it, like updating existing templates.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some time ago &lt;a href=&#34;https://github.com/maxice8&#34;&gt;maxice8&lt;/a&gt; had told me about &lt;a href=&#34;https://github.com/maxice8/meltryllis/blob/d3b7383e95a3be987a4a252530347ae9a7b6a266/bin/gemnerator&#34;&gt;gemnator&lt;/a&gt;, a simple script written in SH&#xA;to generate Void Linux build template files for Ruby Gems. It pulls the neccessary data (e.g. the newest version, dependencies etc.) from  the rubygems.org API and generates a ready to use template from it.&#xA;I really liked the idea and wanted to improve on it, e.g. by adding more sources to query (such as crates.io, metacpan.org) and adding more functionality to it, like updating existing templates.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -5,6 +5,7 @@
     <link>https://www.cogitri.dev/categories/</link>
     <description>Recent content in Categories on Cogitri&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language><atom:link href="https://www.cogitri.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-gb</language>
+    <atom:link href="https://www.cogitri.dev/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

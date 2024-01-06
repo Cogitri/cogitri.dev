@@ -180,7 +180,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      513 Words
+                      566 Words
                     
 
                   </div>
@@ -195,7 +195,8 @@
                 <article class="markdown-body entry-content container-lg"><p>Recently I&rsquo;ve been using Fedora Toolbox a lot for development to have a reproducible
 development enviroment across my different systems. To make it easier to have the
 same container on multiple machines I&rsquo;ve created my own Dockerfile:</p>
-<pre tabindex="0"><code>FROM registry.fedoraproject.org/fedora-toolbox:34
+<pre tabindex="0"><code># Adjust the fedora version to the newest release here - I just happen to use F39 as of now
+FROM registry.fedoraproject.org/fedora-toolbox:39
 
 # Install extra packages
 COPY extra-packages /
@@ -214,7 +215,7 @@ Dockerfile extra-packages
 </code></pre><p>And issuing the following podman command:</p>
 <pre tabindex="0"><code>podman build . -t $USER/fedora-toolbox:latest
 </code></pre><p>Afterwards the toolbox with the custom image can be created with:</p>
-<pre tabindex="0"><code>toolbox create -c fedora-toolbox-34 -i $USER/fedora-toolbox
+<pre tabindex="0"><code>toolbox create -c fedora-toolbox-39 -i $USER/fedora-toolbox
 </code></pre><p>And voilà, you can enter the new toolbox with <code>toolbox enter</code>! :)</p>
 <h2 id="hooking-it-up-with-vscode">Hooking it up with VSCode</h2>
 <p>Since I&rsquo;m using the VSCode flatpak I have to use the VSCode Remote extension to
@@ -275,7 +276,7 @@ Afterwards add these values to your launch.json, for my project it looks like th
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    ]
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Afterwards launching applications via your debugger should just work.</p></article>
+</span></span></code></pre></div><p>Afterwards launching applications via your debugger should just work. In case you receive an error message akin to <code>Authorization required, but no authorization protocol specified</code>, you may have to allow the toolbox container to communicate with your X(wayland) Server with <code>xhost +si:localuser:$USER</code>.</p></article>
               </div>
             </div>
           </div>
