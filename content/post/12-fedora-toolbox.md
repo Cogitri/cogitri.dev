@@ -11,7 +11,8 @@ same container on multiple machines I've created my own Dockerfile:
 <!--more-->
 
 ```
-FROM registry.fedoraproject.org/fedora-toolbox:34
+# Adjust the fedora version to the newest release here - I just happen to use F39 as of now
+FROM registry.fedoraproject.org/fedora-toolbox:39
 
 # Install extra packages
 COPY extra-packages /
@@ -46,7 +47,7 @@ podman build . -t $USER/fedora-toolbox:latest
 Afterwards the toolbox with the custom image can be created with:
 
 ```
-toolbox create -c fedora-toolbox-34 -i $USER/fedora-toolbox
+toolbox create -c fedora-toolbox-39 -i $USER/fedora-toolbox
 ```
 
 And voilà, you can enter the new toolbox with `toolbox enter`! :)
@@ -135,4 +136,4 @@ Afterwards add these values to your launch.json, for my project it looks like th
 }
 ```
 
-Afterwards launching applications via your debugger should just work.
+Afterwards launching applications via your debugger should just work. In case you receive an error message akin to `Authorization required, but no authorization protocol specified`, you may have to allow the toolbox container to communicate with your X(wayland) Server with `xhost +si:localuser:$USER`.
